@@ -1,0 +1,324 @@
+
+
+
+/*
+	vi
+*/
+
+
+
+
+
+
+.chess-white:not(.vi-over), .chess-white:not(.vi-over) *, .chess-black:not(.vi-over), .chess-black:not(.vi-over) *{
+	box-shadow: none;
+}
+
+.chess-black:not(.vi-over), .chess-black:not(.vi-over) *{
+	color: white  !important;
+	background-color: black !important;
+	border-color: white !important;
+}
+.chess-white:not(.vi-over), .chess-white:not(.vi-over) *{
+	color: black  !important;
+	background-color: white !important;
+	border-color: black !important;
+}
+
+
+//МИКСИН ЁПТЫ
+@mixin bg-color($color_1, $color_2) {
+	*:not(.vi-over){
+		@extend .chess-#{$color_1};
+	}
+/* 
+	[class*='btn-default'], button{
+		@extend .style-#{$color_2};
+		border: 2px solid transparent;
+		*{
+			@extend .style-#{$color_2};
+		}
+		&:hover{
+			@extend .chess-white;
+			border: 2px solid $color_2;
+			a{
+				color: $color_2 ;
+				background: $color_1;
+			}
+		}
+	}
+	ul li{
+		&:hover, &.active{
+			color: $color_1 !important;
+			background-image: $color_2 !important;
+			border-color: $color_1 !important;
+			a{
+				background: inherit;
+				color: inherit;
+			}
+		}
+	}
+
+	.is-selected{
+		@extend .chess-black;
+	}
+ */
+
+
+}
+
+.style-black:not(.vi-over){
+	@include bg-color(black, white);
+}
+
+.style-white:not(.vi-over){
+	@include bg-color(white, black);
+}
+
+
+
+.vi-active{
+	body.vi-grayscale, body main{
+		filter: grayscale(1);
+	}
+
+	.vi-font-size-1{font-size: 14+px;}
+	.vi-font-size-2{font-size: 16+px;}
+	.vi-font-size-3{font-size: 18+px;}
+	.vi-font-size-4{font-size: 22+px;}
+	.vi-font-size-5{font-size: 26+px;}
+	//letter-spacing: 1px;
+
+
+
+	div:not(.img){
+		background-image: none !important;
+	}
+
+
+	//.vi-bg-color-white .vi {@extend .style-white;}
+	//.vi-bg-color-black .vi {@extend .style-black;}
+	body.vi-bg-color-black{
+		background-color: black ;
+		background-image: none !important;
+	}
+	.vi-bg-color-black *:not(.vi-over) *{
+		@extend .style-black;
+	}
+
+	.vi-bg-color-white *:not(.vi-over) *{
+		@extend .style-white;
+	}
+
+	.vi-img-visibility-hidden{
+		&, *{
+			img, iframe{
+				visibility: hidden;
+			}
+		}
+		.vi-img-visibility-show{
+
+			&, *{
+				img, iframe{
+					visibility: initial !important;
+				}
+			}
+
+		}
+		.vi-img-visibility-none{
+			display: none !important;
+		}
+	}
+
+
+}
+
+
+
+
+/* 
+	VI 
+*/
+.vi{
+	width: 100%;
+	z-index: 5454545;
+	position: fixed;
+	&.active{
+		display: block;
+	}
+	&.deactive{
+		display: none;
+	}
+	*{
+		user-select: none;
+	}
+	@extend .row;
+	.vi-container{
+		@extend .container;
+	}
+	h5{
+		font-size: 15px;
+	}
+
+	.vi-content{
+		//@include table-celling(60px);
+		@extend .container;
+		text-align: center;
+		& > .vi-table-center{
+			
+		}
+		li{
+			text-transform: uppercase;	
+			display: inline-block;
+			margin-left: 5px;
+		}
+	}
+
+	.vi-table-center{
+		margin:0 0px;
+		&>*{
+			vertical-align: middle;
+			display: inline-table;
+			width: initial;
+		}
+	}
+
+
+
+	// VI-FONT-SIZE
+	.vi-font-size{
+
+		h5{
+			font-weight: 500;
+		}
+		ul{
+			//transform: scale(0.5);
+		}
+		li{
+			font-weight: 700;			
+			vertical-align: baseline;
+			border: 2px solid transparent;
+			padding: 5px 5px;
+			color: #111;
+			&:hover{
+				cursor: pointer;
+			}
+		}
+		& > div{
+			margin: 0 15px;
+		}
+		#fs-range{
+			  width: 100px;
+			  margin: 0 15px;
+		}
+	}
+	// VI-BG-COLOR
+	.vi-bg-color{
+
+		.vi-bg-color-list{
+
+			[class*="vi-bg-color"]{
+				width: 30px;
+				height: 30px;
+				overflow: hidden;
+
+				display: flex !important;
+				align-items: center;
+				float: left;
+				border-radius: 5px;
+				i{
+					font-size: 20px;
+					width: 100%;
+				}
+				&:not(.active){
+					border: 2px solid;
+				}
+				&:hover{
+					cursor: pointer;
+				}
+
+			}
+			.vi-bg-color-1.active{
+				background: white !important;
+				border-color: white !important;
+			}
+			.vi-bg-color-2.active{
+				background: black !important;
+				border-color: white !important;
+			}
+
+		}
+	}
+
+
+
+
+
+
+
+
+
+	// VI-IMG-VISIBILITY
+	.vi-img-visibility{
+    margin: 0 25px;
+		.vi-img-visibility-list{
+
+			[class*="vi-img-visibility"]{
+				width: 30px;
+				height: 30px;
+
+				display: flex !important;
+				align-items: center;
+				float: left;
+				border-radius: 5px;
+				i{
+					font-size: 20px;
+					width: 100%;
+				}
+				&:hover{
+					cursor: pointer;
+				}
+
+			}
+			.vi-img-visibility-1{
+				//background-color: black;
+				//border: 2px solid white;
+			}
+			.vi-img-visibility-2{
+				//transform: rotate(45deg);
+				//border: 6px dashed gray;
+				//background-color: white;
+			}
+
+		}
+
+	}
+
+
+
+
+
+
+
+	.vi-reset{
+		margin: 5px 0;
+		font-size: 15px;
+		margin-left: 15px;
+		border: 1px solid black;
+		button{
+			transition: all 0.3s ease-out;
+			border: 0;
+			padding: 10px 30px;
+			background-color: white;
+			&:hover{
+				color: white;
+				background-color: black;
+			}
+		}
+
+	}
+
+}
+
+
+
