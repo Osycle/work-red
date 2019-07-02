@@ -465,9 +465,10 @@ html{
 		.select2-selection__arrow {
 			background-color: $color-gray-2;
 			border-radius: 0;
-			width: 26px;
+			width: 35px;
 			b{
-				border-color: $color-3 transparent transparent transparent;
+				transform: scale(1.2);
+				border-color: white transparent transparent transparent;
 			}
 		}
 	}
@@ -475,30 +476,13 @@ html{
 		.select2-selection--single{
 			.select2-selection__arrow {
 				b{
-					border-color: transparent transparent $color-3 transparent;
+					border-color: transparent transparent white transparent;
 				}
 			}
 		}
 	}
-	.select2-results__option--highlighted[aria-selected]{
-		background-color: white;
-		color: $color-2;
-	}
-	.select2-results__option[aria-selected=true]{
-		background-color: inherit;
-	}
 }
-.select2-opacity{
-	.select2-container--default{
-		.select2-selection--single{
-			border: 1px solid $color-1;
-			background-color: transparent !important;
-			.select2-selection__rendered{
-				color: $color-1;
-			}
-		}
-	}
-}
+
 .select2-dropdown{
 	border-radius: 0;
 	border-color: $color-gray-1;
@@ -571,10 +555,10 @@ div.owl-nav{
 			left: 0;
 		}
 	}
-	.owl-next{
+	.owl-prev{
 		.owl-btn{
 			right: 0;
-			transform: rotate(180deg);
+			transform: rotate(-180deg);
 		}
 	}
 	@media (min-width: 992px) {
@@ -590,21 +574,21 @@ div.owl-nav{
 	//position: absolute;
 }
 .owl-btn{
-	background: $gradient-1;
+	//background-color: $color-1;
 	width: 40px;
 	height: 40px;
 	z-index:2;
-	border-radius: 50%;
+	//border-radius: 50%;
 	display: inline-block;
 	border: none;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	box-shadow: 0 0 0px $color-1;
 	&:hover, &:focus{
 		opacity: 1;
 		border: none;
 		cursor: pointer;
-		background: $gradient-1;
 		.arrow{
 			fill: white;
 		}

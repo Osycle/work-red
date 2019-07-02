@@ -93,6 +93,7 @@ $header-min-menu: 70px;
 
 .header-logo{
 	img{
+		min-width: 170px;
 		width: 170px;
 	}
 }
@@ -173,6 +174,8 @@ $header-min-menu: 70px;
 	nav{
 		white-space: nowrap;
 		height: 100%;
+		display: flex;
+		align-items: center;
 	}
 	ul:not([class*="sub-menu"]){
 		display: flex;
@@ -191,7 +194,7 @@ $header-min-menu: 70px;
 			& > a{
 				height: 100%;
 				display: block;
-				padding: 10px 20px;
+				padding: 10px 10px;
 				position: relative;
 				display: flex;
 				height: 45px;
@@ -241,8 +244,67 @@ $header-min-menu: 70px;
 		}
 
 	}
+	@media (max-width: 1600px){
+		min-width: 240px;
+		.linkyet-hover{
+			display: flex;
+			height: 100%;
+			min-width: 80px;
+			align-items: center;
+			&:hover{
+				cursor: pointer;
+				&, & *{
+					pointer-events: auto !important;
+				}
+				ul{
+					opacity: 1;
+				}
+			}
+		}
+		.linkyet{
+			display: block;
+		}
+		nav{
+			display: flex;
+			align-items: center;
+			position: relative;
+			ul:not([class*="sub-menu"]){
+				position: absolute;
+				opacity: 0;
+				width: auto;
+				transition: all 0.3s ease;
+				font-size: 0.95em;
+				padding: 8px 15px;
+				padding-bottom: 18px;
+				top: 100px;
+				left: 0;
+				//transform: translateX(-100%);
+				height: auto;
+				background-color: $color-2;
+				flex-direction: column;
+				&, & *{
+					pointer-events: none !important;
+				}
+				li{
+				}
+			}
+		}
+	}
 }
-
+.linkyet{
+	display: none;
+	font-weight: 700;
+	text-transform: uppercase;
+	.fa{
+		margin-left: 10px;
+	}
+	span, i{
+		vertical-align: middle;
+	}
+	&:before{
+		display: none;
+	}
+}
 ul[class*="sub-menu"]{
 	position: absolute;
 	font-weight: 300;

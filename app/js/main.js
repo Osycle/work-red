@@ -40,16 +40,16 @@
 		/*Owl carousel*/
 		var owlBtn = [
 			'<span class="owl-btn previous">'+
-				'<svg viewBox="0 0 100 100"><path d="M 30,50 L 55,75 L 60,70 L 40,50  L 60,30 L 55,25 Z" class="arrow"></path></svg>'+
-			'</span>', 
-			'<span class="owl-btn next">'+
-				'<svg viewBox="0 0 100 100"><path d="M 30,50 L 55,75 L 60,70 L 40,50  L 60,30 L 55,25 Z" class="arrow"></path></svg>'+
+				'<i class="icm icm-arrow-pointing-to-right"></i>'+
+			'</span><span class="owl-btn-t">пред.</span>', 
+			'<span class="owl-btn-t">след.</span><span class="owl-btn next">'+
+				'<i class="icm icm-arrow-pointing-to-right"></i>'+
 			'</span>'
 		]
 
 		
 
-		$(".short-poptours-items.owl-carousel").owlCarousel({
+		$(".short-news-items.owl-carousel").owlCarousel({
 			nav: !checkSm(),
 			//items: 3,
 			dots: false,
@@ -61,7 +61,7 @@
 			stagePadding: 18,
 			responsive:{
 				0:{items:1},
-				991:{items:2}
+				991:{items:3}
 			},
 			navText : owlBtn,
 			margin: 22

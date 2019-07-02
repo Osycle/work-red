@@ -13,61 +13,30 @@
 	//min-height: 150px;
 	line-height: 170%;
 	font-weight: 500;
-	color: #888888;
-	color: white;
+	color: black;
 }
 
-.footer-content{
-	padding-top: 20px;
-	padding-bottom: 20px;
-	font-weight: normal;
-	background-image: url('../img/bg/bg-footer.jpg');
-	h3{
-		font-size: em(24);
-	}
-}
-.footer-contacts{
-	.info-item{
-		width: 100%;
-		margin-bottom: 15px;
-		display: flex;
-		@media (min-width: 991px) {
-			width: 70%;
-		}
-	}
-	.icon-content{
-		.icm{
-			width: 22px;
-			font-size: 20px;
-		}
-	}
-	.text-content{
-		padding-left: 15px;
-	}
-	p{
-		big{
-			font-size: em(20);	
-		}
-		b{
-			font-weight: 700;
-		}
-	}
-	@media (max-width: 991px) {
-		.text-content{
-			width: 100%;
-			text-align: center;
-			padding-left: 0;
-		}
-		.icon-content{
-			display: none;
-		}
-	}
-}
+
 .footer-menu{
-	.list{
-		padding-left: 18px;
+	@extend .list-style-1;
+	h3{
+		font-stretch: em(18);
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+	h4{
+		font-size: em(16);
+		font-weight: 700;
+	}
+	.ul-box{
+		margin: 30px 0;
+	}
+	ul{
+		padding-left: 0;
+		color: $color-gray-4;
+		font-size: em(12);
 		li{
-			margin-bottom: 10px;
+			margin-bottom: 2px;
 			list-style: disc;
 		}
 	}
@@ -79,7 +48,8 @@
 .copy-content{
 	font-size: 0.85em;
 	padding: 10px 0;
-	background-color: darken($color-1, 5%);
+	background-color: $color-2;
+	color: white;
 	.row{
 		@media (min-width: 992px) {
 			display: flex;
