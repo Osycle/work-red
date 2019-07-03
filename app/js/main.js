@@ -137,8 +137,8 @@
 		$("#min-menu").mmenu({
 			extensions: [
 				"wrapper-bg", // wrapper-bg black
-				//"theme-dark",
-				"theme-white",
+				"theme-dark",
+				//"theme-white",
 				//"fullscreen",
 				"listview-50",
 				"fx-panels-slide-up",

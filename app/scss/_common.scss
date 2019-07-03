@@ -394,7 +394,7 @@ table {
 	background-position: center;
 }
 .shadow-def{
-	box-shadow: 0 0 20px -4px rgba(black, 0.2);
+	box-shadow: 0 0 50px -4px rgba(black, 0.1);
 }
 .shadow-row{
 	box-shadow: 0 5px 15px -15px rgba(black, 0.8);
@@ -808,7 +808,7 @@ table {
 
 .parag-gray{
 	p:not([class*="color"]){
-		color: #6b6b6b;
+		color: #666666;
 	}
 }
 @keyframes bodyanime{
@@ -1014,7 +1014,7 @@ main{
 	p{
     font-style: normal;
 		position: relative;
-		line-height: 30px;
+		line-height: 170%;
 	}
 	ul:not([class]){
 		text-align: left;
@@ -1051,10 +1051,10 @@ hr{
 }
 .text-item{
 	@extend .parag-gray;
-	line-height: 170%;
+	line-height: 180%;
 	p{
-		font-family: $font-family-3;
-		margin-bottom: 15px;
+		font-size: em(16);
+		margin-bottom: 20px;
 		b:not([class*="color"]){
 			color: black;
 		}

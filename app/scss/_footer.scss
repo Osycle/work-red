@@ -14,34 +14,50 @@
 	line-height: 170%;
 	font-weight: 500;
 	color: black;
+	padding-top: 30px;
+	margin-top: 60px;
+	box-shadow: 0 0 25px -5px rgba(black, 0.15);
 }
 
 
 .footer-menu{
-	@extend .list-style-1;
 	h3{
 		font-stretch: em(18);
 		font-weight: 800;
 		text-transform: uppercase;
 	}
 	h4{
-		font-size: em(16);
+		font-size: em(15);
 		font-weight: 700;
 	}
 	.ul-box{
 		margin: 30px 0;
 	}
 	ul{
-		padding-left: 0;
+		padding-left: 20px;
 		color: $color-gray-4;
 		font-size: em(12);
 		li{
-			margin-bottom: 2px;
-			list-style: disc;
+			//margin-bottom: 2px;
+			list-style: none;
+			list-style-image: url('../img/icons/list-icon.png');
+			list-style-position: outside !important;
+			&:hover{
+				color: $color-1;
+			}
 		}
 	}
 	@media (max-width: 991px) {
 		display: none;
+	}
+}
+.footer-menu-main{
+	border-top: 1px solid $color-gray-1;
+	padding-top: 15px;
+	li{
+		list-style: none !important;
+		font-weight: 600;
+		list-style-image: none !important;
 	}
 }
 
@@ -50,6 +66,11 @@
 	padding: 10px 0;
 	background-color: $color-2;
 	color: white;
+	@media (min-width: 991px) {
+		height: 100px;
+    display: flex;
+    align-items: center;
+	}
 	.row{
 		@media (min-width: 992px) {
 			display: flex;
@@ -57,29 +78,7 @@
 		}
 	}
 }
-.subscription{
-	.input-content{
-		position: relative;
-		input{
-			margin-top: 5px;
-			padding-right: 155px;
-		}
-		.btn-def{
-			position: absolute;
-			right: 0;
-			top: 0;
-			display: flex;
-			align-items: center;
-			height: 100%;
-			button{
-				padding: 5px;
-				height: 100%;
-				font-size: em(16);
-				min-width: 140px;
-			}
-		}
-	}
-}
+
 .copyright{
 	
 }
