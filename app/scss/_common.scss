@@ -633,7 +633,7 @@ table {
 	}	
 	&:not(.changecolor-none):hover{
 		background-color: $color-2;
-		box-shadow: 0px 0px 5px 2px rgba($color-2, 0.5);
+		box-shadow: 0px 0px 8px 0px rgba($color-2, 0.5);
 	}
 	&.radius{
 		border-radius: 20px;
@@ -647,6 +647,9 @@ table {
 			background-color: darken($color-3, 10%);
 			background-image: linear-gradient( to left, $color-3, $color-2 );
 		}
+	}
+	@media (max-width: 991px) {
+		white-space: normal;
 	}
 }
 
@@ -938,7 +941,7 @@ h1{
 h2{
 	font-size: em(26);
 	margin-bottom: 15px;
-	font-weight: 600;
+	font-weight: 700;
 	@media (max-width: 430px) {
 		font-size: em(23);
 	}
@@ -1066,7 +1069,7 @@ hr{
 
 html{
 	.form-control{
-		border-radius: 10px;
+		border-radius: 6px;
 		background-color: white;
 		border: 1px solid $color-gray-1;
 		&:focus{
@@ -1074,7 +1077,8 @@ html{
 		}
 	}
 	input.form-control{
-		height: 42px;
+		height: 45px;
+		font-weight: 500;
 	}
 	textarea.form-control{
 		height: 130px;
@@ -1140,8 +1144,8 @@ select.pie-form-control{
 }
 .input-content{
 	label{
-		padding-left: 5px;
-		padding-right: 5px;
+		font-weight: 600;
+		line-height: 200%;
 	}
 }
 @media (max-width:991px) {

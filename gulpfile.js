@@ -48,7 +48,7 @@ gulp.task('scripts', () =>
 	{	
 	return gulp.src([
 			app+'/js/plugins/jquery.min.js',
-			//app+'/js/plugins/jquery-ui.js',
+			app+'/js/plugins/jquery-ui.js',
 			//app+'/js/plugins/skrollr.min.js',
 			//app+'/js/plugins/smoothscroll.js',
 			app+'/js/plugins/bootstrap.min.js',
