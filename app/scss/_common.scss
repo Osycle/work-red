@@ -483,8 +483,8 @@ table {
 	opacity: 0;
 	padding-right: 5%;
 	padding-left: 5%;
-	//background-color: rgba(black, 0.7);
-	background: linear-gradient(135deg, $color-1, transparent 120%);
+	background-color: rgba($color-1, 0.7);
+	//background: linear-gradient(135deg, $color-1, transparent 120%);
 	background-clip: border-box;
 	@extend .fuller;
 	pointer-events: none;
@@ -577,6 +577,7 @@ table {
 	}
 	button{
 		width: 100%;
+		text-transform: inherit;
 		font-weight: inherit;
 	}
 	&.min{
@@ -592,8 +593,8 @@ table {
 			padding-right: 45px;
 		}
 		&:not([class*="p-v"]){
-			padding-top: 15px;
-			padding-bottom: 15px;
+			padding-top: 12px;
+			padding-bottom: 12px;
 		}
 		&:not([class*="flex"]){
 			display: block;
@@ -920,7 +921,7 @@ thined{
 h1,h2,h3,h4,h5{
 	color: inherit;
 	line-height: 140%;
-	font-family: $font-family-1;
+	font-family: $font-family-2;
 }
 
 h1, h2, h3, h4{
@@ -941,7 +942,7 @@ h1{
 h2{
 	font-size: em(26);
 	margin-bottom: 15px;
-	font-weight: 700;
+	font-weight: 800;
 	@media (max-width: 430px) {
 		font-size: em(23);
 	}
@@ -1017,7 +1018,7 @@ main{
 	p{
     font-style: normal;
 		position: relative;
-		line-height: 170%;
+		line-height: 160%;
 	}
 	ul:not([class]){
 		text-align: left;

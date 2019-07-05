@@ -132,6 +132,7 @@ small{
 }
 .h2-style-2{
 	h2:not(.no-style){
+		text-transform: uppercase;
 		&:before{
 			@extend .clafclear;
 			width: 40px;
@@ -498,7 +499,7 @@ figcaption{
 	position: relative;
 	z-index: 1;
 	@media (max-width: 991px) {
-		height: 100vh;
+		height: auto;
 	}
 	@media (min-width: 992px) {
 		.intro-content{
@@ -515,6 +516,13 @@ figcaption{
 		align-items: center;
 		.align-i-center{
 			height: 100%;
+		}
+	}
+	.entry-content{
+		@media (min-width: 992px) {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
 		}
 	}
 	.intro-media{
@@ -617,7 +625,7 @@ figcaption{
 		backface-visibility: hidden;
 		display: inline-block;
 		margin-top: 15px;
-		width: 150px;
+		width: 170px;
 		margin-bottom: 15px;
 		padding: 0 15px;
 	}
@@ -1215,6 +1223,7 @@ figcaption{
 		box-shadow: 0 0 45px -35px rgba(black, 0.8);
 		padding: 40px 20px;
 		transition: all 0.4s ease;
+		background-color: white;
 		&:hover{
 			background-color: $color-1;
 			color: white;
@@ -1242,7 +1251,7 @@ figcaption{
 //studhotel-article
 .studhotel-article{
 	&.intro{
-		height: 980px;
+		//height: 980px;
 		@media (max-width: 991px){
 			height: auto;
 		}
@@ -1250,6 +1259,13 @@ figcaption{
 	.form-content{
 		background-color: white;
 		padding: 15px 7%; 
+	}
+	@media (min-width: 992px) {
+
+		.entry-content, .form-content{
+			margin-top: 80px;
+			margin-bottom: 80px;
+		}
 	}
 	.input-content{
 		position: relative;
@@ -1261,6 +1277,258 @@ figcaption{
 		  background-color: transparent;
 		  padding: 8px 15px;
 		  color: black; 
+		}
+	}
+}
+
+
+
+
+//reviews
+.intro-reviews{
+	@media (min-width: 992px) {
+		height: 800px;
+		.align-i-center{
+			padding-bottom: 70px;
+		}
+	}
+}
+.reviews{
+	position: relative;
+	z-index: 1;
+	@media (min-width: 992px) {
+		margin-top: -200px;
+	}
+}
+.reviews-items{
+
+	.img-content{
+		overflow: hidden;
+		position: relative;
+	}
+	.hover-content{
+		&:hover{
+			.img{
+				transform: scale(1.05);
+			}
+		}
+	}
+	.img{
+		@media (min-width: 1600px){
+			height: 400px;
+		}
+		height: 300px;
+		transition: all 0.3s ease;
+		backface-visibility: hidden;
+		background-size: cover;
+		@media (max-width: 991px) {
+			
+		}
+	}
+	.cell-hover{
+		align-items: flex-end;
+		padding: 15px 20px;
+		@media (min-width: 1600px){
+			padding: 40px 50px;
+		}
+		@media (max-width: 991px){
+			align-items: center;
+			font-size: em(12);
+		}
+	}
+}
+
+
+//helprent
+.helprent{
+	.btn-def{
+		font-size: 0.9em;
+	}
+}
+.accordion-def{
+	@media (min-width: 992px) {
+		margin-top: 90px;
+	}
+	.panel-default{
+		margin-top: 0;
+		margin-bottom: 0;
+		border: none;
+		.panel-heading{
+			background-color: #f0f0f0;
+			//padding: 15px 30px;
+			padding: 0;
+			border: 1px solid transparent;
+			transition: 0.3s;
+			&:hover{
+				border-color: $color-1;
+			}
+			.fa{
+				padding-left: 10px;
+				padding-right: 10px;
+				vertical-align: middle;
+				color: $color-1;
+				position: absolute;
+    		right: 14px;
+    		top: 20px;
+			}
+		}
+		.panel-body{
+			border-top: none !important;
+		}
+		.panel-title{
+			a{
+				transition: all 0.3s ease;
+				display: block;
+				padding: 17px 40px 17px 30px;
+			}
+			a[aria-expanded="true"]{
+				color: $color-2;
+				.fa{
+					transform-origin: center;
+					transform: rotate(180deg);
+				}
+			}
+		}
+		.panel-body{
+			padding: 15px 30px;
+		}
+
+	}
+}
+
+
+
+
+.request{	
+	.form-content{
+		background-color: white;
+		padding: 30px 60px;
+		@media (max-width: 991px) {
+			padding: 10px 15px;
+		}
+	}
+	@media (min-width: 992px) {
+		height: 980px;
+	}
+}
+
+
+
+
+//faq
+.faq-nav{
+	a{
+		color: $color-1;
+		border: 1px solid $color-gray-2;
+		font-weight: 700;
+		padding: 15px 30px !important;
+		background-color: white;
+	}
+	li{
+		&.active{
+			a{
+				background-color: $color-1;
+				color: white;
+			}
+		}
+		&:hover{
+			a{
+				background-color: $color-1;
+				color: white;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+//advantages-ofchoose
+.advantages-ofchoose{
+	background-image: url('../img/bg/degline.jpg');
+	background-position: bottom;
+	background-repeat: repeat-x;
+	.items{
+		@extend .shadow-def;
+		.img{
+			height: 280px;
+		}
+		figure{
+			background-color: white;
+			@media (min-width: 992px) {
+				&:nth-child(even){
+					.wrapper-flex{
+						flex-direction: row-reverse;
+					}
+				}
+			}
+		}
+	}
+}
+.aoch-prices{
+	padding-top: 75px;
+	padding-bottom: 60px;
+	text-align: center;
+	@media (max-width: 991px) {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+}
+.aoch-prices-content{
+	.btn-content{
+	}
+	.btn-def{
+		background-color: white;
+		margin-left: 5px;
+		margin-right: 5px;
+		a{
+			color: $color-1;
+			@media (min-width: 992px) {
+				padding: 15px 80px;
+			}
+			@media (max-width: 991px) {
+				min-width: 280px;
+			}
+		}
+		&:hover{
+			box-shadow: none;
+			background-color: $color-1;
+			a{
+				color: white;
+			}
+		}
+	}
+}
+.short-advantages{
+	@media (min-width: 992px){
+		padding-bottom: 75px;
+	}
+	.ghost-text{
+		text-transform: uppercase;
+		font-size: 100px;
+		line-height: 150%;
+		display: block;
+		font-weight: 900;
+		opacity: 0.07;
+		margin-bottom: -60px;
+		@media (max-width: 991px){
+			display: none;
+		}
+	}
+}
+
+
+
+
+
+
+//forcorporate
+.forcorporate{
+	.article-img{
+		img{
+			margin-top: 0 !important;
 		}
 	}
 }

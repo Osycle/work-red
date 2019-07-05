@@ -14,9 +14,11 @@
 	line-height: 170%;
 	font-weight: 500;
 	color: black;
-	padding-top: 30px;
 	//margin-top: 60px;
 	box-shadow: 0 0 25px -5px rgba(black, 0.15);
+	@media (min-width: 992px){
+		padding-top: 30px;
+	}
 }
 
 
