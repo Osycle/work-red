@@ -66,7 +66,12 @@ small{
 		padding-bottom: 40px;
 	}
 }
-
+.p-def{
+	padding: 15px;
+	@media (min-width: 992px) {
+		padding: 60px;
+	}
+}
 .entry-header{
 	p{
 		line-height: 170%;
@@ -880,7 +885,6 @@ figcaption{
 //team
 .team{
 	&.intro{
-		height: 1080px;
 		.intro-media .img{
 			height: 100%;
 		}
@@ -992,25 +996,6 @@ figcaption{
 
 
 //guidebuy
-.guidebuy{
-	&.intro{
-		height: 400px;
-		.img{
-			height: 400px;
-		}
-		h2{
-			text-transform: uppercase;
-			font-size: em(28);
-			font-weight: 800;
-		}
-		p{
-			font-size: em(16);
-		}
-	}
-	.align-i-center{
-		height: 100%;
-	}
-}
 .guidebuy-items{
 	figure{
 		counter-increment: carousel-cell;
@@ -1028,10 +1013,34 @@ figcaption{
 			padding-left: 15px;
 			padding-right: 15px;
 			justify-content: center;
+			@media (min-width: 991px){
+				line-height: 0;
+			}
 		}
 		&:nth-child(9) ~ *{
 			&:after{
 				content: counter(carousel-cell);
+			}
+		}
+		&:last-child{
+			.wrapper{
+				position: relative;
+				&:before{
+					content: " ";
+					height: 100%;
+					width: 100%;
+					position: absolute;
+					right: 50%;
+					transform: translate(45px, -15px);
+					width: 60px;
+					height: 60px;
+					z-index: -1;
+					background-color: $color-1;
+					border-radius: 50%;
+					@media (max-width: 991px){
+						display: none;
+					}
+				}
 			}
 		}
 		@media (min-width: 992px) {
@@ -1049,24 +1058,11 @@ figcaption{
 					}
 				}
 			}
-			&:nth-last-child(1){
+			&.figure-row{
 				width: 100%;
 				.img-content{
 					width: 53.5%;
 					position: relative;
-					&:before{
-						content: " ";
-						height: 100%;
-						width: 100%;
-						position: absolute;
-						right: 0;
-						transform: translate(28px, -15px);
-						width: 60px;
-						height: 60px;
-						z-index: -1;
-						background-color: $color-1;
-						border-radius: 50%;
-					}
 				}
 				.desc-content{
 					width: 50%;
@@ -1075,6 +1071,9 @@ figcaption{
 				}
 				.img{
 					width: 100%;
+					position: relative;
+					height: 270px;
+					min-height: 360px;
 				}
 				.wrapper{
 					padding-left: 0;
@@ -1101,6 +1100,7 @@ figcaption{
 		@extend .shadow-def;
 		display: flex;
 		background-color: white;
+		min-height: 250px;
 		align-items: center;
 		position: relative;
 		&:before{
@@ -1122,20 +1122,42 @@ figcaption{
 			right: -22px;
 		}
 	}
+	.img-content{
+		height: 100%;
+    width: 270px;
+	}
 	.img{
-		height: 386px;
-		width: 270px;
-		//min-width: 270px;
 		background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 270px;
+    top: 0;
+    left: 0;
 	}
 	.desc-content{
 		padding: 20px 20px;
+		width: 50%;
 		position: relative;
+		p{
+			font-size: em(13.5);
+		}
+		.btn-def{
+			a{
+				padding-left: 5px;
+				padding-right: 5px;
+			}
+		}
 	}
 	h4{
 		color: $color-1;
 	}
 	@media (max-width: 991px) {
+		.img{
+			position: relative;
+		}
+		.desc-content{
+			width: 100%;
+		}
 		figure{
 			flex-direction: column-reverse;
 			&:after{
@@ -1164,7 +1186,28 @@ figcaption{
 
 
 
+//guidesale
+.guidesale{
+	.guidebuy-items{
+		figure{
+			&:last-child{
+				.wrapper{
+					&:before{
+				    width: 34px;
+				    height: 34px;
+				    bottom: -64px;
+				    right: -18px;
+						transform: none;
+					}
+				}
+			}
 
+		}
+		.img{
+			//height: 280px;
+		}
+	}
+}
 
 
 
@@ -1174,10 +1217,11 @@ figcaption{
 .studhotel{
 	.studhotel-feed{
 		.img-content{
-			min-height: 386px;
+			@media (min-width: 991px){
+				min-height: 386px;
+			}
 		}
 		.img{
-			height: 386px;
 			background-size: cover;
 		}
 		.rect-def{
@@ -1196,12 +1240,28 @@ figcaption{
 	.wrapper-flex{
 		display: flex;
 		align-items: center;
+		position: relative;
 	}
 	.img-content, .desc-content{
 		width: 50%;
 	}
 	.desc-content{
 		padding: 30px 60px;
+	}
+	@media (max-width: 991px){
+		.img{
+			height: 210px;
+		}
+	}
+	@media (min-width: 992px) {
+		.img{
+			height: 100%;
+			position: absolute;
+			left: 0;
+			width: inherit;
+			top: 0;
+			background-size: cover;
+		}
 	}
 	@media (max-width: 991px) {
 		.wrapper-flex{
@@ -1250,34 +1310,25 @@ figcaption{
 
 //studhotel-article
 .studhotel-article{
-	&.intro{
-		//height: 980px;
-		@media (max-width: 991px){
-			height: auto;
-		}
-	}
-	.form-content{
-		background-color: white;
-		padding: 15px 7%; 
-	}
 	@media (min-width: 992px) {
 
-		.entry-content, .form-content{
-			margin-top: 80px;
-			margin-bottom: 80px;
+		.entry-content, .form-block{
+			
+			
 		}
 	}
-	.input-content{
-		position: relative;
-		.ui-datepicker-trigger {
-			bottom: 0;
-		  border: 0;
-		  right: 15px;
-		  position: absolute;
-		  background-color: transparent;
-		  padding: 8px 15px;
-		  color: black; 
-		}
+}
+.input-content{
+	position: relative;
+	.ui-datepicker-trigger {
+    bottom: 0;
+    border: 0;
+    right: 0px;
+    position: absolute;
+    background-color: transparent;
+    padding: 8px 20px;
+    color: black;
+    height: 100%;
 	}
 }
 
@@ -1287,7 +1338,6 @@ figcaption{
 //reviews
 .intro-reviews{
 	@media (min-width: 992px) {
-		height: 800px;
 		.align-i-center{
 			padding-bottom: 70px;
 		}
@@ -1398,20 +1448,24 @@ figcaption{
 
 
 
-
+//request
 .request{	
-	.form-content{
-		background-color: white;
-		padding: 30px 60px;
-		@media (max-width: 991px) {
-			padding: 10px 15px;
-		}
-	}
-	@media (min-width: 992px) {
-		height: 980px;
+}
+.form-block{
+	background-color: white;
+	padding: 30px 60px;
+	@media (max-width: 991px) {
+		padding: 10px 15px;
 	}
 }
-
+.height-fhd{
+	@media (min-width: 992px) {
+		height: 100vh;
+		&.reg, &.team{
+			min-height: 980px;
+		}
+	}
+}
 
 
 
@@ -1453,7 +1507,7 @@ figcaption{
 	.items{
 		@extend .shadow-def;
 		.img{
-			height: 280px;
+			//height: 280px;
 		}
 		figure{
 			background-color: white;
@@ -1461,6 +1515,10 @@ figcaption{
 				&:nth-child(even){
 					.wrapper-flex{
 						flex-direction: row-reverse;
+					}
+					.img{
+						left: auto;
+						right: 0;
 					}
 				}
 			}
@@ -1524,11 +1582,125 @@ figcaption{
 
 
 
-//forcorporate
-.forcorporate{
-	.article-img{
-		img{
-			margin-top: 0 !important;
+//lorem
+.article-img{
+	img[align="left"]{
+		&:first-child{
+			@media (min-width: 992px){
+				margin-top: 0;
+				margin-right: 30px;
+			}
 		}
+	}
+}
+
+
+
+
+//reg
+.radio-btns{
+
+	input{
+		display: none;
+		&:checked{
+			& ~ label:not([class*="bg-color"]){
+				background-color: $color-1;
+				color: white; 
+			}
+		}
+	}	
+	.btn-def{
+		box-shadow:  0 0 15px rgba(black, 0.05);
+		margin: 10px 15px;
+		@media (min-width: 992px){
+			width: 100%;
+		}
+		text-transform: none;
+		&:not([class*="bg-color"]){
+			background-color: white;
+			color: black;
+		}
+		.btn-this{
+			transition: background-color 0.3s ease;
+			padding: 15px 15px;
+			color: inherit;
+		}
+		&:hover{
+			background-color: $color-1;
+			color: white;
+			box-shadow:  0 0 15px rgba(black, 0.05);
+			.btn-this{
+			}
+		}
+	}
+}
+
+
+
+
+
+.request-premium{
+	.img{
+		background-size: cover;
+		background-position: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	.flex-adaptive{
+		justify-content: space-between;
+	}
+	label{
+		margin-bottom: 5px;
+		font-weight: 600;
+	}
+	select{
+		width: 100%;
+	}
+	@media (max-width: 991px) {
+		.js-select{
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+	.select2-container--default .select2-selection--single .select2-selection__rendered{
+		line-height: 43px;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow{
+		background-color: transparent;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow b{
+			border-color: $color-1 transparent transparent transparent;
+	}
+	.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{
+		border-color: transparent transparent $color-1 transparent;
+	}
+	.select2-container--default .select2-selection--single{
+		height: 43px;
+		border-radius: 5px;
+		overflow: hidden;
+		position: relative;
+	}
+	.select2-wrapper{
+		.select2-dropdown{
+			font-size: 0.9em;
+			background-color: #333;
+		}
+		.select2-dropdown .select2-results__option{
+			padding: 10px 10px;
+			font-weight: 500;
+			text-transform: none;
+		}
+	}
+}
+
+
+
+
+
+//invest
+.invest{
+	.rect-def{
+		@extend .shadow-def;
 	}
 }

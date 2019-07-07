@@ -409,6 +409,18 @@ table {
 	border-radius: 15px;
 	border: 1px solid $color-gray-3;
 }
+.row-20{
+	margin-left: -20px;
+	margin-right: -20px;
+}
+.row-10{
+	margin-left: -10px;
+	margin-right: -10px;
+}
+.row-5{
+	margin-left: -5px;
+	margin-right: -5px;
+}
 
 
 .fuller{
@@ -588,6 +600,9 @@ table {
 	a, button, .btn-this{		
 		line-height: normal;
 		position: relative;
+		&:hover{
+			cursor: pointer;
+		}
 		&:not([class*="p-h"]){
 			padding-left: 45px;
 			padding-right: 45px;
@@ -602,6 +617,10 @@ table {
 		@media (max-width: 991px) {
 			font-weight: 600;
 			font-size: em(14);
+			&:not([class*="p-h"]){
+				padding-left: 10px;
+				padding-right: 10px;
+			}
 		}
 	}
 	button{
@@ -955,7 +974,7 @@ h3{
 	}
 }
 h4{
-	font-weight: 800;
+	font-weight: 700;
 	font-size: em(18);
 }
 h5{	
@@ -1057,7 +1076,7 @@ hr{
 	@extend .parag-gray;
 	line-height: 180%;
 	p{
-		font-size: em(16);
+		font-size: em(15);
 		margin-bottom: 20px;
 		b:not([class*="color"]){
 			color: black;
