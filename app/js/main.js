@@ -60,6 +60,24 @@
 			navText : owlBtn,
 			margin: 22
 		});
+		$(".specialists-items.owl-carousel").owlCarousel({
+			nav: true,
+			//items: 3,
+			dots: false,
+			dotsEach: true,
+			autoplay: true,
+			mouseDrag: false,
+			touchDrag: true,
+			//pullDrag: false,
+			stagePadding: 20,
+			responsive:{
+				0:{items:1},
+				991:{items:4}
+			},
+			navText : owlBtn,
+			margin: 20
+		});
+
 
 		if( $(".owl-nav-style-1").length > 0 ){
 			$(".owl-nav-style-1").map(function( i, el ){
@@ -314,7 +332,7 @@
 
 
 
-		function onLoaded() {
+		window.onLoaded = function() {
 			/*MASONRY*/
 			if ($(".grid-img").length != 0) {
 				var $grid = $(".grid-img").masonry({
@@ -325,7 +343,8 @@
 			}
 			$(window).trigger("resize");
 		}
-
+		preLoader.preImg();
+		
 		//Лимит текста
 		$("[data-text-limit]").map(function( i, el ){
 			el = $(el);
