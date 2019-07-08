@@ -213,51 +213,7 @@
 
 		}
 
-		if ($(".carousel-article").length >= 0) {
-			window.carouselArticle = function() {
-				var carouselMain = $(".carousel-article .carousel-main"),
-					carouselNav = $(".carousel-article .carousel-nav");
 
-				for (var i = 0; i < carouselMain.length; i++) {
-					var crs = $(carouselMain)
-						.eq(i)
-						.flickity({
-							imagesLoaded: true,
-							prevNextButtons: false,
-							cellAlign: "center",
-							bgLazyLoad: 1,
-							//friction: 1,
-							//selectedAttraction: 1,
-							initialIndex: 1,
-							draggable: false,
-							contain: true,
-							pageDots: false
-						});
-					var flkty = crs.data("flickity");
-
-					$(carouselNav).eq(i).flickity({
-						imagesLoaded: true,
-						initialIndex: 1,
-						asNavFor: $(carouselMain)[i],
-						prevNextButtons: false,
-						draggable: true,
-						percentPosition: true,
-						//wrapAround: true,
-						cellAlign: "center",
-						adaptiveHeight: true,
-						//contain: true,
-						pageDots: false
-					});
-          $("[data-fancybox]").fancybox({
-            afterShow: function(instance, current) {
-              this.$content.find(".carousel-main").flickity("resize");
-              this.$content.find(".carousel-nav").flickity("resize");
-            }
-          });
-				}
-			}
-		};
-		carouselArticle();
 		
 
     // Прибавление-убавление значении
@@ -355,6 +311,17 @@
 				text = text.substring(0, textLimit )
 				el.text( text+ " ..." );
 			}
+		})
+
+		$(".header-top label[for]").on("click", function(){
+			var that = $(this);
+			var input = $( "#" + that.attr("for") );
+
+				console.log(input[0], input[0].checked, !(input[0].checked));
+				if( input[0].checked )
+					setTimeout(function(){
+						input[0].checked = false;
+					}, 1)
 		})
 
 

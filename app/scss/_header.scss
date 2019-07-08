@@ -148,6 +148,13 @@ $header-min-menu: 70px;
 
 
 .bargain-menu{
+	label{
+		font-weight: inherit;
+		width: auto;
+		&:hover{
+			cursor: pointer;
+		}
+	}
 	li{
 		font-weight: 800;
 		text-transform: uppercase;
@@ -360,6 +367,46 @@ ul[class*="sub-menu"]{
 	margin-top: -40px;
 	transform: matrix(1,0,0,1, 10,0);
 }
+
+
+.megamenu{
+	width: 100%;
+	left: 0;
+	background-color: white;
+	color: black;
+	position: absolute;
+	//padding: 20px 30px;
+	text-align: center;
+	border-bottom: 5px solid $color-2;
+	[name="mega"]{
+		display: none;
+		&:checked{
+			& + .item{
+				display: block;
+			}
+		}
+	}
+	.item{
+		max-width: 1000px;
+		text-align: left;
+		display: none;
+		padding: 20px 30px;
+		margin: auto;
+	}
+	.ul-box-wrapper{
+		display: flex;
+		.ul-box{
+			width: 100%;
+			h4{
+				margin-bottom: 30px !important;
+			}
+		}
+		li{
+			margin-bottom: 20px;
+		}
+	}
+}
+
 
 
 

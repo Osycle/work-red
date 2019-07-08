@@ -133,6 +133,9 @@ small{
 		padding-left: 15px;
 		text-transform: uppercase;
 		font-weight: 800;
+		@media (max-width: 991px){
+			border-left: none;
+		}
 	}
 }
 .h2-style-2{
@@ -1715,7 +1718,23 @@ figcaption{
 
 
 
-
+.owl-nav-style{
+	.owl-nav{
+		display: flex;
+		position: relative;
+		justify-content: space-between;
+		.owl-prev, .owl-next{
+			display: flex;
+			align-items: center;
+		}
+		@media (min-width: 992px){
+			margin-top: 15px;
+		}
+		@media (max-width: 991px) {
+			padding: 5px 0;
+		}
+	}
+}
 .specialists-items{
 	.img{
 		margin-left: auto;
@@ -1741,6 +1760,7 @@ figcaption{
 			box-shadow: none;
 		}
 	}
+	@extend .owl-nav-style;
 	.img{
 		margin-top: -40px;
 	}
@@ -1749,17 +1769,6 @@ figcaption{
 		padding: 10px 15px;
 		p{
 			font-size: em(14);
-		}
-	}
-	.owl-nav{
-		display: flex;
-		justify-content: space-between;
-		.owl-prev, .owl-next{
-			display: flex;
-			align-items: center;
-		}
-		@media (max-width: 991px) {
-			padding: 5px 0;
 		}
 	}
 }
@@ -2052,4 +2061,105 @@ figcaption{
 			text-transform: uppercase;
 		}
 	}
+}
+
+
+
+
+
+//whyredd
+.short-advantages-items{
+	@media (min-width: 992px){
+		margin-top: 30px;
+		&.boxes-4{
+			figure{
+    		width: 24.8%;
+    		margin-right: 0.2%;
+			}
+		}
+	}
+	figure{
+		background-color: white;
+		color: black;
+		padding: 20px 30px;
+		min-height: 185px;
+		figcaption{
+			font-size: em(16);
+			margin-top: 20px;
+		}
+		.wrapper{
+			padding: 15px 30px;
+			min-height: 200px;
+			display: flex;
+			align-items: center;
+			&>div{
+				width: 100%;
+			}
+		}
+		@media (min-width: 992px) {
+			text-align: left;
+		}
+	}
+	.img-content{
+		display: flex;
+		justify-content: space-between; 
+		min-height: 70px;
+		.icm-img, .num{
+			vertical-align: middle;
+		}
+	}
+	.num{
+		opacity: 0.1;
+		font-weight: 900;
+		line-height: 100%;
+		font-size: 64px;
+	}
+}
+.icm-img{
+	display: inline-block;
+}
+.icm-advatages-1{
+	background-image: url('../img/icons/advantages-1.png');
+	width: 70px;
+	height: 70px;
+}
+.icm-advatages-2{
+	background-image: url('../img/icons/advantages-2.png');
+	width: 66px;
+	height: 66px;
+}
+.icm-advatages-3{
+	background-image: url('../img/icons/advantages-3.png');
+	width: 68px;
+	height: 68px;
+}
+.icm-advatages-4{
+	background-image: url('../img/icons/advantages-4.png');
+	width: 70px;
+	height: 52px;
+}
+
+
+
+
+//premium-sales
+.premium-sales{
+	@media (min-width: 992px){
+		.content{
+			margin-top: -180px;
+			position: relative;
+			z-index: 1;
+			.wrapper-flex{
+				min-height: 280px;
+			}
+		}
+	}
+	.short-news-items{
+		.desc-content{
+
+		}
+	}
+}
+.elite{
+	background-color: #f5f5f5;
 }
