@@ -313,11 +313,11 @@
 			}
 		})
 
+		// megamenu
 		$(".header-top label[for]").on("click", function(){
 			var that = $(this);
 			var input = $( "#" + that.attr("for") );
 
-				console.log(input[0], input[0].checked, !(input[0].checked));
 				if( input[0].checked )
 					setTimeout(function(){
 						input[0].checked = false;
@@ -370,16 +370,9 @@
 		});
 		$(window).trigger("scroll");
 
-		//Изменение цвета стеклотары
-		$(".choice-color-item").on("click", function(){
-			var that = $(this);
-			var index = that.index();
-			that
-			.addClass("is-selected").siblings().removeClass("is-selected")
-			.closest(".wrapper").find(".choice-imgs img").eq(index)
-			.addClass("is-selected").siblings().removeClass("is-selected");
-		})
-
+		setTimeout(function(){
+ 			$(".js-range-slider").ionRangeSlider();
+		}, 2200)
 
 
 	});

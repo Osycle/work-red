@@ -27,7 +27,7 @@ $color-gray-5: #212121;
 
 
 $bg-color-black: #000;
-$bg-color-gray: $color-gray-2;
+$bg-color-gray: #f7f7f7;
 
 $fs-def: 14;
 
@@ -149,6 +149,7 @@ $gradient-1: linear-gradient(to bottom right, $color-2, $color-3);
 		position: relative;
 		padding-left: 15px;
 		li{
+			margin-bottom: 10px;
 			list-style: none;
 			list-style-position: inside;
 			list-style-image: url('../img/icons/list-icon.png');

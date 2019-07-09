@@ -7040,6 +7040,7 @@ tbody.collapse.in {
   position: relative;
   padding-left: 15px; }
   .list-style-1 ul:not([class]) li, main ul:not([class]) li {
+    margin-bottom: 10px;
     list-style: none;
     list-style-position: inside;
     list-style-image: url("../img/icons/list-icon.png"); }
@@ -7230,7 +7231,7 @@ table {
   background-color: #000; }
 
 .bg-color-gray {
-  background-color: #f5f5f5; }
+  background-color: #f7f7f7; }
 
 .bg-color-1 {
   background-color: #cc2527; }
@@ -7272,7 +7273,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .content {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -8574,18 +8575,30 @@ ul[class*="sub-menu"] {
   .megamenu [name="mega"] {
     display: none; }
     .megamenu [name="mega"]:checked + .item {
-      display: block; }
+      height: auto;
+      opacity: 1; }
+  .megamenu form {
+    display: block;
+    position: relative;
+    background-color: white; }
   .megamenu .item {
+    overflow: hidden;
+    position: relative;
     max-width: 1000px;
     text-align: left;
-    display: none;
-    padding: 20px 30px;
-    margin: auto; }
+    top: 0;
+    margin: auto;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    height: 0; }
   .megamenu .ul-box-wrapper {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    padding: 20px 30px; }
     .megamenu .ul-box-wrapper .ul-box {
       width: 100%; }
       .megamenu .ul-box-wrapper .ul-box h4 {
@@ -10068,7 +10081,7 @@ figcaption {
 @media (min-width: 992px) {
   .height-fhd {
     height: 100vh; }
-    .height-fhd.reg {
+    .height-fhd.reg, .height-fhd.studhotel-article {
       min-height: 980px; } }
 
 .faq-nav a {
@@ -10600,6 +10613,32 @@ figcaption {
 
 .elite {
   background-color: #f5f5f5; }
+
+.sellhouse-items h2 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  margin-bottom: 30px; }
+
+.sellhouse-items .wrapper-flex {
+  min-height: 320px; }
+
+.sellhouse-items .rect-def .desc-content {
+  padding: 30px 40px; }
+
+.sellhouse-list .desc-content {
+  background-color: white; }
+  @media (max-width: 991px) {
+    .sellhouse-list .desc-content {
+      padding: 15px; } }
+  @media (min-width: 992px) {
+    .sellhouse-list .desc-content {
+      padding: 40px 40px; } }
+
+.mortgage h2 {
+  font-family: "Montserrat"; }
+
+.mortgage .content {
+  padding: 20px; }
 
 /* 
 		_footer.scss

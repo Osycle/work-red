@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Uni Sans Heavy Caps';
+    src: url('UniSansHeavyCapsItalic.eot');
+    src: url('UniSansHeavyCapsItalic.eot?#iefix') format('embedded-opentype'),
+        url('UniSansHeavyCapsItalic.woff2') format('woff2'),
+        url('UniSansHeavyCapsItalic.woff') format('woff'),
+        url('UniSansHeavyCapsItalic.ttf') format('truetype'),
+        url('UniSansHeavyCapsItalic.svg#UniSansHeavyCapsItalic') format('svg');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Uni Sans Heavy Caps';
+    src: url('UniSansHeavyCaps.eot');
+    src: url('UniSansHeavyCaps.eot?#iefix') format('embedded-opentype'),
+        url('UniSansHeavyCaps.woff2') format('woff2'),
+        url('UniSansHeavyCaps.woff') format('woff'),
+        url('UniSansHeavyCaps.ttf') format('truetype'),
+        url('UniSansHeavyCaps.svg#UniSansHeavyCaps') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Uni Sans Thin Caps';
+    src: url('UniSansThinCapsItalic.eot');
+    src: url('UniSansThinCapsItalic.eot?#iefix') format('embedded-opentype'),
+        url('UniSansThinCapsItalic.woff2') format('woff2'),
+        url('UniSansThinCapsItalic.woff') format('woff'),
+        url('UniSansThinCapsItalic.ttf') format('truetype'),
+        url('UniSansThinCapsItalic.svg#UniSansThinCapsItalic') format('svg');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Uni Sans Thin Caps';
+    src: url('UniSansThinCaps.eot');
+    src: url('UniSansThinCaps.eot?#iefix') format('embedded-opentype'),
+        url('UniSansThinCaps.woff2') format('woff2'),
+        url('UniSansThinCaps.woff') format('woff'),
+        url('UniSansThinCaps.ttf') format('truetype'),
+        url('UniSansThinCaps.svg#UniSansThinCaps') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+

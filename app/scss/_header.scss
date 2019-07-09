@@ -380,21 +380,37 @@ ul[class*="sub-menu"]{
 	border-bottom: 5px solid $color-2;
 	[name="mega"]{
 		display: none;
+
 		&:checked{
 			& + .item{
-				display: block;
+				height: auto;
+				opacity: 1;
 			}
 		}
 	}
+	form{
+		display: block;
+		position: relative;
+		background-color: white;
+	}
 	.item{
+		overflow: hidden;
+		position: relative;
 		max-width: 1000px;
 		text-align: left;
-		display: none;
-		padding: 20px 30px;
+		//display: none;
+		//position: absolute;
+		top: 0;
+		//padding: 20px 30px;
 		margin: auto;
+		opacity: 0;
+		transition: all 0.5s ease;
+		height: 0;
+
 	}
 	.ul-box-wrapper{
 		display: flex;
+		padding: 20px 30px;
 		.ul-box{
 			width: 100%;
 			h4{
