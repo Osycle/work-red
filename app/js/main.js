@@ -370,10 +370,58 @@
 		});
 		$(window).trigger("scroll");
 
-		setTimeout(function(){
- 			$(".js-range-slider").ionRangeSlider();
-		}, 2200)
 
+ 		var mortgageAmount = $("#sum_range").ionRangeSlider({
+			//type: "double",
+			min: 50000000,
+			max: 1000000000,
+			from: 0,
+			to: 0,
+			postfix: " сум",
+			step: 100000,
+			grid: false,
+      onChange: function (data) {
+      	$("#sum_range_enter").val(data.from);
+      }
+ 		}).data("ionRangeSlider");
+
+ 		var mortgageAmount = $("#month_range").ionRangeSlider({
+			//type: "double",
+			min: 90,
+			max: 120,
+			from: 0,
+			to: 0,
+			postfix: " мес",
+			step: 1,
+			grid: false,
+      onChange: function (data) {
+      	$("#month_range_enter").val(data.from);
+      }
+ 		}).data("ionRangeSlider");
+
+ 		$(".mortagage-calc input").on("keyup", function(){
+	 		var that = $(this);
+ 			if( that[0].id == "sum_range_enter" ){
+		 		mortgageAmount.update({
+					from: that.val()
+				})
+ 			}
+ 			if( that[0].id == "month_range_enter" ){
+		 		mortgageAmount.update({
+					from: that.val()
+				})
+ 			}
+
+ 		})
+
+ 		 window.calcs = function(percent){
+ 			var Sz = 1200 //общая сумма займа
+ 			var n = 12 // Кол-во месяцев
+ 			var r = (percent/12)/100;
+ 			console.log(r);
+ 			return Sz*r/(1-(1/(1+r))*n);
+ 			//return  Sz/n + Sz*r;
+ 		}
 
 	});
 })(jQuery);

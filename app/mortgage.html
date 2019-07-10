@@ -264,10 +264,51 @@
 			<div class="mortgage">
 				<div class="container p-v-md m-v-30">
 					<div class="row">
-						<div class="content col-md-8 p-h-15">
-							<h2>Рассчитайте ваш кредит</h2>	
-							<input type="text" class="js-range-slider" name="my_range" value="" />
+
+						<div class="mortagage-calc col-md-8 p-h-15">
+							<div class="wrapper">
+								<h2>Рассчитайте ваш кредит</h2>	
+
+								<form>
+									<div class="mortgageAmount m-v-30">
+										<h3>Необходимая сумма:</h3>
+										<div class="flex-adaptive">
+											<div class="calc-range">
+												<input type="text" id="sum_range" name="range" value="" />
+											</div>
+											<div class="calc-enter">
+												<input type="text" name="" id="sum_range_enter" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="mortgageMonth m-v-30">
+										<h3>Срок кредита:</h3>
+										<div class="flex-adaptive">
+											<div class="calc-range">
+												<input type="text" id="month_range" name="range" value="" />
+											</div>
+											<div class="calc-enter">
+												<input type="text" name="" id="month_range_enter" class="form-control">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+
 						</div>
+
+						<div class="mortagage-total col-md-4 p-h-15">
+							<div class="wrapper">
+								<h2>Расчёт</h2>	
+								<div class="align-center">
+									<div class="box-xs-10">
+										<p>Ежемесячный платёж:</p>
+										<p class="price"><big>12 044 883 сум</big></p>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>

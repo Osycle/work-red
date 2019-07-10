@@ -2203,10 +2203,95 @@ figcaption{
 //mortgage
 .mortgage{
 	h2{
+		font-family: $font-family-1;		
+		background-color: white;
+	}
+	.flex-adaptive{
+		margin-top: 15px;
+	}
+	.calc-range{
+		width: 100%;
+		margin-right: 20px;
+	}
+	.calc-enter{
+		input{
+			border: none;
+			border-radius: 0;
+			height: 38px;
+			background-color: #f8f8f8;
+			color: black;
+			font-weight: 800;
+		}
+	}
+	.wrapper{
+		@extend .shadow-def;
+		background-color: white;
+	}
+}
+.mortagage-calc{
+	h2{
+		padding: 0 40px;
+		padding-top: 35px;
+	}
+	form{
+		padding: 5px 40px;
+	}
+	h3{
+		color: $color-gray-3;
+		font-weight: 400;
+		margin-bottom: 20px;
+		font-size: em(16);
 		font-family: $font-family-1;
 	}
-	.content{
+}
+.mortagage-total{
+	.wrapper{
+		padding: 0;
+	}
+	h2{
+		padding: 35px 40px;
 		@extend .shadow-def;
-		padding: 20px;
+	}
+	.align-center{
+		min-height: 200px;
+		justify-content: center;
+		padding: 20px 15px;
+		background-color: #fefefe;
+	}
+}
+
+
+
+html{
+	.irs{
+		font-family: $font-family-1;
+	}
+	.irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single{
+		background-color: $color-1;
+		font-size: 12px;
+		line-height: 1;
+		padding: 7px 18px;
+    border-radius: 15px;
+    //box-shadow: 0 0 16px rgba(black, 0.3);
+	}
+	.irs--flat .irs-bar{
+		background-color: $color-1;
+	}
+	.irs-from, .irs-to, .irs-single{
+		top: -14px;
+	}
+	.irs--flat .irs-min, .irs--flat .irs-max{
+		background-color: transparent;
+		font-size: 12px;
+	}
+	.irs--flat .irs-handle{
+		width: 20px;
+		height: 20px;
+		background-color: white;
+		border-radius: 50%;
+		box-shadow: 0 0 20px rgba(black, 0.5);
+		i{
+			display: none !important;
+		}
 	}
 }

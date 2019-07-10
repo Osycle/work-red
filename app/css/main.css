@@ -7273,7 +7273,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .content {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2 {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -10635,10 +10635,88 @@ figcaption {
       padding: 40px 40px; } }
 
 .mortgage h2 {
+  font-family: "Montserrat";
+  background-color: white; }
+
+.mortgage .flex-adaptive {
+  margin-top: 15px; }
+
+.mortgage .calc-range {
+  width: 100%;
+  margin-right: 20px; }
+
+.mortgage .calc-enter input {
+  border: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  height: 38px;
+  background-color: #f8f8f8;
+  color: black;
+  font-weight: 800; }
+
+.mortgage .wrapper {
+  background-color: white; }
+
+.mortagage-calc h2 {
+  padding: 0 40px;
+  padding-top: 35px; }
+
+.mortagage-calc form {
+  padding: 5px 40px; }
+
+.mortagage-calc h3 {
+  color: #666666;
+  font-weight: 400;
+  margin-bottom: 20px;
+  font-size: 1.14286em;
   font-family: "Montserrat"; }
 
-.mortgage .content {
-  padding: 20px; }
+.mortagage-total .wrapper {
+  padding: 0; }
+
+.mortagage-total h2 {
+  padding: 35px 40px; }
+
+.mortagage-total .align-center {
+  min-height: 200px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 20px 15px;
+  background-color: #fefefe; }
+
+html .irs {
+  font-family: "Montserrat"; }
+
+html .irs--flat .irs-from, html .irs--flat .irs-to, html .irs--flat .irs-single {
+  background-color: #cc2527;
+  font-size: 12px;
+  line-height: 1;
+  padding: 7px 18px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px; }
+
+html .irs--flat .irs-bar {
+  background-color: #cc2527; }
+
+html .irs-from, html .irs-to, html .irs-single {
+  top: -14px; }
+
+html .irs--flat .irs-min, html .irs--flat .irs-max {
+  background-color: transparent;
+  font-size: 12px; }
+
+html .irs--flat .irs-handle {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
+  html .irs--flat .irs-handle i {
+    display: none !important; }
 
 /* 
 		_footer.scss
