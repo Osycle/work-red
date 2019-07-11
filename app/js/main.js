@@ -325,11 +325,6 @@
 		})
 
 
-		//var scene = $(".product-img");
-		$(".parallax-scene").map(function(i, el){
-			var parallaxInstance = new Parallax(el);
-			console.log(parallaxInstance);
-		})
 
 		//SCROLL
 		var minMenu = $(".header-scroll") || null;
@@ -372,90 +367,123 @@
 
 
 
+/**
+ * Ипотека
+ * Рассчёт аннуитетного платежа 
+ *
+ */
+if( $("[data-mortgage-rate]").length > 0 ){
+	var sumRange = $("#sum_range");
+	var monthRange = $("#month_range");
+	var sumRangeInput = $("#month_range_input");
+	var monthRangeInput = $("#month_range_input");
+	var mortagageRate = $("[data-mortgage-rate]").attr("data-mortgage-rate");
+
+	var mortgageAmount = sumRange.ionRangeSlider({
+		//type: "double",
+		min: 100,
+		max: 1000000,
+		from: 0,
+		to: 0,
+		postfix: " сум",
+		step: 100,
+		grid: false,
+	  onChange: function (data) {
+	  	$("#sum_range_input").val(data.from);
+	  	monthlyFeeChange();
+	  }
+	}).data("ionRangeSlider");
+
+	var mortgageMonth = monthRange.ionRangeSlider({
+		//type: "double",
+		min: 1,
+		max: 60,
+		from: 0,
+		to: 0,
+		postfix: " мес",
+		step: 1,
+		grid: false,
+	  onChange: function (data) {
+	  	$("#month_range_input").val(data.from);
+	  	monthlyFeeChange();
+	  }
+	}).data("ionRangeSlider");
+
+	$(".mortagage-calc input").on("keyup", function(){
+
+		var that = $(this);
+
+		switch(that[0].id){
+			case "sum_range_input": 
+				mortgageAmount.update({ from: that.val() });break;
+			case "month_range_input": 
+				mortgageMonth.update({ from: that.val() });break;
+		}
+		monthlyFeeChange();
+
+	})
+	function monthlyFeeChange() {
+		var sumVal;
+		var monthVal;
+
+		sumVal = sumRange.val();
+		monthVal = monthRange.val();
+		var monthlyFeeVal = monthlyFee(sumVal, monthVal, mortagageRate);
+		$(".mortagage-total .cnt-price").text( roundFix(monthlyFeeVal, 2, true) + " сум");
+	}
 
 
-		var sumRange = $("#sum_range");
-		var monthRange = $("#month_range");
-		var sumRangeInput = $("#month_range_input");
-		var monthRangeInput = $("#month_range_input");
-
- 		var mortgageAmount = sumRange.ionRangeSlider({
-			//type: "double",
-			min: 100,
-			max: 1000000,
-			from: 0,
-			to: 0,
-			postfix: " сум",
-			step: 100,
-			grid: false,
-      onChange: function (data) {
-      	$("#sum_range_input").val(data.from);
-      	monthlyFeeChange();
-      }
- 		}).data("ionRangeSlider");
-
- 		var mortgageMonth = monthRange.ionRangeSlider({
-			//type: "double",
-			min: 1,
-			max: 60,
-			from: 0,
-			to: 0,
-			postfix: " мес",
-			step: 1,
-			grid: false,
-      onChange: function (data) {
-      	$("#month_range_input").val(data.from);
-      	monthlyFeeChange();
-      }
- 		}).data("ionRangeSlider");
-
- 		$(".mortagage-calc input").on("keyup", function(){
-
-	 		var that = $(this);
-
-	 		switch(that[0].id){
-	 			case "sum_range_input": 
-	 				mortgageAmount.update({ from: that.val() });break;
-	 			case "month_range_input": 
-	 				mortgageMonth.update({ from: that.val() });break;
-	 		}
-	 		monthlyFeeChange();
-
- 		})
- 		function monthlyFeeChange() {
- 			var sumVal;
- 			var monthVal;
-
- 			sumVal = sumRange.val();
-	 		monthVal = monthRange.val();
-	 		//var monthlyFeeVal = monthlyFee(sumVal, monthVal, 13);
-	 		var monthlyFeeVal = calcs(sumVal, monthVal, 20);
-	 		$(".mortagage-total .cnt-price").text(monthlyFeeVal + " сум");
- 		}
-
- 		window.monthlyFee = function(sumVal, monthVal, rate){
- 			rate /= 1200;
- 			console.log(rate, "В месяц: "+ sumVal*rate);
- 			return  sumVal/monthVal + sumVal*rate;
- 		}
- 		 window.calcs = function(sumVal, monthVal, rate){
- 		 	rate = rate/1200;
- 		 	var s = 0;
- 			var k =  rate * Math.pow((1+rate), monthVal) / 
- 										( Math.pow((1+rate), monthVal) - 1 );
- 			var result = sumVal * k;
- 			//var result = (rate*(1+rate));
- 			return result;
- 		}
- 		window.mort = function(sumVal, monthVal, rate){
- 			monthVal /= 1200;
- 			rate = rate/12/1200;
- 			var result = sumVal * monthVal / ( 1 - Math.pow(1 + monthVal, -rate) );
- 			console.log( result * 10 * 12 -  sumVal);
- 			return result;
- 		}
+	 window.monthlyFee = function(sumVal, monthVal, rate, onModal) {
+	 	rate = rate/1200;
+	 	var currentDebt = sumVal;
+	 	var cntPow = Math.pow(( 1 + rate ), monthVal );
+		var mFee =  sumVal * (rate * cntPow / (cntPow - 1));
 
 
+		if( !onModal )
+			return mFee;
+
+		var mainDebt;
+		var interestCharges;
+		var tpl;
+
+		$(".mortgage-table tbody").text("");
+	 	for (var i = 0; i < monthVal; i++) {
+	 		interestCharges = currentDebt * rate
+	 		mainDebt = mFee - interestCharges; 
+	 		currentDebt = currentDebt - mainDebt;
+	 		
+	 		tpl =	'<tr>' +
+							'<td>' + roundFix(i+1, 2, true) + '</td>' +
+							'<td>' + roundFix(currentDebt+mainDebt, 2, true) + '</td>' +
+							'<td>' + roundFix(interestCharges, 2, true) + '</td>' +
+							'<td>' + roundFix(mainDebt, 2, true) + '</td>' +
+							'<td>' + roundFix(mFee, 2, true) + '</td>' +
+						'</tr>';
+
+			$(".mortgage-table tbody").append(tpl);
+
+	 		//console.log(i+1, currentDebt+mainDebt , interestCharges, mainDebt);
+	 	}
+	 	$.fancybox.open({
+	 		src  : '#mortgage-table',
+	 		touch : false
+	 	})
+		return mFee;
+	}
+
+	$(document).on( "click", "#detail_payment", function(){
+		var sumVal = sumRange.val();
+		var monthVal = monthRange.val();
+
+		$(".mortgage-sum-text").text(sumVal);
+		$(".mortgage-month-text").text(monthVal);
+		$(".mortgage-rate-text").text(mortagageRate+"%");
+
+		monthlyFee(sumVal, monthVal, mortagageRate, true);
+
+	})
+}
 
 
 
@@ -528,27 +556,25 @@ function scrolledDiv(el) {
 	return elBottom <= docViewBottom && elTop >= docViewTop;
 }
 
-function roundFix( num, cnt ){
-	num = num+""
-	cnt = cnt + (/./.test(num) || null ? 1 : 0);
-	return num.substring( 0,  cnt)*1
+function intSpace( n ){
+	n += "";
+	n = new Array(4 - n.length % 3).join("U") + n;
+	return (n.replace(/([0-9U]{3})/g, "$1 ").replace(/U/g, "")).trim();
+}
+function roundFix( num, cnt, space ){
+	num += "";
+	if( !(/\./.test(num)) ){
+		if( space )
+			return intSpace(num);
+		return num;
+	}
+	var int = num.split(".")[0];
+	var float = num.split(".")[1];
+	if(space){
+		console.log(intSpace(int));
+		int = intSpace(int);
+		return (int+"."+float.substring( 0,  cnt));
+	}
+	return (int+"."+float.substring( 0,  cnt)) * 1;
 }
 
-function intSpace( int, replaceType ){
-		var cnt = 0;
-		var newInt = "";
-		int = int*1;
-		replaceType = replaceType || " ";
-		if( typeof int === NaN )
-			return;
-		var arrInt = (int+"").match(/([0-9])/gim).reverse();
-		for (var i = 0; i < arrInt.length; i++) {
-			cnt++;
-			newInt = arrInt[i]+newInt
-			if(cnt === 3){
-				newInt = replaceType+newInt;
-				cnt = 0;
-			}
-		}
-		return newInt;
-}

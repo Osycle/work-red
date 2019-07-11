@@ -73,7 +73,10 @@
 	}
 }
 
-.fancybox-close-small{	
+.fancybox-close-small{
+	@media (min-width: 992px) {
+		display: none;
+	}
 	&:focus, &:active{
 		border: none;
 		&:after{
@@ -85,12 +88,12 @@
 		font-size: 44px;
 		border-radius: 0;
 		background-color: transparent;
-		color: white;
+		color: black;
 		//transform: scale(2);
 	}
 	&:hover{
 		&:after{
-			color: white;
+			color: black;
 			background-color: transparent;
 		}
 	}

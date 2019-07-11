@@ -262,33 +262,46 @@ $gradient-1: linear-gradient(to bottom right, $color-2, $color-3);
 	overflow-x: auto;
 }
 .table > thead > tr > th, table > thead > tr > th, .table > thead > tr > td, table > thead > tr > td, .table > tbody > tr > th, table > tbody > tr > th, .table > tbody > tr > td, table > tbody > tr > td, .table > tfoot > tr > th, table > tfoot > tr > th, .table > tfoot > tr > td, table > tfoot > tr > td{
-	border: none;	
-	padding: 3px 15px; 
+	//border: none;	
+	//padding: 8px 15px; 
 }
 table { 
 	border-collapse: collapse;
 	width: 100%;
 	text-align: left;
-	@extend .table; 
+	//@extend .table; 
 	a{
 		&:hover{
 			text-decoration: underline;
 		}
 	}
 	th{
-		background-color: rgba($color-gray-1, 1);
+		background-color: rgba($color-1, 1);
 		padding-top: 30px;
-		color: black;
+		padding: 15px 15px;
+		color: white;
 	}
 	td{
-		border-color: rgba($color-gray-1, 1) !important;
+		border-color: rgba($color-gray-1, 1);
+		padding: 8px 15px;
 	}
 	tbody{
+		td:nth-child(1){
+			border-left: 1px solid lighten(black, 90%);
+		}
+		td{
+			border-right: 1px solid lighten(black, 90%);
+			border-bottom: 1px solid lighten(black, 90%);
+		}
+		td:nth-child(even){
+			//background-color: rgba($color-2, 0.1);
+			border-right: 1px solid lighten(black, 90%);
+		}
 		tr:nth-child(odd){
-			background-color: rgba($color-gray-1, 0.4);
+			background-color: white;
 		}
 		tr:nth-child(even){
-			background-color: transparent;
+			//background-color: rgba($color-1, 0.05);
 		}
 	}
 

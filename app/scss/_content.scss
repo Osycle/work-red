@@ -2270,6 +2270,7 @@ figcaption{
 		text-transform: none;
 		text-align: center;
 		padding: 15px 15px; 
+		display: block;
 	}
 	.fa{
 		position: absolute;
@@ -2279,7 +2280,31 @@ figcaption{
 	}
 }
 
-
+#mortgage-table{
+	.common-content{
+		margin-bottom: 15px;	
+		p{
+			margin-bottom: 4px;
+			font-size: em(15);
+			font-weight: 500;
+			display: flex;
+	    justify-content: space-between;
+	    width: 80%;
+	    @media (max-width: 991px){
+	    	margin-left: auto;
+	    	margin-right: auto;
+	    }
+	    @media (min-width: 992px){
+	    	width: 50%;
+	    }
+		}
+	}
+}
+.mortgage-table{
+	td{
+		font-weight: 500;
+	}
+}
 
 html{
 	.irs{
