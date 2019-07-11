@@ -441,13 +441,8 @@
  		 window.calcs = function(sumVal, monthVal, rate){
  		 	rate = rate/1200;
  		 	var s = 0;
- 		 	// for (var i = 0; i < monthVal; i++) {
- 		 	// 	s += sumVal*rate
- 		 	// 	sumVal = sumVal-s
- 		 	// 	console.log(rate, sumVal);
- 		 	// }
- 			//var result = sumVal*rate/(1-(1/(1+rate))*monthVal);
- 			var k =  rate * Math.pow((1+rate), monthVal) / ( Math.pow((1+rate), monthVal) - 1 )
+ 			var k =  rate * Math.pow((1+rate), monthVal) / 
+ 										( Math.pow((1+rate), monthVal) - 1 );
  			var result = sumVal * k;
  			//var result = (rate*(1+rate));
  			return result;
