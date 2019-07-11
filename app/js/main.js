@@ -371,57 +371,104 @@
 		$(window).trigger("scroll");
 
 
- 		var mortgageAmount = $("#sum_range").ionRangeSlider({
+
+
+
+		var sumRange = $("#sum_range");
+		var monthRange = $("#month_range");
+		var sumRangeInput = $("#month_range_input");
+		var monthRangeInput = $("#month_range_input");
+
+ 		var mortgageAmount = sumRange.ionRangeSlider({
 			//type: "double",
-			min: 50000000,
-			max: 1000000000,
+			min: 100,
+			max: 1000000,
 			from: 0,
 			to: 0,
 			postfix: " сум",
-			step: 100000,
+			step: 100,
 			grid: false,
       onChange: function (data) {
-      	$("#sum_range_enter").val(data.from);
+      	$("#sum_range_input").val(data.from);
+      	monthlyFeeChange();
       }
  		}).data("ionRangeSlider");
 
- 		var mortgageAmount = $("#month_range").ionRangeSlider({
+ 		var mortgageMonth = monthRange.ionRangeSlider({
 			//type: "double",
-			min: 90,
-			max: 120,
+			min: 1,
+			max: 60,
 			from: 0,
 			to: 0,
 			postfix: " мес",
 			step: 1,
 			grid: false,
       onChange: function (data) {
-      	$("#month_range_enter").val(data.from);
+      	$("#month_range_input").val(data.from);
+      	monthlyFeeChange();
       }
  		}).data("ionRangeSlider");
 
  		$(".mortagage-calc input").on("keyup", function(){
+
 	 		var that = $(this);
- 			if( that[0].id == "sum_range_enter" ){
-		 		mortgageAmount.update({
-					from: that.val()
-				})
- 			}
- 			if( that[0].id == "month_range_enter" ){
-		 		mortgageAmount.update({
-					from: that.val()
-				})
- 			}
+
+	 		switch(that[0].id){
+	 			case "sum_range_input": 
+	 				mortgageAmount.update({ from: that.val() });break;
+	 			case "month_range_input": 
+	 				mortgageMonth.update({ from: that.val() });break;
+	 		}
+	 		monthlyFeeChange();
 
  		})
+ 		function monthlyFeeChange() {
+ 			var sumVal;
+ 			var monthVal;
 
- 		 window.calcs = function(percent){
- 			var Sz = 1200 //общая сумма займа
- 			var n = 12 // Кол-во месяцев
- 			var r = (percent/12)/100;
- 			console.log(r);
- 			return Sz*r/(1-(1/(1+r))*n);
- 			//return  Sz/n + Sz*r;
+ 			sumVal = sumRange.val();
+	 		monthVal = monthRange.val();
+	 		//var monthlyFeeVal = monthlyFee(sumVal, monthVal, 13);
+	 		var monthlyFeeVal = calcs(sumVal, monthVal, 20);
+	 		$(".mortagage-total .cnt-price").text(monthlyFeeVal + " сум");
  		}
+
+ 		window.monthlyFee = function(sumVal, monthVal, rate){
+ 			rate /= 1200;
+ 			console.log(rate, "В месяц: "+ sumVal*rate);
+ 			return  sumVal/monthVal + sumVal*rate;
+ 		}
+ 		 window.calcs = function(sumVal, monthVal, rate){
+ 		 	rate = rate/1200;
+ 		 	var s = 0;
+ 		 	// for (var i = 0; i < monthVal; i++) {
+ 		 	// 	s += sumVal*rate
+ 		 	// 	sumVal = sumVal-s
+ 		 	// 	console.log(rate, sumVal);
+ 		 	// }
+ 			//var result = sumVal*rate/(1-(1/(1+rate))*monthVal);
+ 			var k =  rate * Math.pow((1+rate), monthVal) / ( Math.pow((1+rate), monthVal) - 1 )
+ 			var result = sumVal * k;
+ 			//var result = (rate*(1+rate));
+ 			return result;
+ 		}
+ 		window.mort = function(sumVal, monthVal, rate){
+ 			monthVal /= 1200;
+ 			rate = rate/12/1200;
+ 			var result = sumVal * monthVal / ( 1 - Math.pow(1 + monthVal, -rate) );
+ 			console.log( result * 10 * 12 -  sumVal);
+ 			return result;
+ 		}
+
+
+
+
+
+
+
+
+
+
 
 	});
 })(jQuery);

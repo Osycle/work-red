@@ -2224,6 +2224,7 @@ figcaption{
 		}
 	}
 	.wrapper{
+		padding-bottom: 38px;
 		@extend .shadow-def;
 		background-color: white;
 	}
@@ -2234,7 +2235,8 @@ figcaption{
 		padding-top: 35px;
 	}
 	form{
-		padding: 5px 40px;
+		padding: 0px 40px;
+		margin-top: 30px;
 	}
 	h3{
 		color: $color-gray-3;
@@ -2248,6 +2250,9 @@ figcaption{
 	.wrapper{
 		padding: 0;
 	}
+	.price{
+		
+	}
 	h2{
 		padding: 35px 40px;
 		@extend .shadow-def;
@@ -2257,6 +2262,20 @@ figcaption{
 		justify-content: center;
 		padding: 20px 15px;
 		background-color: #fefefe;
+		overflow: hidden;
+		position: relative;
+	}
+	.btn-def{
+		width: 100%;
+		text-transform: none;
+		text-align: center;
+		padding: 15px 15px; 
+	}
+	.fa{
+		position: absolute;
+		font-size: 120px;
+		opacity: 0.1;
+		right: 0;
 	}
 }
 

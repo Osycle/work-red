@@ -269,15 +269,15 @@
 							<div class="wrapper">
 								<h2>Рассчитайте ваш кредит</h2>	
 
-								<form>
+								<form class="clearfix">
 									<div class="mortgageAmount m-v-30">
 										<h3>Необходимая сумма:</h3>
 										<div class="flex-adaptive">
 											<div class="calc-range">
-												<input type="text" id="sum_range" name="range" value="" />
+												<input type="text" id="sum_range" name="" value="" />
 											</div>
 											<div class="calc-enter">
-												<input type="text" name="" id="sum_range_enter" class="form-control">
+												<input type="text" name="" id="sum_range_input" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -285,10 +285,10 @@
 										<h3>Срок кредита:</h3>
 										<div class="flex-adaptive">
 											<div class="calc-range">
-												<input type="text" id="month_range" name="range" value="" />
+												<input type="text" id="month_range" name="" value="" />
 											</div>
 											<div class="calc-enter">
-												<input type="text" name="" id="month_range_enter" class="form-control">
+												<input type="text" name="" id="month_range_input" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -301,10 +301,14 @@
 							<div class="wrapper">
 								<h2>Расчёт</h2>	
 								<div class="align-center">
-									<div class="box-xs-10">
+									<div>
+										<i class="fa fa-bar-chart"></i>
 										<p>Ежемесячный платёж:</p>
-										<p class="price"><big>12 044 883 сум</big></p>
+										<p class="price"><big><span class="cnt-price"></span></big></p>
 									</div>
+								</div>
+								<div class="btn-def">
+									<a href="">Детальный расчёт</a>
 								</div>
 							</div>
 						</div>

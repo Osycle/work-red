@@ -10655,6 +10655,7 @@ figcaption {
   font-weight: 800; }
 
 .mortgage .wrapper {
+  padding-bottom: 38px;
   background-color: white; }
 
 .mortagage-calc h2 {
@@ -10662,7 +10663,8 @@ figcaption {
   padding-top: 35px; }
 
 .mortagage-calc form {
-  padding: 5px 40px; }
+  padding: 0px 40px;
+  margin-top: 30px; }
 
 .mortagage-calc h3 {
   color: #666666;
@@ -10684,7 +10686,21 @@ figcaption {
   -ms-flex-pack: center;
   justify-content: center;
   padding: 20px 15px;
-  background-color: #fefefe; }
+  background-color: #fefefe;
+  overflow: hidden;
+  position: relative; }
+
+.mortagage-total .btn-def {
+  width: 100%;
+  text-transform: none;
+  text-align: center;
+  padding: 15px 15px; }
+
+.mortagage-total .fa {
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.1;
+  right: 0; }
 
 html .irs {
   font-family: "Montserrat"; }
