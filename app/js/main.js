@@ -317,6 +317,16 @@
 		$(".header-top label[for]").on("click", function(){
 			var that = $(this);
 			var input = $( "#" + that.attr("for") );
+			
+
+			setTimeout(function(){
+				var openedStatus = $(".megamenu input[name=\"mega\"]").filter(function(i,el){ return el.checked;})
+				if( openedStatus.length > 0)
+					$(".megamenu").addClass("opened");
+				else
+					$(".megamenu").removeClass("opened");
+
+			}, 2);
 
 				if( input[0].checked )
 					setTimeout(function(){

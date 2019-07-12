@@ -92,18 +92,21 @@ $header-min-menu: 70px;
 
 
 .header-scroll{
-	.header-top{
 
-	}
 
-	.header-top, .header-top-content, .header-logo img, .header-logo{
+
+	.header-top, .header-top-content, .header-logo img, .header-logo, .cabinet-panel{
 		transition: all 0.5s ease; 
 	}
 	&.scrolled, &.header-pages{
 		.header-top-content{
 			height: 60px;
 		}
+		&.cabinet-panel{
+			top: 60px;
+		}
 		@media (max-width: 1600px){
+
 			.linkyet-hover{
 				ul{
 					top: 60px;
@@ -249,7 +252,7 @@ $header-min-menu: 70px;
 
 	}
 	@media (max-width: 1600px){
-		min-width: 240px;
+		min-width: 140px;
 		.linkyet-hover{
 			display: flex;
 			height: 100%;
@@ -377,7 +380,9 @@ ul[class*="sub-menu"]{
 	position: absolute;
 	//padding: 20px 30px;
 	text-align: center;
-	border-bottom: 5px solid $color-2;
+	&.opened{
+		border-bottom: 5px solid $color-2;
+	}
 	[name="mega"]{
 		display: none;
 
