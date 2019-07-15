@@ -6927,7 +6927,7 @@ tbody.collapse.in {
   position: relative;
   padding-left: 15px; }
   .list-style-1 ul:not([class]) li, main ul:not([class]) li {
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     list-style: none;
     list-style-position: inside;
     list-style-image: url("../img/icons/list-icon.png"); }
@@ -7153,7 +7153,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -10587,6 +10587,12 @@ figcaption {
   opacity: 0.1;
   right: 0; }
 
+.mortgageRate input {
+  width: 130px; }
+  @media (max-width: 991px) {
+    .mortgageRate input {
+      margin: auto; } }
+
 #mortgage-table .common-content {
   margin-bottom: 15px; }
   #mortgage-table .common-content p {
@@ -10909,6 +10915,48 @@ html .irs--flat .irs-handle {
       font-size: 25px; }
   .fav-items .summary a {
     color: #cc2527; }
+
+.apartment-detail {
+  color: #6b6b6b; }
+  .apartment-detail figure {
+    background-color: white;
+    -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    font-size: 0.95em;
+    white-space: nowrap; }
+  .apartment-detail .cnt {
+    color: #cc2527;
+    font-weight: 700;
+    vertical-align: middle; }
+  .apartment-detail .icm {
+    margin-right: 5px; }
+  .apartment-detail .fig {
+    margin-right: 15px; }
+
+.apartment-content h4 {
+  font-weight: 800;
+  text-transform: uppercase; }
+
+.apartment-content .list-content {
+  background-color: white;
+  padding: 15px 5%;
+  padding-bottom: 30px; }
+  .apartment-content .list-content ul {
+    padding-left: 0; }
+
+@media (min-width: 992px) {
+  .apartment-content h4 {
+    padding-left: 10px;
+    border-left: 5px solid #cc2527; } }
+
+.apertment-scheme .img {
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 300px; }
+
+.map-location {
+  height: 300px; }
 
 /* 
 		_footer.scss

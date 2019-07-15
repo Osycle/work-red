@@ -2281,6 +2281,14 @@ figcaption{
 		right: 0;
 	}
 }
+.mortgageRate{
+	input{
+		width: 130px;
+		@media (max-width: 991px) {
+			margin: auto;
+		}
+	}
+}
 
 #mortgage-table{
 	.common-content{
@@ -2643,4 +2651,62 @@ html{
 			color: $color-1;
 		}
 	}
+}
+
+
+
+
+//apartment
+.apartment-detail{
+	figure{
+		background-color: white;
+		box-shadow: 0 0 30px rgba(black, 0.1);
+		padding: 5px 10px;
+		font-size: 0.95em;
+		white-space: nowrap;
+	}
+	color: $color-gray-4;
+	.cnt{
+		color: $color-1;
+		font-weight: 700;
+		vertical-align: middle;
+	}
+	.icm{
+		margin-right: 5px;
+	}
+	.fig{
+		margin-right: 15px; 
+	}
+}
+.apartment-content{
+	h4{
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+	.list-content{
+		background-color: white;
+		padding: 15px 5%;
+		padding-bottom: 30px;
+		@extend .shadow-def;
+		ul{
+			padding-left: 0;
+		}
+	}
+	.entry-header{
+	}
+	@media (min-width: 992px) {
+		h4{
+			padding-left: 10px;
+			border-left: 5px solid $color-1;
+		}
+	}
+}
+.apertment-scheme{
+	.img{
+		background-size: cover;
+		height: 300px;
+	}
+}
+.map-location{
+	height: 300px;
 }
