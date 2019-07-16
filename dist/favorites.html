@@ -301,11 +301,17 @@
 									<div class="fav-items">
 										<div class="rect-def">
 											<div class="wrapper-flex">
+												<span class="sales z-index-1">Продано</span>
 												<div class="img-content">
 													<div class="img" style="background-image: url('img/other/fav-1.jpg');"></div>
 												</div>
 												<div class="desc-content text-item p-min">
 													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="{$SITE_URL}/public/favorites.php" id="favorites">  
+                  						<button type="submit" name="favorites" value="{$article.articleId}">Удалить из мой REDD <i id="favorite-{$article.articleId}" class="fa fa-close p-l-10" {if $aid eq $article.articleId}style="color: red" {/if}></i></button>
+                						</form>
+													</div>
 													<div class="detail-info m-v-15">
 														<span class="va-middle fig">
 															<i class="icm icm-doorway"></i>
@@ -334,6 +340,11 @@
 												</div>
 												<div class="desc-content text-item p-min">
 													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="{$SITE_URL}/public/favorites.php" id="favorites">  
+                  						<button type="submit" name="favorites" value="{$article.articleId}">Удалить из мой REDD <i id="favorite-{$article.articleId}" class="fa fa-close p-l-10" {if $aid eq $article.articleId}style="color: red" {/if}></i></button>
+                						</form>
+													</div>
 													<div class="detail-info m-v-15">
 														<span class="va-middle fig">
 															<i class="icm icm-doorway"></i>
@@ -357,11 +368,17 @@
 										</div>
 										<div class="rect-def">
 											<div class="wrapper-flex">
+												<span class="recmd z-index-1">Рекомендуем</span>
 												<div class="img-content">
 													<div class="img" style="background-image: url('img/other/fav-3.jpg');"></div>
 												</div>
 												<div class="desc-content text-item p-min">
 													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="{$SITE_URL}/public/favorites.php" id="favorites">  
+                  						<button type="submit" name="favorites" value="{$article.articleId}">Удалить из мой REDD <i id="favorite-{$article.articleId}" class="fa fa-close p-l-10" {if $aid eq $article.articleId}style="color: red" {/if}></i></button>
+                						</form>
+													</div>
 													<div class="detail-info m-v-15">
 														<span class="va-middle fig">
 															<i class="icm icm-doorway"></i>
@@ -390,6 +407,11 @@
 												</div>
 												<div class="desc-content text-item p-min">
 													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="{$SITE_URL}/public/favorites.php" id="favorites">  
+                  						<button type="submit" name="favorites" value="{$article.articleId}">Удалить из мой REDD <i id="favorite-{$article.articleId}" class="fa fa-close p-l-10" {if $aid eq $article.articleId}style="color: red" {/if}></i></button>
+                						</form>
+													</div>
 													<div class="detail-info m-v-15">
 														<span class="va-middle fig">
 															<i class="icm icm-doorway"></i>

@@ -40,6 +40,14 @@
 				'<i class="icm icm-arrow-pointing-to-right"></i>'+
 			'</span>'
 		]
+		var owlBtnMin = [
+			'<span class="owl-btn previous">'+
+				'<i class="icm icm-arrow-pointing-to-right"></i>', 
+			'<span class="owl-btn next">'+
+				'<i class="icm icm-arrow-pointing-to-right"></i>'+
+			'</span>'
+		]
+
 
 		
 
@@ -60,6 +68,24 @@
 			navText : owlBtn,
 			margin: 22
 		});
+		$(".apartment-slider-items.owl-carousel").owlCarousel({
+			nav: checkSm(),
+			//items: 3,
+			dots: !checkSm(),
+			dotsEach: true,
+			autoplay: true,
+			mouseDrag: false,
+			touchDrag: true,
+			//pullDrag: false,
+			stagePadding: 0,
+			responsive:{
+				0:{items:1},
+				991:{items:1}
+			},
+			navText : owlBtnMin,
+			margin: 0
+		});
+
 		$(".specialists-items.owl-carousel").owlCarousel({
 			nav: true,
 			//items: 3,
@@ -382,17 +408,17 @@
  * Рассчёт аннуитетного платежа 
  *
  */
-if( $("[data-mortgage-rate]").length > 0 ){
+if( $("#mortgage_rate").length > 0 ){
 	var sumRange = $("#sum_range");
 	var monthRange = $("#month_range");
 	var sumRangeInput = $("#month_range_input");
 	var monthRangeInput = $("#month_range_input");
-	var mortagageRate = $("[data-mortgage-rate]").attr("data-mortgage-rate");
+	var mortagageRate = $("#mortgage_rate");
 
 	var mortgageAmount = sumRange.ionRangeSlider({
 		//type: "double",
 		min: 100,
-		max: 1000000,
+		max: 1500000,
 		from: 0,
 		to: 0,
 		postfix: " сум",
@@ -407,7 +433,7 @@ if( $("[data-mortgage-rate]").length > 0 ){
 	var mortgageMonth = monthRange.ionRangeSlider({
 		//type: "double",
 		min: 1,
-		max: 60,
+		max: 240,
 		from: 0,
 		to: 0,
 		postfix: " мес",
@@ -431,18 +457,23 @@ if( $("[data-mortgage-rate]").length > 0 ){
 		}
 		monthlyFeeChange();
 
-	})
+	});
+
 	function monthlyFeeChange() {
 		var sumVal;
 		var monthVal;
 
 		sumVal = sumRange.val();
 		monthVal = monthRange.val();
-		var monthlyFeeVal = monthlyFee(sumVal, monthVal, mortagageRate);
-		$(".mortagage-total .cnt-price").text( roundFix(monthlyFeeVal, 2, true) + " сум");
+		var monthlyFeeVal = monthlyFee(sumVal, monthVal, mortagageRate.val());
+		var priceText =  roundFix(monthlyFeeVal, 2, true);
+		console.log(priceText);
+		if( priceText == "NaN" )
+			return;
+		$(".mortagage-total .cnt-price").text( priceText + " сум");
 	}
 
-
+	// Функция расчёта Ипотеки
 	 window.monthlyFee = function(sumVal, monthVal, rate, onModal) {
 	 	rate = rate/1200;
 	 	var currentDebt = sumVal;
@@ -481,6 +512,9 @@ if( $("[data-mortgage-rate]").length > 0 ){
 	 	})
 		return mFee;
 	}
+	$("#mortgage_rate").on("change", function(){
+		monthlyFeeChange();
+	})
 
 	$(document).on( "click", "#detail_payment", function(){
 		var sumVal = sumRange.val();
@@ -488,11 +522,12 @@ if( $("[data-mortgage-rate]").length > 0 ){
 
 		$(".mortgage-sum-text").text(sumVal);
 		$(".mortgage-month-text").text(monthVal);
-		$(".mortgage-rate-text").text(mortagageRate+"%");
+		$(".mortgage-rate-text").text(mortagageRate.val()+"%");
 
-		monthlyFee(sumVal, monthVal, mortagageRate, true);
+		monthlyFee(sumVal, monthVal, mortagageRate.val(), true);
 
 	})
+	monthlyFeeChange();
 }
 
 
@@ -581,7 +616,6 @@ function roundFix( num, cnt, space ){
 	var int = num.split(".")[0];
 	var float = num.split(".")[1];
 	if(space){
-		console.log(intSpace(int));
 		int = intSpace(int);
 		return (int+"."+float.substring( 0,  cnt));
 	}

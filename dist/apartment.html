@@ -19,6 +19,37 @@
 </head>
 
 <body>
+
+	<!-- Скрытые поля -->
+	<div class="hide">
+		<div class="form-def" id="form_request">
+			<div class="form-block m-auto color-black text-left">
+				<form class="clearfix">
+					<div class="row">
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Ваше имя:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Фамилия:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Номер телефона:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>E-mail:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="btn-content m-v-15 p-h-15 col-md-12 text-center">
+							<span class="btn-def">
+								<button type="submit" class="p-h-60">Отправить</button>
+							</span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div id="page">
 
 
@@ -102,7 +133,7 @@
 								<div class="ul-box">
 									<h4>Первичное жилье </h4>
 									<ul>
-										<li><a href="">Ипотека</a></li>
+										<li><a href="mortgage.html">Ипотека</a></li>
 										<li><a href="advantages-ofchoose.html">Преимущества выбора нового жилья</a></li>
 										<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
 									</ul>
@@ -122,7 +153,7 @@
 								<div class="ul-box">
 									<h4>Наши услуги</h4>
 									<ul>
-										<li><a href="">Ипотека</a></li>
+										<li><a href="mortgage.html">Ипотека</a></li>
 										<li><a href="">Мгновенная оценка</a></li>
 										<li><a href="sellhouse.html">Продай свой дом</a></li>
 										<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
@@ -239,25 +270,66 @@
 
 
 			<!-- intro -->
-			<div class="intro height-fhd">
+			<div class="intro apartment">
 				<div class="intro-media">
-					<div class="img" style="background-image: url('img/slider/request.jpg');"></div>
+					<div class="apartment-slider-items boxes-1 owl-carousel">
+						<figure>
+							<div class="img-content">
+								<div class="img" style="background-image: url('img/slider/apartment.jpg');"></div>
+							</div>
+						</figure>
+						<figure>
+							<div class="img-content">
+								<div class="img" style="background-image: url('img/slider/apartment.jpg');"></div>
+							</div>
+						</figure>
+						<figure>
+							<div class="img-content">
+								<div class="img" style="background-image: url('img/slider/apartment.jpg');"></div>
+							</div>
+						</figure>
+						<figure>
+							<div class="img-content">
+								<div class="img" style="background-image: url('img/slider/apartment.jpg');"></div>
+							</div>
+						</figure>
+						<figure>
+							<div class="img-content">
+								<div class="img" style="background-image: url('img/slider/apartment.jpg');"></div>
+							</div>
+						</figure>
+					</div>
 				</div>
 				<div class="intro-content">
 					<div class="align-i-center p-v-15">
-						<div class="container p-v-md">
+						<div class="backrect">
+							<a href="">
+								<i class="icm icm-left-arrow-min"></i>
+								<h4>Название квартира</h4>
+								<p><i class="icm icm-price-tag-1"></i> <span class="price">75 000$</span></p>							
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-							<div class="entry-content h2-style-2 text-center">
-								<h2>Продай свой дом</h2>
-								<p>Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса</p>
-								<br>
-							</div>
-							<div class="btn-def m-v-15 m-h-15">
-								<a href="signin.html">Оцените свою недвижимость </a>
-							</div>
-							<div class="btn-def m-v-15 m-h-15">
-								<a href="request.html">Оставить заявку</a>
-							</div>
+			<div class="realty-nav">
+				<div class="container">
+					<div class="flex-adaptive">
+						<div class="item active">
+							<a href=""><i class="icm icm-gallery p-r-10"></i> <span class="va-middle">все фотографии</span></a>
+						</div>
+						<div class="item">
+							<a href=""><i class="icm icm-map p-r-10"></i> <span class="va-middle">на карте</span></a>
+						</div>
+						<div class="item">
+							<a href=""><i class="icm icm-college-graduation p-r-10"></i> <span class="va-middle">школы и вузы</span></a>
+						</div>
+						<div class="item">
+							<a href=""><i class="icm icm-front-bus p-r-10"></i> <span class="va-middle">транспорт</span></a>
+						</div>
+						<div class="item share">
+							<a href=""><i class="icm icm-share p-r-10"></i> <span class="va-middle">Поделиться</span></a>
 						</div>
 					</div>
 				</div>
@@ -265,111 +337,206 @@
 
 
 
-			<!-- sellhouse -->
-			<div class="sellhouse">
-				<div class="container p-v-md m-v-30">
-					<div class="sellhouse-list clearfix">
-						<div class="col-md-4 p-h-15">
-							<img src="img/other/text-r.png">
-						</div>
-						<div class="col-md-8 p-h-15">
-							<div class="desc-content">
-								<h3><big>Онлайн инструменты для слежения за продажей</big></h3>
-								<br>
-								<p class="color-1"><b>Мы активно продаем вашу недвижимость в нашей базе данных более 7000 квалифицированных покупателей.</b></p>
-								<br>
-								<ul>
-									<li>Мы активно называем нашу базу данных тысяч квалифицированных покупателей</li>
-									<li>Доступ к покупателям, размещаемым наиболее уважаемыми компаниями мира</li>
-									<li>Целевые оповещения по электронной почте</li>
-									<li>Предварительный просмотр фотографии и описания свойств</li>
-									<li>План этажа входит в стандартную комплектацию</li>
-								</ul>
+			<div class="realty">
+				<div class="container">
+					<div class="realty-panel m-v-30">
+						<div class="flex-adaptive parag-gray">
+							<div class="align-center box-md-7">
+								<div class="btn-def">
+									<a href="javascript:;" data-src="#form_request" data-fancybox>Оставить заявку</a>
+								</div>
+								<div class="phone-content">
+									<p>
+										Или позвоните на: <strong class="m-h-15 color-1"><big>+998 (90) 000-00-00</big></strong>
+									</p>
+								</div>
+							</div>
+							<div class="btn-save align-center justify-c-end box-md-4">
+								<p>
+									<a href="">Сохранить в мой REDD <i class="icm icm-favorite-heart-button p-l-10"></i></a>
+								</p>
 							</div>
 						</div>
-					</div>
-					<div class="sellhouse-items text-item rect-def-chess reverse shadow-def m-v-30">
-						<figure class="rect-def">
-							<div class="wrapper-flex">
-								<div class="img-content">
-									<div class="img" style="background-image: url('img/other/sellhouse-1.jpg');"></div>
-								</div>
-								<div class="desc-content p-min">
-									<h2><span class="color-1">REDD</span> Привлекает покупателей</h2>
-									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-								</div>
-							</div>
-						</figure>
-						<figure class="rect-def">
-							<div class="wrapper-flex">
-								<div class="img-content">
-									<div class="img" style="background-image: url('img/other/sellhouse-2.jpg');"></div>
-								</div>
-								<div class="desc-content p-min">
-									<h2>Маркетинговые решения <span class="color-1">REDD</span> </h2>
-									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-								</div>
-							</div>
-						</figure>
-						<figure class="rect-def">
-							<div class="wrapper-flex">
-								<div class="img-content">
-									<div class="img" style="background-image: url('img/other/sellhouse-3.jpg');"></div>
-								</div>
-								<div class="desc-content p-min">
-									<h2>Служба поддержки</h2>
-									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-								</div>
-							</div>
-						</figure>
 					</div>
 
-					<div class="torent-packets">
-						<div class="entry-header h2-style-1 text-center">
-							<h2 class="inline-block">Наши пакеты арендым</h2>
-						</div>
-						<div class="torent-packets-items boxes-3 text-item figure-m-v-20 m-v-10">
-							<div class="boxes-cell">
-								<h3>Тариф 1</h3>
-								<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации</p>
-								<ul>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-								</ul>
-								<div class="btn-def box-xs-10 m-v-15">
-									<a href="">Начать</a>
+					<div class="apartment-content">
+						<div class="row">
+							<div class="col-md-9 text-item p-h-15 clearfix">
+								<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								<div class="box-md-8">
+									<div class="apartment-detail">
+										<div class="boxes-3 figure-m-v-5">
+											<figure>
+												<span class="va-middle fig">
+													<i class="icm icm-open-exit-door"></i>
+													<span class="va-middle">Комнаты:</span> 
+													<span class="cnt">3</span>
+												</span>
+											</figure>
+											<figure>
+												<span class="va-middle fig">
+													<i class="icm icm-hotel-with-three-floors"></i>
+													<span class="va-middle">Этаж:</span> 
+													<span class="cnt">4/9</span>
+												</span>
+											</figure>
+											<figure>
+												<span class="va-middle fig">
+													<i class="icm icm-armchair"></i>
+													<span class="va-middle">Мебель:</span> 
+													<span class="cnt">Есть</span>
+												</span>
+											</figure>
+											<figure>
+												<span class="va-middle fig">
+													<i class="icm icm-set-square"></i>
+													<span class="va-middle">Площадь:</span> 
+													<span class="cnt">85 кв.м</span>
+												</span>
+											</figure>
+											<figure>
+												<span class="va-middle fig">
+													<i class="icm icm-parked-car"></i>
+													<span class="va-middle">Гараж:</span> 
+													<span class="cnt">Нет</span>
+												</span>
+											</figure>
+											<figure>
+												<span class="va-middle fig">
+													<i class="icm icm-house-1"></i>
+													<span class="va-middle">Мансарда:</span> 
+													<span class="cnt">Есть</span>
+												</span>
+											</figure>
+										</div>
+									</div>
+								</div>
+								<div class="list-content m-v-30">
+									<div class="entry-header m-v-30">
+										<h4>КЛЮЧЕвые ХАРАКТЕРИСТИки</h4>
+									</div>
+									<ul>
+										<li>Красивый пентхаус с четырьмя спальнями</li>
+										<li>Великолепное старинное здание с видом на Гайд-Парк</li>
+										<li>К услугам гостей услуги носильщика и прямой доступ к лифту</li>
+										<li>Встроенная мультимедийная система управления</li>
+										<li>Впечатляющий мастер с ванной комнатой и встроенными шкафами</li>
+										<li>Очень желательно и востребовано расположение в W2</li>
+										<li>Фантастическое расположение для Вест-Энда и центра города</li>
+										<li>Дополнительные преимущества парковки на улице</li>
+									</ul>
 								</div>
 							</div>
-							<div class="boxes-cell">
-								<h3>Тариф 1</h3>
-								<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации</p>
-								<ul>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-								</ul>
-								<div class="btn-def box-xs-10 m-v-15">
-									<a href="">Начать</a>
+							<div class="col-md-3 p-h-15">
+								<div class="contacts-map clearfix">
+									<div id="map-apartment"  class="map-location"></div>
+								</div>
+								<div class="apertment-scheme m-v-30">
+									<a href="img/other/apartment-scheme.jpg" data-fancybox>
+										<div class="img-content">
+											<div class="img" style="background-image: url('img/other/apartment-scheme.jpg');"></div>
+										</div>
+									</a>
 								</div>
 							</div>
-							<div class="boxes-cell">
-								<h3>Тариф 1</h3>
-								<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации</p>
-								<ul>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-									<li>Характеристика тарифа</li>
-								</ul>
-								<div class="btn-def box-xs-10 m-v-15">
-									<a href="">Начать</a>
-								</div>
+							<div class="col-md-12 m-v-30 text-item p-h-15">
+								<h4>БОЛЕЕ ПОДРОБНАЯ ИНФОРМАЦИЯ</h4>
+								<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								<p><b class="color-1">Примечание.</b> Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса: «Мы стараемся не индексировать или не ранжировать высоко сайты, копирующие информацию с других ресурсов и не создающие оригинального контента или сервиса».</p>
 							</div>
 						</div>
 					</div>
+
+					<!-- mortgage -->
+					<div class="mortgage">
+						<div class="container p-v-md m-v-30">
+							<div class="row">
+
+								<div class="mortagage-calc col-md-8 p-h-15">
+									<div class="wrapper">
+										<h2>Рассчитайте ваш кредит</h2>	
+
+										<form class="clearfix">
+											<div class="mortgageAmount m-v-30">
+												<h3>Необходимая сумма:</h3>
+												<div class="flex-adaptive">
+													<div class="calc-range">
+														<input type="text" id="sum_range" name="" value="" />
+													</div>
+													<div class="calc-enter">
+														<input type="text" name="" id="sum_range_input" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="mortgageMonth m-v-30">
+												<h3>Срок кредита:</h3>
+												<div class="flex-adaptive">
+													<div class="calc-range">
+														<input type="text" id="month_range" name="" value="" />
+													</div>
+													<div class="calc-enter">
+														<input type="text" name="" id="month_range_input" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="mortgageRate m-v-30">
+												<h3>Процентная ставка:</h3>
+												<div class="flex-adaptive">
+													<input type="number" id="mortgage_rate" name="" value="11.5" class="form-control"/>
+												</div>
+											</div>
+										</form>
+									</div>
+
+								</div>
+
+								<div class="mortagage-total col-md-4 p-h-15">
+									<div class="wrapper">
+										<h2>Расчёт</h2>	
+										<div class="align-center">
+											<div>
+												<i class="fa fa-bar-chart"></i>
+												<p>Ежемесячный платёж:</p>
+												<p class="price"><big><span class="cnt-price"></span></big></p>
+											</div>
+										</div>
+										<div class="btn-def" id="detail_payment" role="button">
+											<a href="javascript:;">Детальный расчёт</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="hide">
+								<div id="mortgage-table">
+									<div class="common-content">
+										<p>Сумма кредита, ед: <span class="mortgage-sum-text"></span></p>
+										<p>Срок кредита, мес: <span class="mortgage-month-text"></span></p>
+										<p>Проц. ставка годовых: <span class="mortgage-rate-text"></span></p>
+									</div>
+									<div class="mortgage-table">
+										<table>
+											<thead>
+												<tr>
+													<th>№ Платежа</th>
+													<th>Задолженность по кредиту</th>
+													<th>Начисленные проценты</th>
+													<th>Основной долг</th>
+													<th>Сумма платежа</th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
+					<br><br><br>
 				</div>
 			</div>
 
@@ -395,7 +562,7 @@
 							<div class="ul-box">
 								<h4>Первичное жилье </h4>
 								<ul>
-									<li><a href="">Ипотека</a></li>
+									<li><a href="mortgage.html">Ипотека</a></li>
 									<li><a href="advantages-ofchoose.html">Преимущества выбора нового жилья</a></li>
 									<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
 								</ul>
@@ -413,7 +580,7 @@
 							<div class="ul-box">
 								<h4>Наши услуги</h4>
 								<ul>
-									<li><a href="">Ипотека</a></li>
+									<li><a href="mortgage.html">Ипотека</a></li>
 									<li><a href="">Мгновенная оценка</a></li>
 									<li><a href="sellhouse.html">Продай свой дом</a></li>
 									<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
@@ -512,6 +679,89 @@
 	<!-- SCRIPTS -->
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag"></script>
+  <script type="text/javascript">
+
+      var icon = {
+        path: 'M16.5,51s-16.5-25.119-16.5-34.327c0-9.2082,7.3873-16.673,16.5-16.673,9.113,0,16.5,7.4648,16.5,16.673,0,9.208-16.5,34.327-16.5,34.327zm0-27.462c3.7523,0,6.7941-3.0737,6.7941-6.8654,0-3.7916-3.0418-6.8654-6.7941-6.8654s-6.7941,3.0737-6.7941,6.8654c0,3.7916,3.0418,6.8654,6.7941,6.8654z',
+        anchor: new google.maps.Point(16.5, 51),
+        fillColor: '#ef1937',
+        fillOpacity: 1,
+        strokeWeight: 0,
+        scale: 0.9
+      };
+
+		  var map;
+	    function initialize() {
+	    	
+	      var mapOptions = {
+	        mapTypeId: google.maps.MapTypeId.ROADMAP,
+	        mapTypeControl: false,
+	        zoom: 14,
+	        zoomControl: true,
+	        zoomControlOptions: {
+	          style: google.maps.ZoomControlStyle.DEFAULT,
+	          position: google.maps.ControlPosition.DEFAULT
+	        },
+	        panControl: true,
+	        panControlOptions: {
+	          position: google.maps.ControlPosition.LEFT_TOP
+	        },
+	        streetViewControl: true,
+	        scaleControl: true,
+	        overviewMapControl: true,
+	        center: new google.maps.LatLng("41.35765", "69.354354343")
+	      };
+
+
+	      mapContainer = document.getElementById('map-apartment') || null;
+	      if( !mapContainer ) 
+	      	return;
+
+
+	      map = new google.maps.Map(mapContainer, mapOptions);
+	     	map.setOptions({
+	        //styles: mapStyles,
+	        disableDefaultUI: true
+	      });
+
+        window.infowindow = new google.maps.InfoWindow();
+        var marker, i;
+
+        var locations = [
+		      ['<div class="mapblock"><h5>Название квратиры</h5></div>', 41.34765, 69.354354343]
+		    ];
+       for (i = 0; i < locations.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		        map: map,
+		        icon: icon,
+		        title: 'marker'
+          });
+          google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+              infowindow.setContent(locations[0][0]);
+              infowindow.open(map, marker);
+        }
+
+	    }
+	    initialize();
+	    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+	    function checkResize() {
+	      var center = map.getCenter();
+	      google.maps.event.trigger(map, 'resize');
+	      map.setCenter(center);
+	    }
+
+	    window.onresize = checkResize;
+	  
+  </script>
 </body>
 
 </html>

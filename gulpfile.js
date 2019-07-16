@@ -74,6 +74,7 @@ gulp.task('scripts', () =>
 			app+'/js/plugins/smooth-scroll-link.min.js',
 			//app+'/js/plugins/parallax-mouse.js',
 			//app+'/js/plugins/parallax.js',
+			app+'/js/plugins/ion.rangeSlider.min.js',
 			app+'/js/plugins/pie-preload.js',
 			app+'/js/plugins/flickity.js'
 		])

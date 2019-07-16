@@ -91,9 +91,9 @@ small{
 	h1:not(.no-style){
 		&:before{
 			@extend .clafclear;
-			width: 85px;
-			height: 2px;
-			background-image: $gradient-1;
+			width: 40px;
+			height: 5px;
+			background-color: currentColor;
 			bottom: 0;
 			@media (max-width: 991px){
 				display: none;
@@ -805,19 +805,6 @@ figcaption{
 		overflow: hidden;
 		position: relative;
 	}
-	.recmd{
-		background-color: #39ae05;
-		color: white;
-		padding: 15px 20px;
-		width: 200px;
-		text-align: center;
-		display: inline-block;
-		transform: rotate(-45deg);
-		transform-origin: 50% 100px;
-		position: absolute;
-		left: 0;
-		top: 0;
-	}
 	.img{
 		height: 340px;
 		background-size: cover;
@@ -852,6 +839,23 @@ figcaption{
 			margin-right: 10px;
 		}
 	}
+}
+.recmd{
+	background-color: #39ae05;
+	color: white;
+	padding: 15px 20px;
+	width: 200px;
+	text-align: center;
+	display: inline-block;
+	transform: rotate(-45deg);
+	transform-origin: 50% 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.sales{
+	@extend .recmd;
+	background-color: $color-1;
 }
 .price{
 	font-weight: 800;
@@ -1796,49 +1800,49 @@ figcaption{
 
 .realty.intro{
 	height: 400px;
-	.backrect{
-		color: black;
-		padding: 15px;
-		background-color: white;
-		min-width: 380px;
-		position: relative;
-		@media (min-width: 992px) {
-			text-align: left;
-			padding-left: 75px;
-		}
-
-		.icm-price-tag-1{
-			font-size: 25px;
-			color: $color-gray-3;
-		}
-		.icm{
-			font-size: 20px;
-			vertical-align: middle;
-		}
-		.price{
-			vertical-align: middle;
-			padding-left: 10px;
-		}
-		h4{
-			margin-top: 0;
-		}
-		.icm-left-arrow-min{
-			display: flex;
-			align-items: center;
-			padding: 5px;
-			justify-content: center;
-			width: 50px;
-			position: absolute;
-			left: 0;
-			height: 100%;
-			top: 0;
-			background-color: #f3f3f0;
-			@media (max-width: 991px){
-				display: none;
-			}
-		}
-	}	
 }
+.backrect{
+	color: black;
+	padding: 15px;
+	background-color: white;
+	min-width: 380px;
+	position: relative;
+	@media (min-width: 992px) {
+		text-align: left;
+		padding-left: 75px;
+	}
+
+	.icm-price-tag-1{
+		font-size: 25px;
+		color: $color-gray-3;
+	}
+	.icm{
+		font-size: 20px;
+		vertical-align: middle;
+	}
+	.price{
+		vertical-align: middle;
+		padding-left: 10px;
+	}
+	h4{
+		margin-top: 0;
+	}
+	.icm-left-arrow-min{
+		display: flex;
+		align-items: center;
+		padding: 5px;
+		justify-content: center;
+		width: 50px;
+		position: absolute;
+		left: 0;
+		height: 100%;
+		top: 0;
+		background-color: #f3f3f0;
+		@media (max-width: 991px){
+			display: none;
+		}
+	}
+}	
 .realty-nav{
 	background-color: $color-2;
 	color: white;
@@ -1851,9 +1855,11 @@ figcaption{
 		text-transform: uppercase;
 		@media (min-width: 992px) {
 			height: 60px;
+
 		}
 		@media (max-width: 991px) {
 			display: block;
+			text-align: left;
 			padding: 15px 20px;
 		}
 	}
@@ -1881,7 +1887,7 @@ figcaption{
 			}
 		}
 		@media (min-width: 992px) {
-			.share{
+			&.share{
 				position: absolute;
 				right: 15px;
 			}
@@ -1983,7 +1989,20 @@ figcaption{
 
 	}
 }
-
+.btn-save{
+	a{
+		transition: all 0.3s ease;
+		i{
+			transition: all 0.3s ease;
+		}
+		&:hover{
+			color: $color-1;
+			i{
+				color: $color-1;
+			}
+		}
+	}
+}
 
 
 
@@ -2608,6 +2627,7 @@ html{
 		}
 		.wrapper-flex{
 			min-height: 250px;
+			overflow: hidden;
 		}
 		@media (max-width: 991px){
 			box-shadow: none; 
@@ -2620,9 +2640,13 @@ html{
 		}
 		.desc-content{
 			//width: inherit;
+			position: relative;
 			padding: 15px 30px;
 			@media (min-width: 992px) {
 				width: calc( 100% - 370px );
+				h5{
+					width: 75%;
+				}
 			}
 		}
 		.detail-info{
@@ -2651,12 +2675,119 @@ html{
 			color: $color-1;
 		}
 	}
+	.btn-content{
+		position: absolute;
+		right: 20px;
+		top: 25px;
+		button{
+			@extend .btn-res;
+			transition: all 0.3s ease;
+			color: $color-gray-4;
+			&:hover{
+				color: $color-1;
+			}
+		}
+		@media (max-width: 991px) {
+			position: relative;
+			right: auto;
+			top: auto;
+			button{
+				text-decoration: underline;
+			}
+		}
+	}
 }
 
 
 
 
 //apartment
+.apartment{
+	&.intro{
+		@media (min-width: 992px) {
+			//height: 600px;
+		}
+		.apartment-slider-items{
+			.img{
+				height: 600px;
+				background-size: cover;
+				@media (max-width: 991px){
+					height: 300px;
+				}
+			}
+		}
+		.owl-nav{
+			background-color: $color-2;
+			.icm{
+				color: white;
+				font-size: 20px;
+			}
+			padding: 15px 0;
+			@media (max-width: 991px){
+				.owl-next, .owl-prev{
+					vertical-align: middle;
+				}
+				.owl-next{
+					margin-top: -4px;
+				}
+			}
+		}
+		@media (min-width: 992px) {
+			.owl-carousel{
+				.owl-stage{
+					transform: none !important;
+					height: 600px;
+				}
+				.owl-item{
+					left: 0 !important;
+					transition: all 0.8s ease ;
+					position: absolute;
+					opacity: 0;
+					&.active{
+						z-index: 1;
+						opacity: 1;
+					}
+				}
+				.owl-dots{
+					position: absolute;
+					width: 100%;
+					text-align: center;
+					bottom: 0;
+					top: auto;
+					.owl-dot{
+						width: 100px;
+						height: 15px;
+						border-radius: 0;
+						background-color: rgba(white, 0.6);
+						&.active{
+							background-color: $color-1;
+						}
+					}
+				}
+			}
+		}
+
+	}
+	.intro-media{
+		position: relative;
+	}
+	.intro-content{
+		position: absolute;
+		top: 0;
+		&, .align-i-center{
+			pointer-events: none;
+			*{
+				pointer-events: auto;
+			}
+			align-items: flex-start;
+			.backrect{
+				@media (min-width: 992px) {
+					margin-top: 50px;
+				}
+			}
+		}
+	}
+}
 .apartment-detail{
 	figure{
 		background-color: white;
@@ -2702,6 +2833,9 @@ html{
 	}
 }
 .apertment-scheme{
+	.img-content{
+
+	}
 	.img{
 		background-size: cover;
 		height: 300px;
@@ -2709,4 +2843,68 @@ html{
 }
 .map-location{
 	height: 300px;
+}
+.map-apartment{
+	height: 320px;
+	.mapblock{
+		font-size: 0.9em;
+	}
+}
+
+
+//ouroffices
+.ouroffices{
+	.map-content{
+		position: relative;
+		@media (min-width: 992px){
+			padding-bottom: 50px;
+		}
+	}
+
+}
+.map-ouroffices{
+	height: 600px;
+	@media (max-width: 991px){
+		height: 350px;
+	}
+}
+.ouroffices-items{
+	width: 370px;
+	position: absolute;
+	.boxes-cell{
+		@extend .shadow-def;
+		background-color: white;
+		padding: 20px 40px;
+		transition: all 0.3s ease;
+		backface-visibility: hidden;
+		&:hover{
+			cursor: pointer;
+		}
+		&.is-selected{
+			transform: scale(0.95);
+		}
+	}
+	@media (min-width: 992px){
+		max-height: 670px;
+		top: 50px;
+		right: 0;
+		overflow-y: auto;
+	}
+	@media (max-width: 991px) {
+		width: 100%;
+		position: relative;
+	}
+}
+
+.howmuch{
+	background-image: url(../img/other/other-2.jpg);
+	background-position: center;
+	min-height: 360px;
+	background-repeat: no-repeat;
+	h1{
+		font-weight: 800;
+	}
+	h2{
+		font-weight: 600;
+	}
 }

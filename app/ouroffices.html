@@ -19,6 +19,37 @@
 </head>
 
 <body>
+
+	<!-- Скрытые поля -->
+	<div class="hide">
+		<div class="form-def" id="form_request">
+			<div class="form-block m-auto color-black text-left">
+				<form class="clearfix">
+					<div class="row">
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Ваше имя:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Фамилия:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Номер телефона:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>E-mail:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="btn-content m-v-15 p-h-15 col-md-12 text-center">
+							<span class="btn-def">
+								<button type="submit" class="p-h-60">Отправить</button>
+							</span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div id="page">
 
 
@@ -102,7 +133,7 @@
 								<div class="ul-box">
 									<h4>Первичное жилье </h4>
 									<ul>
-										<li><a href="">Ипотека</a></li>
+										<li><a href="mortgage.html">Ипотека</a></li>
 										<li><a href="advantages-ofchoose.html">Преимущества выбора нового жилья</a></li>
 										<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
 									</ul>
@@ -122,7 +153,7 @@
 								<div class="ul-box">
 									<h4>Наши услуги</h4>
 									<ul>
-										<li><a href="">Ипотека</a></li>
+										<li><a href="mortgage.html">Ипотека</a></li>
 										<li><a href="">Мгновенная оценка</a></li>
 										<li><a href="sellhouse.html">Продай свой дом</a></li>
 										<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
@@ -240,105 +271,86 @@
 
 			<!-- intro -->
 			<div class="intro">
-				<div class="intro-media">
-					<div class="img" style="background-image: url('img/slider/guide.jpg');"></div>
-				</div>
 				<div class="intro-content">
-					<div class="align-i-center p-v-15">
-						<div class="container p-v-md">
+				</div>
+			</div>
 
-							<div class="entry-content h2-style-2 text-center">
-								<h2>Тарифы и условия</h2>
+			<!-- ouroffices -->
+			<div class="ouroffices">
+				<div class="container p-v-md">
+					<div class="entry-content h2-style-1 m-v-30">
+						<h2>Найти офис ближе ко мне</h2>
+					</div>
+					<div class="map-content">
+						<div class="map-ouroffices box-md-8 m-v-30" id="map-ouroffices"></div>
+						<div class="ouroffices-items">
+							<div class="boxes-cell parag-m-v-10">
+								<p><big><b>Офис №1</b></big></p>
+								<p><b>Адрес: </b>Узбекистан, г. Ташкент,ул. Садыка Азимова 68</p>
+								<p><b>Тел: </b>
+									<b class="inline-block va-top color-1">
+										+998 (90) 000-00-00 <br>
+										+998 (90) 000-00-00
+									</b>
+								</p>
+								<p><b>Время работы: </b>
+									<b class="inline-block va-top color-1">
+										Пн-Суб, 8:00-18:00
+									</b>
+								</p>
+							</div>
+							<div class="boxes-cell parag-m-v-10">
+								<p><big><b>Офис №2</b></big></p>
+								<p><b>Адрес: </b>Узбекистан, г. Ташкент,ул. Садыка Азимова 68</p>
+								<p><b>Тел: </b>
+									<b class="inline-block va-top color-1">
+										+998 (90) 000-00-00 <br>
+										+998 (90) 000-00-00
+									</b>
+								</p>
+								<p><b>Время работы: </b>
+									<b class="inline-block va-top color-1">
+										Пн-Суб, 8:00-18:00
+									</b>
+								</p>
+							</div>
+							<div class="boxes-cell parag-m-v-10">
+								<p><big><b>Офис №3</b></big></p>
+								<p><b>Адрес: </b>Узбекистан, г. Ташкент,ул. Садыка Азимова 68</p>
+								<p><b>Тел: </b>
+									<b class="inline-block va-top color-1">
+										+998 (90) 000-00-00 <br>
+										+998 (90) 000-00-00
+									</b>
+								</p>
+								<p><b>Время работы: </b>
+									<b class="inline-block va-top color-1">
+										Пн-Суб, 8:00-18:00
+									</b>
+								</p>
 							</div>
 
 						</div>
 					</div>
+					<br><br><br>
 				</div>
 			</div>
 
-			<div class="conditions h2-style-1">
 
-				<div class="conditions-content">
-					<div class="container p-v-md">
-						<div class="m-v-30">
-							<h2>защита денег клиента</h2>
+			<div class="howmuch color-white">
+				<div class="container">
+					<div class="box-md-7">
+						<div class="entry-content h1-style-1 m-v-30">
+							<h1>Сколько стоит мой дом?</h1>
+							<p>Бесплатная, без обязательств оценка имущества для всех домов в Ташкенте.</p>
 						</div>
-						<img src="img/other/certification.jpg" align="right">
-						<div class="text-item m-v-30">
-							<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-							<p><b class="color-1">Примечание.</b> Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса: «Мы стараемся не индексировать или не ранжировать высоко сайты, копирующие информацию с других ресурсов и не создающие оригинального контента или сервиса».</p>
-							<p>Вас приветствует компания «...» <введите название компании>!</p>
-							<p>…<введите название компании>  - динамично развивающаяся компания в области/сфере … <укажите сферу деятельности>.</p>
-							<p>Мы рады предложить вам широкий спектр услуг по … <укажите предлагаемые услуги> по самым выгодным ценам.</p>
+						<h2>Новый? Отремонтированный? Учитывать позднюю продажу? Вам просто интересно?</h2>
+						<div class="btn-def m-v-30 reverse">
+							<a href="">Мгновенная оценка</a>
 						</div>
 					</div>
 				</div>
-				<div class="conditions-content bg-color-gray">
-					<div class="container p-v-md">
-						<div class="m-v-30">
-							<h2>Cтандартные сборы и условия для арендаторов</h2>
-						</div>
-						<div class="text-item m-v-30">
-							<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-							<p><b class="color-1">Примечание.</b> Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса: «Мы стараемся не индексировать или не ранжировать высоко сайты, копирующие информацию с других ресурсов и не создающие оригинального контента или сервиса».</p>
-							<p>Вас приветствует компания «...» <введите название компании>!</p>
-							<p>…<введите название компании>  - динамично развивающаяся компания в области/сфере … <укажите сферу деятельности>.</p>
-						</div>
-						<div class="btn-def m-v-30">
-							<a href="files/file.pdf" data-fancybox><i class="fa fa fa-file-pdf-o p-r-10 fa-2x"></i> <span class="va-middle">Посмотреть в PDF</span></a>
-						</div>
-					</div>
-				</div>
-				<div class="conditions-content">
-					<div class="container p-v-md">
-						<div class="m-v-30">
-							<h2>тарифы и условия для арендаторов</h2>
-						</div>
-						<div class="text-item m-v-30">
-							<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-							<p><b class="color-1">Примечание.</b> Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса: «Мы стараемся не индексировать или не ранжировать высоко сайты, копирующие информацию с других ресурсов и не создающие оригинального контента или сервиса».</p>
-							<p>Вас приветствует компания «...» <введите название компании>!</p>
-							<p>…<введите название компании>  - динамично развивающаяся компания в области/сфере … <укажите сферу деятельности>.</p>
-						</div>
-						<div class="btn-def m-v-30">
-							<a href="files/file.pdf" data-fancybox><i class="fa fa fa-file-pdf-o p-r-10 fa-2x"></i> <span class="va-middle">Посмотреть в PDF</span></a>
-						</div>
-					</div>
-				</div>
-				<div class="conditions-content bg-color-gray">
-					<div class="container p-v-md">
-						<div class="m-v-30">
-							<h2>Комиссия по кредитной карте</h2>
-						</div>
-						<div class="text-item m-v-30">
-							<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-							<p><b class="color-1">Примечание.</b> Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса: «Мы стараемся не индексировать или не ранжировать высоко сайты, копирующие информацию с других ресурсов и не создающие оригинального контента или сервиса».</p>
-							<p>Вас приветствует компания «...» <введите название компании>!</p>
-							<p>…<введите название компании>  - динамично развивающаяся компания в области/сфере … <укажите сферу деятельности>.</p>
-							<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-						</div>
-					</div>
-				</div>
-				<div class="conditions-content">
-					<div class="container p-v-md">
-						<div class="m-v-30">
-							<h2>Корпоративные услуги</h2>
-						</div>
-						<div class="text-item m-v-30">
-							<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-							<p><b class="color-1">Примечание.</b> Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса: «Мы стараемся не индексировать или не ранжировать высоко сайты, копирующие информацию с других ресурсов и не создающие оригинального контента или сервиса».</p>
-							<p>Вас приветствует компания «...» <введите название компании>!</p>
-							<p>…<введите название компании>  - динамично развивающаяся компания в области/сфере … <укажите сферу деятельности>.</p>
-							<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-						</div>
-						<div class="btn-def m-v-30">
-							<a href="request.html">Связаться с нами</a>
-						</div>
-					</div>
-				</div>
-
 			</div>
-
 
 
 
@@ -362,7 +374,7 @@
 							<div class="ul-box">
 								<h4>Первичное жилье </h4>
 								<ul>
-									<li><a href="">Ипотека</a></li>
+									<li><a href="mortgage.html">Ипотека</a></li>
 									<li><a href="advantages-ofchoose.html">Преимущества выбора нового жилья</a></li>
 									<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
 								</ul>
@@ -380,7 +392,7 @@
 							<div class="ul-box">
 								<h4>Наши услуги</h4>
 								<ul>
-									<li><a href="">Ипотека</a></li>
+									<li><a href="mortgage.html">Ипотека</a></li>
 									<li><a href="">Мгновенная оценка</a></li>
 									<li><a href="sellhouse.html">Продай свой дом</a></li>
 									<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
@@ -479,6 +491,105 @@
 	<!-- SCRIPTS -->
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag"></script>
+  <script type="text/javascript">
+
+
+		  var mapOffices;
+		  var boxesClass = ".ouroffices-items .boxes-cell";
+
+	    function initialize() {
+	    	
+	      var mapOptions = {
+	        mapTypeId: google.maps.MapTypeId.ROADMAP,
+	        mapTypeControl: true,
+	        zoom: 14,
+	        zoomControl: true,
+	        zoomControlOptions: {
+	          style: google.maps.ZoomControlStyle.DEFAULT,
+	          position: google.maps.ControlPosition.DEFAULT
+	        },
+	        panControl: true,
+	        panControlOptions: {
+	          position: google.maps.ControlPosition.LEFT_TOP
+	        },
+	        streetViewControl: true,
+	        scaleControl: true,
+	        overviewMapControl: true,
+	        center: new google.maps.LatLng("41.35765", "69.354354343")
+	      };
+
+
+	      mapContainer = document.getElementById('map-ouroffices') || null;
+	      if( !mapContainer ) 
+	      	return;
+
+
+	      mapOffices = new google.maps.Map(mapContainer, mapOptions);
+	     	mapOffices.setOptions({
+	        //styles: mapStyles,
+	        disableDefaultUI: true
+	      });
+
+        window.infowindow = new google.maps.InfoWindow();
+        var marker, i;
+
+        var locations = [
+		      ['<div class="mapblock">Узбекистан, г. Ташкент,ул. Садыка Азимова 68</div>', 41.35765, 69.350354343],
+		      ['<div class="mapblock">Узбекистан, г. Ташкент,ул. Садыка Азимова 68</div>', 41.35765, 69.355354343],
+		      ['<div class="mapblock">Узбекистан, г. Ташкент,ул. Садыка Азимова 68</div>', 41.34765, 69.354354343]
+		    ];
+        window.officesMarkers = [];
+       for (i = 0; i < locations.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		        map: mapOffices,
+		        item: i,
+		        icon: "img/icons/marker-offices-1.png",
+		        title: 'marker'
+          });
+          officesMarkers.push(marker);
+          google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(mapOffices, marker);
+              $(boxesClass).eq(marker.item).trigger("click");
+            }
+          })(marker, i));
+              infowindow.setContent(locations[0][0]);
+              //infowindow.open(mapOffices, marker);
+        }
+
+
+
+	    }
+	    initialize();
+	    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+        //Клик по блоку
+				$(document).on("click", boxesClass, function(){
+					var that = $(this);
+					$(boxesClass).removeClass("is-selected");
+					that.addClass("is-selected");
+					var index = that.index();
+					for (var i = 0; i < officesMarkers.length; i++) {
+						officesMarkers[i].setIcon("img/icons/marker-offices-1.png");
+					}
+					infowindow.open(mapOffices, officesMarkers[index]);
+					officesMarkers[index].setIcon("img/icons/marker-offices-2.png");
+					
+				})
+
+	    function checkResize() {
+	      var center = mapOffices.getCenter();
+	      google.maps.event.trigger(mapOffices, 'resize');
+	      mapOffices.setCenter(center);
+	    }
+
+	    window.onresize = checkResize;
+	  
+  </script>
 </body>
 
 </html>

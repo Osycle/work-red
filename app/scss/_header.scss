@@ -454,6 +454,13 @@ ul[class*="sub-menu"]{
 			vertical-align: middle;
 			margin-right: 10px;
 		}
+		.va-middle{
+	    max-width: 130px;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    display: inline-block;
+		}
 		
 	}
 }
@@ -709,40 +716,21 @@ textarea.form-control{
 }
 
 .form-def{
-	background-color: $color-3;
-	color: white;
-	overflow: visible;
-	max-width: 370px;
-	@media (min-width: 992px){
-		max-width: 470px;
-	}
-	h2{
-		font-size: em(18);
-		text-transform: uppercase;
-	}
-	input{
-		&:focus{
-			border-color: rgba($color-3, 0.5);
-		}
+	//padding: 30px;
+	@media (min-width: 992px) {
+		max-width: 420px;
 	}
 	.fancybox-close-small{
-		background: $gradient-1;
-		top: 10px;
-		width: 36px;
-		height: 36px;
-		right: -15px;
+		display: block;
 		&:after{
-			@extend .trans-center;
-			font-size: 28px;
-			font-weight: 600;
+			color: $color-1;
 		}
 	}
-	.form-content{
-		font-size: 0.9em;
-		text-align: center;
-		padding: 10px 25px;
-		background-color: white;
-		color: black;
+	.form-block{
+		padding: 30px 30px;
+		@media (max-width: 991px) {
+			padding: 15px 15px;
+		}
 	}
 }
 

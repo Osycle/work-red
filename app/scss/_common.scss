@@ -674,12 +674,15 @@ table {
 	}
 	&.reverse{
 		&:not([class*="bg-color"]){
-			background-color: $color-1;
+			background-color: white;
+			color: $color-1;
 			background-image: none;
 		}
 		&:not(.changecolor-none):hover{
-			background-color: darken($color-3, 10%);
-			background-image: linear-gradient( to left, $color-3, $color-2 );
+			background-color: $color-2;
+			color: white;
+			//background-color: darken($color-3, 10%);
+			//background-image: linear-gradient( to left, $color-3, $color-2 );
 		}
 	}
 	@media (max-width: 991px) {

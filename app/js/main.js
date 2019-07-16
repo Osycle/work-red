@@ -40,6 +40,14 @@
 				'<i class="icm icm-arrow-pointing-to-right"></i>'+
 			'</span>'
 		]
+		var owlBtnMin = [
+			'<span class="owl-btn previous">'+
+				'<i class="icm icm-arrow-pointing-to-right"></i>', 
+			'<span class="owl-btn next">'+
+				'<i class="icm icm-arrow-pointing-to-right"></i>'+
+			'</span>'
+		]
+
 
 		
 
@@ -60,6 +68,24 @@
 			navText : owlBtn,
 			margin: 22
 		});
+		$(".apartment-slider-items.owl-carousel").owlCarousel({
+			nav: checkSm(),
+			//items: 3,
+			dots: !checkSm(),
+			dotsEach: true,
+			autoplay: true,
+			mouseDrag: false,
+			touchDrag: true,
+			//pullDrag: false,
+			stagePadding: 0,
+			responsive:{
+				0:{items:1},
+				991:{items:1}
+			},
+			navText : owlBtnMin,
+			margin: 0
+		});
+
 		$(".specialists-items.owl-carousel").owlCarousel({
 			nav: true,
 			//items: 3,
