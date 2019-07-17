@@ -1800,18 +1800,26 @@ figcaption{
 
 .realty.intro{
 	height: 400px;
+	@media (max-width: 991px) {
+		height: 90vh;
+		height: calc(100vh - 70px);
+	}
 }
 .backrect{
 	color: black;
 	padding: 15px;
 	background-color: white;
-	min-width: 380px;
 	position: relative;
+	
 	@media (min-width: 992px) {
 		text-align: left;
+		min-width: 380px;
 		padding-left: 75px;
 	}
-
+	@media (max-width: 991px) {
+		text-align: center;
+		width: 100%;
+	}
 	.icm-price-tag-1{
 		font-size: 25px;
 		color: $color-gray-3;
@@ -2906,5 +2914,61 @@ html{
 	}
 	h2{
 		font-weight: 600;
+	}
+}
+
+
+
+
+
+//beside
+.beside-content{
+
+}
+.beside-nav{
+	a{
+		background-color: $color-gray-1;
+		border-radius: 10px;
+		font-size: em(13.5);
+		font-weight: 500;
+		color: $color-gray-3;
+		transition: all 0.3s ease;
+		padding: 5px 15px;
+	}
+	li{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		&.active{
+			a{
+				background-color: $color-1;
+				color: white;
+			}
+		}
+	}
+}
+.map-beside{
+	height: 500px;
+	@media (max-width: 991px){
+		height: 350px;
+	}
+}
+.beside-content{
+	.list-info-wrapper{
+		background-color: white;
+		padding: 10px 20px;
+		@extend .shadow-def;
+		@media (min-width: 992px) {
+			margin-top: 48px;
+			min-height: 500px;
+		}
+	}
+	.list{
+		overflow-y: auto;
+		max-height: 400px;
+		text-align: left;
+		li{
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
 	}
 }

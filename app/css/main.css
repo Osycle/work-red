@@ -7153,7 +7153,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -8162,9 +8162,11 @@ input[type="radio"]:checked ~ .radio-style-1, input[type="radio"]:checked ~ .rad
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap; }
 
-.header-logo img {
-  min-width: 170px;
+.header-logo {
   width: 170px; }
+  .header-logo img {
+    min-width: 170px;
+    width: 170px; }
 
 .header-scroll .header-top, .header-scroll .header-top-content, .header-scroll .header-logo img, .header-scroll .header-logo, .header-scroll .cabinet-panel {
   -webkit-transition: all 0.5s ease;
@@ -10190,17 +10192,26 @@ figcaption {
 
 .realty.intro {
   height: 400px; }
+  @media (max-width: 991px) {
+    .realty.intro {
+      height: 90vh;
+      height: -webkit-calc(100vh - 70px);
+      height: calc(100vh - 70px); } }
 
 .backrect {
   color: black;
   padding: 15px;
   background-color: white;
-  min-width: 380px;
   position: relative; }
   @media (min-width: 992px) {
     .backrect {
       text-align: left;
+      min-width: 380px;
       padding-left: 75px; } }
+  @media (max-width: 991px) {
+    .backrect {
+      text-align: center;
+      width: 100%; } }
   .backrect .icm-price-tag-1 {
     font-size: 25px;
     color: #666666; }
@@ -11106,6 +11117,47 @@ html .irs--flat .irs-handle {
     font-weight: 800; }
   .howmuch h2 {
     font-weight: 600; }
+
+.beside-nav a {
+  background-color: #ededed;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 0.96429em;
+  font-weight: 500;
+  color: #666666;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 5px 15px; }
+
+.beside-nav li {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .beside-nav li.active a {
+    background-color: #cc2527;
+    color: white; }
+
+.map-beside {
+  height: 500px; }
+  @media (max-width: 991px) {
+    .map-beside {
+      height: 350px; } }
+
+.beside-content .list-info-wrapper {
+  background-color: white;
+  padding: 10px 20px; }
+  @media (min-width: 992px) {
+    .beside-content .list-info-wrapper {
+      margin-top: 48px;
+      min-height: 500px; } }
+
+.beside-content .list {
+  overflow-y: auto;
+  max-height: 400px;
+  text-align: left; }
+  .beside-content .list li {
+    margin-top: 15px;
+    margin-bottom: 15px; }
 
 /* 
 		_footer.scss
