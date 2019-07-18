@@ -2972,3 +2972,74 @@ html{
 		}
 	}
 }
+
+
+
+
+.nav-style-1{
+	@extend .list-inline;
+	li{
+		display: inline-block;
+		a{
+			padding: 5px 10px;
+			background-color: $color-gray-2;
+			border-radius: 30px;
+			color: $color-gray-3;
+			font-weight: 500;
+			font-size: em(14);
+			display: inline-block;
+			transition: all 0.3s ease;
+		}
+		&.active{
+			a{
+				background-color: $color-1;
+				color: white;
+			}
+		}
+	}
+}
+
+//charts
+.charts{
+	z-index: 1;
+	position: relative;
+	margin-top: -600px;
+
+}
+.chart-wrapper{
+	background-color: white;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	.entry-header{
+		text-align: center;
+		//padding-top: 20px;
+		//padding-bottom: 20px;
+	}
+	.nav-style-1{
+		a{
+			min-width: 150px;
+		}
+	}
+}
+.charts-intro{
+	height: 900px;
+	.align-i-center{
+		align-items: flex-start;
+	}
+}
+.chart-div{
+	width: 100%; 
+	height: 220px;
+	position: relative;
+}
+// div.google-visualization-tooltip { 
+// 	//transform: rotate(30deg); 
+// 	background-color: $color-1;
+// 	border: none;
+// 	border-radius: 15px;
+// 	//top: 0 !important;
+// 	transform: translate(-75px, 0px);
+// 	*{
+// 		color: white !important;
+// 	}
+// }

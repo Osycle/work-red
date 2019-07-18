@@ -239,17 +239,17 @@
 
 
 			<!-- intro -->
-			<div class="intro height-fhd">
+			<div class="intro charts-intro">
 				<div class="intro-media">
-					<div class="img" style="background-image: url('img/slider/guide.jpg');"></div>
+					<div class="img" style="background-image: url('img/slider/charts.jpg');"></div>
 				</div>
 				<div class="intro-content">
 					<div class="align-i-center p-v-15">
 						<div class="container p-v-md">
 
 							<div class="entry-content h2-style-2 text-center">
-								<h2>6 месяцев бесплатной сдачи в аренду и управления недвижимостью</h2>
-								<p>Будьте первым через дверь недавно перечисленных домов</p>
+								<h2>Продай свой дом с REDD</h2>
+								<p>Лучшая цена в кратчайшие сроки Мы эксперты по продаже недвижимости в Ташкенте</p>
 							</div>
 							<div class="btn-def m-v-30">
 								<a href="request.html">Подать заявку</a>
@@ -262,7 +262,21 @@
 
 			<div class="charts">
 				<div class="container p-v-md m-v-30">
-					<div id="chart_div" style="width: 100%; height: 500px;"></div>
+					<div class="chart-wrapper col-md-9 p-h-15">
+						<div class="entry-header">
+							<h4>Шкала с нашими результами</h4>
+						</div>
+						<ul class="nav-style-1 text-center m-v-10 nav">
+							<li><a href="#chart_new_b" data-toggle="tab">Новостройки</a></li>
+							<li class="active"><a href="#chart_old_b" data-toggle="tab">Вторичка</a></li>
+							<li><a href="#chart_business_b" data-toggle="tab">Для бизнеса</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="chart_new_b" class="chart-div tab-pane fade in active"></div>
+							<div id="chart_old_b" class="chart-div tab-pane fade"></div>
+							<div id="chart_business_b" class="chart-div tab-pane fade"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -411,31 +425,73 @@
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Month', 'Expenses'],
-        ['Янв', 20],
-        ['Фев', 22],
-        ['Мар', 25],
-        ['Апр', 19],
-        ['Май', 30],
-        ['Июнь', 28],
-        ['Июль', 13],
-        ['Авг', 18],
-        ['Сен', 40],
-        ['Окт', 35],
-        ['Ноя', 38],
-        ['Дек', 20]
-      ]);
+
+    	var salesYearNewB = [
+        ['Месяцев', 'Квартир'],
+        ['Янв', 30],
+        ['Фев', 35],
+        ['Мар', 45],
+        ['Апр', 30],
+        ['Май', 60],
+        ['Июнь', 55],
+        ['Июль', 68],
+        ['Авг', 40],
+        ['Сен', 36],
+        ['Окт', 20],
+        ['Ноя', 28],
+        ['Дек', 40]
+      ]
+      var salesYearOldB = [
+        ['Месяцев', 'Квартир'],
+        ['Янв', 15],
+        ['Фев', 25],
+        ['Мар', 24],
+        ['Апр', 65],
+        ['Май', 50],
+        ['Июнь', 30],
+        ['Июль', 28],
+        ['Авг', 90],
+        ['Сен', 80],
+        ['Окт', 76],
+        ['Ноя', 62],
+        ['Дек', 50]
+      ]
+      var salesYearBusiness = [
+        ['Месяцев', 'Квартир'],
+        ['Янв', 10],
+        ['Фев', 15],
+        ['Мар', 12],
+        ['Апр', 6],
+        ['Май', 23],
+        ['Июнь', 33],
+        ['Июль', 22],
+        ['Авг', 23],
+        ['Сен', 12],
+        ['Окт', 29],
+        ['Ноя', 32],
+        ['Дек', 40]
+      ]
+
+
 
       var options = {
-        //title: 'Company Performance',
-        auraColor: '#d799ae',
-        hAxis: {title: 'Year',  titleTextStyle: {color: '#666'}},
-        vAxis: {minValue: 0}
+        legend: { position: 'none' },
+        vAxis: {minValue: 100},
+        colors: ['#cc2527', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
+        chartArea: {left:40,top:10,width:'100%'},
       };
+      $(".chart-wrapper a").on("click", function(){
+      	setTimeout(function(){
 
-      var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
+      	var chart = new google.visualization.AreaChart(document.getElementById('chart_new_b'));
+      	chart.draw(google.visualization.arrayToDataTable(salesYearNewB), options);
+      	var chart = new google.visualization.AreaChart(document.getElementById('chart_old_b'));
+      	chart.draw(google.visualization.arrayToDataTable(salesYearOldB), options);
+      	var chart = new google.visualization.AreaChart(document.getElementById('chart_business_b'));
+      	chart.draw(google.visualization.arrayToDataTable(salesYearBusiness), options);
+      }, 300)
+
+      })
     }
   </script>
 </body>
