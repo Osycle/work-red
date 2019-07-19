@@ -3004,20 +3004,30 @@ html{
 	z-index: 1;
 	position: relative;
 	margin-top: -600px;
-
+	.wrapper{
+		background-color: white;
+		padding: 15px 30px;
+	}
 }
 .chart-wrapper{
-	background-color: white;
-	padding-top: 15px;
-	padding-bottom: 15px;
 	.entry-header{
 		text-align: center;
-		//padding-top: 20px;
-		//padding-bottom: 20px;
 	}
 	.nav-style-1{
+		margin-top: 15px;
+		margin-bottom: 30px;
 		a{
 			min-width: 150px;
+		}
+	}
+	.tab-content{
+		position: relative;
+		height: 250px;
+		.chart-div{
+			&.active{
+				pointer-events: auto;
+				opacity: 1;
+			}
 		}
 	}
 }
@@ -3027,19 +3037,75 @@ html{
 		align-items: flex-start;
 	}
 }
-.chart-div{
-	width: 100%; 
-	height: 220px;
-	position: relative;
+.chart-title{
+	text-align: center;
 }
-// div.google-visualization-tooltip { 
-// 	//transform: rotate(30deg); 
-// 	background-color: $color-1;
-// 	border: none;
-// 	border-radius: 15px;
-// 	//top: 0 !important;
-// 	transform: translate(-75px, 0px);
-// 	*{
-// 		color: white !important;
-// 	}
-// }
+.chart-div{
+	display: block;
+	width: 100%; 
+	pointer-events: none;
+	height: inherit;
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	transition: all 1s ease;
+}
+.chart-result{
+	.wrapper{
+		@media (min-width: 992px) {
+			min-height: 433px;
+		}
+	}
+}
+.chart-result-accordion{
+	.panel-body{
+		font-size: 0.9em;
+	}
+	.accordion-def .panel-default .panel-title a{
+		padding: 10px 10px;
+		padding-right: 35px;
+		font-size: 0.9em;
+	}
+	.accordion-def .panel-default .panel-heading{
+		background-color: transparent;
+		border-radius: 0;
+	}
+	.accordion-def .panel-default .panel-heading .fa{
+	  top: 15px;
+	  right: 7px;
+	}
+}
+.helplink{
+	.item-wrapper{
+		padding: 15px 30px;
+		background-color: white;
+		@extend .shadow-def;
+		height: 285px;
+		overflow: hidden;
+	}
+
+	.item{
+		&:nth-child(2){
+			text-align: center;
+			.item-wrapper{
+				padding-top: 30px;
+			}
+		}
+	}
+	h2{
+		text-transform: uppercase;
+		font-family: $font-family-1;
+	}
+	a{
+    text-transform: uppercase;
+    color: $color-1;
+    display: inline-block;
+    padding: 23px 0;
+    position: absolute;
+    bottom: 0;
+    //width: calc(100% - 30px);
+    //left: 15px;
+    background-color: white;
+
+	}
+}
