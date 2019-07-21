@@ -2996,6 +2996,10 @@ html{
 				color: white;
 			}
 		}
+		@media (max-width: 991px){
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
 	}
 }
 
@@ -3007,6 +3011,9 @@ html{
 	.wrapper{
 		background-color: white;
 		padding: 15px 30px;
+	}
+	@media (max-width: 991px) {
+		margin-top: -670px;
 	}
 }
 .chart-wrapper{
@@ -3082,13 +3089,29 @@ html{
 		@extend .shadow-def;
 		height: 285px;
 		overflow: hidden;
+		position: relative;
 	}
-
+	.btn-def{
+		a{
+			padding: 12px 15px;
+		}
+		.icm{
+			margin-right: 15px;
+		}
+		@media (min-width: 992px){
+			margin-top: 30px;
+		}
+	}
 	.item{
 		&:nth-child(2){
 			text-align: center;
 			.item-wrapper{
 				padding-top: 30px;
+				.link{
+					display: block;
+					width: 100%;
+					left: 0;
+				}
 			}
 		}
 	}
@@ -3096,7 +3119,7 @@ html{
 		text-transform: uppercase;
 		font-family: $font-family-1;
 	}
-	a{
+	.link{
     text-transform: uppercase;
     color: $color-1;
     display: inline-block;
@@ -3107,5 +3130,15 @@ html{
     //left: 15px;
     background-color: white;
 
+	}
+}
+.chart-items{
+	@extend .shadow-def;
+}
+svg{
+	g{
+		g{
+
+		}
 	}
 }

@@ -7153,7 +7153,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -11176,6 +11176,10 @@ html .irs--flat .irs-handle {
   .nav-style-1 li.active a {
     background-color: #cc2527;
     color: white; }
+  @media (max-width: 991px) {
+    .nav-style-1 li {
+      margin-top: 10px;
+      margin-bottom: 10px; } }
 
 .charts {
   z-index: 1;
@@ -11184,6 +11188,9 @@ html .irs--flat .irs-handle {
   .charts .wrapper {
     background-color: white;
     padding: 15px 30px; }
+  @media (max-width: 991px) {
+    .charts {
+      margin-top: -670px; } }
 
 .chart-wrapper .entry-header {
   text-align: center; }
@@ -11249,18 +11256,33 @@ html .irs--flat .irs-handle {
   padding: 15px 30px;
   background-color: white;
   height: 285px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
+
+.helplink .btn-def a {
+  padding: 12px 15px; }
+
+.helplink .btn-def .icm {
+  margin-right: 15px; }
+
+@media (min-width: 992px) {
+  .helplink .btn-def {
+    margin-top: 30px; } }
 
 .helplink .item:nth-child(2) {
   text-align: center; }
   .helplink .item:nth-child(2) .item-wrapper {
     padding-top: 30px; }
+    .helplink .item:nth-child(2) .item-wrapper .link {
+      display: block;
+      width: 100%;
+      left: 0; }
 
 .helplink h2 {
   text-transform: uppercase;
   font-family: "Montserrat"; }
 
-.helplink a {
+.helplink .link {
   text-transform: uppercase;
   color: #cc2527;
   display: inline-block;

@@ -345,24 +345,68 @@
 								<div class="item-wrapper">
 									<h4>Как REDD поможет вам в продаже?</h4>
 									<p data-text-limit="190">В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-									<a href=""><b>Узнать подробнее </b></a>
+									<a href="" class="link"><b>Узнать подробнее </b></a>
 								</div>
 							</div>
 							<div class="item col-md-4 m-v-30 p-h-15">
 								<div class="item-wrapper">
 									<h4>Для продавцов</h4>
 									<h2 class="color-1">Мой REDD</h2>
-									<a href=""><b>Узнать подробнее </b></a>
+									<div class="text-center">
+										<span class="btn-def">
+											<a href="signin.html"><i class="icm icm-user"></i>Войти в личный кабинет</a>
+										</span>
+										<a href="" class="link"><b>Узнать подробнее </b></a>
+									</div>
 								</div>
 							</div>
 							<div class="item col-md-4 m-v-30 p-h-15">
 								<div class="item-wrapper">
 									<h4>Как REDD поможет вам в продаже?</h4>
 									<p data-text-limit="190">В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-									<a href=""><b>Узнать подробнее </b></a>
+									<a href="" class="link"><b>Узнать подробнее </b></a>
 								</div>
 							</div>
 						</div>
+
+
+					</div>
+					<div class="chart-items text-item rect-def-chess reverse m-v-30">
+						<figure class="rect-def">
+							<div class="wrapper-flex">
+								<div class="img-content">
+									<div class="img" style="background-image: url('img/other/chart-items-1.jpg');"></div>
+								</div>
+								<div class="desc-content p-min">
+									<h4>Магнит для пользователей</h4>
+									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								</div>
+							</div>
+						</figure>
+						<figure class="rect-def">
+							<div class="wrapper-flex">
+								<div class="img-content">
+									<div class="img" style="background-image: url('img/other/chart-items-2.jpg');"></div>
+								</div>
+								<div class="desc-content p-min">
+									<h4>Маркетинговая обещание</h4>
+									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								</div>
+							</div>
+						</figure>
+						<figure class="rect-def">
+							<div class="wrapper-flex">
+								<div class="img-content">
+									<div class="img" style="background-image: url('img/other/chart-items-3.jpg');"></div>
+								</div>
+								<div class="desc-content p-min">
+									<h4>Уникальная сеть поддержки</h4>
+									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								</div>
+							</div>
+						</figure>
+
+
 					</div>
 
 				</div>
@@ -564,9 +608,36 @@
 
       var options = {
         legend: { position: 'none' },
-        vAxis: {minValue: 100},
-        isStacked: true,
-        chartArea: {left:"7%",top:20,width:'86%', height:'75%'},
+        isStacked: false,
+        //orientation: "vertical",
+        // explorer: {
+        // 	axis: 'vertical'
+        // },
+        crosshair:{
+        	orientation: "vertical"
+        },
+
+
+        hAxis:{
+        	baseline: true,
+        	baselineColor: "blue",
+        	gridlines: {color: '#00f', count: 5},
+        	minorGridlines: {color: '#0f0', count: 5},
+        	//logscale: true,
+        	direction: 1
+        },
+        vAxis: {
+        	minValue: 100,
+        	gridlines: {color: '#d1d1d1', count: -1},
+        	//minorGridlines: {color: '#0f0', count: 5},
+        	direction: 1
+        },
+        chartArea: {
+        	left:"7%",
+        	top:20,
+        	width:'86%', 
+        	height:'75%'
+        },
         colors: ['#cc2527', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
       };
 
