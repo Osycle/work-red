@@ -3098,11 +3098,11 @@ ol {
   padding-left: 0;
   list-style: none; }
 
-.list-inline {
+.list-inline, .nav-style-1 {
   padding-left: 0;
   list-style: none;
   margin-left: -5px; }
-  .list-inline > li {
+  .list-inline > li, .nav-style-1 > li {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px; }
@@ -7153,7 +7153,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -11158,6 +11158,138 @@ html .irs--flat .irs-handle {
   .beside-content .list li {
     margin-top: 15px;
     margin-bottom: 15px; }
+
+.nav-style-1 li {
+  display: inline-block; }
+  .nav-style-1 li a {
+    padding: 5px 10px;
+    background-color: #f5f5f5;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    color: #666666;
+    font-weight: 500;
+    font-size: 1em;
+    display: inline-block;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+  .nav-style-1 li.active a {
+    background-color: #cc2527;
+    color: white; }
+  @media (max-width: 991px) {
+    .nav-style-1 li {
+      margin-top: 10px;
+      margin-bottom: 10px; } }
+
+.charts {
+  z-index: 1;
+  position: relative;
+  margin-top: -600px; }
+  .charts .wrapper {
+    background-color: white;
+    padding: 15px 30px; }
+  @media (max-width: 991px) {
+    .charts {
+      margin-top: -670px; } }
+
+.chart-wrapper .entry-header {
+  text-align: center; }
+
+.chart-wrapper .nav-style-1 {
+  margin-top: 15px;
+  margin-bottom: 30px; }
+  .chart-wrapper .nav-style-1 a {
+    min-width: 150px; }
+
+.chart-wrapper .tab-content {
+  position: relative;
+  height: 250px; }
+  .chart-wrapper .tab-content .chart-div.active {
+    pointer-events: auto;
+    opacity: 1; }
+
+.charts-intro {
+  height: 900px; }
+  .charts-intro .align-i-center {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start; }
+
+.chart-title {
+  text-align: center; }
+
+.chart-div {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  height: inherit;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease; }
+
+@media (min-width: 992px) {
+  .chart-result .wrapper {
+    min-height: 433px; } }
+
+.chart-result-accordion .panel-body {
+  font-size: 0.9em; }
+
+.chart-result-accordion .accordion-def .panel-default .panel-title a {
+  padding: 10px 10px;
+  padding-right: 35px;
+  font-size: 0.9em; }
+
+.chart-result-accordion .accordion-def .panel-default .panel-heading {
+  background-color: transparent;
+  -webkit-border-radius: 0;
+  border-radius: 0; }
+
+.chart-result-accordion .accordion-def .panel-default .panel-heading .fa {
+  top: 15px;
+  right: 7px; }
+
+.helplink .item-wrapper {
+  padding: 15px 30px;
+  background-color: white;
+  height: 285px;
+  overflow: hidden;
+  position: relative; }
+
+.helplink .btn-def a {
+  padding: 12px 15px; }
+
+.helplink .btn-def .icm {
+  margin-right: 15px; }
+
+@media (min-width: 992px) {
+  .helplink .btn-def {
+    margin-top: 30px; } }
+
+.helplink .item:nth-child(2) {
+  text-align: center; }
+  .helplink .item:nth-child(2) .item-wrapper {
+    padding-top: 30px; }
+    .helplink .item:nth-child(2) .item-wrapper .link {
+      display: block;
+      width: 100%;
+      left: 0; }
+
+.helplink h2 {
+  text-transform: uppercase;
+  font-family: "Montserrat"; }
+
+.helplink .link {
+  text-transform: uppercase;
+  color: #cc2527;
+  display: inline-block;
+  padding: 23px 0;
+  position: absolute;
+  bottom: 0;
+  background-color: white; }
 
 /* 
 		_footer.scss

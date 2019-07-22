@@ -19,37 +19,6 @@
 </head>
 
 <body>
-
-	<!-- Скрытые поля -->
-	<div class="hide">
-		<div class="form-def" id="form_request">
-			<div class="form-block m-auto color-black text-left">
-				<form class="clearfix">
-					<div class="row">
-						<div class="input-content m-v-10 p-h-15 col-md-12">
-							<label>Ваше имя:<input type="" name="" class="form-control"></label>
-						</div>
-						<div class="input-content m-v-10 p-h-15 col-md-12">
-							<label>Фамилия:<input type="" name="" class="form-control"></label>
-						</div>
-						<div class="input-content m-v-10 p-h-15 col-md-12">
-							<label>Номер телефона:<input type="" name="" class="form-control"></label>
-						</div>
-						<div class="input-content m-v-10 p-h-15 col-md-12">
-							<label>E-mail:<input type="" name="" class="form-control"></label>
-						</div>
-						<div class="btn-content m-v-15 p-h-15 col-md-12 text-center">
-							<span class="btn-def">
-								<button type="submit" class="p-h-60">Отправить</button>
-							</span>
-						</div>
-					</div>
-
-				</form>
-			</div>
-		</div>
-	</div>
-
 	<div id="page">
 
 
@@ -270,90 +239,176 @@
 
 
 			<!-- intro -->
-			<div class="intro realty">
+			<div class="intro charts-intro">
 				<div class="intro-media">
-					<div class="img" style="background-image: url('img/slider/realty.jpg');"></div>
+					<div class="img" style="background-image: url('img/slider/charts.jpg');"></div>
 				</div>
 				<div class="intro-content">
 					<div class="align-i-center p-v-15">
-						<div class="backrect">
-							<a href="">
-								<i class="icm icm-left-arrow-min"></i>
-								<h4>Название квартира</h4>
-								<p><i class="icm icm-price-tag-1"></i> <span class="price">75 000$</span></p>							
-							</a>
+						<div class="container p-v-md">
+
+							<div class="entry-content h2-style-2 text-center">
+								<h2>Продай свой дом с REDD</h2>
+								<p>Лучшая цена в кратчайшие сроки Мы эксперты по продаже недвижимости в Ташкенте</p>
+							</div>
+							<div class="btn-def m-v-30">
+								<a href="request.html">Подать заявку</a>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="realty-nav">
-				<div class="container">
-					<div class="flex-adaptive">
-						<div class="item">
-							<a href=""><i class="icm icm-gallery p-r-10"></i> <span class="va-middle">все фотографии</span></a>
-						</div>
-						<div class="item">
-							<a href=""><i class="icm icm-map p-r-10"></i> <span class="va-middle">на карте</span></a>
-						</div>
-						<div class="item active">
-							<a href=""><i class="icm icm-college-graduation p-r-10"></i> <span class="va-middle">школы и вузы</span></a>
-						</div>
-						<div class="item">
-							<a href=""><i class="icm icm-front-bus p-r-10"></i> <span class="va-middle">транспорт</span></a>
-						</div>
-						<div class="item share">
-							<a href=""><i class="icm icm-share p-r-10"></i> <span class="va-middle">Поделиться</span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-			<div class="beside">
-				<div class="container">
-					<div class="realty-panel m-v-30">
-						<div class="flex-adaptive parag-gray">
-							<div class="align-center box-md-7">
-								<div class="btn-def">
-									<a href="javascript:;" data-src="#form_request" data-fancybox>Оставить заявку</a>
+			<div class="charts">
+				<div class="container p-v-md m-v-30">
+					<div class="row">
+						<div class="chart-wrapper col-md-9 p-h-15">
+							<div class="wrapper">
+								<div class="entry-header">
+									<h4>Шкала с нашими результами</h4>
 								</div>
-								<div class="phone-content">
-									<p>
-										Или позвоните на: <strong class="m-h-15 color-1"><big>+998 (90) 000-00-00</big></strong>
-									</p>
+								<ul class="nav-style-1 text-center m-v-10 nav">
+									<li><a href="#chart_new_b" data-toggle="tab">Новостройки</a></li>
+									<li class="active"><a href="#chart_old_b" data-toggle="tab">Вторичка</a></li>
+									<li><a href="#chart_business_b" data-toggle="tab">Для бизнеса</a></li>
+								</ul>
+								<div class="tab-content">
+									<div id="chart_new_b" class="chart-div"></div>
+									<div id="chart_old_b" class="chart-div in active"></div>
+									<div id="chart_business_b" class="chart-div"></div>
+								</div>
+								<div class="chart-title">
+									<h4>За год</h4>
 								</div>
 							</div>
-							<div class="btn-save align-center justify-c-end box-md-4">
-								<p>
-									<a href="">Сохранить в мой REDD <i class="icm icm-favorite-heart-button p-l-10"></i></a>
-								</p>
+						</div>
+						<div class="chart-result col-md-3 p-h-15">
+							<div class="wrapper">
+								<h4>Шкала с нашими результами</h4>
+								<div class="chart-result-accordion">
+										<div class="accordion-def panel-group m-v-30" id="accordion-1" role="tablist" aria-multiselectable="true">
+
+										  <div class="panel panel-default">
+										    <div class="panel-heading">
+										      <h4 class="panel-title">
+										        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-1" href="#result-type-1" aria-expanded="false">
+										        	Новостройки<i class="fa fa-caret-up"></i>
+										        </a>
+										      </h4>
+										    </div>
+										    <div id="result-type-1" class="panel-collapse collapse" role="tabpanel">
+										      <div class="panel-body text-left p-v-10">
+														<p>За месяц: <b class="color-1">56 шт</b></p>
+														<p>За год: <b class="color-1">445 шт</b></p>
+										      </div>
+										    </div>
+										  </div>
+										  <div class="panel panel-default">
+										    <div class="panel-heading">
+										      <h4 class="panel-title">
+										        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-1" href="#result-type-2" aria-expanded="false">
+										        	Вторичные дома<i class="fa fa-caret-up"></i>
+										        </a>
+										      </h4>
+										    </div>
+										    <div id="result-type-2" class="panel-collapse collapse" role="tabpanel">
+										      <div class="panel-body text-left p-v-10">
+														<p>За месяц: <b class="color-1">56 шт</b></p>
+														<p>За год: <b class="color-1">445 шт</b></p>
+										      </div>
+										    </div>
+										  </div>
+										  <div class="panel panel-default">
+										    <div class="panel-heading">
+										      <h4 class="panel-title">
+										        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-1" href="#result-type-3" aria-expanded="false">
+										        	Для бизнеса<i class="fa fa-caret-up"></i>
+										        </a>
+										      </h4>
+										    </div>
+										    <div id="result-type-3" class="panel-collapse collapse" role="tabpanel">
+										      <div class="panel-body text-left p-v-10">
+														<p>За месяц: <b class="color-1">56 шт</b></p>
+														<p>За год: <b class="color-1">445 шт</b></p>
+										      </div>
+										    </div>
+										  </div>
+
+										</div>
+								</div>
 							</div>
 						</div>
-					</div>
 
-
-
-					<div class="beside-content">
-						<div class="beside-nav">
-							<ul class="list-inline">
-								<li data-toggle="tab"><a href="javascript:;" data-type="kindergarten">Детский сад</a></li>
-								<li data-toggle="tab"><a href="javascript:;" data-type="schools">Школы</a></li>
-								<li data-toggle="tab"><a href="javascript:;" data-type="universities">ВУЗы</a></li>
-							</ul>
+						<div class="helplink">
+							<div class="item col-md-4 m-v-30 p-h-15">
+								<div class="item-wrapper">
+									<h4>Как REDD поможет вам в продаже?</h4>
+									<p data-text-limit="190">В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+									<a href="" class="link"><b>Узнать подробнее </b></a>
+								</div>
+							</div>
+							<div class="item col-md-4 m-v-30 p-h-15">
+								<div class="item-wrapper">
+									<h4>Для продавцов</h4>
+									<h2 class="color-1">Мой REDD</h2>
+									<div class="text-center">
+										<span class="btn-def">
+											<a href="signin.html"><i class="icm icm-user"></i>Войти в личный кабинет</a>
+										</span>
+										<a href="" class="link"><b>Узнать подробнее </b></a>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-4 m-v-30 p-h-15">
+								<div class="item-wrapper">
+									<h4>Как REDD поможет вам в продаже?</h4>
+									<p data-text-limit="190">В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+									<a href="" class="link"><b>Узнать подробнее </b></a>
+								</div>
+							</div>
 						</div>
-						<div class="map-beside m-v-10" id="map-beside"></div>
+
+
+					</div>
+					<div class="chart-items text-item rect-def-chess reverse m-v-30">
+						<figure class="rect-def">
+							<div class="wrapper-flex">
+								<div class="img-content">
+									<div class="img" style="background-image: url('img/other/chart-items-1.jpg');"></div>
+								</div>
+								<div class="desc-content p-min">
+									<h4>Магнит для пользователей</h4>
+									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								</div>
+							</div>
+						</figure>
+						<figure class="rect-def">
+							<div class="wrapper-flex">
+								<div class="img-content">
+									<div class="img" style="background-image: url('img/other/chart-items-2.jpg');"></div>
+								</div>
+								<div class="desc-content p-min">
+									<h4>Маркетинговая обещание</h4>
+									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								</div>
+							</div>
+						</figure>
+						<figure class="rect-def">
+							<div class="wrapper-flex">
+								<div class="img-content">
+									<div class="img" style="background-image: url('img/other/chart-items-3.jpg');"></div>
+								</div>
+								<div class="desc-content p-min">
+									<h4>Уникальная сеть поддержки</h4>
+									<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров. В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+								</div>
+							</div>
+						</figure>
+
+
 					</div>
 
-					<div class="link-content flex-adaptive align-i-center justify-c-between">
-						<p class="p-r-offset">Позвоните в <b class="color-1">REDD</b> по телефону <b class="color-1">+998 90 000-00-00</b>, чтобы просмотреть или <a href=""><u>договориться о встрече</u></a></p>
-						<span class="btn-def m-v-10">
-							<a href="">Оставить заявку</a>
-						</span>
-					</div>
-
-					<br><br><br>
 				</div>
 			</div>
 
@@ -496,161 +551,105 @@
 	<!-- SCRIPTS -->
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+    	var salesYearNewB = [
+        ['Месяцев', 'Квартир'],
+        ['Янв', 30],
+        ['Фев', 35],
+        ['Мар', 45],
+        ['Апр', 30],
+        ['Май', 60],
+        ['Июнь', 55],
+        ['Июль', 68],
+        ['Авг', 40],
+        ['Сен', 36],
+        ['Окт', 20],
+        ['Ноя', 28],
+        ['Дек', 40]
+      ]
+      var salesYearOldB = [
+        ['Месяцев', 'Квартир'],
+        ['Янв', 15],
+        ['Фев', 25],
+        ['Мар', 24],
+        ['Апр', 65],
+        ['Май', 50],
+        ['Июнь', 30],
+        ['Июль', 28],
+        ['Авг', 90],
+        ['Сен', 80],
+        ['Окт', 76],
+        ['Ноя', 62],
+        ['Дек', 50]
+      ]
+      var salesYearBusiness = [
+        ['Месяцев', 'Квартир'],
+        ['Янв', 10],
+        ['Фев', 15],
+        ['Мар', 12],
+        ['Апр', 6],
+        ['Май', 23],
+        ['Июнь', 33],
+        ['Июль', 22],
+        ['Авг', 23],
+        ['Сен', 12],
+        ['Окт', 29],
+        ['Ноя', 32],
+        ['Дек', 40]
+      ]
 
 
-		  var mapOffices;
-		  var marker;
-		  var typeLink = ".beside-nav a";
-		  var mainLocation = ["41.313322", "69.267683"] // Оснавная локация
-	    function initialize() {
-	    	
-	      var mapOptions = {
-	        mapTypeId: google.maps.MapTypeId.ROADMAP,
-	        mapTypeControl: true,
-	        zoom: 12,
-	        zoomControl: true,
-	        zoomControlOptions: {
-	          style: google.maps.ZoomControlStyle.DEFAULT,
-	          position: google.maps.ControlPosition.DEFAULT
-	        },
-	        panControl: true,
-	        panControlOptions: {
-	          position: google.maps.ControlPosition.LEFT_TOP
-	        },
-	        streetViewControl: true,
-	        scaleControl: true,
-	        overviewMapControl: true,
-	        center: new google.maps.LatLng(mainLocation[0], mainLocation[1])
-	      };
+
+      var options = {
+        legend: { position: 'none' },
+        isStacked: false,
+        //orientation: "vertical",
+        // explorer: {
+        // 	axis: 'vertical'
+        // },
+        crosshair:{
+        	orientation: "vertical"
+        },
 
 
-	      mapContainer = document.getElementById('map-beside') || null;
-	      if( !mapContainer ) 
-	      	return;
+        hAxis:{
+        	baseline: true,
+        	baselineColor: "blue",
+        	gridlines: {color: '#00f', count: 5},
+        	minorGridlines: {color: '#0f0', count: 5},
+        	//logscale: true,
+        	direction: 1
+        },
+        vAxis: {
+        	minValue: 100,
+        	gridlines: {color: '#d1d1d1', count: -1},
+        	//minorGridlines: {color: '#0f0', count: 5},
+        	direction: 1
+        },
+        chartArea: {
+        	left:"7%",
+        	top:20,
+        	width:'86%', 
+        	height:'75%'
+        },
+        colors: ['#cc2527', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+      };
 
 
-	      mapOffices = new google.maps.Map(mapContainer, mapOptions);
-	     	mapOffices.setOptions({
-	        //styles: mapStyles,
-	        disableDefaultUI: true
-	      });
+    		var chart = new google.visualization.AreaChart(document.getElementById('chart_new_b'));
+    		chart.draw(google.visualization.arrayToDataTable(salesYearNewB), options);
+    		var chart = new google.visualization.AreaChart(document.getElementById('chart_old_b'));
+    		chart.draw(google.visualization.arrayToDataTable(salesYearOldB), options);
+    		var chart = new google.visualization.AreaChart(document.getElementById('chart_business_b'));
+    		chart.draw(google.visualization.arrayToDataTable(salesYearBusiness), options);
 
-        window.infowindow = new google.maps.InfoWindow();
-        
-
-        var mainMarkerContent = '<div class="mapblock">Название квартиры</div>' // Контент главного маркера
-
-		    var locations = [
-			    {
-			    	latLng: [ 41.297965, 69.266671 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №145 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.291083, 69.267683 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №140 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.292850, 69.226217 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №140 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.364364, 69.286961 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №140 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.314669, 69.284508 ],
-			    	type: 'universities',
-			    	content: '<div class="mapblock">Ташкентский государственный технический университет</div>'
-			    },
-			    {
-			    	latLng: [ 41.319347, 69.275846 ],
-			    	type: 'universities',
-			    	content: '<div class="mapblock">Ташкентский государственный технический университет</div>'
-			    },
-			    {
-			    	latLng: [ 41.273406, 69.229753 ],
-			    	type: 'universities',
-			    	content: '<div class="mapblock">Ташкентский государственный технический университет</div>'
-			    },
-			    {
-			    	latLng: [ 41.285219, 69.271178 ],
-			    	type: 'kindergarten',
-			    	content: '<div class="mapblock">ДЕТСКИЙ САД №197</div>'
-			    },
-			    {
-			    	latLng: [ 41.286067, 69.317706 ],
-			    	type: 'kindergarten',
-			    	content: '<div class="mapblock">ДЕТСКИЙ САД №50</div>'
-			    }
-
-		    ]
-        window.officesMarkers = [];
-       for (i = 0; i < locations.length; i++) {
-          marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i].latLng[0], locations[i].latLng[1]),
-		        map: mapOffices,
-		        item: i,
-		        type: locations[i].type,
-		        icon: "img/icons/marker-offices-2-min.png",
-		        title: 'marker'
-          });
-          officesMarkers.push(marker);
-          google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-              infowindow.setContent(locations[i].content);
-              infowindow.open(mapOffices, marker);
-            }
-          })(marker, i));
-        }
-
-        var mainMarker = new google.maps.Marker({
-          position: new google.maps.LatLng(mainLocation[0], mainLocation[1]),
-	        map: mapOffices,
-	        icon: "img/icons/marker-green.png",
-	        title: 'marker'
-        });
-        google.maps.event.addListener(mainMarker, 'click', (function (marker, i) {
-          return function () {
-            infowindow.setContent(mainMarkerContent);
-            infowindow.open(mapOffices, mainMarker);
-          }
-        })(marker, i));
-
-	    }
-	    initialize();
-	    google.maps.event.addDomListener(window, 'load', initialize);
-
-
-        //Клик по блоку
-				$(document).on("click", typeLink, function(){
-					var that = $(this);
-					var index = that.index();
-					var type = that.attr("data-type").toLowerCase();
-					for (var i = 0; i < officesMarkers.length; i++) {
-						if( officesMarkers[i].type.toLowerCase() != type){
-							officesMarkers[i].setVisible(false);
-							console.log(officesMarkers[i].type.toLowerCase(), type);
-						}
-						else{
-							officesMarkers[i].setVisible(true);
-						}
-					}
-				})
-
-	    function checkResize() {
-	      var center = mapOffices.getCenter();
-	      google.maps.event.trigger(mapOffices, 'resize');
-	      mapOffices.setCenter(center);
-	    }
-
-	    window.onresize = checkResize;
-	  
+    }
   </script>
 </body>
 
