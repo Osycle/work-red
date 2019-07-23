@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="stylesheet" href="css/plugins.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/additional.css">
+	<title>Title</title>
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  <script type="text/javascript">
+    var map;
+    var service;
+    var infowindow;
+
+    function initMap() {
+      var sydney = new google.maps.LatLng(-33.867, 151.195);
+
+      infowindow = new google.maps.InfoWindow();
+
+      map = new google.maps.Map(
+          document.getElementById('map-beside'), {center: sydney, zoom: 15});
+
+      var request = {
+        query: 'Museum of Contemporary Art Australia',
+        fields: ['name', 'geometry'],
+      };
+
+      service = new google.maps.places.PlacesService(map);
+
+      service.findPlaceFromQuery(request, function(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+
+          map.setCenter(results[0].geometry.location);
+        }
+      });
+    }
+
+    function createMarker(place) {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+      });
+    }
+		//initMap();
+	    function initialize() {
+	    	
+
+	      mapContainer = document.getElementById('map-beside') || null;
+	      if( !mapContainer ) 
+	      	return;
+
+
+	    }
+	    initialize();
+
+
+
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag&libraries=places&callback=initMap" async defer></script>
+</head>
+
+<body>
+
+	<!-- Скрытые поля -->
+	<div class="hide">
+		<div class="form-def" id="form_request">
+			<div class="form-block m-auto color-black text-left">
+				<form class="clearfix">
+					<div class="row">
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Ваше имя:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Фамилия:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Номер телефона:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>E-mail:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="btn-content m-v-15 p-h-15 col-md-12 text-center">
+							<span class="btn-def">
+								<button type="submit" class="p-h-60">Отправить</button>
+							</span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="page">
+
+
+		<!-- HEADER -->
+		<div class="header-hidden"></div>
+		<header id="header" class="hidden-sm hidden-xs header-scroll" data-aos="fade">
+
+			<!-- HEADER TOP -->
+			<div class="header-top">
+
+				<div class="p-h-15 relative">
+
+					<div class="row">
+
+						<div class="header-top-content">
+
+							<div class="header-logo p-h-15">
+								<a href="index.html" title="">
+									<img src="img/logo.png" alt="">
+								</a>
+							</div>
+							<div class="bargain-menu">
+								<ul>
+									<li><label for="megamenu_1">Купить</label></label><i class="fa fa-caret-down"></i></li>
+									<li><label for="megamenu_2">Продать</label><i class="fa fa-caret-down"></i></li>
+									<li><label for="megamenu_3">Снять</label><i class="fa fa-caret-down"></i></li>
+									<li><label for="megamenu_4">Сдать</label><i class="fa fa-caret-down"></i></li>
+								</ul>
+							</div>
+							<div class="menu p-h-15">
+								<nav>
+									<li class="linkyet-hover">
+										<div class="linkyet"><span>Ещё</span><i class="fa fa-caret-down"></i></div>
+											<ul>
+												<li><a href="torent.html">Арендодателям и продавцам</a></li>
+												<li><a href="">Средняя стоимость недвижимости</a></li>
+												<li><a href="team.html">О компании</a></li>
+												<li><a href="">Оценка имущества</a></li>
+											</ul>
+									</li>
+								</nav>
+							</div>
+
+							<div class="header-signin p-h-15">
+								<div class="btn-sign">
+									<a href="signin.html"><i class="icm icm-user"></i><span class="va-middle">Войти</span></a>
+								</div>
+							</div>
+
+							<div class="header-lang p-h-15">
+								<input type="checkbox" class="hide" id="langlist">
+								<label for="langlist" role="button">
+									<p><span class="p-r-5">Рус</span><img src="img/icons/flags/ru.jpg"> <i class="p-l-10 fa fa-caret-down"></i></p>
+								</label>
+								<ul class="hide-list">
+									<li><a href=""><img src="img/icons/flags/uz.jpg"></a></li>
+								</ul>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<!-- megamenu -->
+				<div class="megamenu">
+
+					<form>
+
+						<input type="radio" name="mega" id="megamenu_1">
+						<div class="item clearfix">
+							<div class="ul-box-wrapper">
+								<div class="ul-box">
+									<h4>Вторичное жилье</h4>
+									<ul>
+										<li><a href="">Доступные новостройки</a></li>
+										<li><a href="">Найти недвижимость</a></li>
+										<li><a href="guidebuy.html">Руководство о покупке</a></li>
+									</ul>
+								</div>
+								<div class="ul-box">
+									<h4>Первичное жилье </h4>
+									<ul>
+										<li><a href="mortgage.html">Ипотека</a></li>
+										<li><a href="advantages-ofchoose.html">Преимущества выбора нового жилья</a></li>
+										<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
+									</ul>
+								</div>
+								<div class="ul-box">
+									<h4>Коммерческая недвижимость</h4>
+									<ul>
+										<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<input type="radio" name="mega" id="megamenu_2">
+						<div class="item clearfix">
+							<div class="ul-box-wrapper">
+								<div class="ul-box">
+									<h4>Наши услуги</h4>
+									<ul>
+										<li><a href="mortgage.html">Ипотека</a></li>
+										<li><a href="">Мгновенная оценка</a></li>
+										<li><a href="sellhouse.html">Продай свой дом</a></li>
+										<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
+										<li><a href="premium-sales.html">Премиум продажи</a></li>
+									</ul>
+								</div>
+								<div class="ul-box">
+									<h4>Помощь в продаже</h4>
+									<ul>
+										<li><a href="whyredd.html">Почему REDD? </a></li>
+										<li><a href="guidesale.html">Руководство по продаже</a></li>
+										<li><a href="faq.html">Вопросы и ответы</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<input type="radio" name="mega" id="megamenu_3">
+						<div class="item clearfix">
+							<div class="ul-box-wrapper">
+								<div class="ul-box">
+									<h4>Поиск аренды</h4>
+									<ul>
+										<li><a href="">Аренда по районам</a></li>
+										<li><a href="article-img.html">Для корпоративных клиентов</a></li>
+										<li><a href="studhotel.html">Студенческая гостиница</a></li>
+									</ul>
+								</div>
+								<div class="ul-box">
+									<h4>Совет арендаторам</h4>
+									<ul>
+										<li><a href="article-img.html">Руководство по аренде</a></li>
+										<li><a href="article.html">Права и обязанности арендаторов</a></li>
+										<li><a href="">Руководство по местности</a></li>
+									</ul>
+								</div>
+								<div class="ul-box">
+									<h4>Ваша аренда</h4>
+									<ul>
+										<li><a href="helprent.html">Поддержка арендаторов</a></li>
+										<li><a href="conditions.html">Тарифы и условия</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<input type="radio" name="mega" id="megamenu_4">
+						<div class="item clearfix">
+							<div class="ul-box-wrapper">
+								<div class="ul-box">
+									<h4>Наши услуги</h4>
+									<ul>
+										<li><a href="faq.html">Вопросы и ответы</a></li>
+										<li><a href="specialists.html">Как наши агенты могут помочь</a></li>
+										<li><a href="reviews.html">Отзывы о нас</a></li>
+										<li><a href="article.html">Права и обязанности арендодателя</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
+
+					</form>
+
+				</div>
+			</div>
+
+
+		</header>
+		<!-- MIN MENU -->
+		<div id="min-menu" data-aos="fade">
+			<ul>
+				<li><a href="#">Купить</a></li>
+				<li><a href="#">Продать</a></li>
+				<li><a href="#">Снять</a></li>
+				<li><a href="#">Сдать</a></li>
+				<li><a href="index.html">Арендодателям и продавцам</a></li>
+				<li><a href="tourism.html">Средняя стоимость недвижимости</a></li>
+				<li><a href="flights.html">О компании</a></li>
+				<li><a href="summercamp.html">Оценка имущества</a></li>
+			</ul>
+		</div>
+		<!-- MIN MENU HEADER -->
+		<div class="min-menu-header hidden-md hidden-lg">
+			<div class="wrapper-bg"></div>
+			<div class="col-xs-2">
+				<div class="min-menu-logo">
+					<div>
+						<a href="index.html" title="">
+							<div class="img" style="background-image: url('img/logo.png');"></div>
+						</a>
+					</div>	
+				</div>
+			</div>
+			<div class="col-xs-8 justify-c-center align-center p-h-5" style="height: 70px	;">
+				<div>
+					<p><a href="tel:+998903451133" title="">+998 (90) <b>345-11-33</b></a><br></p>
+				</div>
+			</div>
+			<div class="min-menu-bar col-xs-2">
+				<a href="#min-menu">
+					<div class="bar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<!-- MAIN -->
+		<main data-aos="fade" data-aos-delay="0">
+
+
+
+			<!-- intro -->
+			<div class="intro realty">
+				<div class="intro-media">
+					<div class="img" style="background-image: url('img/slider/realty.jpg');"></div>
+				</div>
+				<div class="intro-content">
+					<div class="align-i-center p-v-15">
+						<div class="backrect">
+							<a href="">
+								<i class="icm icm-left-arrow-min"></i>
+								<h4>Название квартира</h4>
+								<p><i class="icm icm-price-tag-1"></i> <span class="price">75 000$</span></p>							
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="realty-nav">
+				<div class="container">
+					<div class="flex-adaptive">
+						<div class="item">
+							<a href=""><i class="icm icm-gallery p-r-10"></i> <span class="va-middle">все фотографии</span></a>
+						</div>
+						<div class="item">
+							<a href=""><i class="icm icm-map p-r-10"></i> <span class="va-middle">на карте</span></a>
+						</div>
+						<div class="item">
+							<a href=""><i class="icm icm-college-graduation p-r-10"></i> <span class="va-middle">школы и вузы</span></a>
+						</div>
+						<div class="item active">
+							<a href=""><i class="icm icm-front-bus p-r-10"></i> <span class="va-middle">транспорт</span></a>
+						</div>
+						<div class="item share">
+							<a href=""><i class="icm icm-share p-r-10"></i> <span class="va-middle">Поделиться</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="beside">
+				<div class="container">
+					<div class="realty-panel m-v-30">
+						<div class="flex-adaptive parag-gray">
+							<div class="align-center box-md-7">
+								<div class="btn-def">
+									<a href="javascript:;" data-src="#form_request" data-fancybox>Оставить заявку</a>
+								</div>
+								<div class="phone-content">
+									<p>
+										Или позвоните на: <strong class="m-h-15 color-1"><big>+998 (90) 000-00-00</big></strong>
+									</p>
+								</div>
+							</div>
+							<div class="btn-save align-center justify-c-end box-md-4">
+								<p>
+									<a href="">Сохранить в мой REDD <i class="icm icm-favorite-heart-button p-l-10"></i></a>
+								</p>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="beside-content">
+						<div class="row">
+							<div class="col-md-3 p-h-15">
+								<div class="list-info-wrapper tab-content">
+									<div class="list-info tab-pane fade in active" role="tabpanel" id="type-1">
+										<h4>Станции метро</h4>
+										<ul class="list">
+											<li>
+												<p class="color-1"><b>Минор</b></p>
+												<small>5 минут пешком ( 804 метров )</small>
+											</li>
+											<li>
+												<p class="color-1"><b>Сквер Амир Темур</b></p>
+												<small>10 минут пешком ( 1550 метров)</small>
+											</li>
+											<li>
+												<p class="color-1"><b>Площадь Мустакиллик</b></p>
+												<small>12 минут пешком ( 1850 метров)</small>
+											</li>
+										</ul>
+									</div>
+									<div class="list-info tab-pane fade" role="tabpanel" id="type-2">
+										<h4>Автобусы</h4>
+										<ul class="list">
+											<li>
+												<p class="color-1"><b>45</b></p>
+												<small>5 минут пешком ( 804 метров )</small>
+											</li>
+											<li>
+												<p class="color-1"><b>68</b></p>
+												<small>10 минут пешком ( 1550 метров)</small>
+											</li>
+											<li>
+												<p class="color-1"><b>174</b></p>
+												<small>12 минут пешком ( 1850 метров)</small>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+							<div class="col-md-9 p-h-15">
+								<div class="beside-nav">
+									<ul class="list-inline">
+										<li data-toggle="tab" href="#type-1"><a href="javascript:;" data-type="underground">Метро</a></li>
+										<li data-toggle="tab" href="#type-2"><a href="javascript:;" data-type="bus">Автобусы</a></li
+									</ul>
+								</div>
+								<div class="map-beside m-v-10" id="map-beside"></div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="link-content flex-adaptive align-i-center justify-c-between">
+						<p class="p-r-offset">Позвоните в <b class="color-1">REDD</b> по телефону <b class="color-1">+998 90 000-00-00</b>, чтобы просмотреть или <a href=""><u>договориться о встрече</u></a></p>
+						<span class="btn-def m-v-10">
+							<a href="">Оставить заявку</a>
+						</span>
+					</div>
+
+					<br><br><br>
+				</div>
+			</div>
+
+
+
+		</main><!-- ./MAIN -->
+		<!-- FOOTER -->
+		<footer id="footer" class="text-center-sm">
+			<div class="footer-menu">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-3 p-h-15">
+							<h3>Купить</h3>
+							<div class="ul-box">
+								<h4>Вторичное жилье</h4>
+								<ul>
+									<li><a href="">Доступные новостройки</a></li>
+									<li><a href="">Найти недвижимость</a></li>
+									<li><a href="guidebuy.html">Руководство о покупке</a></li>
+								</ul>
+							</div>
+							<div class="ul-box">
+								<h4>Первичное жилье </h4>
+								<ul>
+									<li><a href="mortgage.html">Ипотека</a></li>
+									<li><a href="advantages-ofchoose.html">Преимущества выбора нового жилья</a></li>
+									<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
+								</ul>
+							</div>
+							<div class="ul-box">
+								<h4>Коммерческая недвижимость</h4>
+								<ul>
+									<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 p-h-15">
+							<h3>Продать</h3>
+							<div class="ul-box">
+								<h4>Наши услуги</h4>
+								<ul>
+									<li><a href="mortgage.html">Ипотека</a></li>
+									<li><a href="">Мгновенная оценка</a></li>
+									<li><a href="sellhouse.html">Продай свой дом</a></li>
+									<li><a href="article-img.html">Составление актов передачи прав собственности на недвижимость</a></li>
+									<li><a href="premium-sales.html">Премиум продажи</a></li>
+								</ul>
+							</div>
+							<div class="ul-box">
+								<h4>Помощь в продаже</h4>
+								<ul>
+									<li><a href="whyredd.html">Почему REDD? </a></li>
+									<li><a href="guidesale.html">Руководство по продаже</a></li>
+									<li><a href="faq.html">Вопросы и ответы</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 p-h-15">
+							<h3>Снять</h3>
+							<div class="ul-box">
+								<h4>Поиск аренды</h4>
+								<ul>
+									<li><a href="">Аренда по районам</a></li>
+									<li><a href="article-img.html">Для корпоративных клиентов</a></li>
+									<li><a href="studhotel.html">Студенческая гостиница</a></li>
+								</ul>
+							</div>
+							<div class="ul-box">
+								<h4>Совет арендаторам</h4>
+								<ul>
+									<li><a href="article-img.html">Руководство по аренде</a></li>
+									<li><a href="article.html">Права и обязанности арендаторов</a></li>
+									<li><a href="">Руководство по местности</a></li>
+								</ul>
+							</div>
+							<div class="ul-box">
+								<h4>Ваша аренда</h4>
+								<ul>
+									<li><a href="helprent.html">Поддержка арендаторов</a></li>
+									<li><a href="conditions.html">Тарифы и условия</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 p-h-15">
+							<h3>Сдать</h3>
+							<div class="ul-box">
+								<h4>Наши услуги</h4>
+								<ul>
+									<li><a href="faq.html">Вопросы и ответы</a></li>
+									<li><a href="specialists.html">Как наши агенты могут помочь</a></li>
+									<li><a href="reviews.html">Отзывы о нас</a></li>
+									<li><a href="article.html">Права и обязанности арендодателя</a></li>
+								</ul>
+							</div>
+
+							<div class="ul-box footer-menu-main">
+								<ul>
+									<li><a href="">Моя учетная запись </a></li>
+									<li><a href="article.html">Права и обязанности арендодателя </a></li>
+									<li><a href="">Средняя стоимость недвижимости</a></li>
+									<li><a href="team.html">О компании</a></li>
+									<li><a href="">Оценка имущества</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="copy-content text-center-sm ">
+				<div class="container clearfix">
+					<div class="row">
+						<div class="copyright col-md-4 p-v-10 p-h-15">
+							<p>© <time id="copydate"></time> Все права защищены.</p>
+							<script>copydate.innerText = new Date().getFullYear()</script>
+						</div>
+						<div class="socials col-md-4 text-center">
+							<ul class="list">
+								<li><a href="" title="" target="_blank"><i class="fa fa-paper-plane"></i></a></li>
+								<li><a href="" title="" target="_blank"><i class="fa fa-instagram"></i></a></li>
+								<li><a href="" title="" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="" title="" target="_blank"><i class="fa fa-odnoklassniki"></i></a></li>
+							</ul>
+						</div>
+						<div class="dev col-md-4 hidden-xs p-h-15 hidden-sm text-right-md p-v-10">
+							<p>
+								<a href="https://www.life-style.uz" class="link" title="Создание и продвижение сайтов">Создание сайтов <em><span class="color-1">Life </span></em>Style</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</footer>
+	</div>
+	<!-- SCRIPTS -->
+	<script src="js/scripts.min.js"></script>
+	<script src="js/main.js"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag"></script> -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=%2B61293744000&inputtype=phonenumber&fields=photos,formatted_address,name,opening_hours,rating&query=schools&key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag"></script> -->
+  <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3ZKS4FVQmnP05hr46TdE0wUJFnJDsOhI&libraries=places"></script> -->
+  
+
+</body>
+
+</html>
