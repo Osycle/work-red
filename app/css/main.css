@@ -11291,6 +11291,9 @@ html .irs--flat .irs-handle {
   bottom: 0;
   background-color: white; }
 
+.ymaps-2-1-74-controls__toolbar {
+  display: none; }
+
 /* 
 		_footer.scss
 */

@@ -545,6 +545,8 @@
 
 
 function init() {
+
+
     var myMap = new ymaps.Map('map-beside', {
         center: [41.326892, 69.313324],
         zoom: 13,
@@ -559,27 +561,47 @@ function init() {
         		floatIndex: 100,
         		noPlacemark: true,
             provider: 'yandex#search'
-        },
-        events: {
-        	load: function(){
-        		console.log("load");
-        	}
         }
     });
-
+    var resultsDots
     searchControl.events.add("load", function(e, b, a){
-    	var dots = searchControl.getResultsArray();
-    	for (var i = 0; i < dots.length; i++) {
-    		console.log(dots[i].properties.getAll(), dots[i].geometry.getCoordinates());
-    	}
+    	resultsDots = searchControl.getResultsArray();
+    			dotsInCircle(resultsDots);
+
     	//console.log(e, b, a);
     })
+
+    function dotsInCircle(dots){
+
+    	var radiusStart = myCircle.geometry.getBounds()[0],
+    			radiusEnd = myCircle.geometry.getBounds()[1],
+    			dotLat, dotLng;
+
+    	for (var i = 0; i < dots.length; i++) {
+    		dotLat = dots[i].geometry.getCoordinates()[0];
+    		dotLng = dots[i].geometry.getCoordinates()[1];
+    		if( dotLat > radiusStart[0] && dotLng > radiusStart[1] && dotLat < radiusEnd[0] && dotLng < radiusEnd[1]){
+    			dots[i].options.set('visible', true);
+    		}else{
+					dots[i].options.set('visible', false);
+    		}
+    	}
+
+    }
+
+
     myMap.controls.add(searchControl);
     
     // Программно выполним поиск определённых кафе в текущей
     // прямоугольной области карты.
-    window.squery = searchControl.search('метро');
-    console.log(squery);
+    searchControl.search('школы');
+
+
+
+
+
+
+
 
 		var marker = new ymaps.Placemark([41.326892, 69.313324], {
 			balloonContent: 'ЗАО "САГА-Сервис" Россия, Москва, улица Мельникова, 3к5 (Офис работает: 9:00-18:00 кроме выходных и праздничных дней) http://sagakkm.ru info@sagakkm.ru +7 (495) 123-65-29 +7 (495) 123-65-74'
@@ -591,12 +613,21 @@ function init() {
 		});
 		myMap.geoObjects.add(marker);
 
+
+
+
+
+
+
+
+
+
     // Создаем круг.
     window.myCircle = new ymaps.Circle([
             // Координаты центра круга.
             [41.326892, 69.313324],
             // Радиус круга в метрах.
-            3000
+            5000
         ], {}, {
             // Задаем опции круга.
             // Цвет заливки.
@@ -611,17 +642,19 @@ function init() {
 
     // Добавляем круг на карту.
     myMap.geoObjects.add(myCircle);
-
+    myCircle.events.add("geometrychange", function(){
+    	dotsInCircle(resultsDots);
+    })
     // Включаем редактирование круга.
-    myCircle.editor.startEditing();
+    //myCircle.editor.startEditing();
 
-		myMap.options.set({
-		    // Максимальная ширина для трех состояний: [30, 72, 315].
-		    // Изменим ширину для состояния 'large'.
-		    searchControlMaxWidth: [3, 7, 50],
-		    // Расширим поисковую строку до максимального размера.
-		    fitMaxWidth: true
-		});
+
+
+
+
+
+
+
 }
 
 ymaps.ready(init);
