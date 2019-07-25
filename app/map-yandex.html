@@ -382,6 +382,10 @@
 										<li data-toggle="tab" href="#type-1"><a href="javascript:;" data-type="underground">Метро</a></li>
 										<li data-toggle="tab" href="#type-2"><a href="javascript:;" data-type="bus">Автобусы</a></li
 									</ul>
+									<div class="circleradius-input">
+										<p>Радиус</p>
+										<input type="" name="circleradius" class="form-control" value="2000">
+									</div>
 								</div>
 								<div class="map-beside m-v-10" id="map-beside"></div>
 							</div>
@@ -549,41 +553,56 @@ function init() {
 
     var myMap = new ymaps.Map('map-beside', {
         center: [41.326892, 69.313324],
-        zoom: 13,
+        zoom: 14,
         controls: []
     });
-    
+
+    // Изменение радиуса круга
+    $(document).on("change", "[name='circleradius']", function(){
+    	var val = $(this).val().trim()*1;
+    	if( isNaN(val) )
+    		return;
+    	myCircle.geometry.setRadius(val);
+    	dotsInCircle(resultsDots);
+    })
+
+
     // Создадим экземпляр элемента управления «поиск по карте»
     // с установленной опцией провайдера данных для поиска по организациям.
     window.searchControl = new ymaps.control.SearchControl({
         options: {
         	  float: 'right',
         		floatIndex: 100,
-        		noPlacemark: true,
+        		noPlacemark: false,
             provider: 'yandex#search'
         }
     });
-    var resultsDots
-    searchControl.events.add("load", function(e, b, a){
+    window.resultsDots;
+    searchControl.events.add("load", function(){
     	resultsDots = searchControl.getResultsArray();
-    			dotsInCircle(resultsDots);
-
-    	//console.log(e, b, a);
+    	//dotsInCircle(resultsDots);
+    	console.log("load");
+    });
+    myMap.events.add("wheel", function(){
+    	console.log("wheel");
     })
 
-    function dotsInCircle(dots){
+
+
+    window.dotsInCircle = function (dots){
 
     	var radiusStart = myCircle.geometry.getBounds()[0],
     			radiusEnd = myCircle.geometry.getBounds()[1],
     			dotLat, dotLng;
 
+    	//console.log(radiusStart);
     	for (var i = 0; i < dots.length; i++) {
     		dotLat = dots[i].geometry.getCoordinates()[0];
     		dotLng = dots[i].geometry.getCoordinates()[1];
     		if( dotLat > radiusStart[0] && dotLng > radiusStart[1] && dotLat < radiusEnd[0] && dotLng < radiusEnd[1]){
     			dots[i].options.set('visible', true);
     		}else{
-					dots[i].options.set('visible', false);
+					//dots[i].options.set('visible', false);
     		}
     	}
 
@@ -627,7 +646,7 @@ function init() {
             // Координаты центра круга.
             [41.326892, 69.313324],
             // Радиус круга в метрах.
-            5000
+            2000
         ], {}, {
             // Задаем опции круга.
             // Цвет заливки.
@@ -642,13 +661,14 @@ function init() {
 
     // Добавляем круг на карту.
     myMap.geoObjects.add(myCircle);
+    myMap.events.add("zoom", function(){
+    	console.log(this);
+    })
     myCircle.events.add("geometrychange", function(){
     	dotsInCircle(resultsDots);
     })
     // Включаем редактирование круга.
     //myCircle.editor.startEditing();
-
-
 
 
 

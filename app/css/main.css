@@ -11159,6 +11159,30 @@ html .irs--flat .irs-handle {
     margin-top: 15px;
     margin-bottom: 15px; }
 
+.circleradius-input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  width: 200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2; }
+  .circleradius-input input {
+    padding: 5px 10px;
+    height: 33px !important;
+    -webkit-box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.5); }
+  .circleradius-input p {
+    font-weight: 600;
+    margin-right: 15px; }
+
 .nav-style-1 li {
   display: inline-block; }
   .nav-style-1 li a {
@@ -11290,9 +11314,6 @@ html .irs--flat .irs-handle {
   position: absolute;
   bottom: 0;
   background-color: white; }
-
-.ymaps-2-1-74-controls__toolbar {
-  display: none; }
 
 /* 
 		_footer.scss
