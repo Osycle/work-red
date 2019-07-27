@@ -379,13 +379,9 @@
 							<div class="col-md-9 p-h-15">
 								<div class="beside-nav">
 									<ul class="list-inline">
-										<li data-toggle="tab" href="#type-1"><a href="javascript:;" data-type="underground">Метро</a></li>
-										<li data-toggle="tab" href="#type-2"><a href="javascript:;" data-type="bus">Автобусы</a></li
+										<li data-toggle="tab" href="#type-1"><a href="javascript:;" data-search-enty="Метро">Метро</a></li>
+										<li data-toggle="tab" href="#type-2"><a href="javascript:;" data-search-enty="Автобусы">Автобусы</a></li
 									</ul>
-									<div class="circleradius-input">
-										<p>Радиус</p>
-										<input type="" name="circleradius" class="form-control" value="2000">
-									</div>
 								</div>
 								<div class="map-beside m-v-10" id="map-beside"></div>
 							</div>
@@ -544,159 +540,8 @@
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
 
-				<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
-				<script type="text/javascript">
-
-
-function init() {
-
-
-    var myMap = new ymaps.Map('map-beside', {
-        center: [41.326892, 69.313324],
-        zoom: 14,
-        controls: []
-    });
-
-    // Изменение радиуса круга
-    $(document).on("change", "[name='circleradius']", function(){
-    	var val = $(this).val().trim()*1;
-    	if( isNaN(val) )
-    		return;
-    	myCircle.geometry.setRadius(val);
-    	dotsInCircle(resultsDots);
-    })
-
-
-    // Создадим экземпляр элемента управления «поиск по карте»
-    // с установленной опцией провайдера данных для поиска по организациям.
-    window.searchControl = new ymaps.control.SearchControl({
-        options: {
-        	  float: 'right',
-        		floatIndex: 100,
-        		noPlacemark: false,
-            provider: 'yandex#search'
-        }
-    });
-    window.resultsDots;
-    searchControl.events.add("load", function(){
-    	resultsDots = searchControl.getResultsArray();
-    	//dotsInCircle(resultsDots);
-    	console.log("load");
-    });
-    myMap.events.add("wheel", function(){
-    	console.log("wheel");
-    })
-
-
-
-    window.dotsInCircle = function (dots){
-
-    	var radiusStart = myCircle.geometry.getBounds()[0],
-    			radiusEnd = myCircle.geometry.getBounds()[1],
-    			dotLat, dotLng;
-
-    	//console.log(radiusStart);
-    	for (var i = 0; i < dots.length; i++) {
-    		dotLat = dots[i].geometry.getCoordinates()[0];
-    		dotLng = dots[i].geometry.getCoordinates()[1];
-    		if( dotLat > radiusStart[0] && dotLng > radiusStart[1] && dotLat < radiusEnd[0] && dotLng < radiusEnd[1]){
-    			dots[i].options.set('visible', true);
-    		}else{
-					//dots[i].options.set('visible', false);
-    		}
-    	}
-
-    }
-
-
-    myMap.controls.add(searchControl);
-    
-    // Программно выполним поиск определённых кафе в текущей
-    // прямоугольной области карты.
-    searchControl.search('школы');
-
-
-
-
-
-
-
-
-		var marker = new ymaps.Placemark([41.326892, 69.313324], {
-			balloonContent: 'ЗАО "САГА-Сервис" Россия, Москва, улица Мельникова, 3к5 (Офис работает: 9:00-18:00 кроме выходных и праздничных дней) http://sagakkm.ru info@sagakkm.ru +7 (495) 123-65-29 +7 (495) 123-65-74'
-		}, {
-		    preset: 'islands#glyphIcon',            
-		    iconGlyph: 'wrench',
-		    iconImageSize: [48, 48],
-		    iconGlyphColor: 'gray'
-		});
-		myMap.geoObjects.add(marker);
-
-
-
-
-
-
-
-
-
-
-    // Создаем круг.
-    window.myCircle = new ymaps.Circle([
-            // Координаты центра круга.
-            [41.326892, 69.313324],
-            // Радиус круга в метрах.
-            2000
-        ], {}, {
-            // Задаем опции круга.
-            // Цвет заливки.
-            fillColor: "#DB709377",
-            // Цвет обводки.
-            strokeColor: "#990066",
-            // Прозрачность обводки.
-            strokeOpacity: 0.8,
-            // Ширина обводки в пикселях.
-            strokeWidth: 5
-        });
-
-    // Добавляем круг на карту.
-    myMap.geoObjects.add(myCircle);
-    myMap.events.add("zoom", function(){
-    	console.log(this);
-    })
-    myCircle.events.add("geometrychange", function(){
-    	dotsInCircle(resultsDots);
-    })
-    // Включаем редактирование круга.
-    //myCircle.editor.startEditing();
-
-
-
-
-
-
-}
-
-ymaps.ready(init);
-
-
-
-
-
-
-			  </script>
-			  <style type="text/css">
-		  		.map{
-						width: 100%;
-						height: 400px;
-					}
-					@media (max-width: 991px) {
-						.map{
-							width: 100%;
-							height: 210px;
-						}
-					}
-			  </style>
+	<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
+	<script src="js/mapscript.js"></script>
 
 </body>
 
