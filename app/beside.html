@@ -296,11 +296,11 @@
 						<div class="item">
 							<a href=""><i class="icm icm-map p-r-10"></i> <span class="va-middle">на карте</span></a>
 						</div>
-						<div class="item active">
-							<a href=""><i class="icm icm-college-graduation p-r-10"></i> <span class="va-middle">школы и вузы</span></a>
-						</div>
 						<div class="item">
-							<a href=""><i class="icm icm-front-bus p-r-10"></i> <span class="va-middle">транспорт</span></a>
+							<a href="beside.html"><i class="icm icm-college-graduation p-r-10"></i> <span class="va-middle">школы и вузы</span></a>
+						</div>
+						<div class="item active">
+							<a href="beside-transport.html"><i class="icm icm-front-bus p-r-10"></i> <span class="va-middle">транспорт</span></a>
 						</div>
 						<div class="item share">
 							<a href=""><i class="icm icm-share p-r-10"></i> <span class="va-middle">Поделиться</span></a>
@@ -336,14 +336,19 @@
 
 
 					<div class="beside-content">
-						<div class="beside-nav">
-							<ul class="list-inline">
-								<li data-toggle="tab"><a href="javascript:;" data-type="kindergarten">Детский сад</a></li>
-								<li data-toggle="tab"><a href="javascript:;" data-type="schools">Школы</a></li>
-								<li data-toggle="tab"><a href="javascript:;" data-type="universities">ВУЗы</a></li>
-							</ul>
+						<div class="row">
+							<div class="col-md-12 p-h-15">
+								<div class="beside-nav">
+									<ul class="list-inline">
+										<li data-toggle="tab"><a href="javascript:;" data-search-enty="Детский сад">Детский сад</a></li>
+										<li data-toggle="tab"><a href="javascript:;" data-search-enty="Школа">Школы</a></li>
+										<li data-toggle="tab"><a href="javascript:;" data-search-enty="ВУЗ">ВУЗы</a></li>
+									</ul>
+								</div>
+								<div class="map-beside m-v-10" id="map-beside"></div>
+							</div>
+
 						</div>
-						<div class="map-beside m-v-10" id="map-beside"></div>
 					</div>
 
 					<div class="link-content flex-adaptive align-i-center justify-c-between">
@@ -496,162 +501,10 @@
 	<!-- SCRIPTS -->
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag"></script>
-  <script type="text/javascript">
 
+	<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
+	<script src="js/mapscript.js"></script>
 
-		  var mapOffices;
-		  var marker;
-		  var typeLink = ".beside-nav a";
-		  var mainLocation = ["41.313322", "69.267683"] // Оснавная локация
-	    function initialize() {
-	    	
-	      var mapOptions = {
-	        mapTypeId: google.maps.MapTypeId.ROADMAP,
-	        mapTypeControl: true,
-	        zoom: 12,
-	        zoomControl: true,
-	        zoomControlOptions: {
-	          style: google.maps.ZoomControlStyle.DEFAULT,
-	          position: google.maps.ControlPosition.DEFAULT
-	        },
-	        panControl: true,
-	        panControlOptions: {
-	          position: google.maps.ControlPosition.LEFT_TOP
-	        },
-	        streetViewControl: true,
-	        scaleControl: true,
-	        overviewMapControl: true,
-	        center: new google.maps.LatLng(mainLocation[0], mainLocation[1])
-	      };
-
-
-	      mapContainer = document.getElementById('map-beside') || null;
-	      if( !mapContainer ) 
-	      	return;
-
-
-	      mapOffices = new google.maps.Map(mapContainer, mapOptions);
-	     	mapOffices.setOptions({
-	        //styles: mapStyles,
-	        disableDefaultUI: true
-	      });
-
-        window.infowindow = new google.maps.InfoWindow();
-        
-
-        var mainMarkerContent = '<div class="mapblock">Название квартиры</div>' // Контент главного маркера
-
-		    var locations = [
-			    {
-			    	latLng: [ 41.297965, 69.266671 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №145 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.291083, 69.267683 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №140 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.292850, 69.226217 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №140 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.364364, 69.286961 ],
-			    	type: 'schools',
-			    	content: '<div class="mapblock">ШКОЛА №140 - ТАШКЕНТ, Узбекистан</div>'
-			    },
-			    {
-			    	latLng: [ 41.314669, 69.284508 ],
-			    	type: 'universities',
-			    	content: '<div class="mapblock">Ташкентский государственный технический университет</div>'
-			    },
-			    {
-			    	latLng: [ 41.319347, 69.275846 ],
-			    	type: 'universities',
-			    	content: '<div class="mapblock">Ташкентский государственный технический университет</div>'
-			    },
-			    {
-			    	latLng: [ 41.273406, 69.229753 ],
-			    	type: 'universities',
-			    	content: '<div class="mapblock">Ташкентский государственный технический университет</div>'
-			    },
-			    {
-			    	latLng: [ 41.285219, 69.271178 ],
-			    	type: 'kindergarten',
-			    	content: '<div class="mapblock">ДЕТСКИЙ САД №197</div>'
-			    },
-			    {
-			    	latLng: [ 41.286067, 69.317706 ],
-			    	type: 'kindergarten',
-			    	content: '<div class="mapblock">ДЕТСКИЙ САД №50</div>'
-			    }
-
-		    ]
-        window.officesMarkers = [];
-       for (i = 0; i < locations.length; i++) {
-          marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i].latLng[0], locations[i].latLng[1]),
-		        map: mapOffices,
-		        item: i,
-		        type: locations[i].type,
-		        icon: "img/icons/marker-offices-2-min.png",
-		        title: 'marker'
-          });
-          officesMarkers.push(marker);
-          google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-              infowindow.setContent(locations[i].content);
-              infowindow.open(mapOffices, marker);
-            }
-          })(marker, i));
-        }
-
-        var mainMarker = new google.maps.Marker({
-          position: new google.maps.LatLng(mainLocation[0], mainLocation[1]),
-	        map: mapOffices,
-	        icon: "img/icons/marker-green.png",
-	        title: 'marker'
-        });
-        google.maps.event.addListener(mainMarker, 'click', (function (marker, i) {
-          return function () {
-            infowindow.setContent(mainMarkerContent);
-            infowindow.open(mapOffices, mainMarker);
-          }
-        })(marker, i));
-
-	    }
-	    initialize();
-	    google.maps.event.addDomListener(window, 'load', initialize);
-
-
-        //Клик по блоку
-				$(document).on("click", typeLink, function(){
-					var that = $(this);
-					var index = that.index();
-					var type = that.attr("data-type").toLowerCase();
-					for (var i = 0; i < officesMarkers.length; i++) {
-						if( officesMarkers[i].type.toLowerCase() != type){
-							officesMarkers[i].setVisible(false);
-							console.log(officesMarkers[i].type.toLowerCase(), type);
-						}
-						else{
-							officesMarkers[i].setVisible(true);
-						}
-					}
-				})
-
-	    function checkResize() {
-	      var center = mapOffices.getCenter();
-	      google.maps.event.trigger(mapOffices, 'resize');
-	      mapOffices.setCenter(center);
-	    }
-
-	    window.onresize = checkResize;
-	  
-  </script>
 </body>
 
 </html>
