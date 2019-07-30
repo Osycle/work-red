@@ -3157,3 +3157,105 @@ html{
 .ymaps-2-1-74-controls__toolbar{
 	//display: none;
 }
+
+
+
+
+.rent{
+	.filter-bar{
+		width: 30%;
+		padding: 30px; 
+		h3{
+			text-align: center;
+			text-transform: uppercase;
+		}
+		background-color: white;
+		input.form-control{
+			height: 35px;
+			font-size: 12px;
+		}
+		.input-content{
+		}
+	}
+	.map-content{
+		width: 70%;
+	}
+	.map-beside{
+		height: 80vh;
+		height: calc(100vh - 100px);
+	}
+	.select2-selection__rendered{
+		font-weight: 500;
+		font-size: 12px;
+		color: #999999 !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow{
+		background-color: transparent;
+		b{
+			border-top-color: $color-1;
+		}
+	}
+	.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{
+		border-bottom-color: $color-1;
+	}
+	.select2-dropdown{
+		font-size: 0.9em;
+		background-color: white;
+		@extend .shadow-def;
+		.select2-results__option{
+			color: $color-2;
+			font-family: $font-family-2;
+			font-weight: 600;
+			padding: 7px 20px;
+			&:nth-child(1){
+				display: none;
+			}
+		}
+	}
+	.checkbox-content{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.typebeside{
+		.typebeside-wrapper{
+			display: flex;
+			align-items: center;
+			font-size: 0.9em;
+			width: 100%;
+			&>div{
+				width: 100%;
+				padding-right: 5px;
+				padding-left: 5px;
+			}
+		}
+		.radio-content{
+			white-space: nowrap;
+			input, label{
+				vertical-align: middle;
+			}
+			label{
+				background-color: $color-gray-2;
+				border-radius: 15px;
+				text-align: center;
+				padding: 5px 10px;
+				&:hover{
+					cursor: pointer;
+				}
+			}
+			input{
+				&:checked{
+					&~label{
+						background-color: $color-1;
+						color: white;
+					}
+				}
+			}
+		}
+
+	}
+}
+.rent-wrapper{
+	display: flex;
+}

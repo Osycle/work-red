@@ -30,7 +30,8 @@ function init() {
 		});
 
 	// Добавляем круг на карту.
-	myMap.geoObjects.add(myCircle);
+	if( $("[data-beside-circle]").length > 0 )
+		myMap.geoObjects.add(myCircle);
 	//myCircle.editor.startEditing();
 
 	// Изменение радиуса круга
@@ -130,7 +131,6 @@ function init() {
 	myMap.controls.add(searchControl);
 	
 	window.searchEnty = function(org){
-		//searchControl.options.results = 1;
 		searchControl.search(org);
 	}
 

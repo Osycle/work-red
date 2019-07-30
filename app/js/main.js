@@ -20,12 +20,13 @@
 
 
 		/* SELECT2 */
+		
 		if ( $(".js-select").length )
 			$(".js-select").select2({
 				placeholder: "Выберите...",
 				allowClear: false,
 				minimumResultsForSearch: Infinity,
-				dropdownParent: $('.select2-wrapper')
+				dropdownParent: ($('.select2-wrapper').length > 0) ? $('.select2-wrapper') : false
 			});
 
 		
