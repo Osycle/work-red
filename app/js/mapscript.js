@@ -54,7 +54,7 @@ function init() {
 			//noCentering: true,
 			//noPopup: true,
 			useMapBounds: true,
-			visible: false,
+			visible: !false,
 			//kind: "route",
 			checkZoomRange: true,
 			//resultsPerPage: 20,
