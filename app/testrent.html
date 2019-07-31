@@ -8,6 +8,7 @@
 			Укажите свой API-ключ. Тестовый ключ НЕ БУДЕТ работать на других сайтах.
 			Получить ключ можно в Кабинете разработчика: https://developer.tech.yandex.ru/keys/
 		-->
+
 	<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
 	<script type="text/javascript">
 		ymaps.ready(init);
@@ -85,5 +86,24 @@
 	<div id="map"></div>
 	<img style=" width: 1323px;height: 1438px;z-index: 1212121;position: absolute;"src="http://html.lifestyle.uz/redd/img/other/tashkent.png">
 </body>
-
+<script src="js/scripts.min.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+	window.getAreasPoligons = function(){
+		$.ajax({
+			type: "GET",
+      url: "areaspoligons.json",
+			success: function(data){
+				window.mata = data;
+			},
+			statusCode: {
+				404: function(){alert( "page not found" );}
+			},
+      complete: function(response){
+      	window.dataPoligon = JSON.stringify(response.responseText);
+      	//console.log(response.responseText);
+      }
+  	});
+	}
+</script>
 </html>
