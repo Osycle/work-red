@@ -11133,10 +11133,10 @@ html .irs--flat .irs-handle {
     background-color: #cc2527;
     color: white; }
 
-.map-beside {
+.map-beside, .map-rent {
   height: 500px; }
   @media (max-width: 991px) {
-    .map-beside {
+    .map-beside, .map-rent {
       height: 350px; } }
 
 .beside-content .list-info-wrapper {
