@@ -1,4 +1,39 @@
-window.Face = {};
+window.Face = {
+	areas: [],
+	currentAreaInc: undefined,
+	areasTitles: [
+		"Юнусабадский район",
+		"Мирзо-Улугбекский район",
+		"Яшнободский район",
+		"Мирабадский район",
+		"Бектемирский район",
+		"Зангиатинский район",
+		"Сергелийский район",
+		"Яккасарайский район",
+		"Чиланзарский район",
+		"Учтепинский район",
+		"Шайхантахурский район",
+		"Олмазорский район"
+	],
+	activeArea: function(inc){
+		var that = this;
+		Face.currentAreaInc = inc;
+		$(that.areas).map(function(i ,el){
+			console.log(that.areasTitles[inc], el.options.get("title"));
+			if( that.areasTitles[inc] == el.options.get("title") )
+				el.options.set({
+					fillColor: "#cc2527",
+					strokeColor: "#cc2527"
+				})
+			else
+				el.options.set({
+					fillColor: "#cc252700",
+					strokeColor: "#cc252700"
+				});
+		});
+	}
+
+};
 window.Utils = {
 	searchDots: undefined,
 	searchControl: undefined,
@@ -33,7 +68,6 @@ window.Utils = {
 	drawPoligon: function(arr){
 		window.mata = arr;
 		console.log(arr);
-		Face.areas = [];
 		for (var i = 0; i < arr.length; i++) {
 			var poligon = arr[i].data.items[0].displayGeometry.geometries[0].coordinates[0];
 			//console.log(poligon[0].coordinates[0]);
@@ -45,36 +79,54 @@ window.Utils = {
 				// Описываем свойства геообъекта.
 				{
 					// Содержимое балуна.
-					balloonContent: "Рыбные места"
+					balloonContent: "Рыбные места"+i
 				}, {
+					inc: i,
+					title: arr[i].data.items[0].title,
+					description: arr[i].data.items[0].description,
+					address: arr[i].data.items[0].address,
+					coordinates: arr[i].data.items[0].coordinates,
+					bounds: arr[i].data.items[0].bounds,
 					// Описываем опции геообъекта.
 					// Фоновое изображение.
 					//fillImageHref: 'images/lake.png',
 					// Тип заливки фоном.
 					fillMethod: 'stretch',
-					fillColor: "#cc2527",
+					fillColor: "#cc252700",
 					fillOpacity: "0.5",
-					strokeColor: "#cc2527",
-					strokeWidth: 3,
+					strokeColor: "#cc252700",
+					strokeWidth: 2,
 					// Убираем видимость обводки.
 					stroke: true
 				}
 			);
-			console.log(poligon);
-			var item = {
-				title: arr[i].data.items[0].title,
-				description: arr[i].data.items[0].description,
-				address: arr[i].data.items[0].address,
-				coordinates: arr[i].data.items[0].coordinates,
-				bounds: arr[i].data.items[0].bounds,
-				poligon: myPolygon
-			}
-			Face.areas.push(item);
+			//console.log(poligon);
+			Face.areas.push(myPolygon);
 			Utils.currentMap.geoObjects.add(myPolygon);
-			myPolygon.events.add("mouseenter", function(e, item){
-				console.log(Face.areas[i]);
-				console.log(e);
+
+			myPolygon.events.add("mouseenter", function(e){
+				var that = e.get("target");
+				if( Face.areasTitles[Face.currentAreaInc] != that.options.get("title") )
+					that.options.set({
+						fillColor: "#fff",
+						strokeColor: "#cc2527"
+					});
+			});
+			myPolygon.events.add("mouseleave", function(e){
+				var that = e.get("target");
+				if( Face.areasTitles[Face.currentAreaInc] != that.options.get("title") )
+					that.options.set({
+						fillColor: "#cc252700",
+						strokeColor: "#cc252700"
+					});
+			});
+			myPolygon.events.add("click", function(e){
+				var that = e.get("target");
+				var inc = that.options.get("inc");
+				Face.activeArea(inc);
+				console.log(that.options.get("inc"));
 			})
+
 		}
 	},
 
@@ -104,7 +156,6 @@ window.Utils = {
 				radiusEnd = circle.geometry.getBounds()[1],
 				dotLat, dotLng;
 
-		console.log(dots);
 		for (var i = 0; i < dots.length; i++) {
 			dotLat = dots[i].geometry.getCoordinates()[0];
 			dotLng = dots[i].geometry.getCoordinates()[1];
@@ -167,11 +218,14 @@ window.initBeside = function(mainLatLng) {
 
 window.initRent = function(mainLatLng) {
 
+
+
 	$.ajax({
 		type: "GET",
     url: "areaspoligon.json",
 		success: function(response){
 			Utils.drawPoligon(response);
+			Face.activeArea(0);
 		},
     complete: function(response){}
 	});

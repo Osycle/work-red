@@ -11398,6 +11398,11 @@ html .irs--flat .irs-handle {
   display: -ms-flexbox;
   display: flex; }
 
+.ymaps-2-1-74-graphics-SVG svg path {
+  -webkit-transition: all 0.2s ease !important;
+  -o-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important; }
+
 /* 
 		_footer.scss
 */
