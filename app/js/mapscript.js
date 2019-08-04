@@ -19,7 +19,7 @@ window.Face = {
 		var that = this;
 		Face.currentAreaInc = inc;
 		$(that.areas).map(function(i ,el){
-			console.log(that.areasTitles[inc], el.options.get("title"));
+			//console.log(that.areasTitles[inc], el.options.get("title"));
 			if( that.areasTitles[inc] == el.options.get("title") )
 				el.options.set({
 					fillColor: "#cc2527",
@@ -34,6 +34,8 @@ window.Face = {
 	}
 
 };
+
+
 window.Utils = {
 	searchDots: undefined,
 	searchControl: undefined,
@@ -65,16 +67,16 @@ window.Utils = {
 		that.currentMap.controls.add(that.searchControl);
 	},
 
-	drawPoligon: function(arr){
+	drawPolygon: function(arr){
 		window.mata = arr;
 		console.log(arr);
 		for (var i = 0; i < arr.length; i++) {
-			var poligon = arr[i].data.items[0].displayGeometry.geometries[0].coordinates[0];
-			//console.log(poligon[0].coordinates[0]);
+			var polygon = arr[i].data.items[0].displayGeometry.geometries[0].coordinates[0];
+			//console.log(polygon[0].coordinates[0]);
 			
 			var myPolygon = new ymaps.Polygon([
 					// Указываем координаты вершин многоугольника.
-					poligon
+					polygon
 				],
 				// Описываем свойства геообъекта.
 				{
@@ -87,20 +89,16 @@ window.Utils = {
 					address: arr[i].data.items[0].address,
 					coordinates: arr[i].data.items[0].coordinates,
 					bounds: arr[i].data.items[0].bounds,
-					// Описываем опции геообъекта.
-					// Фоновое изображение.
 					//fillImageHref: 'images/lake.png',
-					// Тип заливки фоном.
 					fillMethod: 'stretch',
 					fillColor: "#cc252700",
 					fillOpacity: "0.5",
 					strokeColor: "#cc252700",
 					strokeWidth: 2,
-					// Убираем видимость обводки.
 					stroke: true
 				}
 			);
-			//console.log(poligon);
+			//console.log(polygon);
 			Face.areas.push(myPolygon);
 			Utils.currentMap.geoObjects.add(myPolygon);
 
@@ -130,11 +128,11 @@ window.Utils = {
 		}
 	},
 
-	drawCircle: function(radius){
+	drawCircle: function(radius, latlng){
 		// Создаем круг.
 		var circle = new ymaps.Circle([
 				// Координаты центра круга.
-				mainLatLng,
+				latlng,
 				// Радиус круга в метрах.
 				radius
 			], {}, {
@@ -175,10 +173,10 @@ window.Utils = {
 
 }
 
-window.initBeside = function(mainLatLng) {
-	console.log(mainLatLng);
+window.initBeside = function(itemOptions) {
+	var latlng = itemOptions.mainLatLng;
 	Utils.currentMap = new ymaps.Map('map-beside', {
-		center: mainLatLng,
+		center: latlng,
 		zoom: 14,
 		checkZoomRange: true,
 		restrictMapArea: true,
@@ -187,7 +185,7 @@ window.initBeside = function(mainLatLng) {
 	})
 
 	Utils.searchInit();
-	var circle = Utils.drawCircle(1000);
+	var circle = Utils.drawCircle(1000, latlng);
 	// Фильтрация точек относительно радиуса
 	$("[data-search-enty]").eq(0).trigger("click");
 	
@@ -200,8 +198,8 @@ window.initBeside = function(mainLatLng) {
 
 
 
-	var marker = new ymaps.Placemark(mainLatLng, {
-		balloonContent: 'Название квартиры <br> <big class="color-1">75 000</big>'
+	var marker = new ymaps.Placemark(latlng, {
+		balloonContent: itemOptions.mainBalloonContent
 	}, {
 		iconLayout: 'default#image',
 		iconImageHref: "img/icons/marker-green.png",
@@ -216,28 +214,58 @@ window.initBeside = function(mainLatLng) {
 
 
 
-window.initRent = function(mainLatLng) {
+window.initRent = function(itemOptions) {
 
-
-
-	$.ajax({
-		type: "GET",
-    url: "areaspoligon.json",
-		success: function(response){
-			Utils.drawPoligon(response);
-			Face.activeArea(0);
-		},
-    complete: function(response){}
-	});
-
+	var latlng = itemOptions.mainLatLng;
 	Utils.currentMap = new ymaps.Map('map-rent', {
-		center: mainLatLng,
+		center: latlng,
 		zoom: 12,
 		checkZoomRange: true,
 		restrictMapArea: true,
 		searchControlProvider: 'yandex#search',
 		controls: []
 	})
+	
+	Utils.drawPolygon(areasPolygon);
+	Face.activeArea(0);
+
+	$.ajax({
+		type: "GET",
+    url: "apartments.json",
+		success: function(response){
+			//console.log(response);
+			//Face.activeArea(0);			
+			var objects = [];
+			$(response).map(function(i, el){
+				var latlng = [ el.lat, el.lng ];
+				objects.push({
+					type: "Point",
+					coordinates: latlng
+				});
+			})
+
+			window.result = ymaps.geoQuery(objects).addToMap(Utils.currentMap);
+			var polygon = Face.areas[Face.currentAreaInc];
+			result.each(function(el, i){
+				el.options.set({
+					visible: false
+				});
+			})
+			var objectsContainingPolygon = result.searchInside(polygon);
+			objectsContainingPolygon.each(function(el, i){
+				el.options.set({
+					visible: true,
+					iconLayout: 'default#image',
+					iconImageHref: "img/icons/marker-green.png",
+					iconImageSize: [21, 30]
+				});
+			})
+			console.log(objectsContainingPolygon);
+		},
+    complete: function(response){}
+	});
+
+
 
 	Utils.searchInit();
 	
@@ -250,14 +278,6 @@ window.initRent = function(mainLatLng) {
 
 
 
-	var marker = new ymaps.Placemark(mainLatLng, {
-		balloonContent: 'Название квартиры <br> <big class="color-1">75 000</big>'
-	}, {
-		iconLayout: 'default#image',
-		iconImageHref: "img/icons/marker-green.png",
-		iconImageSize: [21, 30]
-	});
-	Utils.currentMap.geoObjects.add(marker);
 
 
 

@@ -505,10 +505,15 @@
 	<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
 	<script src="js/mapscript.js"></script>
 	<script type="text/javascript">
-		var mainLatLng = [41.326892, 69.313324];
 
 		ymaps.ready(function(){
-			initBeside(mainLatLng);
+
+			var itemOptions = {
+				mainLatLng: [41.326892, 69.313324],
+				mainBalloonContent: 'Название квартиры <br> <big class="color-1">75 000</big>'
+			}
+			
+			initBeside(itemOptions);
 		});
 		
 	</script>

@@ -1,0 +1,466 @@
+[
+	{
+		"lat": "41.262268",
+		"lng": "69.266671", 
+		"type": "airports",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Международный аэропорт имени Ислама Каримова"
+	},
+
+	{
+		"lat": "41.303322",
+		"lng": "69.267683", 
+		"type": "business",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "БЦ Баракат"
+	},
+
+	{
+		"lat": "41.259225",
+		"lng": "69.226217", 
+		"type": "stations",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Южный вокзал"
+	},
+
+	{
+		"lat": "41.291358",
+		"lng": "69.286961", 
+		"type": "stations",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Северный вокзал"
+	},
+
+	{
+		"lat": "41.322436",
+		"lng": "69.284508", 
+		"type": "cafe",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Кафе Семь Пятниц"
+	},
+
+	{
+		"lat": "41.321510",
+		"lng": "69.275846", 
+		"type": "cafe",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Ресторан Plov"
+	},
+
+	{
+		"lat": "41.263064",
+		"lng": "69.229753", 
+		"type": "medicine",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "МЦ Vitamed Medical"
+	},
+
+	{
+		"lat": "41.300053",
+		"lng": "69.271178", 
+		"type": "medicine",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "МЦ Diyor Medical Center"
+	},
+
+	{
+		"lat": "41.309456",
+		"lng": "69.317706", 
+		"type": "medicine",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "МЦ MDS-Service"
+	},
+
+	{
+		"lat": "41.343177",
+		"lng": "69.356452", 
+		"type": "medicine",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Турон Санаторий"
+	},
+
+	{
+		"lat": "41.275167",
+		"lng": "69.273500", 
+		"type": "medicine",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Санаторий Sihatgox"
+	},
+
+	{
+		"lat": "41.308020",
+		"lng": "69.296119", 
+		"type": "parks",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Экопарк"
+	},
+
+	{
+		"lat": "41.297965",
+		"lng": "69.249393", 
+		"type": "other",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Next Ice City"
+	},
+
+	{
+		"lat": "41.291083",
+		"lng": "69.274867", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Мирабадский"
+	},
+
+	{
+		"lat": "41.292850",
+		"lng": "69.212028", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Катартал"
+	},
+
+	{
+		"lat": "41.364364",
+		"lng": "69.290400", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Юнусабадский"
+	},
+
+	{
+		"lat": "41.314669",
+		"lng": "69.322878", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Паркентский"
+	},
+
+	{
+		"lat": "41.319347",
+		"lng": "69.283342", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Алайский"
+	},
+
+	{
+		"lat": "41.273406",
+		"lng": "69.309969", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Рисовый"
+	},
+
+	{
+		"lat": "41.285219",
+		"lng": "69.189719", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Фархадский"
+	},
+
+	{
+		"lat": "41.286067",
+		"lng": "69.348381", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Кадышева"
+	},
+
+	{
+		"lat": "41.371594",
+		"lng": "69.324269", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Гвардейский"
+	},
+
+	{
+		"lat": "41.353347",
+		"lng": "69.351133", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Экобазар"
+	},
+
+	{
+		"lat": "41.309047",
+		"lng": "69.249314", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Чиланзарский рынок"
+	},
+
+	{
+		"lat": "41.355464",
+		"lng": "69.245972", 
+		"type": "planning",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Джами Скоро..."
+	},
+
+	{
+		"lat": "41.285814",
+		"lng": "69.193222", 
+		"type": "planning",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "УзГУМЯ-1 Скоро..."
+	},
+
+	{
+		"lat": "41.356036",
+		"lng": "69.358897", 
+		"type": "planning",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Республиканский специализированный научно-практический медицинский центр акушерства и гинекологии Скоро..."
+	},
+
+	{
+		"lat": "41.321167",
+		"lng": "69.237528", 
+		"type": "planning",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ ToshkentSavdoMarkazi Скоро..."
+	},
+
+	{
+		"lat": "41.367289",
+		"lng": "69.291128", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Mega Planet"
+	},
+
+	{
+		"lat": "41.292106",
+		"lng": "69.211047", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Парус"
+	},
+
+	{
+		"lat": "41.316367",
+		"lng": "69.231014", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Samarkand Darvoza"
+	},
+
+	{
+		"lat": "41.259917",
+		"lng": "69.223850", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Vega Center"
+	},
+
+	{
+		"lat": "41.239039",
+		"lng": "69.328661", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Compass"
+	},
+
+	{
+		"lat": "41.338453",
+		"lng": "69.271378", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Fleshka"
+	},
+
+	{
+		"lat": "41.297964",
+		"lng": "69.249392", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Next"
+	},
+
+	{
+		"lat": "41.337817",
+		"lng": "69.223014", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "EskiShahar"
+	},
+
+	{
+		"lat": "41.311222",
+		"lng": "69.275939", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ Пойтахт"
+	},
+
+	{
+		"lat": "41.259917",
+		"lng": "69.223850", 
+		"type": "streets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Шота Руставели"
+	},
+
+	{
+		"lat": "41.309358",
+		"lng": "69.299336", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТГСИ"
+	},
+
+	{
+		"lat": "41.277308",
+		"lng": "69.282275", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТашИИТ"
+	},
+
+	{
+		"lat": "41.323534",
+		"lng": "69.292940", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Лицей International House Tashkent"
+	},
+
+	{
+		"lat": "41.354206",
+		"lng": "69.331928", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТПМИ"
+	},
+
+	{
+		"lat": "41.340875",
+		"lng": "69.286831", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТУИТ"
+	},
+
+	{
+		"lat": "41.324267",
+		"lng": "69.283297", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТФИ"
+	},
+
+	{
+		"lat": "41.300567",
+		"lng": "69.281222", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "МГУ"
+	},
+
+	{
+		"lat": "41.309047",
+		"lng": "69.249314", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТГЭУ"
+	},
+
+	{
+		"lat": "41.350711",
+		"lng": "69.221753", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Туринский политехнический университет"
+	},
+
+	{
+		"lat": "41.335832",
+		"lng": "69.342265", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Филиал Российского государственного университета нефти и газа имени И.М. Губкина в Ташкенте"
+	},
+
+	{
+		"lat": "41.277474",
+		"lng": "69.204868", 
+		"type": "centre",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТРЦ INTEGRO"
+	},
+
+	{
+		"lat": "41.246633",
+		"lng": "69.166745", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок Абу Сахий"
+	},
+
+	{
+		"lat": "41.343177",
+		"lng": "69.356452", 
+		"type": "medicine",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Санаторий Турон"
+	},
+
+	{
+		"lat": "41.243199",
+		"lng": "69.163998", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Строительный рынок Бектопи"
+	},
+
+	{
+		"lat": "41.343020",
+		"lng": "69.208660", 
+		"type": "medicine",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "МЦ Akfa Medline"
+	},
+
+	{
+		"lat": "41.324549",
+		"lng": "69.321861", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "УМЭД"
+	},
+
+	{
+		"lat": "41.244886",
+		"lng": "69.171697", 
+		"type": "markets",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Рынок  Ипподром"
+	},
+
+	{
+		"lat": "41.324167",
+		"lng": "69.277755", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "УЖиМК"
+	},
+
+	{
+		"lat": "41.283939",
+		"lng": "69.245302", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "ТИТиЛП"
+	},
+
+	{
+		"lat": "41.322746",
+		"lng": "69.295937", 
+		"type": "university",
+		"balloonContent": "Название квартиры <br> <big class='color-1'>75 000</big>",
+		"title": "Институт Ирригации"
+	}
+
+]
