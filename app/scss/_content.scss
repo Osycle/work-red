@@ -2946,7 +2946,7 @@ html{
 		}
 	}
 }
-.map-beside, .map-rent{
+.map-beside{
 	height: 500px;
 	@media (max-width: 991px){
 		height: 350px;
@@ -3165,6 +3165,8 @@ html{
 	.filter-bar{
 		width: 30%;
 		padding: 30px; 
+		overflow-y: auto;
+		height: calc(100vh - 100px);
 		h3{
 			text-align: center;
 			text-transform: uppercase;
@@ -3189,10 +3191,13 @@ html{
 		font-size: 12px;
 		color: #999999 !important;
 	}
-	.select2-container--default .select2-selection--single .select2-selection__arrow{
-		background-color: transparent;
-		b{
-			border-top-color: $color-1;
+	.select2-container--default .select2-selection--single{
+		border-radius: 5px;
+		.select2-selection__arrow{
+			background-color: transparent;
+			b{
+				border-top-color: $color-1;
+			}
 		}
 	}
 	.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{
@@ -3215,8 +3220,21 @@ html{
 	.checkbox-content{
 		margin-top: 10px;
 		margin-bottom: 10px;
-		padding-left: 5px;
-		padding-right: 5px;
+		.flex{
+			//justify-content: space-between;
+			font-size: 0.9em;
+		}
+		.checkbox-style-1{
+			margin-left: 0;
+			min-width: 18px;
+			&:before{
+				width: 18px;
+				height: 18px;
+			}
+		}
+		.checkbox-title{
+			padding-left: 10px;
+		}
 	}
 	.typebeside{
 		.typebeside-wrapper{
@@ -3256,8 +3274,13 @@ html{
 
 	}
 }
+.map-rent{
+	height: 80vh;
+	height: calc(100vh - 100px);
+}
 .rent-wrapper{
 	display: flex;
+
 }
 .ymaps-2-1-74-graphics-SVG svg path{
 	transition: all 0.2s ease !important;

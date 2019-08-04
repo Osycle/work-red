@@ -11133,10 +11133,10 @@ html .irs--flat .irs-handle {
     background-color: #cc2527;
     color: white; }
 
-.map-beside, .map-rent {
+.map-beside {
   height: 500px; }
   @media (max-width: 991px) {
-    .map-beside, .map-rent {
+    .map-beside {
       height: 350px; } }
 
 .beside-content .list-info-wrapper {
@@ -11314,6 +11314,9 @@ html .irs--flat .irs-handle {
 .rent .filter-bar {
   width: 30%;
   padding: 30px;
+  overflow-y: auto;
+  height: -webkit-calc(100vh - 100px);
+  height: calc(100vh - 100px);
   background-color: white; }
   .rent .filter-bar h3 {
     text-align: center;
@@ -11335,10 +11338,13 @@ html .irs--flat .irs-handle {
   font-size: 12px;
   color: #999999 !important; }
 
-.rent .select2-container--default .select2-selection--single .select2-selection__arrow {
-  background-color: transparent; }
-  .rent .select2-container--default .select2-selection--single .select2-selection__arrow b {
-    border-top-color: #cc2527; }
+.rent .select2-container--default .select2-selection--single {
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+  .rent .select2-container--default .select2-selection--single .select2-selection__arrow {
+    background-color: transparent; }
+    .rent .select2-container--default .select2-selection--single .select2-selection__arrow b {
+      border-top-color: #cc2527; }
 
 .rent .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
   border-bottom-color: #cc2527; }
@@ -11356,9 +11362,17 @@ html .irs--flat .irs-handle {
 
 .rent .checkbox-content {
   margin-top: 10px;
-  margin-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 5px; }
+  margin-bottom: 10px; }
+  .rent .checkbox-content .flex {
+    font-size: 0.9em; }
+  .rent .checkbox-content .checkbox-style-1 {
+    margin-left: 0;
+    min-width: 18px; }
+    .rent .checkbox-content .checkbox-style-1:before {
+      width: 18px;
+      height: 18px; }
+  .rent .checkbox-content .checkbox-title {
+    padding-left: 10px; }
 
 .rent .typebeside .typebeside-wrapper {
   display: -webkit-box;
@@ -11391,6 +11405,11 @@ html .irs--flat .irs-handle {
   .rent .typebeside .radio-content input:checked ~ label {
     background-color: #cc2527;
     color: white; }
+
+.map-rent {
+  height: 80vh;
+  height: -webkit-calc(100vh - 100px);
+  height: calc(100vh - 100px); }
 
 .rent-wrapper {
   display: -webkit-box;

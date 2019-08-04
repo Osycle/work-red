@@ -81,7 +81,7 @@ window.Utils = {
 				// Описываем свойства геообъекта.
 				{
 					// Содержимое балуна.
-					balloonContent: "Рыбные места"+i
+					//balloonContent: "Рыбные места"+i
 				}, {
 					inc: i,
 					title: arr[i].data.items[0].title,
@@ -93,6 +93,7 @@ window.Utils = {
 					fillMethod: 'stretch',
 					fillColor: "#cc252700",
 					fillOpacity: "0.5",
+					type: "polygon",
 					strokeColor: "#cc252700",
 					strokeWidth: 2,
 					stroke: true
@@ -122,7 +123,57 @@ window.Utils = {
 				var that = e.get("target");
 				var inc = that.options.get("inc");
 				Face.activeArea(inc);
-				console.log(that.options.get("inc"));
+
+				$.ajax({
+					type: "GET",
+			    url: "apartments.json",
+					success: function(response){
+						//console.log(response);
+						//Face.activeArea(0);			
+						var objects = [];
+						$(response).map(function(i, el){
+							var latlng = [ el.lat, el.lng ];
+							objects.push({
+								type: "Point",
+								coordinates: latlng
+							});
+						})
+						//Utils.currentMap.geoObjects.each(function(el, i){
+						//	if( el.options.get("type") == "point" ){
+						//		Utils.currentMap.geoObjects.remove(el);
+						//	}
+						//});
+						if( window.result )
+						for (var i = 0; i < result.length; i++) {
+							Utils.currentMap.geoObjects.remove(result[i])
+						}
+
+
+						window.result = ymaps.geoQuery(objects).addToMap(Utils.currentMap);
+						var polygon = Face.areas[Face.currentAreaInc];
+						result.each(function(el, i){
+							el.options.set({
+								type: "point",
+								visible: !false
+							});
+						})
+						var objectsContainingPolygon = result.searchInside(polygon);
+						objectsContainingPolygon.each(function(el, i){
+							el.options.set({
+								visible: true,
+								iconLayout: 'default#image',
+								iconImageHref: "img/icons/marker-green.png",
+								iconImageSize: [21, 30]
+							});
+						})
+						console.log(objectsContainingPolygon);
+					},
+			    complete: function(response){}
+				});
+
+
+
+
 			})
 
 		}
@@ -229,41 +280,7 @@ window.initRent = function(itemOptions) {
 	Utils.drawPolygon(areasPolygon);
 	Face.activeArea(0);
 
-	$.ajax({
-		type: "GET",
-    url: "apartments.json",
-		success: function(response){
-			//console.log(response);
-			//Face.activeArea(0);			
-			var objects = [];
-			$(response).map(function(i, el){
-				var latlng = [ el.lat, el.lng ];
-				objects.push({
-					type: "Point",
-					coordinates: latlng
-				});
-			})
 
-			window.result = ymaps.geoQuery(objects).addToMap(Utils.currentMap);
-			var polygon = Face.areas[Face.currentAreaInc];
-			result.each(function(el, i){
-				el.options.set({
-					visible: false
-				});
-			})
-			var objectsContainingPolygon = result.searchInside(polygon);
-			objectsContainingPolygon.each(function(el, i){
-				el.options.set({
-					visible: true,
-					iconLayout: 'default#image',
-					iconImageHref: "img/icons/marker-green.png",
-					iconImageSize: [21, 30]
-				});
-			})
-			console.log(objectsContainingPolygon);
-		},
-    complete: function(response){}
-	});
 
 
 
