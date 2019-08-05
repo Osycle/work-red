@@ -3163,9 +3163,11 @@ html{
 
 .rent{
 	.filter-bar{
+		min-width: 475px;
 		width: 30%;
 		padding: 30px; 
 		overflow-y: auto;
+		overflow-x: hidden;
 		height: calc(100vh - 100px);
 		h3{
 			text-align: center;
@@ -3222,7 +3224,7 @@ html{
 		margin-bottom: 10px;
 		.flex{
 			//justify-content: space-between;
-			font-size: 0.9em;
+			font-size: 0.85em;
 		}
 		.checkbox-style-1{
 			margin-left: 0;

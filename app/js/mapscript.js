@@ -1,5 +1,5 @@
-window.Face = {
-	areas: [],
+window.Areas = {
+	items: [],
 	currentAreaInc: undefined,
 	areasTitles: [
 		"Юнусабадский район",
@@ -17,8 +17,8 @@ window.Face = {
 	],
 	activeArea: function(inc){
 		var that = this;
-		Face.currentAreaInc = inc;
-		$(that.areas).map(function(i ,el){
+		Areas.currentAreaInc = inc;
+		$(that.items).map(function(i ,el){
 			//console.log(that.areasTitles[inc], el.options.get("title"));
 			if( that.areasTitles[inc] == el.options.get("title") )
 				el.options.set({
@@ -31,10 +31,98 @@ window.Face = {
 					strokeColor: "#cc252700"
 				});
 		});
-	}
+	},
+	drawPolygon: function(arr){
+		window.mata = arr;
+		for (var i = 0; i < arr.length; i++) {
+			var polygon = arr[i].data.items[0].displayGeometry.geometries[0].coordinates[0];
+			//console.log(polygon[0].coordinates[0]);
+			
+			var areasPolygon = new ymaps.Polygon([polygon],
+				{
+					// Содержимое балуна.
+					//balloonContent: "Рыбные места"+i
+				}, {
+					inc: i,
+					title: arr[i].data.items[0].title,
+					description: arr[i].data.items[0].description,
+					address: arr[i].data.items[0].address,
+					coordinates: arr[i].data.items[0].coordinates,
+					bounds: arr[i].data.items[0].bounds,
+					//fillImageHref: 'images/lake.png',
+					fillMethod: 'stretch',
+					fillColor: "#cc252700",
+					fillOpacity: "0.4",
+					type: "polygon",
+					strokeColor: "#cc252700",
+					strokeWidth: 2,
+					stroke: true
+				}
+			);
+			Areas.items.push(areasPolygon);
+			Utils.currentMap.geoObjects.add(areasPolygon);
+
+			areasPolygon.events.add("mouseenter", function(e){
+				var that = e.get("target");
+				if( Areas.areasTitles[Areas.currentAreaInc] != that.options.get("title") )
+					that.options.set({
+						fillColor: "#fff",
+						strokeColor: "#cc2527"
+					});
+			});
+			areasPolygon.events.add("mouseleave", function(e){
+				var that = e.get("target");
+				if( Areas.areasTitles[Areas.currentAreaInc] != that.options.get("title") )
+					that.options.set({
+						fillColor: "#cc252700",
+						strokeColor: "#cc252700"
+					});
+			});
+
+			areasPolygon.events.add("click", function(e){
+				var that = e.get("target");
+				var inc = that.options.get("inc");
+				Areas.activeArea(inc);
+
+				if( Rent.apartments ){
+					Rent.apartments.setOptions({
+						visible: false
+					});
+					//Rent.apartments.removeFromMap(Utils.currentMap);
+				}
+				//Rent.apartments
+				var polygon = Areas.items[Areas.currentAreaInc];
+				var objectsContainingPolygon = Rent.apartments.searchInside(polygon);
+				objectsContainingPolygon.each(function(el, i){
+					el.options.set({
+						visible: true
+					});
+				})
+
+				Rent.filterBar(Rent.apartments);
+
+			})
+
+		}
+	},
+
 
 };
+var rentInputs = $("[data-rent-checkboxes] [data-rent-property]");
+window.Rent = {
 
+	filterBar: function(obj){
+		obj.each(function(item, i){
+			item = item.options.get("item");
+			var property = item.property;
+			rentInputs.map(function(i, el){
+				var propertyAttr = $(el).attr("data-rent-property")
+				console.log( (property[propertyAttr] == el.checked) );
+				//console.info(el.checked);
+			})
+		})
+	}
+}
 
 window.Utils = {
 	searchDots: undefined,
@@ -67,117 +155,6 @@ window.Utils = {
 		that.currentMap.controls.add(that.searchControl);
 	},
 
-	drawPolygon: function(arr){
-		window.mata = arr;
-		console.log(arr);
-		for (var i = 0; i < arr.length; i++) {
-			var polygon = arr[i].data.items[0].displayGeometry.geometries[0].coordinates[0];
-			//console.log(polygon[0].coordinates[0]);
-			
-			var myPolygon = new ymaps.Polygon([
-					// Указываем координаты вершин многоугольника.
-					polygon
-				],
-				// Описываем свойства геообъекта.
-				{
-					// Содержимое балуна.
-					//balloonContent: "Рыбные места"+i
-				}, {
-					inc: i,
-					title: arr[i].data.items[0].title,
-					description: arr[i].data.items[0].description,
-					address: arr[i].data.items[0].address,
-					coordinates: arr[i].data.items[0].coordinates,
-					bounds: arr[i].data.items[0].bounds,
-					//fillImageHref: 'images/lake.png',
-					fillMethod: 'stretch',
-					fillColor: "#cc252700",
-					fillOpacity: "0.5",
-					type: "polygon",
-					strokeColor: "#cc252700",
-					strokeWidth: 2,
-					stroke: true
-				}
-			);
-			//console.log(polygon);
-			Face.areas.push(myPolygon);
-			Utils.currentMap.geoObjects.add(myPolygon);
-
-			myPolygon.events.add("mouseenter", function(e){
-				var that = e.get("target");
-				if( Face.areasTitles[Face.currentAreaInc] != that.options.get("title") )
-					that.options.set({
-						fillColor: "#fff",
-						strokeColor: "#cc2527"
-					});
-			});
-			myPolygon.events.add("mouseleave", function(e){
-				var that = e.get("target");
-				if( Face.areasTitles[Face.currentAreaInc] != that.options.get("title") )
-					that.options.set({
-						fillColor: "#cc252700",
-						strokeColor: "#cc252700"
-					});
-			});
-			myPolygon.events.add("click", function(e){
-				var that = e.get("target");
-				var inc = that.options.get("inc");
-				Face.activeArea(inc);
-
-				$.ajax({
-					type: "GET",
-			    url: "apartments.json",
-					success: function(response){
-						//console.log(response);
-						//Face.activeArea(0);			
-						var objects = [];
-						$(response).map(function(i, el){
-							var latlng = [ el.lat, el.lng ];
-							objects.push({
-								type: "Point",
-								coordinates: latlng
-							});
-						})
-						//Utils.currentMap.geoObjects.each(function(el, i){
-						//	if( el.options.get("type") == "point" ){
-						//		Utils.currentMap.geoObjects.remove(el);
-						//	}
-						//});
-						if( window.result )
-						for (var i = 0; i < result.length; i++) {
-							Utils.currentMap.geoObjects.remove(result[i])
-						}
-
-
-						window.result = ymaps.geoQuery(objects).addToMap(Utils.currentMap);
-						var polygon = Face.areas[Face.currentAreaInc];
-						result.each(function(el, i){
-							el.options.set({
-								type: "point",
-								visible: !false
-							});
-						})
-						var objectsContainingPolygon = result.searchInside(polygon);
-						objectsContainingPolygon.each(function(el, i){
-							el.options.set({
-								visible: true,
-								iconLayout: 'default#image',
-								iconImageHref: "img/icons/marker-green.png",
-								iconImageSize: [21, 30]
-							});
-						})
-						console.log(objectsContainingPolygon);
-					},
-			    complete: function(response){}
-				});
-
-
-
-
-			})
-
-		}
-	},
 
 	drawCircle: function(radius, latlng){
 		// Создаем круг.
@@ -277,10 +254,56 @@ window.initRent = function(itemOptions) {
 		controls: []
 	})
 	
-	Utils.drawPolygon(areasPolygon);
-	Face.activeArea(0);
+	Areas.drawPolygon(areasPolygon);
+	//Areas.activeArea(0);
+
+	$.ajax({
+		type: "GET",
+    url: "apartments.json",
+		success: function(response){
+			//console.log(response);
+			//Areas.activeArea(0);			
+			var objects = [];
+			$(response).map(function(i, el){
+				var latlng = [ el.lat, el.lng ];
+				// objects.push({
+				// 	type: "Point",
+				// 	param: el.property,
+				// 	coordinates: latlng
+				// });
+				objects.push(new ymaps.Placemark(latlng, {
+					balloonContent: "Название квартиры <br> <big class='color-1'>75 000</big>"
+				}, {
+					item: el
+				}));
+
+			})
 
 
+			if( window.Rent.apartments ){
+				Rent.apartments.setOptions({
+					visible: false
+				});
+				//Rent.apartments.removeFromMap(Utils.currentMap);
+			}
+
+			//Utils.searchInit();
+
+			Rent.apartments = ymaps.geoQuery(objects).addToMap(Utils.currentMap);
+			Rent.apartments.each(function(el, i){
+				console.log(el);
+				el.options.set({
+					type: "point",
+					iconLayout: 'default#image',
+					iconImageHref: "img/icons/marker-green.png",
+					iconImageSize: [21, 30],
+					visible: false
+				});
+			})
+
+		},
+    complete: function(response){}
+	});
 
 
 
