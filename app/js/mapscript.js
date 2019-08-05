@@ -86,7 +86,7 @@ window.Areas = {
 
 				if( Rent.apartments ){
 					Rent.apartments.setOptions({
-						visible: false
+						visible: true
 					});
 					//Rent.apartments.removeFromMap(Utils.currentMap);
 				}
@@ -95,6 +95,9 @@ window.Areas = {
 				var objectsContainingPolygon = Rent.apartments.searchInside(polygon);
 				objectsContainingPolygon.each(function(el, i){
 					el.options.set({
+						iconLayout: 'default#image',
+						iconImageHref: "img/icons/marker-green.png",
+						iconImageSize: [29, 41],
 						visible: true
 					});
 				})
@@ -112,12 +115,27 @@ var rentInputs = $("[data-rent-checkboxes] [data-rent-property]");
 window.Rent = {
 
 	filterBar: function(obj){
-		obj.each(function(item, i){
-			item = item.options.get("item");
+		obj.each(function(objItem, i){
+			var item = objItem.options.get("item");
 			var property = item.property;
 			rentInputs.map(function(i, el){
 				var propertyAttr = $(el).attr("data-rent-property")
-				console.log( (property[propertyAttr] == el.checked) );
+				if( (el.checked == false && property[propertyAttr] == el.checked) ){
+					objItem.options.set({
+						iconLayout: 'default#image',
+						iconImageHref: "img/icons/marker-offices-2.png",
+						iconImageSize: [29, 41],
+						visible: true
+					});
+					console.log( (propertyAttr) );
+				}else{
+					objItem.options.set({
+						iconLayout: 'default#image',
+						iconImageHref: "img/icons/marker-offices-1.png",
+						iconImageSize: [29, 41],
+						visible: true
+					});
+				}
 				//console.info(el.checked);
 			})
 		})
