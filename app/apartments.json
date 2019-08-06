@@ -5,6 +5,8 @@
 		"type": "airports",
 		"balloonContent": "Название квартиры washer<br> <big class='color-1'>75 000</big>",
 		"sale": true,
+		"rooms": 2,
+		"price": 3000,
 		"property": {
 			"elevator": false,
 			"closet": false,
@@ -37,6 +39,8 @@
 		"type": "business",
 		"balloonContent": "Название квартиры elevator<br> <big class='color-1'>75 000</big>",
 		"sale": true,
+		"rooms": 3,
+		"price": 4500,
 		"property": {
 			"elevator": true,
 			"closet": false,
@@ -69,6 +73,8 @@
 		"type": "stations",
 		"balloonContent": "Название квартиры closet<br> <big class='color-1'>75 000</big>",
 		"sale": true,
+		"rooms": 4,
+		"price": 6000,
 		"property": {
 			"elevator": false,
 			"closet": true,

@@ -86,25 +86,27 @@ window.Areas = {
 
 				if( Rent.apartments ){
 					Rent.apartments.setOptions({
-						visible: true
+						visible: !false
 					});
 					Rent.apartments.each(function(el){
-						console.log(el.options)
 						el.properties.set({
 							balloonContent: el.options.get("item").balloonContent
-
 						})
 					})
 					//Rent.apartments.removeFromMap(Utils.currentMap);
 				}
+				console.log(rentCom);
+				rentCom.map(function(i, el){
+					var val = $(el).val();
+					if( !isNaN(val*1) && val != "")
+						console.log( $(el).val(), (val != "") );
+						
+				})
 				//Rent.apartments
 				var polygon = Areas.items[Areas.currentAreaInc];
 				var objectsContainingPolygon = Rent.apartments.searchInside(polygon);
 				objectsContainingPolygon.each(function(el, i){
 					el.options.set({
-						iconLayout: 'default#image',
-						iconImageHref: "img/icons/marker-green.png",
-						iconImageSize: [29, 41],
 						visible: true
 					});
 				})
@@ -118,7 +120,9 @@ window.Areas = {
 
 
 };
-var rentInputs = $("[data-rent-checkboxes] [data-rent-property]");
+var rentProperty = $("[data-rent-checkboxes] [data-rent-property]");
+var rentCom = $("[data-rent-coms] [data-rent-com]");
+
 window.Rent = {
 
 	filterBar: function(obj){
@@ -129,22 +133,34 @@ window.Rent = {
 		obj.each(function(objItem, i){
 			item = objItem.options.get("item");
 			property = item.property;
-			for (var i = 0; i < rentInputs.length; i++) {
-				elInput = rentInputs[i];
-				propertyAttr = $(rentInputs[i]).attr("data-rent-property")
+			var novalid;
+			for (var i = 0; i < rentProperty.length; i++) {
+				elInput = rentProperty[i];
+				propertyAttr = $(rentProperty[i]).attr("data-rent-property")
 				if( !(property[propertyAttr] == elInput.checked || property[propertyAttr]) ){
-					objItem.options.set({
-						//iconLayout: 'default#image',
-						//iconImageHref: "img/icons/marker-offices-2.png",
-						//iconImageSize: [29, 41],
-						visible: false
-					});
+					novalid = true;
 					console.log( "property:"+property[propertyAttr], elInput, elInput.checked );
 					break;
 				}
 				//console.info(el.checked);
 			}
-			rentInputs.map(function(i, el){
+			for (var i = 0; i < rentCom.length; i++) {
+				console.log(item.price);
+				// if( !(property[propertyAttr] == elInput.checked || property[propertyAttr]) ){
+				// 	novalid = true;
+				// 	console.log( "property:"+property[propertyAttr], elInput, elInput.checked );
+				// 	break;
+				// }
+			}
+			if( novalid ){
+				objItem.options.set({
+					iconLayout: 'default#image',
+					iconImageHref: "img/icons/marker-offices-2.png",
+					iconImageSize: [29, 41],
+					visible: false
+				});
+			}
+			rentProperty.map(function(i, el){
 			})
 		})
 	}
