@@ -95,11 +95,11 @@ window.Areas = {
 					})
 					//Rent.apartments.removeFromMap(Utils.currentMap);
 				}
-				console.log(rentCom);
 				rentCom.map(function(i, el){
 					var val = $(el).val();
-					if( !isNaN(val*1) && val != "")
-						console.log( $(el).val(), (val != "") );
+					if( !isNaN(val*1) && val != ""){
+						//console.log( $(el).val(), (val != "") );
+					}
 						
 				})
 				//Rent.apartments
@@ -121,7 +121,7 @@ window.Areas = {
 
 };
 var rentProperty = $("[data-rent-checkboxes] [data-rent-property]");
-var rentCom = $("[data-rent-coms] [data-rent-com]");
+var rentCom = $("[data-rent-coms] [data-rent-field]");
 
 window.Rent = {
 
@@ -145,18 +145,26 @@ window.Rent = {
 				//console.info(el.checked);
 			}
 			for (var i = 0; i < rentCom.length; i++) {
-				console.log(item.price);
-				// if( !(property[propertyAttr] == elInput.checked || property[propertyAttr]) ){
-				// 	novalid = true;
-				// 	console.log( "property:"+property[propertyAttr], elInput, elInput.checked );
-				// 	break;
-				// }
+				rentCom[i] = $(rentCom[i]);
+				var fieldName = rentCom[i].attr("data-rent-field");
+
+				var min = rentCom[i].filter("[data-rent-min]").val()*1 || 0;
+				var max = rentCom[i].filter("[data-rent-max]").val()*1 || Infinity;
+
+				if ( min <= item[fieldName] && item[fieldName] <= max ) {
+					//console.log("Прошел", min, max, item[fieldName], min < item[fieldName]);
+				}else{
+					novalid = true;
+					//console.log("НЕПрошел");
+					break;
+				}
+
 			}
 			if( novalid ){
 				objItem.options.set({
-					iconLayout: 'default#image',
-					iconImageHref: "img/icons/marker-offices-2.png",
-					iconImageSize: [29, 41],
+					//iconLayout: 'default#image',
+					//iconImageHref: "img/icons/marker-offices-2.png",
+					//iconImageSize: [29, 41],
 					visible: false
 				});
 			}
@@ -383,6 +391,11 @@ window.initRent = function(itemOptions) {
 
 */
 $(".beside-nav").on("click", "[data-search-enty]", function(){
+	var searchRequest = $(this).attr("data-search-enty");
+	console.log(searchRequest);
+	Utils.searchControl.search(searchRequest);
+});
+$(".rent").on("click", "[data-search-enty]", function(){
 	var searchRequest = $(this).attr("data-search-enty");
 	console.log(searchRequest);
 	Utils.searchControl.search(searchRequest);

@@ -251,13 +251,13 @@
 							</div>
 							<div data-rent-coms>
 								<div class="input-content m-v-10 p-h-5 col-md-6">
-									<div><input type="" name="" class="form-control" placeholder="цена от (сум)" data-rent-com></div>
+									<div><input type="" name="" class="form-control" placeholder="цена от (сум)" data-rent-field="price" data-rent-min></div>
 								</div>
 								<div class="input-content m-v-10 p-h-5 col-md-6">
-									<div><input type="" name="" class="form-control" placeholder="цена до (сум)" data-rent-com></div>
+									<div><input type="" name="" class="form-control" placeholder="цена до (сум)" data-rent-field="price" data-rent-max></div>
 								</div>
 								<div class="input-content m-v-10 p-h-5 col-md-6">
-									<select class="js-select box-xs-10" data-rent-com>
+									<select class="js-select box-xs-10" data-rent-field="rooms" data-rent-min>
 										<option>комнаты от</option>
 										<option>1</option>
 										<option>2</option>
@@ -267,13 +267,14 @@
 									</select>
 								</div>
 								<div class="input-content m-v-10 p-h-5 col-md-6">
-									<select class="js-select box-xs-10" data-rent-com>
+									<select class="js-select box-xs-10" data-rent-field="rooms" data-rent-max>
 										<option>комнаты до</option>
 										<option>1</option>
 										<option>2</option>
 										<option>3</option>
 										<option>4</option>
 										<option>5</option>
+
 									</select>
 								</div>
 							</div>
@@ -474,15 +475,15 @@
 									<div>найти по</div>
 									<div class="radio-content">
 										<input type="radio" name="typebeside" id="typebeside-1" class="hide">
-										<label class="btn-this" for="typebeside-1">Метро</label>
+										<label class="btn-this" for="typebeside-1" data-search-enty="Метро">Метро</label>
 									</div>
 									<div class="radio-content">
 										<input type="radio" name="typebeside" id="typebeside-2" class="hide">
-										<label class="btn-this" for="typebeside-2">Школа</label>
+										<label class="btn-this" for="typebeside-2" data-search-enty="Школа">Школа</label>
 									</div>
 									<div class="radio-content">
 										<input type="radio" name="typebeside" id="typebeside-3" class="hide">
-										<label class="btn-this" for="typebeside-3">ВУЗ</label>
+										<label class="btn-this" for="typebeside-3" data-search-enty="ВУЗ">ВУЗ</label>
 									</div>
 								</div>
 								<div class="typebeside-result m-v-30 hide">
