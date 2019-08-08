@@ -11420,9 +11420,11 @@ html .irs--flat .irs-handle {
   display: flex; }
 
 .ymaps-2-1-74-graphics-SVG svg path {
-  -webkit-transition: all 0.2s ease !important;
-  -o-transition: all 0.2s ease !important;
-  transition: all 0.2s ease !important; }
+  -webkit-transition: opacity 0.3s ease, fill 0.3s ease, -webkit-transform 0s ease !important;
+  transition: opacity 0.3s ease, fill 0.3s ease, -webkit-transform 0s ease !important;
+  -o-transition: opacity 0.3s ease, fill 0.3s ease, transform 0s ease !important;
+  transition: opacity 0.3s ease, fill 0.3s ease, transform 0s ease !important;
+  transition: opacity 0.3s ease, fill 0.3s ease, transform 0s ease, -webkit-transform 0s ease !important; }
 
 /* 
 		_footer.scss

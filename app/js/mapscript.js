@@ -1,3 +1,5 @@
+
+/*Areas*/
 window.Areas = {
 	items: [],
 	currentAreaInc: undefined,
@@ -86,7 +88,7 @@ window.Areas = {
 
 				if( Rent.apartments ){
 					Rent.apartments.setOptions({
-						visible: !false
+						visible: false
 					});
 					Rent.apartments.each(function(el){
 						el.properties.set({
@@ -123,6 +125,7 @@ window.Areas = {
 var rentProperty = $("[data-rent-checkboxes] [data-rent-property]");
 var rentCom = $("[data-rent-coms] [data-rent-field]");
 
+/*Rent*/
 window.Rent = {
 
 	filterBar: function(obj){
@@ -174,6 +177,7 @@ window.Rent = {
 	}
 }
 
+/*Utils*/
 window.Utils = {
 	searchDots: undefined,
 	searchControl: undefined,
@@ -316,11 +320,6 @@ window.initRent = function(itemOptions) {
 			var objects = [];
 			$(response).map(function(i, el){
 				var latlng = [ el.lat, el.lng ];
-				// objects.push({
-				// 	type: "Point",
-				// 	param: el.property,
-				// 	coordinates: latlng
-				// });
 				objects.push(new ymaps.Placemark(latlng, {
 					balloonContent: "Название квартиры <br> <big class='color-1'>75 000</big>"
 				}, {
@@ -334,10 +333,8 @@ window.initRent = function(itemOptions) {
 				Rent.apartments.setOptions({
 					visible: false
 				});
-				//Rent.apartments.removeFromMap(Utils.currentMap);
-			}
 
-			//Utils.searchInit();
+			}
 
 			Rent.apartments = ymaps.geoQuery(objects).addToMap(Utils.currentMap);
 			Rent.apartments.each(function(el, i){
@@ -356,16 +353,41 @@ window.initRent = function(itemOptions) {
 	});
 
 
-
 	Utils.searchInit();
-	
+
 	Utils.searchControl.events.add("load", function(e){
+		e.preventDefault();
+		Utils.searchDots = Utils.searchControl.getResultsArray();
+		//Utils.dotsInCircle(Utils.searchDots, circle);
+		for (var i = 0; i < Utils.searchDots.length; i++) {
+			
+			//Utils.searchDots[i].properties.get("name")
+			//Utils.searchDots[i].properties.get("name")
+			var data = {
+				id: i,
+				idCompany: Utils.searchDots[i].properties.get("id"),
+				name: Utils.searchDots[i].properties.get("name"),
+				description: Utils.searchDots[i].properties.get("description"),
+				coordinates: Utils.searchDots[i].geometry.getCoordinates()
+			}
+
+			var newOption = new Option(data.name, data.id, false, false);
+			$(newOption).attr("data-all", JSON.stringify(data));
+			$('#beside-entity').append(newOption).trigger('change');
+
+		}
+		$('#beside-entity').on("change", function(){
+			var data = JSON.parse($(this.selectedOptions).attr("data-all"));
+			console.log(data);
+			window.mar = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'");
+			mar.get(0).balloon.open();
+		})
 		
 	});
 
 
-
-
+	//var circle = Utils.drawCircle(1500, latlng);
+	//Utils.dotsInCircle(Utils.searchDots, circle);
 
 
 
