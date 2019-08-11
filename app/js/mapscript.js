@@ -90,11 +90,6 @@ window.Areas = {
 					Rent.apartments.setOptions({
 						visible: false
 					});
-					Rent.apartments.each(function(el){
-						el.properties.set({
-							balloonContent: el.options.get("item").balloonContent
-						})
-					})
 					//Rent.apartments.removeFromMap(Utils.currentMap);
 				}
 				rentCom.map(function(i, el){
@@ -200,7 +195,7 @@ window.Utils = {
 				//showFeedbackAfterResults: true,
 				strictBounds: true,
 				//boundedBy: circle.geometry.getBounds(),
-				results: 50,
+				results: 30,
 				provider: 'yandex#search'	
 			}
 		});
@@ -317,11 +312,11 @@ window.initRent = function(itemOptions) {
 		success: function(response){
 			//console.log(response);
 			//Areas.activeArea(0);			
-			var objects = [];
+			Rent.objects = [];
 			$(response).map(function(i, el){
 				var latlng = [ el.lat, el.lng ];
-				objects.push(new ymaps.Placemark(latlng, {
-					balloonContent: "Название квартиры <br> <big class='color-1'>75 000</big>"
+				Rent.objects.push(new ymaps.Placemark(latlng, {
+					balloonContent: el.balloonContent
 				}, {
 					item: el
 				}));
@@ -336,7 +331,7 @@ window.initRent = function(itemOptions) {
 
 			}
 
-			Rent.apartments = ymaps.geoQuery(objects).addToMap(Utils.currentMap);
+			Rent.apartments = ymaps.geoQuery(Rent.objects).addToMap(Utils.currentMap);
 			Rent.apartments.each(function(el, i){
 				console.log(el);
 				el.options.set({
@@ -355,14 +350,14 @@ window.initRent = function(itemOptions) {
 
 	Utils.searchInit();
 
+	var besideEntitySelect = $('#beside-entity');
 	Utils.searchControl.events.add("load", function(e){
 		e.preventDefault();
 		Utils.searchDots = Utils.searchControl.getResultsArray();
 		//Utils.dotsInCircle(Utils.searchDots, circle);
+		besideEntitySelect.html("");
 		for (var i = 0; i < Utils.searchDots.length; i++) {
-			
-			//Utils.searchDots[i].properties.get("name")
-			//Utils.searchDots[i].properties.get("name")
+			// Объект с данными о точках
 			var data = {
 				id: i,
 				idCompany: Utils.searchDots[i].properties.get("id"),
@@ -370,20 +365,59 @@ window.initRent = function(itemOptions) {
 				description: Utils.searchDots[i].properties.get("description"),
 				coordinates: Utils.searchDots[i].geometry.getCoordinates()
 			}
-
 			var newOption = new Option(data.name, data.id, false, false);
 			$(newOption).attr("data-all", JSON.stringify(data));
-			$('#beside-entity').append(newOption).trigger('change');
+			besideEntitySelect.append(newOption).trigger('change.refresh');
 
 		}
-		$('#beside-entity').on("change", function(){
-			var data = JSON.parse($(this.selectedOptions).attr("data-all"));
-			console.log(data);
-			window.mar = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'");
-			mar.get(0).balloon.open();
+		//сортируем строки по имени
+		var sortOptions = besideEntitySelect.find('option').sort(function(a, b){
+			var nameA = a.textContent.toLowerCase(), 
+					nameB = b.textContent.toLowerCase();
+			if (nameA < nameB) 
+			  return -1;
+			if (nameA > nameB)
+			  return 1;
+			return 0;
 		})
+		besideEntitySelect.append(sortOptions);
+		
 		
 	});
+
+	besideEntitySelect.on("change.once", function(){
+		try{
+			var data = JSON.parse($(this.selectedOptions).attr("data-all"));
+			Rent.currentBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
+			console.log(data);
+			Utils.currentMap.panTo(Rent.currentBalloon.geometry.getCoordinates(), {
+
+				callback: function () {
+					setTimeout(function(){
+						Rent.currentBalloon.balloon.open();
+					}, 2000)
+
+				}
+
+			});
+			setTimeout(function(){
+				Rent.currentBalloon.balloon.open();
+			}, 2000)
+			//Rent.currentBalloon.get(0).balloon.open();
+			Rent.circle = Utils.drawCircle(1500, data.coordinates);
+
+			var objectsContainingPolygon = Rent.apartments.searchInside(Rent.circle);
+			objectsContainingPolygon.each(function(el, i){
+				el.options.set({
+					visible: true
+				});
+			})
+
+
+		}catch(e){
+			console.info(e);
+		}
+	})
 
 
 	//var circle = Utils.drawCircle(1500, latlng);
