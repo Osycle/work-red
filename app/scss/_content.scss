@@ -3154,36 +3154,12 @@ html{
 	@extend .shadow-def;
 }
 
-.ymaps-2-1-74-controls__toolbar{
-	//display: none;
-}
 
 
 
 
 .rent{
-	.filter-bar{
-		min-width: 475px;
-		width: 30%;
-		padding: 30px; 
-		overflow-y: auto;
-		overflow-x: hidden;
-		height: calc(100vh - 100px);
-		h3{
-			text-align: center;
-			text-transform: uppercase;
-		}
-		background-color: white;
-		input.form-control{
-			height: 35px;
-			font-size: 12px;
-		}
-		.input-content{
-		}
-	}
-	.map-content{
-		width: 70%;
-	}
+
 	.map-beside{
 		height: 80vh;
 		height: calc(100vh - 100px);
@@ -3215,7 +3191,7 @@ html{
 			font-weight: 600;
 			padding: 7px 20px;
 			&:nth-child(1){
-				display: none;
+				//display: none;
 			}
 		}
 	}
@@ -3276,16 +3252,79 @@ html{
 
 	}
 }
-.map-rent{
-	height: 80vh;
+.rent-bar{
+	display: none;
+	min-width: 475px;
+	width: 30%;
+	padding: 30px; 
+	transition: all 0.3s ease;
+	overflow-y: auto;
+	overflow-x: hidden;
 	height: calc(100vh - 100px);
+	h3{
+		text-align: center;
+		text-transform: uppercase;
+	}
+	background-color: white;
+	input.form-control{
+		height: 35px;
+		font-size: 12px;
+	}
+	.input-content{
+	}
+}
+.rent-map{
+	width: 70%;
+	.map{
+		height: 80vh;
+		height: calc(100vh - 100px);
+	}
 }
 .rent-wrapper{
 	display: flex;
-
+}
+.rent-header{
+	display: flex;
+	align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-color: white;
+  height: 100px;
+  .js-select{
+  	max-width: 250px;
+  }
+  .flex-adaptive{
+		align-items: center;
+  }
+  .rent-header-info{
+  	.cnt-rent{
+  		font-weight: 600;
+  		color: $color-1;
+  	}
+  	small{
+  		color: $color-1;
+  		text-decoration: underline;
+  		font-weight: 700;
+  	}
+  }
 }
 .ymaps-2-1-74-graphics-SVG svg path{
 	transition: opacity 0.3s ease,
 							fill 0.3s ease,
 							transform 0s ease !important;
+}
+.rent-items{
+	background-color: white;
+}
+.show-rent{
+	.rent-wrapper{
+		display: block;
+	}
+	.rent-map{
+		width: 100%;
+		.map{
+			//margin-top: 100px;
+		}
+	}
 }

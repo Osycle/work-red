@@ -1,4 +1,8 @@
 
+var markerStyle_1 = 'img/icons/marker-green.png';
+var markerStyle_2 = 'img/icons/marker-red.png';
+var markerStyle_3 = 'img/icons/marker-offices-2.png';
+
 /*Areas*/
 window.Areas = {
 	items: [],
@@ -92,6 +96,8 @@ window.Areas = {
 					});
 					//Rent.apartments.removeFromMap(Utils.currentMap);
 				}
+				if( Rent.circle )
+					Utils.currentMap.geoObjects.remove(Rent.circle);
 				rentCom.map(function(i, el){
 					var val = $(el).val();
 					if( !isNaN(val*1) && val != ""){
@@ -161,7 +167,7 @@ window.Rent = {
 			if( novalid ){
 				objItem.options.set({
 					//iconLayout: 'default#image',
-					//iconImageHref: "img/icons/marker-offices-2.png",
+					//iconImageHref: markerStyle_3,
 					//iconImageSize: [29, 41],
 					visible: false
 				});
@@ -236,7 +242,7 @@ window.Utils = {
 			dotLng = dots[i].geometry.getCoordinates()[1];
 			dots[i].options.set({
 				iconLayout: 'default#image',
-				iconImageHref: "img/icons/marker-offices-2.png",
+				iconImageHref: markerStyle_3,
 				iconImageSize: [29, 41]
 			});
 			if( dotLat > radiusStart[0] && dotLng > radiusStart[1] && dotLat < radiusEnd[0] && dotLng < radiusEnd[1]){
@@ -279,7 +285,7 @@ window.initBeside = function(itemOptions) {
 		balloonContent: itemOptions.mainBalloonContent
 	}, {
 		iconLayout: 'default#image',
-		iconImageHref: "img/icons/marker-green.png",
+		iconImageHref: markerStyle_1,
 		iconImageSize: [21, 30]
 	});
 	Utils.currentMap.geoObjects.add(marker);
@@ -310,8 +316,6 @@ window.initRent = function(itemOptions) {
 		type: "GET",
     url: "apartments.json",
 		success: function(response){
-			//console.log(response);
-			//Areas.activeArea(0);			
 			Rent.objects = [];
 			$(response).map(function(i, el){
 				var latlng = [ el.lat, el.lng ];
@@ -333,11 +337,12 @@ window.initRent = function(itemOptions) {
 
 			Rent.apartments = ymaps.geoQuery(Rent.objects).addToMap(Utils.currentMap);
 			Rent.apartments.each(function(el, i){
-				console.log(el);
+				
+				var sale = el.options.get("item").sale;
 				el.options.set({
 					type: "point",
 					iconLayout: 'default#image',
-					iconImageHref: "img/icons/marker-green.png",
+					iconImageHref: sale ? markerStyle_1 : markerStyle_2,
 					iconImageSize: [21, 30],
 					visible: false
 				});
@@ -389,25 +394,28 @@ window.initRent = function(itemOptions) {
 		try{
 			var data = JSON.parse($(this.selectedOptions).attr("data-all"));
 			Rent.currentBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
-			console.log(data);
-			Utils.currentMap.panTo(Rent.currentBalloon.geometry.getCoordinates(), {
 
-				callback: function () {
-					setTimeout(function(){
-						Rent.currentBalloon.balloon.open();
-					}, 2000)
+			//Убираем наведения на районы
+			Areas.activeArea(null);
 
-				}
+			Utils.currentMap.panTo(Rent.currentBalloon.geometry.getCoordinates(), {});
+			
+			//Rent.currentBalloon.balloon.open();
+			if( Rent.circle )
+				Utils.currentMap.geoObjects.remove(Rent.circle);
 
-			});
-			setTimeout(function(){
-				Rent.currentBalloon.balloon.open();
-			}, 2000)
 			//Rent.currentBalloon.get(0).balloon.open();
 			Rent.circle = Utils.drawCircle(1500, data.coordinates);
 
-			var objectsContainingPolygon = Rent.apartments.searchInside(Rent.circle);
-			objectsContainingPolygon.each(function(el, i){
+			if( Rent.objectsContainingPolygon )
+				Rent.objectsContainingPolygon.each(function(el, i){
+					el.options.set({
+						visible: false
+					});
+				})
+
+			Rent.objectsContainingPolygon = Rent.apartments.searchInside(Rent.circle);
+			Rent.objectsContainingPolygon.each(function(el, i){
 				el.options.set({
 					visible: true
 				});

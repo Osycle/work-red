@@ -242,10 +242,11 @@
 			</div>
 
 
-			<div class="rent">
+			<div class="rent show-rent">
 				<div class="wrapper">
-					<div class="rent-wrapper">
-						<div class="filter-bar select2-wrapper">
+					<div class="rent-wrapper show-rent select2-wrapper">
+
+						<div class="rent-bar">
 							<div class="cap-content">
 								<h3>Аренда по районам</h3>
 							</div>
@@ -497,11 +498,171 @@
 									</span>
 								</div>
 							</div>
+						</div>
 
+						<div class="rent-header">
+							<div class="container-fluid-page">
+								<div class="flex-adaptive">
+									<div class="m-v-10 p-h-15 col-md-2">
+										<h3>Ваш район:</h3>
+									</div>
+									<div class="m-v-10 p-h-15 col-md-4">
+										<select class="js-select box-xs-10">
+											<option>Мирабадский район</option>
+											<option>12</option>
+										</select>
+									</div>
+									<div class="rent-header-info m-v-10 p-h-15 col-md-6">
+										<h3>Найдено: <span class="cnt-rent">30</span> <thin>квартир для продаж в вашем районе</thin><br><small role="button">Искать по другим критериям</small></h3>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="map-content">
-							<div class="map-rent" id="map-rent"></div>
+
+						<div class="rent-map map-content">
+							<div class="map" id="map-rent"></div>
 						</div>
+
+						<div class="rent-items">
+									<div class="fav-items">
+										<div class="rect-def">
+											<div class="wrapper-flex">
+												<span class="sales z-index-1">Продано</span>
+												<div class="img-content">
+													<div class="img" style="background-image: url('img/other/fav-1.jpg');"></div>
+												</div>
+												<div class="desc-content text-item p-min">
+													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="" id="favorites">  
+                  						<button type="submit" name="favorites" value="">Сохранено в мой REDD <i class="icm fa-1-5x icm-favorite-heart-button p-l-10 color-1"></i></button>
+                						</form>
+													</div>
+													<div class="detail-info m-v-15">
+														<span class="va-middle fig">
+															<i class="icm icm-doorway"></i>
+															<span class="va-middle">Комнаты:</span> 
+															<span class="cnt">4</span>
+														</span>
+														<span class="va-middle fig">
+															<i class="icm icm-house-plan-scale"></i>
+															<span class="va-middle">Площадь:</span>
+															<span class="cnt">112 кв.м</span>
+														</span>
+													</div>
+													<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">75 000$</span></p>
+													<hr>
+													<div class="summary">
+														<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+														<a href=""><u>Подробнее</u></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="rect-def">
+											<div class="wrapper-flex">
+												<div class="img-content">
+													<div class="img" style="background-image: url('img/other/fav-2.jpg');"></div>
+												</div>
+												<div class="desc-content text-item p-min">
+													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="" id="favorites">  
+                  						<button type="submit" name="favorites" value="">Сохранено в мой REDD <i class="icm fa-1-5x icm-favorite-heart-button p-l-10 color-1"></i></button>
+                						</form>
+													</div>
+													<div class="detail-info m-v-15">
+														<span class="va-middle fig">
+															<i class="icm icm-doorway"></i>
+															<span class="va-middle">Комнаты:</span> 
+															<span class="cnt">4</span>
+														</span>
+														<span class="va-middle fig">
+															<i class="icm icm-house-plan-scale"></i>
+															<span class="va-middle">Площадь:</span>
+															<span class="cnt">112 кв.м</span>
+														</span>
+													</div>
+													<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">75 000$</span></p>
+													<hr>
+													<div class="summary">
+														<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+														<a href=""><u>Подробнее</u></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="rect-def">
+											<div class="wrapper-flex">
+												<span class="recmd z-index-1">Рекомендуем</span>
+												<div class="img-content">
+													<div class="img" style="background-image: url('img/other/fav-3.jpg');"></div>
+												</div>
+												<div class="desc-content text-item p-min">
+													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="" id="favorites">  
+                  						<button type="submit" name="favorites" value="">Сохранено в мой REDD <i class="icm fa-1-5x icm-favorite-heart-button p-l-10 color-1"></i></button>
+                						</form>
+													</div>
+													<div class="detail-info m-v-15">
+														<span class="va-middle fig">
+															<i class="icm icm-doorway"></i>
+															<span class="va-middle">Комнаты:</span> 
+															<span class="cnt">4</span>
+														</span>
+														<span class="va-middle fig">
+															<i class="icm icm-house-plan-scale"></i>
+															<span class="va-middle">Площадь:</span>
+															<span class="cnt">112 кв.м</span>
+														</span>
+													</div>
+													<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">75 000$</span></p>
+													<hr>
+													<div class="summary">
+														<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+														<a href=""><u>Подробнее</u></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="rect-def">
+											<div class="wrapper-flex">
+												<div class="img-content">
+													<div class="img" style="background-image: url('img/other/fav-1.jpg');"></div>
+												</div>
+												<div class="desc-content text-item p-min">
+													<h5>Название квартиры</h5>
+													<div class="btn-content">
+														<form action="" id="favorites">  
+                  						<button type="submit" name="favorites" value="">Сохранено в мой REDD <i class="icm fa-1-5x icm-favorite-heart-button p-l-10 color-1"></i></button>
+                						</form>
+													</div>
+													<div class="detail-info m-v-15">
+														<span class="va-middle fig">
+															<i class="icm icm-doorway"></i>
+															<span class="va-middle">Комнаты:</span> 
+															<span class="cnt">4</span>
+														</span>
+														<span class="va-middle fig">
+															<i class="icm icm-house-plan-scale"></i>
+															<span class="va-middle">Площадь:</span>
+															<span class="cnt">112 кв.м</span>
+														</span>
+													</div>
+													<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">75 000$</span></p>
+													<hr>
+													<div class="summary">
+														<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
+														<a href=""><u>Подробнее</u></a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
