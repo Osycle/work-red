@@ -90,21 +90,19 @@ window.Areas = {
 				var inc = that.options.get("inc");
 				Areas.activeArea(inc);
 
-				if( Rent.apartments ){
-					Rent.apartments.setOptions({
-						visible: false
-					});
-					//Rent.apartments.removeFromMap(Utils.currentMap);
-				}
+				Rent.hideAll();
+
 				if( Rent.circle )
 					Utils.currentMap.geoObjects.remove(Rent.circle);
-				rentCom.map(function(i, el){
-					var val = $(el).val();
-					if( !isNaN(val*1) && val != ""){
-						//console.log( $(el).val(), (val != "") );
-					}
-						
-				})
+				if( Utils.searchDots ){
+					Utils.searchControl.clear();
+					Utils.searchDots = undefined;
+				}
+				if( Rent.besideEntitySelect && $("[name='typebeside']:checked").length > 0){
+					$("[name='typebeside']:checked")[0].checked = false;
+					Rent.besideEntitySelect.html("");
+				}
+
 				//Rent.apartments
 				var polygon = Areas.items[Areas.currentAreaInc];
 				var objectsContainingPolygon = Rent.apartments.searchInside(polygon);
@@ -113,7 +111,7 @@ window.Areas = {
 						visible: true
 					});
 				})
-
+				// Фильтр
 				Rent.filterBar(Rent.apartments);
 
 			})
@@ -128,6 +126,8 @@ var rentCom = $("[data-rent-coms] [data-rent-field]");
 
 /*Rent*/
 window.Rent = {
+
+	apartments: undefined, 
 
 	filterBar: function(obj){
 		var propertyAttr;
@@ -172,9 +172,17 @@ window.Rent = {
 					visible: false
 				});
 			}
-			rentProperty.map(function(i, el){
-			})
 		})
+	},
+
+	hideAll: function(areaStatus){
+		if( this.apartments ){
+			this.apartments.setOptions({
+				visible: false
+			});
+			if(areaStatus)
+				Areas.activeArea(null);
+		}
 	}
 }
 
@@ -325,16 +333,10 @@ window.initRent = function(itemOptions) {
 					item: el
 				}));
 
-			})
+			});
 
 
-			if( window.Rent.apartments ){
-				Rent.apartments.setOptions({
-					visible: false
-				});
-
-			}
-
+			Rent.hideAll();
 			Rent.apartments = ymaps.geoQuery(Rent.objects).addToMap(Utils.currentMap);
 			Rent.apartments.each(function(el, i){
 				
@@ -346,8 +348,8 @@ window.initRent = function(itemOptions) {
 					iconImageSize: [21, 30],
 					visible: false
 				});
-			})
-
+			});
+			Areas.items[itemOptions.defaultArea].events.fire("click");
 		},
     complete: function(response){}
 	});
@@ -355,12 +357,14 @@ window.initRent = function(itemOptions) {
 
 	Utils.searchInit();
 
-	var besideEntitySelect = $('#beside-entity');
+	Rent.besideEntitySelect = $('#beside_entity_select');
+
+	// Событие при пойска
 	Utils.searchControl.events.add("load", function(e){
 		e.preventDefault();
 		Utils.searchDots = Utils.searchControl.getResultsArray();
 		//Utils.dotsInCircle(Utils.searchDots, circle);
-		besideEntitySelect.html("");
+		Rent.besideEntitySelect.html("");
 		for (var i = 0; i < Utils.searchDots.length; i++) {
 			// Объект с данными о точках
 			var data = {
@@ -372,11 +376,11 @@ window.initRent = function(itemOptions) {
 			}
 			var newOption = new Option(data.name, data.id, false, false);
 			$(newOption).attr("data-all", JSON.stringify(data));
-			besideEntitySelect.append(newOption).trigger('change.refresh');
+			Rent.besideEntitySelect.append(newOption).trigger('change.refresh');
 
 		}
 		//сортируем строки по имени
-		var sortOptions = besideEntitySelect.find('option').sort(function(a, b){
+		var sortOptions = Rent.besideEntitySelect.find('option').sort(function(a, b){
 			var nameA = a.textContent.toLowerCase(), 
 					nameB = b.textContent.toLowerCase();
 			if (nameA < nameB) 
@@ -385,12 +389,13 @@ window.initRent = function(itemOptions) {
 			  return 1;
 			return 0;
 		})
-		besideEntitySelect.append(sortOptions);
+		Rent.besideEntitySelect.append(sortOptions);
 		
 		
 	});
 
-	besideEntitySelect.on("change.once", function(){
+	// Выбор организации
+	Rent.besideEntitySelect.on("change.once", function(){
 		try{
 			var data = JSON.parse($(this.selectedOptions).attr("data-all"));
 			Rent.currentBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
@@ -398,14 +403,20 @@ window.initRent = function(itemOptions) {
 			//Убираем наведения на районы
 			Areas.activeArea(null);
 
-			Utils.currentMap.panTo(Rent.currentBalloon.geometry.getCoordinates(), {});
-			
+			//Utils.currentMap.panTo(Rent.currentBalloon.geometry.getCoordinates(), {duration: 300});
+			Utils.currentMap.setCenter(Rent.currentBalloon.geometry.getCoordinates());
+
+			setTimeout(function(){
+				Utils.currentMap.setZoom(14, {duration: 300});
+			}, 1);
+
 			//Rent.currentBalloon.balloon.open();
 			if( Rent.circle )
 				Utils.currentMap.geoObjects.remove(Rent.circle);
 
 			//Rent.currentBalloon.get(0).balloon.open();
 			Rent.circle = Utils.drawCircle(1500, data.coordinates);
+
 
 			if( Rent.objectsContainingPolygon )
 				Rent.objectsContainingPolygon.each(function(el, i){
@@ -426,15 +437,59 @@ window.initRent = function(itemOptions) {
 			console.info(e);
 		}
 	})
+	$("main").on("click", "[data-search-enty]", function(){
+		console.info(this);
+		Rent.hideAll(true);
+	})
 
 
 	//var circle = Utils.drawCircle(1500, latlng);
 	//Utils.dotsInCircle(Utils.searchDots, circle);
 
 
+	/*
+		Масштабирование при зажатом ctrl
+	*/
+	Utils.currentMap.behaviors.disable('scrollZoom');
 
+	var ctrlKey = false;
+	var ctrlMessVisible = false;
+	var timer;
 
+	// Отслеживаем скролл мыши на карте, чтобы показывать уведомление
+	Utils.currentMap.events.add(['wheel', 'mousedown'], function(e) {
+	    if (e.get('type') == 'wheel') {
+	        if (!ctrlKey) { // Ctrl не нажат, показываем уведомление
+	            $('#ymap_ctrl_display').fadeIn(300);
+	            ctrlMessVisible = true;
+	            clearTimeout(timer); // Очищаем таймер, чтобы продолжать показывать уведомление
+	            timer = setTimeout(function() {
+	                $('#ymap_ctrl_display').fadeOut(300);
+	                ctrlMessVisible = false;
+	            }, 1500);
+	        }
+	        else { // Ctrl нажат, скрываем сообщение
+	            $('#ymap_ctrl_display').fadeOut(100);
+	        }
+	    }
+	    if (e.get('type') == 'mousedown' && ctrlMessVisible) { // Скрываем уведомление при клике на карте
+	        $('#ymap_ctrl_display').fadeOut(100);
+	    }
+	});
 
+	// Обрабатываем нажатие на Ctrl
+	$(document).keydown(function(e) {
+	    if (e.which === 17 && !ctrlKey) { // Ctrl нажат: включаем масштабирование мышью
+	        ctrlKey = true;
+	        Utils.currentMap.behaviors.enable('scrollZoom');
+	    }
+	});
+	$(document).keyup(function(e) { // Ctrl не нажат: выключаем масштабирование мышью
+	    if (e.which === 17) {
+	        ctrlKey = false;
+	        Utils.currentMap.behaviors.disable('scrollZoom');
+	    }
+	});
 
 
 
@@ -451,17 +506,48 @@ window.initRent = function(itemOptions) {
 
 
 /*
-	other
-
+	Событии
 */
-$(".beside-nav").on("click", "[data-search-enty]", function(){
+
+// Поиск
+$("main").on("click", "[data-search-enty]", function(){
 	var searchRequest = $(this).attr("data-search-enty");
-	console.log(searchRequest);
-	Utils.searchControl.search(searchRequest);
-});
-$(".rent").on("click", "[data-search-enty]", function(){
-	var searchRequest = $(this).attr("data-search-enty");
-	console.log(searchRequest);
 	Utils.searchControl.search(searchRequest);
 });
 
+
+// Ширина карты
+$("main").on("click", "#map-rent .btn-change", function(){
+	var container = $("[data-reconstruction]");
+	var status = container.attr("data-reconstruction");
+	switch(status){
+		case "on":
+			container.attr("data-reconstruction", "off");break;
+		case "off":
+			container.attr("data-reconstruction", "on");break;
+	}
+	Utils.currentMap.container.fitToViewport();
+	console.log(this);
+})
+
+
+// Показать по фильтру
+$("main").on("click", ".rent-bar .btn-def", function(){
+	Rent.filterBar(Rent.apartments);
+	$("[data-reconstruction]").attr("data-reconstruction", "off");
+	Utils.currentMap.container.fitToViewport();
+	Utils.currentMap.setCenter(Rent.currentBalloon.geometry.getCoordinates());
+	console.log(this);
+})
+
+// Возврат к фильтру
+$("main").on("click", ".btn-backbar", function(){
+	$("[data-reconstruction]").attr("data-reconstruction", "def");
+	Utils.currentMap.container.fitToViewport();
+})
+
+
+$("main").on("change", "[data-rent-field], [data-rent-property]", function(){
+	console.log(this);
+	Areas.items[Areas.currentAreaInc].events.fire("click");
+});
