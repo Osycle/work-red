@@ -3,6 +3,18 @@ var markerStyle_1 = 'img/icons/marker-green.png';
 var markerStyle_2 = 'img/icons/marker-red.png';
 var markerStyle_3 = 'img/icons/marker-offices-2.png';
 
+var rentProperty = $("[data-rent-checkboxes] [data-rent-property]");
+var rentCom = $("[data-rent-coms] [data-rent-field]");
+
+
+
+
+
+
+
+
+
+
 /*Areas*/
 window.Areas = {
 	items: [],
@@ -68,6 +80,11 @@ window.Areas = {
 			Areas.items.push(areasPolygon);
 			Utils.currentMap.geoObjects.add(areasPolygon);
 
+
+
+			/*
+				"hover" на район
+			*/
 			areasPolygon.events.add("mouseenter", function(e){
 				var that = e.get("target");
 				if( Areas.areasTitles[Areas.currentAreaInc] != that.options.get("title") )
@@ -85,6 +102,10 @@ window.Areas = {
 					});
 			});
 
+
+			/*
+				Клик по району
+			*/
 			areasPolygon.events.add("click", function(e){
 				var that = e.get("target");
 				var inc = that.options.get("inc");
@@ -92,11 +113,13 @@ window.Areas = {
 
 				Rent.hideAll();
 
+				// Сброс выборки организации
 				if( Rent.circle )
 					Utils.currentMap.geoObjects.remove(Rent.circle);
 				if( Utils.searchDots ){
 					Utils.searchControl.clear();
 					Utils.searchDots = undefined;
+					Rent.besideBalloon = undefined;
 				}
 				if( Rent.besideEntitySelect && $("[name='typebeside']:checked").length > 0){
 					$("[name='typebeside']:checked")[0].checked = false;
@@ -111,9 +134,10 @@ window.Areas = {
 						visible: true
 					});
 				})
+				Rent.mainCoordinates = polygon.options.get("coordinates");
 				// Фильтр
 				Rent.filterBar(Rent.apartments);
-
+				Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 300});
 			})
 
 		}
@@ -121,8 +145,23 @@ window.Areas = {
 
 
 };
-var rentProperty = $("[data-rent-checkboxes] [data-rent-property]");
-var rentCom = $("[data-rent-coms] [data-rent-field]");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Rent*/
 window.Rent = {
@@ -186,10 +225,27 @@ window.Rent = {
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Utils*/
 window.Utils = {
+
 	searchDots: undefined,
 	searchControl: undefined,
+
 	searchInit: function(){
 		var that = this;
 		// Создадим экземпляр элемента управления «поиск по карте»
@@ -214,11 +270,13 @@ window.Utils = {
 			}
 		});
 		
-
 		that.currentMap.controls.add(that.searchControl);
 	},
 
 
+	/*
+		Круг
+	*/
 	drawCircle: function(radius, latlng){
 		// Создаем круг.
 		var circle = new ymaps.Circle([
@@ -239,6 +297,57 @@ window.Utils = {
 		return circle;
 	},
 
+
+	/*
+		Масштабирование при зажатом ctrl
+	*/
+	ctrlZoom: function(){
+
+		Utils.currentMap.behaviors.disable('scrollZoom');
+
+		var ctrlKey = false;
+		var ctrlMessVisible = false;
+		var timer;
+
+		// Отслеживаем скролл мыши на карте, чтобы показывать уведомление
+		Utils.currentMap.events.add(['wheel', 'mousedown'], function(e) {
+		    if (e.get('type') == 'wheel') {
+		        if (!ctrlKey) { // Ctrl не нажат, показываем уведомление
+		            $('#ymap_ctrl_display').fadeIn(300);
+		            ctrlMessVisible = true;
+		            clearTimeout(timer); // Очищаем таймер, чтобы продолжать показывать уведомление
+		            timer = setTimeout(function() {
+		                $('#ymap_ctrl_display').fadeOut(300);
+		                ctrlMessVisible = false;
+		            }, 1500);
+		        }
+		        else { // Ctrl нажат, скрываем сообщение
+		            $('#ymap_ctrl_display').fadeOut(100);
+		        }
+		    }
+		    if (e.get('type') == 'mousedown' && ctrlMessVisible) { // Скрываем уведомление при клике на карте
+		        $('#ymap_ctrl_display').fadeOut(100);
+		    }
+		});
+		// Обрабатываем нажатие на Ctrl
+		$(document).keydown(function(e) {
+		    if (e.which === 17 && !ctrlKey) { // Ctrl нажат: включаем масштабирование мышью
+		        ctrlKey = true;
+		        Utils.currentMap.behaviors.enable('scrollZoom');
+		    }
+		});
+		$(document).keyup(function(e) { // Ctrl не нажат: выключаем масштабирование мышью
+		    if (e.which === 17) {
+		        ctrlKey = false;
+		        Utils.currentMap.behaviors.disable('scrollZoom');
+		    }
+		});
+	},
+
+
+	/*
+		Поиск относительно координат круга
+	*/
 	dotsInCircle: function(dots, circle){
 
 		var radiusStart = circle.geometry.getBounds()[0],
@@ -264,6 +373,20 @@ window.Utils = {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 window.initBeside = function(itemOptions) {
 	var latlng = itemOptions.mainLatLng;
 	Utils.currentMap = new ymaps.Map('map-beside', {
@@ -277,6 +400,7 @@ window.initBeside = function(itemOptions) {
 
 	Utils.searchInit();
 	var circle = Utils.drawCircle(1000, latlng);
+
 	// Фильтрация точек относительно радиуса
 	$("[data-search-enty]").eq(0).trigger("click");
 	
@@ -302,6 +426,25 @@ window.initBeside = function(itemOptions) {
 	return Utils.currentMap;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -398,23 +541,19 @@ window.initRent = function(itemOptions) {
 	Rent.besideEntitySelect.on("change.once", function(){
 		try{
 			var data = JSON.parse($(this.selectedOptions).attr("data-all"));
-			Rent.currentBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
+			Rent.besideBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
 
 			//Убираем наведения на районы
 			Areas.activeArea(null);
+			Rent.mainCoordinates = Rent.besideBalloon.geometry.getCoordinates();
+			Utils.currentMap.setCenter(Rent.mainCoordinates, 14, {duration: 300});
 
-			//Utils.currentMap.panTo(Rent.currentBalloon.geometry.getCoordinates(), {duration: 300});
-			Utils.currentMap.setCenter(Rent.currentBalloon.geometry.getCoordinates());
 
-			setTimeout(function(){
-				Utils.currentMap.setZoom(14, {duration: 300});
-			}, 1);
-
-			//Rent.currentBalloon.balloon.open();
+			//Rent.besideBalloon.balloon.open();
 			if( Rent.circle )
 				Utils.currentMap.geoObjects.remove(Rent.circle);
 
-			//Rent.currentBalloon.get(0).balloon.open();
+			//Rent.besideBalloon.get(0).balloon.open();
 			Rent.circle = Utils.drawCircle(1500, data.coordinates);
 
 
@@ -447,49 +586,7 @@ window.initRent = function(itemOptions) {
 	//Utils.dotsInCircle(Utils.searchDots, circle);
 
 
-	/*
-		Масштабирование при зажатом ctrl
-	*/
-	Utils.currentMap.behaviors.disable('scrollZoom');
-
-	var ctrlKey = false;
-	var ctrlMessVisible = false;
-	var timer;
-
-	// Отслеживаем скролл мыши на карте, чтобы показывать уведомление
-	Utils.currentMap.events.add(['wheel', 'mousedown'], function(e) {
-	    if (e.get('type') == 'wheel') {
-	        if (!ctrlKey) { // Ctrl не нажат, показываем уведомление
-	            $('#ymap_ctrl_display').fadeIn(300);
-	            ctrlMessVisible = true;
-	            clearTimeout(timer); // Очищаем таймер, чтобы продолжать показывать уведомление
-	            timer = setTimeout(function() {
-	                $('#ymap_ctrl_display').fadeOut(300);
-	                ctrlMessVisible = false;
-	            }, 1500);
-	        }
-	        else { // Ctrl нажат, скрываем сообщение
-	            $('#ymap_ctrl_display').fadeOut(100);
-	        }
-	    }
-	    if (e.get('type') == 'mousedown' && ctrlMessVisible) { // Скрываем уведомление при клике на карте
-	        $('#ymap_ctrl_display').fadeOut(100);
-	    }
-	});
-
-	// Обрабатываем нажатие на Ctrl
-	$(document).keydown(function(e) {
-	    if (e.which === 17 && !ctrlKey) { // Ctrl нажат: включаем масштабирование мышью
-	        ctrlKey = true;
-	        Utils.currentMap.behaviors.enable('scrollZoom');
-	    }
-	});
-	$(document).keyup(function(e) { // Ctrl не нажат: выключаем масштабирование мышью
-	    if (e.which === 17) {
-	        ctrlKey = false;
-	        Utils.currentMap.behaviors.disable('scrollZoom');
-	    }
-	});
+	Utils.ctrlZoom();
 
 
 
@@ -509,14 +606,14 @@ window.initRent = function(itemOptions) {
 	Событии
 */
 
-// Поиск
+// Поиск организации
 $("main").on("click", "[data-search-enty]", function(){
 	var searchRequest = $(this).attr("data-search-enty");
 	Utils.searchControl.search(searchRequest);
 });
 
 
-// Ширина карты
+// Изменение ширины карты
 $("main").on("click", "#map-rent .btn-change", function(){
 	var container = $("[data-reconstruction]");
 	var status = container.attr("data-reconstruction");
@@ -527,6 +624,7 @@ $("main").on("click", "#map-rent .btn-change", function(){
 			container.attr("data-reconstruction", "on");break;
 	}
 	Utils.currentMap.container.fitToViewport();
+	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
 	console.log(this);
 })
 
@@ -536,8 +634,7 @@ $("main").on("click", ".rent-bar .btn-def", function(){
 	Rent.filterBar(Rent.apartments);
 	$("[data-reconstruction]").attr("data-reconstruction", "off");
 	Utils.currentMap.container.fitToViewport();
-	Utils.currentMap.setCenter(Rent.currentBalloon.geometry.getCoordinates());
-	console.log(this);
+	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
 })
 
 // Возврат к фильтру
@@ -546,8 +643,6 @@ $("main").on("click", ".btn-backbar", function(){
 	Utils.currentMap.container.fitToViewport();
 })
 
-
 $("main").on("change", "[data-rent-field], [data-rent-property]", function(){
-	console.log(this);
 	Areas.items[Areas.currentAreaInc].events.fire("click");
 });
