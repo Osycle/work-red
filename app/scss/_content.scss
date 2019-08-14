@@ -3414,6 +3414,16 @@ html{
 		}
 	}
 }
+.area-placemark{
+	background-color: white;
+	display: inline-block;
+	white-space: nowrap;
+	font-size: 0.9em;
+	padding: 5px 25px;
+	border-radius: 10px;
+	//margin-left: -60px;
+	box-shadow: 0 0 20px 0 rgba(black, 0.4);
+}
 #ymap_ctrl_display{
 	display: none;
 	width: 100%;

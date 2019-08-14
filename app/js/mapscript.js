@@ -52,7 +52,33 @@ window.Areas = {
 	},
 	drawPolygon: function(arr){
 		window.mata = arr;
+
+
+		
 		for (var i = 0; i < arr.length; i++) {
+
+			
+	    // Создание метки с круглой активной областью.
+	    var circleLayout = ymaps.templateLayoutFactory.createClass(
+	    	'<div class="area-placemark">' + arr[i].data.items[0].title + '</div>'
+	    	);
+
+	    var circlePlacemark = new ymaps.Placemark(
+	        arr[i].data.exactResult.coordinates, {
+	            //hintContent: 'Метка с круглым HTML макетом'
+	        }, {
+	            iconLayout: circleLayout,
+	            // Описываем фигуру активной области "Круг".
+	            iconShape: {
+	                type: 'Circle',
+	                // Круг описывается в виде центра и радиуса
+	                coordinates: [0, 0],
+	                radius: 25
+	            }
+	        }
+	    );
+	    Utils.currentMap.geoObjects.add(circlePlacemark);
+
 			var polygon = arr[i].data.items[0].displayGeometry.geometries[0].coordinates[0];
 			//console.log(polygon[0].coordinates[0]);
 			
@@ -104,13 +130,14 @@ window.Areas = {
 
 
 			/*
-				Клик по району
+				Клик по района
 			*/
 			areasPolygon.events.add("click", function(e){
 				var that = e.get("target");
 				var inc = that.options.get("inc");
 				Areas.activeArea(inc);
 
+				
 				Rent.hideAll();
 
 				// Сброс выборки организации
@@ -128,15 +155,14 @@ window.Areas = {
 
 				//Rent.apartments
 				var polygon = Areas.items[Areas.currentAreaInc];
-				var objectsContainingPolygon = Rent.apartments.searchInside(polygon);
-				objectsContainingPolygon.each(function(el, i){
+				Rent.objectsContainingPolygon = Rent.apartments.searchInside(polygon);
+				Rent.objectsContainingPolygon.each(function(el, i){
 					el.options.set({
 						visible: true
 					});
 				})
 				Rent.mainCoordinates = polygon.options.get("coordinates");
-				// Фильтр
-				Rent.filterBar(Rent.apartments);
+
 				Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 300});
 			})
 
@@ -205,10 +231,11 @@ window.Rent = {
 			}
 			if( novalid ){
 				objItem.options.set({
-					//iconLayout: 'default#image',
-					//iconImageHref: markerStyle_3,
-					//iconImageSize: [29, 41],
 					visible: false
+				});
+			}else{
+				objItem.options.set({
+					visible: true
 				});
 			}
 		})
@@ -460,6 +487,8 @@ window.initRent = function(itemOptions) {
 		controls: []
 	})
 	
+
+
 	Areas.drawPolygon(areasPolygon);
 	//Areas.activeArea(0);
 
@@ -479,7 +508,8 @@ window.initRent = function(itemOptions) {
 			});
 
 
-			Rent.hideAll();
+			//Rent.hideAll();
+
 			Rent.apartments = ymaps.geoQuery(Rent.objects).addToMap(Utils.currentMap);
 			Rent.apartments.each(function(el, i){
 				
@@ -631,7 +661,7 @@ $("main").on("click", "#map-rent .btn-change", function(){
 
 // Показать по фильтру
 $("main").on("click", ".rent-bar .btn-def", function(){
-	Rent.filterBar(Rent.apartments);
+	Rent.filterBar(Rent.objectsContainingPolygon);
 	$("[data-reconstruction]").attr("data-reconstruction", "off");
 	Utils.currentMap.container.fitToViewport();
 	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
@@ -644,5 +674,5 @@ $("main").on("click", ".btn-backbar", function(){
 })
 
 $("main").on("change", "[data-rent-field], [data-rent-property]", function(){
-	Areas.items[Areas.currentAreaInc].events.fire("click");
+	Rent.filterBar(Rent.objectsContainingPolygon);
 });
