@@ -59,30 +59,36 @@ window.Areas = {
 
 			
 	    // Создание метки с круглой активной областью.
-	    var circleLayout = ymaps.templateLayoutFactory.createClass(
+	    window.markerLayout = ymaps.templateLayoutFactory.createClass(
 	    	'<div class="area-placemark">' + arr[i].data.items[0].title + '</div>'
 	    	);
 
-	    var circlePlacemark = new ymaps.Placemark(
+	    window.areaPlacemark = new ymaps.Placemark(
 	        arr[i].data.exactResult.coordinates, {
 	            //hintContent: 'Метка с круглым HTML макетом'
+	            iconContent: "Азербайджан"
 	        }, {
-	            iconLayout: circleLayout,
-	            // Описываем фигуру активной области "Круг".
+	            iconLayout: markerLayout,
+	            zIndex: 700,
 	            iconShape: {
 	                type: 'Circle',
 	                // Круг описывается в виде центра и радиуса
-	                coordinates: [0, 0],
+	                coordinates: [30, 0],
 	                radius: 25
-	            }
+	            },
+	            iconColor: '#ff0000'
+	            // Описываем фигуру активной области "Круг".
 	        }
 	    );
-	    Utils.currentMap.geoObjects.add(circlePlacemark);
+	    areaPlacemark.events.add("mouseenter", function(e){
+	    	console.log(e.get("target"));
 
-			var polygon = arr[i].data.items[0].displayGeometry.geometries[0].coordinates[0];
-			//console.log(polygon[0].coordinates[0]);
+	    })
+	    Utils.currentMap.geoObjects.add(areaPlacemark);
+
+			var polygon = arr[i].data.items[0].displayGeometry.geometries[0];
 			
-			var areasPolygon = new ymaps.Polygon([polygon],
+			var areasPolygon = new ymaps.Polygon(polygon,
 				{
 					// Содержимое балуна.
 					//balloonContent: "Рыбные места"+i
@@ -97,6 +103,7 @@ window.Areas = {
 					fillMethod: 'stretch',
 					fillColor: "#cc252700",
 					fillOpacity: "0.4",
+					placemark: areaPlacemark,
 					type: "polygon",
 					strokeColor: "#cc252700",
 					strokeWidth: 2,
@@ -105,7 +112,6 @@ window.Areas = {
 			);
 			Areas.items.push(areasPolygon);
 			Utils.currentMap.geoObjects.add(areasPolygon);
-
 
 
 			/*
@@ -118,6 +124,10 @@ window.Areas = {
 						fillColor: "#fff",
 						strokeColor: "#cc2527"
 					});
+				that.options.get("placemark")
+				.options.set({
+					iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark">' + "sdasd sad" + '</div>')
+				});
 			});
 			areasPolygon.events.add("mouseleave", function(e){
 				var that = e.get("target");

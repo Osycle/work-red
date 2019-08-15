@@ -3414,15 +3414,28 @@ html{
 		}
 	}
 }
+.ymaps-2-1-74-places-pane{
+	&:hover{
+		//background-color: $color-1;
+	}
+}
 .area-placemark{
 	background-color: white;
 	display: inline-block;
 	white-space: nowrap;
 	font-size: 0.9em;
 	padding: 5px 25px;
+	position: absolute;
+	transition: all 0.3s ease;
+	pointer-events: auto !important;
+	z-index: 1212121 !important;
 	border-radius: 10px;
 	//margin-left: -60px;
+	//transform: translateX(-50%);
 	box-shadow: 0 0 20px 0 rgba(black, 0.4);
+	&:hover{
+		background-color: $color-1 !important;
+	}
 }
 #ymap_ctrl_display{
 	display: none;

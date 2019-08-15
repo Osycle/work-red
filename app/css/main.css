@@ -11555,10 +11555,18 @@ html .irs--flat .irs-handle {
   white-space: nowrap;
   font-size: 0.9em;
   padding: 5px 25px;
+  position: absolute;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  pointer-events: auto !important;
+  z-index: 1212121 !important;
   -webkit-border-radius: 10px;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4); }
+  .area-placemark:hover {
+    background-color: #cc2527 !important; }
 
 #ymap_ctrl_display {
   display: none;
