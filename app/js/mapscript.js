@@ -38,67 +38,87 @@ window.Areas = {
 		Areas.currentAreaInc = inc;
 		$(that.items).map(function(i ,el){
 			//console.log(that.areasTitles[inc], el.options.get("title"));
-			if( that.areasTitles[inc] == el.options.get("title") )
+			if( that.areasTitles[inc] == el.options.get("title") ){
+
 				el.options.set({
 					fillColor: "#cc2527",
 					strokeColor: "#cc2527"
-				})
-			else
+				});
+				console.log(el.options.get("placemark"));
+				el.options.get("placemark").properties.set({active: true})
+				el.options.get("placemark").options.set({
+					iconLayout: ymaps.templateLayoutFactory.createClass(
+						'<div class="area-placemark is-active">$[properties.iconContent]</div>'
+						)
+				});
+
+			}else{
 				el.options.set({
 					fillColor: "#cc252700",
 					strokeColor: "#cc252700"
 				});
+				el.options.get("placemark").properties.set({active: false})
+				el.options.get("placemark").options.set({
+					iconLayout: ymaps.templateLayoutFactory.createClass(
+						'<div class="area-placemark">$[properties.iconContent]</div>'
+						)
+				});
+			}
 		});
 	},
 	drawPolygon: function(arr){
 		window.mata = arr;
 
-
+		var title, description, address, coordinates, bounds;
 		
 		for (var i = 0; i < arr.length; i++) {
 
-			
+			title = arr[i].data.items[0].title;
+			description = arr[i].data.items[0].description;
+			address = arr[i].data.items[0].address;
+			coordinates = arr[i].data.items[0].coordinates;
+			bounds = arr[i].data.items[0].bounds;
+
+			/*
+				Placemark района
+			*/
 	    // Создание метки с круглой активной областью.
-	    window.markerLayout = ymaps.templateLayoutFactory.createClass(
-	    	'<div class="area-placemark">' + arr[i].data.items[0].title + '</div>'
-	    	);
+	    window.markerLayout = ymaps.templateLayoutFactory.createClass('<div class="area-placemark">$[properties.iconContent]</div>');
 
 	    window.areaPlacemark = new ymaps.Placemark(
 	        arr[i].data.exactResult.coordinates, {
 	            //hintContent: 'Метка с круглым HTML макетом'
-	            iconContent: "Азербайджан"
+	            active: false,
+	            iconContent: title
 	        }, {
 	            iconLayout: markerLayout,
 	            zIndex: 700,
 	            iconShape: {
 	                type: 'Circle',
 	                // Круг описывается в виде центра и радиуса
-	                coordinates: [30, 0],
-	                radius: 25
+	                coordinates: [0, 0],
+	                radius: 0
 	            },
 	            iconColor: '#ff0000'
 	            // Описываем фигуру активной области "Круг".
 	        }
 	    );
-	    areaPlacemark.events.add("mouseenter", function(e){
-	    	console.log(e.get("target"));
-
-	    })
 	    Utils.currentMap.geoObjects.add(areaPlacemark);
 
+
+
 			var polygon = arr[i].data.items[0].displayGeometry.geometries[0];
-			
 			var areasPolygon = new ymaps.Polygon(polygon,
 				{
 					// Содержимое балуна.
 					//balloonContent: "Рыбные места"+i
 				}, {
 					inc: i,
-					title: arr[i].data.items[0].title,
-					description: arr[i].data.items[0].description,
-					address: arr[i].data.items[0].address,
-					coordinates: arr[i].data.items[0].coordinates,
-					bounds: arr[i].data.items[0].bounds,
+					title: title,
+					description: description,
+					address: address,
+					coordinates: coordinates,
+					bounds: bounds,
 					//fillImageHref: 'images/lake.png',
 					fillMethod: 'stretch',
 					fillColor: "#cc252700",
@@ -119,15 +139,16 @@ window.Areas = {
 			*/
 			areasPolygon.events.add("mouseenter", function(e){
 				var that = e.get("target");
+				console.log(that);
 				if( Areas.areasTitles[Areas.currentAreaInc] != that.options.get("title") )
 					that.options.set({
 						fillColor: "#fff",
 						strokeColor: "#cc2527"
 					});
-				that.options.get("placemark")
-				.options.set({
-					iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark">' + "sdasd sad" + '</div>')
-				});
+				if( !(that.options.get("placemark").properties.get("active")) )
+					that.options.get("placemark").options.set({
+						iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark [if !properties.active]is-hover[endif]">$[properties.iconContent]</div>')
+					});
 			});
 			areasPolygon.events.add("mouseleave", function(e){
 				var that = e.get("target");
@@ -135,6 +156,10 @@ window.Areas = {
 					that.options.set({
 						fillColor: "#cc252700",
 						strokeColor: "#cc252700"
+					});
+				if( !(that.options.get("placemark").properties.get("active")) )
+					that.options.get("placemark").options.set({
+						iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark">$[properties.iconContent]</div>')
 					});
 			});
 
@@ -145,12 +170,12 @@ window.Areas = {
 			areasPolygon.events.add("click", function(e){
 				var that = e.get("target");
 				var inc = that.options.get("inc");
+
 				Areas.activeArea(inc);
-
+				Areas.currentArea = that;
 				
-				Rent.hideAll();
-
 				// Сброс выборки организации
+				Rent.hideAll();
 				if( Rent.circle )
 					Utils.currentMap.geoObjects.remove(Rent.circle);
 				if( Utils.searchDots ){
@@ -164,14 +189,13 @@ window.Areas = {
 				}
 
 				//Rent.apartments
-				var polygon = Areas.items[Areas.currentAreaInc];
-				Rent.objectsContainingPolygon = Rent.apartments.searchInside(polygon);
+				Rent.objectsContainingPolygon = Rent.apartments.searchInside(Areas.currentArea);
 				Rent.objectsContainingPolygon.each(function(el, i){
 					el.options.set({
 						visible: true
 					});
 				})
-				Rent.mainCoordinates = polygon.options.get("coordinates");
+				Rent.mainCoordinates = Areas.currentArea.options.get("coordinates");
 
 				Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 300});
 			})
@@ -683,6 +707,14 @@ $("main").on("click", ".btn-backbar", function(){
 	Utils.currentMap.container.fitToViewport();
 })
 
+// Фильтрация
 $("main").on("change", "[data-rent-field], [data-rent-property]", function(){
 	Rent.filterBar(Rent.objectsContainingPolygon);
 });
+
+$("main").on("change", "#rent_select_area", function(){
+	var index = $(this.selectedOptions).attr("data-i");
+	Areas.items[index].events.fire("click");
+	console.log( $(this).val() );
+})
+

@@ -11553,20 +11553,27 @@ html .irs--flat .irs-handle {
   background-color: white;
   display: inline-block;
   white-space: nowrap;
-  font-size: 0.9em;
+  font-size: 0.80em;
   padding: 5px 25px;
   position: absolute;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  pointer-events: auto !important;
-  z-index: 1212121 !important;
+  pointer-events: none;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
   -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4); }
-  .area-placemark:hover {
-    background-color: #cc2527 !important; }
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  opacity: 0; }
+  .area-placemark.is-hover {
+    opacity: 1; }
+  .area-placemark.is-active {
+    opacity: 1 !important;
+    background-color: #cc2527 !important;
+    color: white !important; }
 
 #ymap_ctrl_display {
   display: none;

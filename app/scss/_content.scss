@@ -3423,19 +3423,27 @@ html{
 	background-color: white;
 	display: inline-block;
 	white-space: nowrap;
-	font-size: 0.9em;
+	font-size: 0.80em;
 	padding: 5px 25px;
 	position: absolute;
 	transition: all 0.3s ease;
-	pointer-events: auto !important;
-	z-index: 1212121 !important;
+	pointer-events: none;
 	border-radius: 10px;
 	//margin-left: -60px;
-	//transform: translateX(-50%);
+	transform: translateX(-50%);
 	box-shadow: 0 0 20px 0 rgba(black, 0.4);
-	&:hover{
-		background-color: $color-1 !important;
+	opacity: 0;
+	&.is-hover{
+		opacity: 1;
 	}
+	&.is-active{
+		opacity: 1 !important;
+		background-color: $color-1 !important;
+		color: white !important;
+	}
+}
+.ymaps-2-1-74-areas-pane, .ymaps-2-1-74-placemark-overlay{
+	//pointer-events: none;
 }
 #ymap_ctrl_display{
 	display: none;
