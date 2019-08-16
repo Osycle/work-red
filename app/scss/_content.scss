@@ -3313,7 +3313,8 @@ html{
 							transform 0s ease !important;
 }
 .rent-items{
-	
+	@extend .fav-items;
+	margin-top: 0;
 }
 
 [data-reconstruction]{
@@ -3375,7 +3376,7 @@ html{
 		padding-left: 30px;
 		padding-right: 30px;
     overflow-y: auto;
-		.fav-items{
+		.wrapper-container{
     	height: 80vh;
     	height: calc(100vh - 230px);
     	margin-top: 0;

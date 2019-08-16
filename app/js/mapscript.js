@@ -44,7 +44,6 @@ window.Areas = {
 					fillColor: "#cc2527",
 					strokeColor: "#cc2527"
 				});
-				console.log(el.options.get("placemark"));
 				el.options.get("placemark").properties.set({active: true})
 				el.options.get("placemark").options.set({
 					iconLayout: ymaps.templateLayoutFactory.createClass(
@@ -139,7 +138,6 @@ window.Areas = {
 			*/
 			areasPolygon.events.add("mouseenter", function(e){
 				var that = e.get("target");
-				console.log(that);
 				if( Areas.areasTitles[Areas.currentAreaInc] != that.options.get("title") )
 					that.options.set({
 						fillColor: "#fff",
@@ -226,7 +224,48 @@ window.Areas = {
 /*Rent*/
 window.Rent = {
 
+	template: 
+						'<div class="rect-def">'+
+							'<div class="wrapper-flex">'+
+								'<span class="sales z-index-1">Продано</span>'+
+								'<div class="img-content">'+
+									'<div class="img" style="background-image: url(\'img/other/fav-1.jpg\');"></div>'+
+								'</div>'+
+								'<div class="desc-content text-item p-min">'+
+									'<h5>Название квартиры</h5>'+
+									'<div class="btn-content">'+
+										'<form action="" id="favorites">  '+
+          						'<button type="submit" name="favorites" value="">Сохранено в мой REDD <i class="icm fa-1-5x icm-favorite-heart-button p-l-10 color-1"></i></button>'+
+        						'</form>'+
+									'</div>'+
+									'<div class="detail-info m-v-15">'+
+										'<span class="va-middle fig">'+
+											'<i class="icm icm-doorway"></i>'+
+											'<span class="va-middle">Комнаты:</span> '+
+											'<span class="cnt">4</span>'+
+										'</span>'+
+										'<span class="va-middle fig">'+
+											'<i class="icm icm-house-plan-scale"></i>'+
+											'<span class="va-middle">Площадь:</span>'+
+											'<span class="cnt">112 кв.м</span>'+
+										'</span>'+
+									'</div>'+
+									'<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">75 000$</span></p>'+
+									'<hr>'+
+									'<div class="summary">'+
+										'<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>'+
+										'<a href=""><u>Подробнее</u></a>'+
+									'</div>'+
+								'</div>'+
+							'</div>'+
+						'</div>'
+	,
+
 	apartments: undefined, 
+
+	fabric: function(appenContainer){
+		appenContainer.append(Rent.template);
+	},
 
 	filterBar: function(obj){
 		var propertyAttr;
@@ -689,7 +728,6 @@ $("main").on("click", "#map-rent .btn-change", function(){
 	}
 	Utils.currentMap.container.fitToViewport();
 	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
-	console.log(this);
 })
 
 
@@ -699,6 +737,9 @@ $("main").on("click", ".rent-bar .btn-def", function(){
 	$("[data-reconstruction]").attr("data-reconstruction", "off");
 	Utils.currentMap.container.fitToViewport();
 	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
+
+	Rent.fabric($(".rent-items .wrapper-container"));
+
 })
 
 // Возврат к фильтру

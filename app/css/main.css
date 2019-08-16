@@ -7099,7 +7099,7 @@ table {
 .font-family-3 {
   font-family: "Myriad Pro"; }
 
-.btn-res, .btn-style button, .btn-def button, .btn-icon button, .btn-opacity button, .realty-panel button, .fav-items .btn-content button {
+.btn-res, .btn-style button, .btn-def button, .btn-icon button, .btn-opacity button, .realty-panel button, .fav-items .btn-content button, .rent-items .btn-content button {
   background-color: transparent;
   border: 0;
   padding: 0; }
@@ -7153,7 +7153,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items, .rent .select2-dropdown, .rent-header {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .rent-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items, .rent .select2-dropdown, .rent-header {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -10885,67 +10885,67 @@ html .irs--flat .irs-handle {
     .profile-edit figure {
       padding: 10px 15px; } }
 
-.fav-items {
+.fav-items, .rent-items {
   margin-top: 30px; }
-  .fav-items .rect-def {
+  .fav-items .rect-def, .rent-items .rect-def {
     margin-top: 30px;
     margin-bottom: 30px; }
-    .fav-items .rect-def h5 {
+    .fav-items .rect-def h5, .rent-items .rect-def h5 {
       font-size: 1.17857em; }
-    .fav-items .rect-def .wrapper-flex {
+    .fav-items .rect-def .wrapper-flex, .rent-items .rect-def .wrapper-flex {
       min-height: 250px;
       overflow: hidden; }
     @media (max-width: 991px) {
-      .fav-items .rect-def {
+      .fav-items .rect-def, .rent-items .rect-def {
         -webkit-box-shadow: none;
         box-shadow: none; } }
-    .fav-items .rect-def .img-content {
+    .fav-items .rect-def .img-content, .rent-items .rect-def .img-content {
       width: 370px; }
       @media (max-width: 991px) {
-        .fav-items .rect-def .img-content {
+        .fav-items .rect-def .img-content, .rent-items .rect-def .img-content {
           width: 100%; } }
-    .fav-items .rect-def .desc-content {
+    .fav-items .rect-def .desc-content, .rent-items .rect-def .desc-content {
       position: relative;
       padding: 15px 30px; }
       @media (min-width: 992px) {
-        .fav-items .rect-def .desc-content {
+        .fav-items .rect-def .desc-content, .rent-items .rect-def .desc-content {
           width: -webkit-calc( 100% - 370px);
           width: calc( 100% - 370px); }
-          .fav-items .rect-def .desc-content h5 {
+          .fav-items .rect-def .desc-content h5, .rent-items .rect-def .desc-content h5 {
             width: 75%; } }
-    .fav-items .rect-def .detail-info {
+    .fav-items .rect-def .detail-info, .rent-items .rect-def .detail-info {
       color: #6b6b6b; }
-      .fav-items .rect-def .detail-info .cnt {
+      .fav-items .rect-def .detail-info .cnt, .rent-items .rect-def .detail-info .cnt {
         color: #cc2527;
         font-weight: 700; }
-      .fav-items .rect-def .detail-info .icm {
+      .fav-items .rect-def .detail-info .icm, .rent-items .rect-def .detail-info .icm {
         margin-right: 5px; }
-      .fav-items .rect-def .detail-info .fig {
+      .fav-items .rect-def .detail-info .fig, .rent-items .rect-def .detail-info .fig {
         margin-right: 15px; }
-    .fav-items .rect-def .img {
+    .fav-items .rect-def .img, .rent-items .rect-def .img {
       -webkit-background-size: cover;
       background-size: cover; }
-    .fav-items .rect-def .icm-price-tag-1 {
+    .fav-items .rect-def .icm-price-tag-1, .rent-items .rect-def .icm-price-tag-1 {
       font-size: 25px; }
-  .fav-items .summary a {
+  .fav-items .summary a, .rent-items .summary a {
     color: #cc2527; }
-  .fav-items .btn-content {
+  .fav-items .btn-content, .rent-items .btn-content {
     position: absolute;
     right: 20px;
     top: 25px; }
-    .fav-items .btn-content button {
+    .fav-items .btn-content button, .rent-items .btn-content button {
       -webkit-transition: all 0.3s ease;
       -o-transition: all 0.3s ease;
       transition: all 0.3s ease;
       color: #6b6b6b; }
-      .fav-items .btn-content button:hover {
+      .fav-items .btn-content button:hover, .rent-items .btn-content button:hover {
         color: #cc2527; }
     @media (max-width: 991px) {
-      .fav-items .btn-content {
+      .fav-items .btn-content, .rent-items .btn-content {
         position: relative;
         right: auto;
         top: auto; }
-        .fav-items .btn-content button {
+        .fav-items .btn-content button, .rent-items .btn-content button {
           text-decoration: underline; } }
 
 .apartment.intro .apartment-slider-items .img {
@@ -11451,6 +11451,9 @@ html .irs--flat .irs-handle {
   transition: opacity 0.3s ease, fill 0.3s ease, transform 0s ease !important;
   transition: opacity 0.3s ease, fill 0.3s ease, transform 0s ease, -webkit-transform 0s ease !important; }
 
+.rent-items {
+  margin-top: 0; }
+
 [data-reconstruction] .btn-change {
   position: absolute;
   width: 45px;
@@ -11515,7 +11518,7 @@ html .irs--flat .irs-handle {
   padding-left: 30px;
   padding-right: 30px;
   overflow-y: auto; }
-  [data-reconstruction="off"] .rent-items .fav-items, [data-reconstruction="on"] .rent-items .fav-items {
+  [data-reconstruction="off"] .rent-items .wrapper-container, [data-reconstruction="on"] .rent-items .wrapper-container {
     height: 80vh;
     height: -webkit-calc(100vh - 230px);
     height: calc(100vh - 230px);
