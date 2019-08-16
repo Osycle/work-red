@@ -586,7 +586,7 @@ window.initRent = function(itemOptions) {
 			Rent.apartments = ymaps.geoQuery(Rent.objects).addToMap(Utils.currentMap);
 			Rent.apartments.each(function(el, i){
 				
-				var sale = el.options.get("item").sale;
+				var sale = el.options.get("item").sale.sold;
 				el.options.set({
 					type: "point",
 					iconLayout: 'default#image',
