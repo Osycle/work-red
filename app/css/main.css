@@ -7744,7 +7744,7 @@ table {
   padding-bottom: 0;
   line-height: 100%; }
 
-.parag-gray p:not([class*="color"]), .text-item p:not([class*="color"]) {
+.parag-gray p:not([class*="color"]), .text-item p:not([class*="color"]), .rent-items .desc-content p:not([class*="color"]) {
   color: #666666; }
 
 @-webkit-keyframes bodyanime {
@@ -7957,15 +7957,15 @@ hr {
   overflow: hidden;
   white-space: nowrap; }
 
-.text-item {
+.text-item, .rent-items .desc-content {
   line-height: 180%; }
-  .text-item p {
+  .text-item p, .rent-items .desc-content p {
     font-size: 1.07143em;
     margin-bottom: 20px; }
-    .text-item p b:not([class*="color"]) {
+    .text-item p b:not([class*="color"]), .rent-items .desc-content p b:not([class*="color"]) {
       color: black; }
     @media (min-width: 1600) {
-      .text-item p {
+      .text-item p, .rent-items .desc-content p {
         margin-bottom: 30px; } }
 
 html .form-control {
@@ -9756,7 +9756,7 @@ figcaption {
   -webkit-background-size: cover;
   background-size: cover; }
 
-.p-min p {
+.p-min p, .rent-items .desc-content p {
   font-size: 1em;
   line-height: 155%; }
 
@@ -11453,6 +11453,45 @@ html .irs--flat .irs-handle {
 
 .rent-items {
   margin-top: 0; }
+  .rent-items .rect-def {
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9); }
+    .rent-items .rect-def:nth-child(1) {
+      -webkit-transition-delay: 0.1s;
+      -o-transition-delay: 0.1s;
+      transition-delay: 0.1s; }
+    .rent-items .rect-def:nth-child(2) {
+      -webkit-transition-delay: 0.2s;
+      -o-transition-delay: 0.2s;
+      transition-delay: 0.2s; }
+    .rent-items .rect-def:nth-child(3) {
+      -webkit-transition-delay: 0.3s;
+      -o-transition-delay: 0.3s;
+      transition-delay: 0.3s; }
+    .rent-items .rect-def:nth-child(4) {
+      -webkit-transition-delay: 0.4s;
+      -o-transition-delay: 0.4s;
+      transition-delay: 0.4s; }
+    .rent-items .rect-def.animate-start {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+      opacity: 1; }
+  .rent-items .detail-info span {
+    vertical-align: middle; }
+  .rent-items .sales, .rent-items .recmd, .rent-items .sales {
+    display: none;
+    z-index: 1; }
+
+.rent-balloon a {
+  color: #cc2527;
+  text-decoration: underline;
+  font-weight: 600; }
 
 [data-reconstruction] .btn-change {
   position: absolute;

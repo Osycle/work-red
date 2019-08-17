@@ -5,7 +5,7 @@ var markerStyle_3 = 'img/icons/marker-offices-2.png';
 
 var rentProperty = $("[data-rent-checkboxes] [data-rent-property]");
 var rentCom = $("[data-rent-coms] [data-rent-field]");
-
+var rentAreaItems = $(".rent-items .wrapper-container");
 
 
 
@@ -107,11 +107,7 @@ window.Areas = {
 
 
 			var polygon = arr[i].data.items[0].displayGeometry.geometries[0];
-			var areasPolygon = new ymaps.Polygon(polygon,
-				{
-					// Содержимое балуна.
-					//balloonContent: "Рыбные места"+i
-				}, {
+			var areasPolygon = new ymaps.Polygon(polygon, {}, {
 					inc: i,
 					title: title,
 					description: description,
@@ -134,7 +130,7 @@ window.Areas = {
 
 
 			/*
-				"hover" на район
+				Наведения на район
 			*/
 			areasPolygon.events.add("mouseenter", function(e){
 				var that = e.get("target");
@@ -166,14 +162,15 @@ window.Areas = {
 				Клик по района
 			*/
 			areasPolygon.events.add("click", function(e){
-				var that = e.get("target");
-				var inc = that.options.get("inc");
+
+				var that = e.get("target"), 
+						inc = that.options.get("inc");
 
 				Areas.activeArea(inc);
 				Areas.currentArea = that;
 				
-				// Сброс выборки организации
-				Rent.hideAll();
+				Rent.hideAll(); // Сброс выборки организации
+
 				if( Rent.circle )
 					Utils.currentMap.geoObjects.remove(Rent.circle);
 				if( Utils.searchDots ){
@@ -194,8 +191,8 @@ window.Areas = {
 					});
 				})
 				Rent.mainCoordinates = Areas.currentArea.options.get("coordinates");
-
-				Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 300});
+				Utils.currentMap.setCenter(Rent.mainCoordinates, 12, {duration: 500});
+				Rent.filterBar(Rent.objectsContainingPolygon);
 			})
 
 		}
@@ -227,34 +224,35 @@ window.Rent = {
 	template: 
 						'<div class="rect-def">'+
 							'<div class="wrapper-flex">'+
-								'<span class="sales z-index-1">Продано</span>'+
+								'<span class="{{sold}} sales">Продано</span>'+
+								'<span class="{{recommended}} recmd">Рекомендуем</span>'+
 								'<div class="img-content">'+
-									'<div class="img" style="background-image: url(\'img/other/fav-1.jpg\');"></div>'+
+									'<div class="img" style="background-image: url(\'{{imageUrl}}\');"></div>'+
 								'</div>'+
 								'<div class="desc-content text-item p-min">'+
-									'<h5>Название квартиры</h5>'+
+									'<h5>{{title}}</h5>'+
 									'<div class="btn-content">'+
 										'<form action="" id="favorites">  '+
           						'<button type="submit" name="favorites" value="">Сохранено в мой REDD <i class="icm fa-1-5x icm-favorite-heart-button p-l-10 color-1"></i></button>'+
         						'</form>'+
 									'</div>'+
 									'<div class="detail-info m-v-15">'+
-										'<span class="va-middle fig">'+
+										'<span class="fig">'+
 											'<i class="icm icm-doorway"></i>'+
-											'<span class="va-middle">Комнаты:</span> '+
-											'<span class="cnt">4</span>'+
+											'<span>Комнаты:</span> '+
+											'<span class="cnt">{{rooms}}</span>'+
 										'</span>'+
-										'<span class="va-middle fig">'+
+										'<span class="fig">'+
 											'<i class="icm icm-house-plan-scale"></i>'+
-											'<span class="va-middle">Площадь:</span>'+
-											'<span class="cnt">112 кв.м</span>'+
+											'<span>Площадь:</span>'+
+											'<span class="cnt">{{square}}</span>'+
 										'</span>'+
 									'</div>'+
-									'<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">75 000$</span></p>'+
+									'<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">{{price}}</span></p>'+
 									'<hr>'+
 									'<div class="summary">'+
-										'<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>'+
-										'<a href=""><u>Подробнее</u></a>'+
+										'<p>{{description}}</p>'+
+										'<a href="{{url}}"><u>Подробнее</u></a>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
@@ -263,15 +261,59 @@ window.Rent = {
 
 	apartments: undefined, 
 
-	fabric: function(appenContainer){
-		appenContainer.append(Rent.template);
+
+	/*
+		Генерируем карточку квартиры
+	*/
+	fabric: function(){
+
+		var template, item;
+
+
+
+		var old = rentAreaItems.find(".rect-def").removeClass("animate-start");
+		setTimeout(function(){
+			old.remove();
+		}, 500)
+		Rent.apartmentsSelected.map(function(obj, i){
+
+			item = obj.options.get("item");
+			template = Rent.template;
+			if( item.sold )
+				template = template.replace(/{{sold}}/gim, "show") // добавляем класс
+			if( item.recommended )
+				template = template.replace(/{{recommended}}/gim, "show") // добавляем класс
+
+			/**
+				Имена переменных в шаблоне карточки квартиры
+				зависимы от ключей объектов
+			*/
+			for (var i in item){
+				template = template.replace(new RegExp("{{"+i+"}}", "gim"), item[i]);
+			} 
+			
+
+			template = template.replace(/{{\w*}}/gim, ""); // Обнуляем пустые переменные в шаблоне			
+
+			rentAreaItems.append(template); // Вставляем в контейнер квартир
+
+		})
+
+		setTimeout(function(){
+			rentAreaItems.find(".rect-def").addClass("animate-start");
+		}, 500)
 	},
 
+	/*
+		Фильтрация
+	*/
 	filterBar: function(obj){
-		var propertyAttr;
-		var item;
-		var property;
-		var elInput;
+
+		var propertyAttr, item, property, elInput;
+
+		this.apartmentsSelected = [];
+		//rentAreaItems.html(""); // Очищаем контейнер квартир
+
 		obj.each(function(objItem, i){
 			item = objItem.options.get("item");
 			property = item.property;
@@ -281,7 +323,6 @@ window.Rent = {
 				propertyAttr = $(rentProperty[i]).attr("data-rent-property")
 				if( !(property[propertyAttr] == elInput.checked || property[propertyAttr]) ){
 					novalid = true;
-					console.log( "property:"+property[propertyAttr], elInput, elInput.checked );
 					break;
 				}
 				//console.info(el.checked);
@@ -307,13 +348,19 @@ window.Rent = {
 					visible: false
 				});
 			}else{
+				Rent.apartmentsSelected.push(objItem);
 				objItem.options.set({
 					visible: true
 				});
 			}
 		})
+		Rent.fabric();
 	},
 
+
+	/*
+		Скрыть все квартиры
+	*/
 	hideAll: function(areaStatus){
 		if( this.apartments ){
 			this.apartments.setOptions({
@@ -570,10 +617,21 @@ window.initRent = function(itemOptions) {
     url: "apartments.json",
 		success: function(response){
 			Rent.objects = [];
+			var balloonTemplate, latlng;
+
+
+
 			$(response).map(function(i, el){
-				var latlng = [ el.lat, el.lng ];
-				Rent.objects.push(new ymaps.Placemark(latlng, {
-					balloonContent: el.balloonContent
+
+
+				balloonTemplate = '<div class="rent-balloon">'+
+					'<a href="'+el.url+'" target="_blank">'+el.title+'</a>'+
+					'<p>Комнат: '+el.rooms+'</p>'+
+					'<p>Цена: '+el.price+'</p>'+
+				'</div>';
+
+				Rent.objects.push(new ymaps.Placemark(el.coordinates, {
+					balloonContent: balloonTemplate
 				}, {
 					item: el
 				}));
@@ -586,17 +644,20 @@ window.initRent = function(itemOptions) {
 			Rent.apartments = ymaps.geoQuery(Rent.objects).addToMap(Utils.currentMap);
 			Rent.apartments.each(function(el, i){
 				
-				var sale = el.options.get("item").sale.sold;
+				var sold = el.options.get("item").sold;
 				el.options.set({
 					type: "point",
 					iconLayout: 'default#image',
-					iconImageHref: sale ? markerStyle_1 : markerStyle_2,
+					iconImageHref: sold ?  markerStyle_2 : markerStyle_1,
 					iconImageSize: [21, 30],
 					visible: false
 				});
 			});
 			Areas.items[itemOptions.defaultArea].events.fire("click");
 		},
+    error: function(response){
+    	console.log("Ошибка в файле %cjson", "color:#90AF13;text-transform:uppercase;");
+    },
     complete: function(response){}
 	});
 
@@ -605,7 +666,7 @@ window.initRent = function(itemOptions) {
 
 	Rent.besideEntitySelect = $('#beside_entity_select');
 
-	// Событие при пойска
+	// Событие при пойске
 	Utils.searchControl.events.add("load", function(e){
 		e.preventDefault();
 		Utils.searchDots = Utils.searchControl.getResultsArray();
@@ -668,12 +729,13 @@ window.initRent = function(itemOptions) {
 				})
 
 			Rent.objectsContainingPolygon = Rent.apartments.searchInside(Rent.circle);
-			Rent.objectsContainingPolygon.each(function(el, i){
-				el.options.set({
-					visible: true
-				});
-			})
+			// Rent.objectsContainingPolygon.each(function(el, i){
+			// 	el.options.set({
+			// 		visible: true
+			// 	});
+			// })
 
+			Rent.filterBar(Rent.objectsContainingPolygon);
 
 		}catch(e){
 			console.info(e);
@@ -733,12 +795,10 @@ $("main").on("click", "#map-rent .btn-change", function(){
 
 // Показать по фильтру
 $("main").on("click", ".rent-bar .btn-def", function(){
-	Rent.filterBar(Rent.objectsContainingPolygon);
+	//Rent.filterBar(Rent.objectsContainingPolygon);
 	$("[data-reconstruction]").attr("data-reconstruction", "off");
 	Utils.currentMap.container.fitToViewport();
 	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
-
-	Rent.fabric($(".rent-items .wrapper-container"));
 
 })
 
@@ -746,6 +806,7 @@ $("main").on("click", ".rent-bar .btn-def", function(){
 $("main").on("click", ".btn-backbar", function(){
 	$("[data-reconstruction]").attr("data-reconstruction", "def");
 	Utils.currentMap.container.fitToViewport();
+	Utils.currentMap.setCenter(Rent.mainCoordinates, 12, {duration: 500});
 })
 
 // Фильтрация

@@ -1,13 +1,13 @@
 [
 {
-	"lat": "41.262268",
-	"lng": "69.266671",
-	"type": "airports",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": false,
-		"text": "Продано",
-	},
+	"coordinates": [41.262268, 69.266671],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": true,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -33,18 +33,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Международный аэропорт имени Ислама Каримова"
+	}
 },
 {
-	"lat": "41.303322",
-	"lng": "69.267683",
-	"type": "business",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": false,
-		"text": "Продано",
-	},
+	"coordinates": [41.303322, 69.267683],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": true,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -70,18 +69,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "БЦ Баракат"
+	}
 },
 {
-	"lat": "41.259225",
-	"lng": "69.226217",
-	"type": "stations",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.259225, 69.226217],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -107,18 +105,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Южный вокзал"
+	}
 },
 {
-	"lat": "41.291358",
-	"lng": "69.286961",
-	"type": "stations",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.291358, 69.286961],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -144,18 +141,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Северный вокзал"
+	}
 },
 {
-	"lat": "41.322436",
-	"lng": "69.284508",
-	"type": "cafe",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.322436, 69.284508],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -181,18 +177,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Кафе Семь Пятниц"
+	}
 },
 {
-	"lat": "41.321510",
-	"lng": "69.275846",
-	"type": "cafe",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.321510, 69.275846],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -218,18 +213,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Ресторан Plov"
+	}
 },
 {
-	"lat": "41.263064",
-	"lng": "69.229753",
-	"type": "medicine",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.263064, 69.229753],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -255,18 +249,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "МЦ Vitamed Medical"
+	}
 },
 {
-	"lat": "41.300053",
-	"lng": "69.271178",
-	"type": "medicine",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.300053, 69.271178],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -292,18 +285,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "МЦ Diyor Medical Center"
+	}
 },
 {
-	"lat": "41.309456",
-	"lng": "69.317706",
-	"type": "medicine",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.309456, 69.317706],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -329,18 +321,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "МЦ MDS-Service"
+	}
 },
 {
-	"lat": "41.343177",
-	"lng": "69.356452",
-	"type": "medicine",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.343177, 69.356452],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -366,18 +357,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Турон Санаторий"
+	}
 },
 {
-	"lat": "41.275167",
-	"lng": "69.273500",
-	"type": "medicine",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.275167, 69.273500],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -403,18 +393,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Санаторий Sihatgox"
+	}
 },
 {
-	"lat": "41.308020",
-	"lng": "69.296119",
-	"type": "parks",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.308020, 69.296119],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -440,18 +429,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Экопарк"
+	}
 },
 {
-	"lat": "41.297965",
-	"lng": "69.249393",
-	"type": "other",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.297965, 69.249393],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -477,18 +465,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Next Ice City"
+	}
 },
 {
-	"lat": "41.291083",
-	"lng": "69.274867",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.291083, 69.274867],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -514,18 +501,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Рынок Мирабадский"
+	}
 },
 {
-	"lat": "41.292850",
-	"lng": "69.212028",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.292850, 69.212028],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -551,18 +537,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Рынок Катартал"
+	}
 },
 {
-	"lat": "41.364364",
-	"lng": "69.290400",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.364364, 69.290400],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -588,18 +573,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Рынок Юнусабадский"
+	}
 },
 {
-	"lat": "41.314669",
-	"lng": "69.322878",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.314669, 69.322878],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -625,18 +609,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Рынок Паркентский"
+	}
 },
 {
-	"lat": "41.319347",
-	"lng": "69.283342",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.319347, 69.283342],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -662,18 +645,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Рынок Алайский"
+	}
 },
 {
-	"lat": "41.273406",
-	"lng": "69.309969",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.273406, 69.309969],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -699,18 +681,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Рынок Рисовый"
+	}
 },
 {
-	"lat": "41.285219",
-	"lng": "69.189719",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.285219, 69.189719],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -736,18 +717,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Рынок Фархадский"
+	}
 },
 {
-	"lat": "41.286067",
-	"lng": "69.348381",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.286067, 69.348381],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -773,18 +753,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Рынок Кадышева"
+	}
 },
 {
-	"lat": "41.371594",
-	"lng": "69.324269",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.371594, 69.324269],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -810,18 +789,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Рынок Гвардейский"
+	}
 },
 {
-	"lat": "41.353347",
-	"lng": "69.351133",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.353347, 69.351133],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -847,18 +825,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Экобазар"
+	}
 },
 {
-	"lat": "41.309047",
-	"lng": "69.249314",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.309047, 69.249314],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -884,18 +861,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Чиланзарский рынок"
+	}
 },
 {
-	"lat": "41.355464",
-	"lng": "69.245972",
-	"type": "planning",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.355464, 69.245972],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -921,18 +897,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Рынок Джами Скоро..."
+	}
 },
 {
-	"lat": "41.285814",
-	"lng": "69.193222",
-	"type": "planning",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.285814, 69.193222],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -958,18 +933,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "УзГУМЯ-1 Скоро..."
+	}
 },
 {
-	"lat": "41.356036",
-	"lng": "69.358897",
-	"type": "planning",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": false,
-		"text": "Продано",
-	},
+	"coordinates": [41.356036, 69.358897],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": true,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -995,18 +969,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Республиканский специализированный научно-практический медицинский центр акушерства и гинекологии Скоро..."
+	}
 },
 {
-	"lat": "41.321167",
-	"lng": "69.237528",
-	"type": "planning",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": false,
-		"text": "Продано",
-	},
+	"coordinates": [41.321167, 69.237528],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": true,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -1032,18 +1005,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТРЦ ToshkentSavdoMarkazi Скоро..."
+	}
 },
 {
-	"lat": "41.367289",
-	"lng": "69.291128",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.367289, 69.291128],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -1069,18 +1041,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТРЦ Mega Planet"
+	}
 },
 {
-	"lat": "41.292106",
-	"lng": "69.211047",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.292106, 69.211047],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -1106,18 +1077,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТРЦ Парус"
+	}
 },
 {
-	"lat": "41.316367",
-	"lng": "69.231014",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.316367, 69.231014],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -1143,18 +1113,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТРЦ Samarkand Darvoza"
+	}
 },
 {
-	"lat": "41.259917",
-	"lng": "69.223850",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.259917, 69.223850],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -1180,18 +1149,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТРЦ Vega Center"
+	}
 },
 {
-	"lat": "41.239039",
-	"lng": "69.328661",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.239039, 69.328661],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -1217,18 +1185,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТРЦ Compass"
+	}
 },
 {
-	"lat": "41.338453",
-	"lng": "69.271378",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.338453, 69.271378],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -1254,18 +1221,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТРЦ Fleshka"
+	}
 },
 {
-	"lat": "41.297964",
-	"lng": "69.249392",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.297964, 69.249392],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -1291,18 +1257,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТРЦ Next"
+	}
 },
 {
-	"lat": "41.337817",
-	"lng": "69.223014",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.337817, 69.223014],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -1328,18 +1293,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "EskiShahar"
+	}
 },
 {
-	"lat": "41.311222",
-	"lng": "69.275939",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.311222, 69.275939],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -1365,18 +1329,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТРЦ Пойтахт"
+	}
 },
 {
-	"lat": "41.259917",
-	"lng": "69.223850",
-	"type": "streets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.259917, 69.223850],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -1402,18 +1365,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Шота Руставели"
+	}
 },
 {
-	"lat": "41.309358",
-	"lng": "69.299336",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.309358, 69.299336],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -1439,18 +1401,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТГСИ"
+	}
 },
 {
-	"lat": "41.277308",
-	"lng": "69.282275",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.277308, 69.282275],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -1476,18 +1437,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТашИИТ"
+	}
 },
 {
-	"lat": "41.323534",
-	"lng": "69.292940",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.323534, 69.292940],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -1513,18 +1473,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Лицей International House Tashkent"
+	}
 },
 {
-	"lat": "41.354206",
-	"lng": "69.331928",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.354206, 69.331928],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -1550,18 +1509,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТПМИ"
+	}
 },
 {
-	"lat": "41.340875",
-	"lng": "69.286831",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": false,
-		"text": "Продано",
-	},
+	"coordinates": [41.340875, 69.286831],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": true,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -1587,18 +1545,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТУИТ"
+	}
 },
 {
-	"lat": "41.324267",
-	"lng": "69.283297",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.324267, 69.283297],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -1624,18 +1581,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТФИ"
+	}
 },
 {
-	"lat": "41.300567",
-	"lng": "69.281222",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.300567, 69.281222],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -1661,18 +1617,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "МГУ"
+	}
 },
 {
-	"lat": "41.309047",
-	"lng": "69.249314",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.309047, 69.249314],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -1698,18 +1653,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "ТГЭУ"
+	}
 },
 {
-	"lat": "41.350711",
-	"lng": "69.221753",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.350711, 69.221753],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -1735,18 +1689,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Туринский политехнический университет"
+	}
 },
 {
-	"lat": "41.335832",
-	"lng": "69.342265",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.335832, 69.342265],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -1772,18 +1725,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Филиал Российского государственного университета нефти и газа имени И.М. Губкина в Ташкенте"
+	}
 },
 {
-	"lat": "41.277474",
-	"lng": "69.204868",
-	"type": "centre",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.277474, 69.204868],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -1809,18 +1761,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТРЦ INTEGRO"
+	}
 },
 {
-	"lat": "41.246633",
-	"lng": "69.166745",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.246633, 69.166745],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -1846,18 +1797,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Рынок Абу Сахий"
+	}
 },
 {
-	"lat": "41.343177",
-	"lng": "69.356452",
-	"type": "medicine",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.343177, 69.356452],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -1883,18 +1833,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Санаторий Турон"
+	}
 },
 {
-	"lat": "41.243199",
-	"lng": "69.163998",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.243199, 69.163998],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -1920,18 +1869,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Строительный рынок Бектопи"
+	}
 },
 {
-	"lat": "41.343020",
-	"lng": "69.208660",
-	"type": "medicine",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.343020, 69.208660],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -1957,18 +1905,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "МЦ Akfa Medline"
+	}
 },
 {
-	"lat": "41.324549",
-	"lng": "69.321861",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 4<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": false,
-		"text": "Продано",
-	},
+	"coordinates": [41.324549, 69.321861],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": true,
 	"price": 4000,
 	"rooms": 4,
 	"property":
@@ -1994,18 +1941,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "УМЭД"
+	}
 },
 {
-	"lat": "41.244886",
-	"lng": "69.171697",
-	"type": "markets",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 5<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.244886, 69.171697],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 5000,
 	"rooms": 5,
 	"property":
@@ -2031,18 +1977,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "Рынок  Ипподром"
+	}
 },
 {
-	"lat": "41.324167",
-	"lng": "69.277755",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 1000<br>rooms: 1<br> <big class='color-1'>1000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.324167, 69.277755],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 1000,
 	"rooms": 1,
 	"property":
@@ -2068,18 +2013,17 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "УЖиМК"
+	}
 },
 {
-	"lat": "41.283939",
-	"lng": "69.245302",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 2000<br>rooms: 2<br> <big class='color-1'>2000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.283939, 69.245302],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 2000,
 	"rooms": 2,
 	"property":
@@ -2105,18 +2049,17 @@
 		"sewerage": true,
 		"pool": false,
 		"attic": true
-	},
-	"title": "ТИТиЛП"
+	}
 },
 {
-	"lat": "41.322746",
-	"lng": "69.295937",
-	"type": "university",
-	"balloonContent": "<a href='beside.html'>Название квартиры</a> <br>price: 3000<br>rooms: 3<br> <big class='color-1'>3000</big>",
-	"sale": {
-		"sold": true,
-		"text": "В продаже",
-	},
+	"coordinates": [41.322746, 69.295937],
+	"title": "Навание квартиры",
+	"url": "beside.html",
+	"imageUrl": "img/other/fav-1.jpg",
+	"description": "В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.",
+	"square": "85 кв.м",
+	"recommended": false,
+	"sold": false,
 	"price": 3000,
 	"rooms": 3,
 	"property":
@@ -2142,6 +2085,5 @@
 		"sewerage": false,
 		"pool": true,
 		"attic": false
-	},
-	"title": "Институт Ирригации"
+	}
 }]
