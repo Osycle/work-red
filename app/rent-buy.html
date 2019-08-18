@@ -251,7 +251,7 @@
 								<div class="flex-adaptive">
 									<div class="m-v-10 p-h-15 col-md-2">
 										<h3 class="hidden-xs hidden-sm">Ваш район:</h3>
-										<h2 class="visible-xs visible-sm">Аренда по районам</h2>
+										<h2 class="visible-xs visible-sm">Купить на:</h2>
 									</div>
 									<div class="m-v-10 p-h-15 col-md-4">
 										<select class="js-select box-xs-10" id="rent_select_area">
@@ -284,7 +284,7 @@
 									<i class="fa fa-caret-up"></i>
 								</span>
 								<div class="cap-content">
-									<h3 class="hidden-xs hidden-sm">Аренда по районам</h3>
+									<h3 class="hidden-xs hidden-sm">Купить на:</h3>
 								</div>
 								<div data-rent-coms class="clearfix">
 									<div class="input-content m-v-10 p-h-5 col-md-6">
@@ -311,6 +311,46 @@
 											<option>3</option>
 											<option>4</option>
 											<option>5</option>
+										</select>
+									</div>
+									<div class="input-content m-v-10 p-h-5 col-md-6">
+										<select class="js-select box-xs-10" data-rent-field="square" data-rent-min>
+											<option>Общая площадь от</option>
+											<option>20</option>
+											<option>40</option>
+											<option>60</option>
+											<option>80</option>
+											<option>100</option>
+										</select>
+									</div>
+									<div class="input-content m-v-10 p-h-5 col-md-6">
+										<select class="js-select box-xs-10" data-rent-field="square" data-rent-max>
+											<option>Общая площадь до</option>
+											<option>120</option>
+											<option>140</option>
+											<option>160</option>
+											<option>180</option>
+											<option>200</option>
+										</select>
+									</div>
+									<div class="input-content m-v-10 p-h-5 col-md-6">
+										<select class="js-select box-xs-10" data-rent-field="floor" data-rent-min>
+											<option>Этаж от</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+									<div class="input-content m-v-10 p-h-5 col-md-6">
+										<select class="js-select box-xs-10" data-rent-field="floor" data-rent-max>
+											<option>Этаж до</option>
+											<option>6</option>
+											<option>7</option>
+											<option>8</option>
+											<option>9</option>
+											<option>10</option>
 										</select>
 									</div>
 								</div>
@@ -508,27 +548,8 @@
 										</label>
 									</div>
 								</div>
-								<div class="typebeside col-md-12">
-									<div class="typebeside-wrapper">
-										<div>найти по</div>
-										<div class="radio-content">
-											<input type="radio" name="typebeside" id="typebeside-1" class="hide">
-											<label class="btn-this" for="typebeside-1" data-search-enty="Метро">Метро</label>
-										</div>
-										<div class="radio-content">
-											<input type="radio" name="typebeside" id="typebeside-2" class="hide">
-											<label class="btn-this" for="typebeside-2" data-search-enty="школа №">Школа</label>
-										</div>
-										<div class="radio-content">
-											<input type="radio" name="typebeside" id="typebeside-3" class="hide">
-											<label class="btn-this" for="typebeside-3" data-search-enty="ВУЗ">ВУЗ</label>
-										</div>
-									</div>
-									<div class="typebeside-result m-v-30">
-										<select class="js-select box-xs-10" id="beside_entity_select">
-											<option>Выбрать</option>
-										</select>
-									</div>
+								<div class="p-h-5">
+									<span role="button" class="btn-draw">Нарисовать</span>
 								</div>
 							</div>
 							<div class="btn-content text-center m-v-30">
@@ -575,10 +596,8 @@
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
 
-	<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
-	<script type="text/javascript">
-
-	</script>
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
+	<script src="js/paintOnMap.js"></script>
 	<script src="js/mapscript.js"></script>
 	<script src="areas.js"></script>
 	<script type="text/javascript">

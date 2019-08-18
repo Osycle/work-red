@@ -3214,6 +3214,28 @@ html{
 			padding-left: 10px;
 		}
 	}
+
+}
+.rent-bar{
+	min-width: 475px;
+	width: 30%;
+	padding: 30px; 
+	transition: all 0.3s ease;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: calc(100vh - 100px);
+	h3{
+		text-align: center;
+		text-transform: uppercase;
+	}
+	background-color: white;
+	input.form-control{
+		height: 35px;
+		font-size: 12px;
+	}
+	.btn-change{
+		display: none;
+	}
 	.typebeside{
 		.typebeside-wrapper{
 			display: flex;
@@ -3252,26 +3274,6 @@ html{
 
 	}
 }
-.rent-bar{
-	min-width: 475px;
-	width: 30%;
-	padding: 30px; 
-	transition: all 0.3s ease;
-	overflow-y: auto;
-	overflow-x: hidden;
-	height: calc(100vh - 100px);
-	h3{
-		text-align: center;
-		text-transform: uppercase;
-	}
-	background-color: white;
-	input.form-control{
-		height: 35px;
-		font-size: 12px;
-	}
-	.input-content{
-	}
-}
 
 .rent-wrapper{
 	display: flex;
@@ -3296,7 +3298,7 @@ html{
 		align-items: center;
   }
   .rent-header-info{
-  	.cnt-rent{
+  	.rent-cnt{
   		font-weight: 600;
   		color: $color-1;
   	}
@@ -3353,29 +3355,63 @@ html{
 }
 
 [data-reconstruction]{
-	.btn-change{
-		position: absolute;
-		width: 45px;
-		height: 45px;
-		box-shadow: 0 0 50px 0px rgba(black, 0.2);
-		@extend .trans-v-center;
-		right: -23px;
-		color: $color-1;
-    z-index: 1;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    &:hover{
-    	background-color: $color-1;
-    	color: white;
-    }
+
+}
+.btn-change{
+	position: absolute;
+	width: 44px;
+	height: 44px;
+	box-shadow: 0 0 50px 0px rgba(black, 0.2);
+	@extend .trans-v-center;
+	right: -23px;
+	color: $color-1;
+  z-index: 1;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  &:hover{
+  	background-color: $color-1;
+  	color: white;
+  }
+  .fa{
+		&:before{
+			display: inline-block;
+		}
 	}
 }
-[data-reconstruction="def"]{
-	.rent-items, .rent-header, .btn-change{
+.rent-map{
+	.map{
+		position: relative;
+	}
+	.map-info{
+		padding: 15px;
+		background-color: white;
+		position: absolute;
+		left: 15px;
+		font-size: 0.9em;
+		//transform: scale(0.95);
+		border-radius: 10px;
+		bottom: 40px;
+		z-index: 1;
+		pointer-events: none;
+		backface-visibility: hidden;
+		p{
+			margin: 5px 0;
+		}
+		img{
+			width: 15px;
+			margin-right: 10px;
+		}
+		@media (max-width: 991px) {
+			display: none;
+		}
+	}
+}
+[data-reconstruction]:not(.active){
+	.rent-items, .rent-header, .map .btn-change{
 		display: none;
 	}
 	.rent-wrapper{
@@ -3389,7 +3425,7 @@ html{
 		}
 	}
 }
-[data-reconstruction="off"], [data-reconstruction="on"]{
+[data-reconstruction].active{
 	.rent-wrapper{
 		display: flex;
 		flex-wrap: wrap;
@@ -3398,7 +3434,6 @@ html{
 		display: none;
 	}
 	.rent-map{
-		width: 35%;
 		.map{
 			//margin-top: 100px;
 			height: 75vh;
@@ -3407,7 +3442,6 @@ html{
 		}
 	}
 	.rent-items{
-		width: 65%;
 		padding-left: 30px;
 		padding-right: 30px;
     overflow-y: auto;
@@ -3417,8 +3451,9 @@ html{
     	margin-top: 0;
 		}
 	}
+
 }
-[data-reconstruction="on"]{
+[data-reconstruction="1"]{
 	.rent-map{
 		width: 75%;
 	}
@@ -3441,11 +3476,160 @@ html{
 			}
 		}
 	}
+
+}
+[data-reconstruction="2"]{
+	.rent-map{
+		width: 35%;
+	}
+	.rent-items{
+		width: 65%;
+	}
+}
+
+[data-reconstruction="3"]{
+	.rent-map{
+		width: 1%;
+		//display: none;
+		#ymap_ctrl_display{
+			display: none;
+		}
+		ymaps{
+			display: none;
+			opacity: 0;
+		}
+		.map-info{
+			display: none;
+		}
+	}
+	.rent-items{
+		width: 99%;
+	}
 	.btn-change{
 		.fa{
-			transform: rotate(180deg) translateX(2px);
-			&:before{
-				display: inline-block;
+			transform: rotate(180deg);
+		}
+	}
+}
+// Мобильная версия
+@media (max-width: 991px) {
+	html{
+		.rent-wrapper{
+			display: block;
+			height: calc(100vh - 70px);
+			overflow-y: auto;
+			overflow-x: hidden;
+			top: 0;
+			position: relative;
+		}
+		#page, main{
+			//position: fixed;
+		}
+		main{
+			//min-height: calc(100vh - 70px);
+
+		}
+			.select2, .select2-results__option{
+				text-align: left;
+			}
+		.rent-bar{
+			position: fixed;
+			z-index: 1;
+			box-shadow: 0 0 50px -4px rgba(black, 0.1);
+    	transform: translateY(100%);
+			min-width: auto;
+			width: 88vw;
+			padding: 20px 10px 15px 10px;
+			bottom: 0;
+  		left: 6vw;
+  		transition: all 0.4s ease;
+  		overflow: visible;
+			height: 85vh;
+			max-height: 90vh;
+			height: calc(100vh - 150px);
+			max-height: calc(100vh - 70px);
+			.select2{
+				text-align: left;
+			}
+			.checkbox-content{
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+			&.active{
+				transform: translateY(10%);
+				transform: translateY(calc(0% - 15px));
+				.btn-change{
+					.fa{
+						transform: rotate(180deg);
+						margin-bottom: -3px;
+					}
+				}
+			}
+			.btn-change{
+				display: flex;
+				transform: translateX(-50%);
+				left: 50%;
+				top: -48px;
+				.fa{
+					margin-bottom: 3px;
+				}
+			}
+			.typebeside{
+				.btn-content{
+
+				}
+			}
+		}
+		.rent-bar-wrapper{
+			overflow-y: auto;
+			height: 90%;
+			height: calc( 100% - 70px );
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		[data-reconstruction], [data-reconstruction]:not(.active) {
+			.rent-items{
+				display: block;
+				.wrapper-container{
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+				.rect-def{
+					box-shadow: 0 0 50px -4px rgba(black, 0.1);
+					.wrapper-flex{
+						flex-direction: column;
+						.img-content{
+							width: 100%;
+						}
+						.img{
+							height: 250px;
+							position: relative;
+						}
+						.desc-content{
+							width: 100%;
+							.btn-content, .summary, hr{
+								display: none;
+							}
+						}
+					}
+				}
+			}
+			.rent-header{
+				display: flex;
+				height: auto;
+				margin-top: 15px;
+				margin-bottom: 15px;
+				.btn-backbar{
+					display: none;
+				}
+			}
+			.rent-map{
+				width: 100%;
+				margin-top: 15px;
+				margin-bottom: 15px;
+				.map{
+					height: 190px;
+				}
 			}
 		}
 	}
@@ -3489,6 +3673,9 @@ html{
 	background-color: rgba(black, 0.5);
 	z-index: 100;
 	pointer-events: none;
+	@media (max-width: 991px) {
+		font-size: 0.9em;
+	}
 	div{
 		position: relative;
 		top: 50%;
