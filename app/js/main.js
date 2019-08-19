@@ -242,8 +242,50 @@
 
 		}
 
-
-		
+		if( $(".apartment-slider-items").length ){
+			var apartmentSlider = $(".apartment-slider-items")
+			apartmentSlider.flickity({
+					imagesLoaded: true,
+					autoPlay: 6000,
+					pauseAutoPlayOnHover: true,
+					arrowShape: "M 10,50 L 70,100 L 70,90 L 70,50  L 70,10 L 70,0 Z",
+					initialIndex: 0,
+					//friction: 1,
+					//selectedAttraction: 1,
+					prevNextButtons: true,
+					draggable: false,
+					wrapAround: true,
+					pageDots: true,
+					contain: false,
+					percentPosition: true,
+					cellSelector: 'figure',
+					cellAlign: "center"
+				});
+			apartmentSlider.data("flickity");
+			$('[data-fancybox="apartment"]').fancybox({
+				afterShow: function(instance, current) {},
+				animationEffect : "zoom",
+				animationDuration : 800,
+				loop: true,
+				fullScreen : {
+					autoStart : true,
+				},
+				thumbs : {
+					autoStart   : false
+				},
+				touch : false,
+				transitionDuration : 366,
+				transitionEffect: "zoom-in-out"
+			});
+			apartmentSlider.find("figure").on("click", function(){
+				apartmentSlider.flickity("next");
+				console.log(this);
+			})
+			$(".btn-slide-fullscreen").on("click", function(){
+				$('[data-fancybox="apartment"]')
+				.eq(apartmentSlider.find("figure.is-selected").index()).click();
+			});
+		}
 
     // Прибавление-убавление значении
     (function(){

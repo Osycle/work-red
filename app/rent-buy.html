@@ -249,26 +249,7 @@
 						<div class="rent-header">
 							<div class="container-fluid-page">
 								<div class="flex-adaptive">
-									<div class="m-v-10 p-h-15 col-md-2">
-										<h3 class="hidden-xs hidden-sm">Ваш район:</h3>
-										<h2 class="visible-xs visible-sm">Купить на:</h2>
-									</div>
-									<div class="m-v-10 p-h-15 col-md-4">
-										<select class="js-select box-xs-10" id="rent_select_area">
-											<option data-i="0">Юнусабадский район</option>
-											<option data-i="1">Мирзо-Улугбекский район</option>
-											<option data-i="2">Яшнободский район</option>
-											<option data-i="3">Мирабадский район</option>
-											<option data-i="4">Бектемирский район</option>
-											<option data-i="5">Зангиатинский район</option>
-											<option data-i="6">Сергелийский район</option>
-											<option data-i="7">Яккасарайский район</option>
-											<option data-i="8">Чиланзарский район</option>
-											<option data-i="9">Учтепинский район</option>
-											<option data-i="10">Шайхантахурский район</option>
-											<option data-i="11">Олмазорский район</option>
-										</select>
-									</div>
+									<div class="m-v-10 p-h-15 col-md-6"></div>
 									<div class="rent-header-info m-v-10 p-h-15 col-md-6">
 										<h3>Найдено: <span class="rent-cnt" data-rent-select-cnt>0</span> <thin>квартир для продаж в вашем районе</thin><br>
 											<small role="button" class="btn-backbar">Искать по другим критериям</small>
@@ -287,14 +268,21 @@
 									<h3 class="hidden-xs hidden-sm">Купить на:</h3>
 								</div>
 								<div data-rent-coms class="clearfix">
-									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<div><input type="" name="" class="form-control" placeholder="цена от (сум)" data-rent-field="price" data-rent-min></div>
+									<div class="input-content m-v-10 p-h-5 col-md-12">
+										<select class="js-select box-xs-10" data-rent-field-val="type">
+											<option value="t1">Новостройки</option>
+											<option value="t2">Вторичное жильё</option>
+											<option value="t3">Коммерческое</option>
+										</select>
 									</div>
 									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<div><input type="" name="" class="form-control" placeholder="цена до (сум)" data-rent-field="price" data-rent-max></div>
+										<div><input type="" name="" class="form-control" placeholder="цена от (сум)" data-rent-field-num="price" data-rent-min></div>
 									</div>
 									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<select class="js-select box-xs-10" data-rent-field="rooms" data-rent-min>
+										<div><input type="" name="" class="form-control" placeholder="цена до (сум)" data-rent-field-num="price" data-rent-max></div>
+									</div>
+									<div class="input-content m-v-10 p-h-5 col-md-6">
+										<select class="js-select box-xs-10" data-rent-field-num="rooms" data-rent-min>
 											<option>комнаты от</option>
 											<option>1</option>
 											<option>2</option>
@@ -304,7 +292,7 @@
 										</select>
 									</div>
 									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<select class="js-select box-xs-10" data-rent-field="rooms" data-rent-max>
+										<select class="js-select box-xs-10" data-rent-field-num="rooms" data-rent-max>
 											<option>комнаты до</option>
 											<option>1</option>
 											<option>2</option>
@@ -314,7 +302,7 @@
 										</select>
 									</div>
 									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<select class="js-select box-xs-10" data-rent-field="square" data-rent-min>
+										<select class="js-select box-xs-10" data-rent-field-num="square" data-rent-min>
 											<option>Общая площадь от</option>
 											<option>20</option>
 											<option>40</option>
@@ -324,7 +312,7 @@
 										</select>
 									</div>
 									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<select class="js-select box-xs-10" data-rent-field="square" data-rent-max>
+										<select class="js-select box-xs-10" data-rent-field-num="square" data-rent-max>
 											<option>Общая площадь до</option>
 											<option>120</option>
 											<option>140</option>
@@ -334,7 +322,7 @@
 										</select>
 									</div>
 									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<select class="js-select box-xs-10" data-rent-field="floor" data-rent-min>
+										<select class="js-select box-xs-10" data-rent-field-num="floor" data-rent-min>
 											<option>Этаж от</option>
 											<option>1</option>
 											<option>2</option>
@@ -344,13 +332,29 @@
 										</select>
 									</div>
 									<div class="input-content m-v-10 p-h-5 col-md-6">
-										<select class="js-select box-xs-10" data-rent-field="floor" data-rent-max>
+										<select class="js-select box-xs-10" data-rent-field-num="floor" data-rent-max>
 											<option>Этаж до</option>
 											<option>6</option>
 											<option>7</option>
 											<option>8</option>
 											<option>9</option>
 											<option>10</option>
+										</select>
+									</div>
+									<div class="input-content m-v-10 p-h-5 col-md-12">
+										<select class="js-select box-xs-10" id="rent_select_area">
+											<option data-i="0">Юнусабадский район</option>
+											<option data-i="1">Мирзо-Улугбекский район</option>
+											<option data-i="2">Яшнободский район</option>
+											<option data-i="3">Мирабадский район</option>
+											<option data-i="4">Бектемирский район</option>
+											<option data-i="5">Зангиатинский район</option>
+											<option data-i="6">Сергелийский район</option>
+											<option data-i="7">Яккасарайский район</option>
+											<option data-i="8">Чиланзарский район</option>
+											<option data-i="9">Учтепинский район</option>
+											<option data-i="10">Шайхантахурский район</option>
+											<option data-i="11">Олмазорский район</option>
 										</select>
 									</div>
 								</div>
@@ -548,8 +552,49 @@
 										</label>
 									</div>
 								</div>
-								<div class="p-h-5">
-									<span role="button" class="btn-draw">Нарисовать</span>
+								<div class="rent-tools p-h-5">
+									<div class="rent-tools-items">
+										<figure>
+											<a href="javascript:;" class='btn-draw'>
+												<div class="wrapper">
+													<div class="img-content">
+														<i class="icm icm-map-marker"></i>
+													</div>
+													<figcaption>По GPS</figcaption>
+												</div>
+											</a>
+										</figure>
+										<figure>
+											<a href="javascript:;" class='btn-draw'>
+												<div class="wrapper">
+													<div class="img-content">
+														<i class="icm icm-map-of-roads"></i>
+													</div>
+													<figcaption>По карте</figcaption>
+												</div>
+											</a>
+										</figure>
+										<figure>
+											<a href="javascript:;" class='btn-draw'>
+												<div class="wrapper">
+													<div class="img-content">
+														<i class="icm icm-bus-stop"></i>
+													</div>
+													<figcaption>Рядом метро</figcaption>
+												</div>
+											</a>
+										</figure>
+										<figure>
+											<a href="javascript:;" class='btn-draw'>
+												<div class="wrapper">
+													<div class="img-content">
+														<i class="icm icm-draw"></i>
+													</div>
+													<figcaption>Нарисовать на карте</figcaption>
+												</div>
+											</a>
+										</figure>
+									</div>
 								</div>
 							</div>
 							<div class="btn-content text-center m-v-30">

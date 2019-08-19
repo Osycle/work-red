@@ -9150,6 +9150,11 @@ figcaption {
       height: 100%;
       -webkit-background-size: cover;
       background-size: cover; }
+    .intro .intro-media video {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover; }
 
 .intro-footer {
   position: absolute;
@@ -10948,6 +10953,33 @@ html .irs--flat .irs-handle {
         .fav-items .btn-content button, .rent-items .btn-content button {
           text-decoration: underline; } }
 
+.apartment.intro .btn-slide-fullscreen {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); }
+  .apartment.intro .btn-slide-fullscreen .fa {
+    font-size: 30px;
+    color: white; }
+
+.apartment.intro .apartment-slider-items figure:hover {
+  cursor: pointer; }
+
 .apartment.intro .apartment-slider-items .img {
   height: 600px;
   -webkit-background-size: cover;
@@ -10955,6 +10987,9 @@ html .irs--flat .irs-handle {
   @media (max-width: 991px) {
     .apartment.intro .apartment-slider-items .img {
       height: 300px; } }
+
+.apartment.intro .apartment-slider-items .flickity-page-dots {
+  margin-bottom: 45px; }
 
 .apartment.intro .owl-nav {
   background-color: #1c1c1c;
@@ -11788,6 +11823,54 @@ html .irs--flat .irs-handle {
     text-align: center;
     font-size: 1.8em;
     pointer-events: none; }
+
+.rent-tools {
+  text-align: center; }
+
+.rent-tools-items {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .rent-tools-items .wrapper {
+    -webkit-box-shadow: 0 0 18px -15px black;
+    box-shadow: 0 0 18px -15px black;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    height: 85px; }
+    .rent-tools-items .wrapper:hover {
+      background-color: #cc2527;
+      color: white; }
+  .rent-tools-items figcaption {
+    font-size: 0.85714em;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 5px; }
+  .rent-tools-items .icm {
+    font-size: 40px; }
+  .rent-tools-items figure {
+    width: 50%; }
 
 /* 
 		_footer.scss
