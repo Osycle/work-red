@@ -11859,7 +11859,12 @@ html .irs--flat .irs-handle {
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
     height: 85px; }
-    .rent-tools-items .wrapper:hover {
+    .rent-tools-items .wrapper:hover, .rent-tools-items .wrapper.active {
+      background-color: #cc2527;
+      color: white; }
+  .rent-tools-items input {
+    display: none; }
+    .rent-tools-items input:checked ~ label .wrapper {
       background-color: #cc2527;
       color: white; }
   .rent-tools-items figcaption {
@@ -11869,7 +11874,9 @@ html .irs--flat .irs-handle {
     margin-top: 5px; }
   .rent-tools-items .icm {
     font-size: 40px; }
-  .rent-tools-items figure {
+  .rent-tools-items li {
+    list-style: none; }
+  .rent-tools-items figure, .rent-tools-items .boxes-cell {
     width: 50%; }
 
 /* 

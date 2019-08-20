@@ -3729,9 +3729,18 @@ html{
 		flex-direction: column;
 		transition: all 0.3s ease;
 		height: 85px;
-		&:hover{
+		&:hover, &.active{
 			background-color: $color-1;
 			color: white;
+		}
+	}
+	input{
+		display: none;
+		&:checked{
+				& ~ label .wrapper{
+				background-color: $color-1;
+				color: white;
+			}
 		}
 	}
 	figcaption{
@@ -3743,9 +3752,12 @@ html{
 	.icm{
 		font-size: 40px;
 	}
+	li{
+		list-style: none;
+	}
 	display: flex;
 	flex-wrap: wrap;
-	figure{
+	figure, .boxes-cell{
 		width: 50%;
 	}
 
