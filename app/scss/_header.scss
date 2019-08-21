@@ -89,6 +89,38 @@ $header-min-menu: 70px;
 		width: 170px;
 	}
 }
+.header-info{
+  text-align: left;
+  figure{
+  	font-size: 0.7em;
+  	display: block;
+  	transition: all 0.3s ease;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+  	.icm{
+  		border-radius: 50%;
+  		padding: 6px;
+  		transition: all 0.3s ease;
+  		border: 1px solid white;
+  		font-size: 1.6em;
+  	}
+  	.info-content{
+  		font-size: em(18);
+  		b{
+  			vertical-align: sub;
+  			font-size: em(22);
+  		}
+  	}
+	  @media (min-width: 1445px){
+	  	display: inline-block;
+	  	font-size: 0.85em;
+	  }
+  }
+  @media (max-width: 991px) {
+  	display: none;
+  }
+}
+
 
 
 
@@ -113,9 +145,22 @@ $header-min-menu: 70px;
 					top: 60px;
 				}
 			}
+			.header-info{
+				font-size: 0.8em;
+				figure{
+					padding-top: 5px;
+					padding-bottom: 5px;
+					//display: none;
+				}
+				.icm{
+					padding: 3px;
+					font-size: 1.3em;
+				}
+			}
 		}
+
 		.header-signin .btn-sign:before{
-			top: -43px;
+			top: -43px;			
 		}
 		.header-logo{
 			img{
@@ -165,9 +210,13 @@ $header-min-menu: 70px;
 		display: inline-block;
 		font-size: em(16);
 		margin-right: 20px;
+		transition: all 0.3s ease;
 		.fa{
 			padding-left: 8px;
 			font-size: 12px;
+		}
+		&.active{
+			color: $color-1;
 		}
 		a{
 			&:before{
@@ -434,12 +483,17 @@ ul[class*="sub-menu"]{
 
 
 .header-signin{
+	height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: black;
 	.btn-sign{
 		position: relative;
 		padding: 20px 30px;
 		z-index: 1;
 		color: white;
 		&:before{
+			display: none;
 			top: -23px;
 			left: 0;
 			clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 85%);

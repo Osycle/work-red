@@ -558,34 +558,6 @@ figcaption{
 		}
 	}
 }
-.intro-footer{
-	position: absolute;
-  bottom: 80px;
-  width: 100%;
-  text-align: left;
-  figure{
-  	display: inline-block;
-  	&:nth-child(1){
-  		margin-right: 30px;
-  	}
-  	.icm{
-  		border-radius: 50%;
-  		padding: 12px;
-  		border: 1px solid white;
-  		font-size: 22px;
-  	}
-  	.info-content{
-  		font-size: em(18);
-  		b{
-  			font-size: em(22);
-  		}
-  	}
-  }
-  @media (max-width: 991px) {
-  	display: none;
-  }
-}
-
 
 
 
@@ -771,9 +743,6 @@ figcaption{
 		left: 0;
 		opacity: 0.1;
 	}
-	@media (min-width: 992px) {
-		padding-top: 100px;
-	}
 	.container{
 		position: relative;
 	}
@@ -811,7 +780,7 @@ figcaption{
 		position: relative;
 	}
 	.img{
-		height: 340px;
+		height: 220px;
 		background-size: cover;
 	}
 	.desc-content{
@@ -820,20 +789,27 @@ figcaption{
 		margin-left: auto;
 		margin-right: auto;
 		padding: 10px 20px;
+		font-size: 0.95em;
 		position: relative;
 		@media (min-width: 992px) {
 			margin-top: -30px;
 		}
 	}
+	.price-content{
+		font-size: 0.8em;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
 	.detail-info{
 		display: flex;
-		margin-left: -10px;
-		margin-right: -10px;
+		flex-direction: column;
+		margin: 15px -15px;
 		.color-1{
 			font-weight: 800;
 		}
 		.va-middle{
 			padding-left: 10px;
+			margin-bottom: 5px;
 			padding-right: 10px;
 			color: $color-gray-4;
 			@media (min-width: 992px) {

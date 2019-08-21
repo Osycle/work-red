@@ -172,7 +172,7 @@ window.Areas = {
 
 				Areas.activeArea(inc);
 				Areas.currentArea = that;
-				
+
 				Rent.hideAll(); 
 				Utils.drawClear();
 
@@ -390,7 +390,14 @@ window.Rent = {
 			if(areaStatus)
 				Areas.activeArea(null);
 		}
+	},
+
+
+	drop: function(){
+		Rent.hideAll(true); 
+		Utils.drawClear();
 	}
+
 }
 
 
@@ -413,6 +420,7 @@ window.Utils = {
 
 	searchDots: undefined,
 	searchControl: undefined,
+	user: {},
 
 	searchInit: function(){
 		var that = this;
@@ -469,7 +477,7 @@ window.Utils = {
 	/*
 		Рисование на карте
 	*/
-	draw: function(){
+	draw: function(bool){
 		ymaps.ready(['ext.paintOnMap']).then(function () {
 
 	    var paintProcess;
@@ -491,7 +499,7 @@ window.Utils = {
 	    Utils.currentMap.events.add('mousedown', function (e) {
 	      // Если кнопка мыши была нажата с зажатой клавишей "alt", то начинаем рисование контура.
 	      if(!$('[data-action="draw"]')[0].checked)
-	      	return
+	      	return;
 				if (e.get('altKey')) {
 					if (currentIndex == styles.length - 1) {
 						currentIndex = 0;
@@ -505,7 +513,7 @@ window.Utils = {
 	    // Подпишемся на событие отпускания кнопки мыши.
 	    Utils.currentMap.events.add('mouseup', function (e) {
 	    	if(!$('[data-action="draw"]')[0].checked)
-	      	return
+	      	return;
 	      if(paintProcess){
           // Получаем координаты отрисованного контура.
           var coordinates = paintProcess.finishPaintingAt(e);
@@ -513,8 +521,7 @@ window.Utils = {
 
           // Убираем не нужное на карте
 					Rent.hide(Rent.objectsContainingPolygon);
-					Rent.hideAll(true);
-					Utils.drawClear();
+					Rent.drop();
 
           // В зависимости от состояния кнопки добавляем на карту многоугольник или линию с полученными координатами.
           Utils.drawGeoObject = new ymaps.Polygon([coordinates], {}, styles[currentIndex]);
@@ -526,6 +533,40 @@ window.Utils = {
 	       }
 	    });
 	  });
+	},
+
+	gps: function(){
+		var location = ymaps.geolocation.get();
+		// Асинхронная обработка ответа.
+		//Utils.user.geoObjects.options.set({id: "old"})
+		//ymaps.geoQuery(Utils.currentMap.geoObjects).search('options.id = "old"')
+		if(!$('[data-action="gps"]')[0].checked){
+			if( Utils.user.geoObjects )
+		  	Utils.currentMap.geoObjects.remove(Utils.user.geoObjects);
+  		return;
+		}
+		location.then(
+		  function(result) {
+
+		    // Добавление местоположения на карту.
+		    Utils.user.geoObjects = result.geoObjects;
+		    Utils.user.location = result.geoObjects.position;
+
+		    Utils.currentMap.geoObjects.add(Utils.user.geoObjects);
+
+
+				Utils.currentMap.setCenter(Utils.user.location, 14, {duration: 300});
+
+				// Рисуем круг
+				Utils.circle = Utils.drawCircle(1500, Utils.user.location);
+				Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.circle);
+				Rent.filterBar(Rent.objectsContainingPolygon);
+
+		  },
+		  function(err) {
+		    console.log('Ошибка: ' + err)
+		  }
+		);
 	},
 
 	drawClear: function(){
@@ -805,8 +846,7 @@ window.initRent = function(itemOptions, callback) {
 			Utils.currentMap.setCenter(Rent.mainCoordinates, 14, {duration: 300});
 
 			// Скрываем не нужно на карте
-			Utils.drawClear();
-			Areas.activeArea(null);
+			Rent.drop();
 			Rent.hide(Rent.objectsContainingPolygon);
 
 
@@ -822,8 +862,7 @@ window.initRent = function(itemOptions, callback) {
 		}
 	})
 	$("main").on("click", "[data-search-enty]", function(){
-		console.info(this);
-		Rent.hideAll(true);
+		Rent.drop();
 	})
 
 	Utils.ctrlZoom();
@@ -906,25 +945,35 @@ $("main").on("click", '[data-toggle="class"]', function(e){
 		$(".rent-wrapper").animate({scrollTop:0}, '500');
 })
 $("main").on("click", '[data-active]', function(e){
-	var that = $(this);
 	e.preventDefault();
+	var that = $(this);
 	var markAttr = $(that).attr("data-active");
-	console.log( $("[data-active='" + markAttr + "']"),  markAttr)
+	//console.log( $("[data-active='" + markAttr + "']"),  markAttr)
 	$("[data-active='" + markAttr + "']").removeClass("active");
 	that.addClass("active");
 })
 
 $("main").on("change", '[name="renttools"]', function(e){
-	console.log(this);
 	var that = $(this);
+	console.log(this.checked);
+	//e.preventDefault();
+	$('[name="renttools"]')
+		.filter(":not(#"+that.attr("id")+")")
+		.map( function(i, el){
+			el.checked = false;
+		});
+
+
 	var action = that.attr("data-action");
+	Rent.drop();
 	switch(action){
 		case "draw":
 			Utils.draw();break;
+		case "gps":
+			Utils.gps();break;
+
 	}	
+
+
 })
 
-$("main").on("click", ".btn-draw", function(){
-	Rent.hideAll(true);
-	Utils.draw();
-})
