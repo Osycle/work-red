@@ -190,9 +190,9 @@ window.Areas = {
 						visible: true
 					});
 				})
-				Rent.mainCoordinates = Areas.currentArea.options.get("coordinates");
-				Utils.currentMap.setCenter(Rent.mainCoordinates, 12, {duration: 500});
-				Rent.filterBar(Rent.objectsContainingPolygon);
+				Utils.currentCenter = Areas.currentArea.options.get("coordinates");
+				Utils.currentMap.setCenter(Utils.currentCenter, 12, {duration: 500});
+				Rent.filterBar();
 			})
 
 		}
@@ -219,8 +219,16 @@ window.Areas = {
 
 
 /*Rent*/
-window.Rent = {
+/**
+*	@param [objectsContainingPolygon] {Object} Обекты текущей выборки
+*	@param [template] {String} Шаблон карточки
+*	@param [apartments] {Object} Все объекты квартир
+*	@function [filterBar] {Object} Фильр квартир
+*/
 
+window.Rent = {
+	apartments: undefined, 
+	objectsContainingPolygon: {},
 	template: 
 						'<div class="rect-def">'+
 							'<div class="wrapper-flex">'+
@@ -259,7 +267,7 @@ window.Rent = {
 						'</div>'
 	,
 
-	apartments: undefined, 
+	
 
 
 	/*
@@ -275,7 +283,7 @@ window.Rent = {
 		setTimeout(function(){
 			old.remove();
 		}, 500)
-		Rent.apartmentsSelected.map(function(obj, i){
+		Rent.objectsContainingPolygon.each(function(obj, i){
 
 			item = obj.options.get("item");
 			template = Rent.template;
@@ -308,10 +316,10 @@ window.Rent = {
 		Фильтрация
 	*/
 	filterBar: function(obj){
-
+		var obj = obj || this.objectsContainingPolygon;
 		var propertyAttr, item, property, elInput;
 
-		this.apartmentsSelected = [];
+		var apartmentsSelected = [];
 		//rentAreaItems.html(""); // Очищаем контейнер квартир
 
 		obj.each(function(objItem, i){
@@ -334,19 +342,15 @@ window.Rent = {
 				var min = rentFieldNum[i].filter("[data-rent-min]").val()*1 || 0;
 				var max = rentFieldNum[i].filter("[data-rent-max]").val()*1 || Infinity;
 
-				if ( min <= item[fieldName] && item[fieldName] <= max ) {
-
-				}else{
+				if ( !(min <= item[fieldName] && item[fieldName] <= max) ){
 					novalid = true;break;
 				}
+
 			}
 			for (var i = 0; i < rentFieldVal.length; i++) {
 				rentFieldVal[i] = $(rentFieldVal[i]);
 				var fieldName = rentFieldVal[i].attr("data-rent-field-val");
-				console.log(fieldName, rentFieldVal[i].val(), item[fieldName]);
-				if ( rentFieldVal[i].val() ==  item[fieldName] ) {
-					
-				}else{
+				if ( !(rentFieldVal[i].val() ==  item[fieldName] || rentFieldVal[i].val() == "all") ) {
 					novalid = true;break;
 				}
 			}
@@ -357,14 +361,17 @@ window.Rent = {
 					visible: false
 				});
 			}else{
-				Rent.apartmentsSelected.push(objItem);
+				apartmentsSelected.push(objItem);
 				objItem.options.set({
 					visible: true
 				});
 			}
 		})
+		Rent.objectsContainingPolygon = ymaps.geoQuery(apartmentsSelected);
+
+		$("[data-rent-select-cnt]").text(apartmentsSelected.length);
 		Rent.fabric();
-		$("[data-rent-select-cnt]").text(Rent.apartmentsSelected.length);
+		return apartmentsSelected.length;
 	},
 
 	hide: function(obj){
@@ -388,7 +395,7 @@ window.Rent = {
 				Areas.activeArea(null);
 		}
 		if( Utils.user.geoObject )
-	  	Utils.currentMap.geoObjects.remove(Utils.user.geoObject);
+			Utils.currentMap.geoObjects.remove(Utils.user.geoObject);
 	},
 
 	/*
@@ -480,7 +487,10 @@ window.Utils = {
 
 		// Добавляем круг на карту.
 		this.currentMap.geoObjects.add(circle);
-		circle.options.set({class: "circle"});
+		circle.properties.set({
+			class: "figure",
+			classType: "circle"
+		});
 		//circle.editor.startEditing();
 		return circle;
 	},
@@ -491,10 +501,10 @@ window.Utils = {
 	draw: function(bool){
 		ymaps.ready(['ext.paintOnMap']).then(function () {
 
-	    var paintProcess;
+	    var paintProcess, styles, currentIndex = 0, drawGeoObject;
 
 	    // Опции многоугольника или линии.
-	    var styles = [
+	    styles = [
 	    	{
 	    		strokeColor: '#000000', 
 	    		strokeOpacity: 0.6, 
@@ -503,8 +513,6 @@ window.Utils = {
 	    		fillOpacity: 0.3
 	    	}
 	    ];
-
-	    var currentIndex = 0;
 
 	    // Подпишемся на событие нажатия кнопки мыши.
 	    Utils.currentMap.events.add('mousedown', function (e) {
@@ -535,12 +543,15 @@ window.Utils = {
 					Rent.drop();
 
           // В зависимости от состояния кнопки добавляем на карту многоугольник или линию с полученными координатами.
-          Utils.drawGeoObject = new ymaps.Polygon([coordinates], {}, styles[currentIndex]);
-          Utils.currentMap.geoObjects.add(Utils.drawGeoObject);
-          
-					Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.drawGeoObject);
+          drawGeoObject = new ymaps.Polygon([coordinates], {}, styles[currentIndex]);
+          drawGeoObject.properties.set({
+          	class: "figure"
+          })
+          Utils.currentMap.geoObjects.add(drawGeoObject);
+          Utils.currentCenter = Utils.center
+					Rent.objectsContainingPolygon = Rent.apartments.searchInside(drawGeoObject);
 					
-					Rent.filterBar(Rent.objectsContainingPolygon);
+					Rent.filterBar();
 	       }
 	    });
 	  });
@@ -561,17 +572,19 @@ window.Utils = {
 
 		    // Добавление местоположения на карту.
 		    Utils.user.geoObject = result.geoObjects;
-		    Utils.user.location = result.geoObjects.position;
-
+		    Utils.currentCenter = result.geoObjects.position;
+		    Utils.user.geoObject.properties.set({
+		    	class: "figure"
+		    })
 		    Utils.currentMap.geoObjects.add(Utils.user.geoObject);
 
 
-				Utils.currentMap.setCenter(Utils.user.location, 14, {duration: 300});
+				Utils.currentMap.setCenter(Utils.currentCenter, 14, {duration: 300});
 
 				// Рисуем круг
-				Utils.circle = Utils.drawCircle(1500, Utils.user.location);
+				Utils.circle = Utils.drawCircle(1500, Utils.currentCenter);
 				Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.circle);
-				Rent.filterBar(Rent.objectsContainingPolygon);
+				Rent.filterBar();
 
 		  },
 		  function(err) {
@@ -585,13 +598,18 @@ window.Utils = {
 			return;
 		}
 		Rent.visibleAll();
+		Utils.currentMap.setCenter(Utils.center, 12, {duration: 500});
 	},
 
 	found: function(searchRequest){
+
+		var foundGeoObjects = [], firstLoad = false;
+
 		Utils.searchInit(50);
+		Utils.currentMap.setCenter(Utils.center, 12, {duration: 0});
 		Utils.searchControl.search(searchRequest);
-		//Utils.currentMap.setCenter(Utils.center, 12, {duration: 300});
-		var firstLoad = false;
+		
+		
 		Utils.searchControl.events.add("load", function(e){
 			if( firstLoad )
 				return;
@@ -600,32 +618,39 @@ window.Utils = {
 			Utils.searchDots = Utils.searchControl.getResultsArray();
 
 			Utils.searchDots.forEach(function(el, i){
-				var circle = Utils.drawCircle(500, el.geometry.getCoordinates());
+				var circle = Utils.drawCircle(600, el.geometry.getCoordinates());
 				circle.options.set({
-					classCircle: "foundCircle",
 					visible: false
-				})
+				});
+				circle.properties.set({
+					classType: "foundCircle"
+				});
+
 			})
 			// Рисуем круг
 			//Utils.circle = Utils.drawCircle(1500, data.coordinates);
-
-			var circles = ymaps.geoQuery(Utils.currentMap.geoObjects).search('options.classCircle = "foundCircle"')
-			circles.each(function(el, i){
-				var s = Rent.apartments.searchInside(el);
-				console.log(s);
-				// s.options.set({
-				// 	visible: true
-				// })
-			})
 			
+			window.circles = ymaps.geoQuery(Utils.currentMap.geoObjects).search('properties.classType = "foundCircle"')
+			circles.each(function(el, i){
+				var circleObjects = Rent.apartments.searchInside(el)
+				circleObjects.each(function(el, i){
+					foundGeoObjects.push(el);
+					el.options.set({
+						visible: true
+					});
+
+				})
+			})
+			Rent.objectsContainingPolygon = ymaps.geoQuery(foundGeoObjects);
+			Rent.filterBar();
 		});
 	},
 
 	drawClear: function(){
-		if( Utils.drawGeoObject )
-			Utils.currentMap.geoObjects.remove(Utils.drawGeoObject);
-		if( Utils.circle )
-			Utils.currentMap.geoObjects.remove(Utils.circle);
+		var figure = ymaps.geoQuery(Utils.currentMap.geoObjects).search('properties.class = "figure"');
+		figure.each(function(el, i){
+			Utils.currentMap.geoObjects.remove(el);
+		})
 	},
 
 
@@ -852,7 +877,6 @@ window.initRent = function(itemOptions, callback) {
 
 	// Событие при пойске
 	Utils.searchControl.events.add("load", function(e){
-		e.preventDefault();
 		Utils.searchDots = Utils.searchControl.getResultsArray();
 		Rent.besideEntitySelect.html("");
 		console.log("load");
@@ -895,8 +919,8 @@ window.initRent = function(itemOptions, callback) {
 
 
 
-			Rent.mainCoordinates = Rent.besideBalloon.geometry.getCoordinates();
-			Utils.currentMap.setCenter(Rent.mainCoordinates, 14, {duration: 300});
+			Utils.currentCenter = Rent.besideBalloon.geometry.getCoordinates();
+			Utils.currentMap.setCenter(Utils.currentCenter, 14, {duration: 300});
 
 			// Скрываем не нужно на карте
 			Rent.drop();
@@ -908,7 +932,7 @@ window.initRent = function(itemOptions, callback) {
 
 
 			Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.circle);
-			Rent.filterBar(Rent.objectsContainingPolygon);
+			Rent.filterBar();
 
 		}catch(e){
 			console.info(e);
@@ -959,16 +983,16 @@ $("main").on("click", "#map-rent .btn-change", function(){
 
 	}
 	Utils.currentMap.container.fitToViewport();
-	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
+	Utils.currentMap.setCenter(Utils.currentCenter, Utils.currentMap.getZoom(), {duration: 1000});
 })
 
 
 // Показать по фильтру
 $("main").on("click", ".rent-bar .btn-view", function(){
-	//Rent.filterBar(Rent.objectsContainingPolygon);
+	//Rent.filterBar();
 	$("[data-reconstruction]").attr("data-reconstruction", "2").addClass("active");
 	Utils.currentMap.container.fitToViewport();
-	Utils.currentMap.setCenter(Rent.mainCoordinates, Utils.currentMap.getZoom(), {duration: 1000});
+	Utils.currentMap.setCenter(Utils.currentCenter, Utils.currentMap.getZoom(), {duration: 1000});
 
 })
 
@@ -976,12 +1000,12 @@ $("main").on("click", ".rent-bar .btn-view", function(){
 $("main").on("click", ".btn-backbar", function(){
 	$("[data-reconstruction]").attr("data-reconstruction", "2").removeClass("active");
 	Utils.currentMap.container.fitToViewport();
-	Utils.currentMap.setCenter(Rent.mainCoordinates, 12, {duration: 500});
+	Utils.currentMap.setCenter(Utils.currentCenter, 12, {duration: 500});
 })
 
 // Фильтрация
 $("main").on("change", "[data-rent-field-num], [data-rent-property], [data-rent-field-val]", function(){
-	Rent.filterBar(Rent.objectsContainingPolygon);
+	Rent.filterBar();
 });
 
 $(rentSelectArea).on("change", function(){
@@ -1019,6 +1043,7 @@ $("main").on("change", '[name="renttools"]', function(e){
 
 	var action = that.attr("data-action");
 	Rent.drop();
+	Utils.searchControl.clear();
 	switch(action){
 		case "draw":
 			Utils.draw();break;
