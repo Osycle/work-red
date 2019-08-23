@@ -66,7 +66,7 @@
 			stagePadding: 18,
 			responsive:{
 				0:{items:1},
-				991:{items:3}
+				991:{items:4}
 			},
 			navText : owlBtn,
 			margin: 22
@@ -388,8 +388,17 @@
 		$(".header-top label[for]").on("click", function(){
 			var that = $(this);
 			var input = $( "#" + that.attr("for") );
-			
+			var li = that.closest("li");
+			window.menuCurrentItem = input;
 
+			li.siblings().removeClass("active");
+
+			if( that.closest("li").hasClass("active") )
+				that.closest("li").removeClass("active");
+			else
+				that.closest("li").addClass("active");
+
+			console.log(that);
 			setTimeout(function(){
 				var openedStatus = $(".megamenu input[name=\"mega\"]").filter(function(i,el){ return el.checked;})
 				if( openedStatus.length > 0)
@@ -404,7 +413,14 @@
 						input[0].checked = false;
 					}, 1)
 		})
-
+		// fix megamenu
+		$("main").on("click", function(){
+			try{
+				var id = $(menuCurrentItem).attr("id");
+				$(".bargain-menu li.active label").trigger("click");
+				menuCurrentItem[0].checked = false;
+			}catch(e){}
+		})
 
 
 		//SCROLL

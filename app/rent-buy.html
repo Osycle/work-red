@@ -241,6 +241,50 @@
 				<div class="intro-content"></div>
 			</div>
 
+			<div class="pricebox">
+				<div class="pricebox-wrapper">
+					<h2>Доступные новостройки</h2>
+					<p>Ценовая категория:</p>
+					<div class="form-content">
+						<form class="boxes-3">
+							<div class="boxes-cell">
+								<input type="checkbox" name="pricebox" id="pricebox_1" class="hide">
+								<label for="pricebox_3" role="button">
+									<div class="wrapper">
+										<figcaption>
+											<p><big>n1</big></p>
+											<p><small>30.000 - 60.000 $</small></p>
+										</figcaption>
+									</div>
+								</label>
+							</div>
+							<div class="boxes-cell">
+								<input type="checkbox" name="pricebox" id="pricebox_2" class="hide">
+								<label for="pricebox_3" role="button">
+									<div class="wrapper">
+										<figcaption>
+											<p><big>n2</big></p>
+											<p><small>30.000 - 60.000 $</small></p>
+										</figcaption>
+									</div>
+								</label>
+							</div>
+							<div class="boxes-cell">
+								<input type="checkbox" name="pricebox" id="pricebox_3" class="hide">
+								<label for="pricebox_3" role="button">
+									<div class="wrapper">
+										<figcaption>
+											<p><big>n3</big></p>
+											<p><small>30.000 - 60.000 $</small></p>
+										</figcaption>
+									</div>
+								</label>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
 
 			<div class="rent" data-reconstruction>
 				<div class="wrapper">
@@ -602,6 +646,11 @@
 											</figure>
 										</div>
 									</form>
+									<div class="rent-keywords m-v-30">
+										<div class="input-content m-v-10 p-h-5">
+											<div><input type="" name="" class="form-control" id="search_keywords" placeholder="Поиск, по ключевым словам"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="btn-content text-center m-v-30">
@@ -621,6 +670,9 @@
 								<div id="ymap_ctrl_display">
 	    						<div>Чтобы изменить масштаб, прокручивайте карту, удерживая клавишу Ctrl.</div>
 								</div>
+								<span id="draw_textbox">
+									Зажмите <b>alt</b> чтобы начать рисовать
+								</span>
 								<div class="map-info">
 									<p><img src="img/icons/marker-green.png"> В продаже</p>
 									<p><img src="img/icons/marker-red.png"> Уже продано</p>
@@ -658,6 +710,7 @@
 
 			var itemOptions = {
 				mainLatLng: [41.326892, 69.313324],
+				url: "apartments.json",
 				defaultArea: 2
 			}
 

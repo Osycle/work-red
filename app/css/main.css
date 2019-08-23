@@ -7153,7 +7153,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .rent-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items, .rent .select2-dropdown, .rent-header {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .rent-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items, .rent .select2-dropdown, .rent-header, #draw_textbox {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -9425,6 +9425,10 @@ figcaption {
     display: -ms-flexbox;
     display: flex;
     font-size: 20px; }
+    @media (max-width: 991px) {
+      .short-news .owl-nav {
+        margin: 15px 0;
+        padding: 15px 0; } }
   .short-news .owl-btn-t {
     font-size: 12px; }
 
@@ -11866,8 +11870,49 @@ html .irs--flat .irs-handle {
     font-size: 1.8em;
     pointer-events: none; }
 
+#draw_textbox {
+  background-color: #cc2527;
+  color: white;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  display: none; }
+  #draw_textbox.active {
+    display: inline-block; }
+
 .rent-tools {
   text-align: center; }
+
+.pricebox {
+  position: absolute;
+  display: none;
+  z-index: 2;
+  text-align: center; }
+  .pricebox h2 {
+    color: #cc2527; }
+  .pricebox .pricebox-wrapper {
+    background-color: #f5f5f5;
+    padding: 30px 60px; }
+  .pricebox .boxes-3 {
+    max-width: 420px; }
+  .pricebox .boxes-cell figcaption {
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: white;
+    padding: 15px;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #6b6b6b; }
+    .pricebox .boxes-cell figcaption:hover {
+      background-color: #cc2527;
+      color: white; }
+    .pricebox .boxes-cell figcaption p {
+      white-space: nowrap; }
+    .pricebox .boxes-cell figcaption big {
+      font-size: 2em; }
+    .pricebox .boxes-cell figcaption small {
+      font-size: 0.8em; }
 
 .rent-tools-items {
   display: -webkit-box;
@@ -14495,13 +14540,13 @@ html .p-0 {
 .relative {
   position: relative; }
 
-.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-center, .checkbox-style-1:before {
+.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-center, .checkbox-style-1:before, .pricebox {
   top: 50%; }
 
-.trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before {
+.trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before, .pricebox {
   left: 50%; }
 
-.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before {
+.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before, .pricebox {
   position: absolute; }
 
 .trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change {
@@ -14514,7 +14559,7 @@ html .p-0 {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%); }
 
-.trans-center, .checkbox-style-1:before {
+.trans-center, .checkbox-style-1:before, .pricebox {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }

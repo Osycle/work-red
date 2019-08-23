@@ -3696,9 +3696,61 @@ html{
 		pointer-events: none;
 	}
 }
+#draw_textbox{
+	background-color: $color-1;
+	color: white;
+	padding: 8px;
+	position: absolute;
+	z-index: 1;
+	display: none;
+	@extend .shadow-def;
+	&.active{
+		display: inline-block;
+	}
+}
 .rent-tools{
-
 	text-align: center;
+}
+.pricebox{
+	position: absolute;
+	display: none;
+	z-index: 2;
+	text-align: center;
+	h2{
+		color: $color-1;
+	}
+	@extend .trans-center;
+	.pricebox-wrapper{
+		background-color: $color-gray-2;
+		padding: 30px 60px;
+	}
+	.boxes-3{
+		max-width: 420px;
+	}
+	.boxes-cell{
+		figcaption{
+			transition: all 0.3s ease;
+			background-color: white;
+			padding: 15px;
+			font-size: 1em;
+			text-transform: uppercase;
+			color: $color-gray-4;
+			&:hover{
+				background-color: $color-1;
+				color: white;
+			}
+			p{
+				white-space: nowrap;
+			}
+			big{
+				font-size: 2em;
+			}
+			small{
+				font-size: 0.8em;
+			}
+
+		}
+	}
 }
 .rent-tools-items{
 	.wrapper{
