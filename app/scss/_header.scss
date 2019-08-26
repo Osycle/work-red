@@ -471,6 +471,9 @@ ul[class*="sub-menu"]{
 			h4{
 				margin-bottom: 30px !important;
 			}
+			&:not(:last-child){
+				padding-right: 10px;
+			}
 		}
 		li{
 			margin-bottom: 20px;

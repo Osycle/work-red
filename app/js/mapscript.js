@@ -10,9 +10,9 @@ var
 
 
 
-window.markerStyle_1 = 'img/icons/marker-green.png';
-window.markerStyle_2 = 'img/icons/marker-red.png';
-window.markerStyle_3 = 'img/icons/marker-offices-2.png';
+window.markerStyle_1 = window.markerStyle_1 || 'img/icons/marker-green.png';
+window.markerStyle_2 = window.markerStyle_2 || 'img/icons/marker-red.png';
+window.markerStyle_3 = window.markerStyle_3 || 'img/icons/marker-offices-2.png';
 
 
 RegExp.escape= function(s) {
@@ -196,6 +196,15 @@ window.Areas = {
 				Utils.currentCenter = Areas.currentArea.options.get("coordinates");
 				Utils.currentMap.setCenter(Utils.currentCenter, 12, {duration: 500});
 				Rent.filterBar();
+
+
+				$('[name="renttools"]').map( function(i, el){
+					el.checked = false;
+				});
+
+				// Запуск инструмента
+				hashTools();
+
 			})
 
 		}
@@ -276,7 +285,7 @@ window.Rent = {
 	/*
 		Генерируем карточку квартиры
 	*/
-	fabric: function(){
+	fabric: function(obj){
 
 		var template, item;
 
@@ -286,7 +295,7 @@ window.Rent = {
 		setTimeout(function(){
 			old.remove();
 		}, 500)
-		Rent.objectsContainingPolygon.each(function(obj, i){
+		obj.each(function(obj, i){
 
 			item = obj.options.get("item");
 			template = Rent.template;
@@ -328,7 +337,7 @@ window.Rent = {
 		var obj = obj || this.objectsContainingPolygon;
 		var propertyAttr, item, property, elInput;
 
-		var apartmentsSelected = [];
+		window.apartmentsSelected = [];
 		//rentAreaItems.html(""); // Очищаем контейнер квартир
 
 		obj.each(function(objItem, i){
@@ -379,9 +388,9 @@ window.Rent = {
 			}
 		})
 		//Rent.objectsContainingPolygon = ymaps.geoQuery(apartmentsSelected);
-
+		var newObjects = ymaps.geoQuery(apartmentsSelected);
 		$("[data-rent-select-cnt]").text(apartmentsSelected.length);
-		Rent.fabric();
+		Rent.fabric(newObjects);
 		return apartmentsSelected.length;
 	},
 
@@ -397,6 +406,7 @@ window.Rent = {
 		Поиск по ключевым словам
 	*/
 	search: function(words){
+		words = words.trim();
 		if( words.length < 3 )
 			return;
 		var searchArray = [], keywords, found;
@@ -875,7 +885,7 @@ window.initRent = function(itemOptions, callback) {
 					'<div class="rent-balloon">'+
 						'<a href="'+el.url+'" target="_blank">'+el.title+'</a>'+
 						'<p>Комнат: '+el.rooms+'</p>'+
-						'<p>Цена: '+el.price+'</p>'+
+						'<p>Цена: '+el.price+' сум</p>'+
 					'</div>';
 
 				Rent.objects.push(new ymaps.Placemark(el.coordinates, {
@@ -1063,13 +1073,62 @@ $(rentSelectAreas).on("change", function(){
 
 });
 
-window.startInit = function(){
-	console.log("START");
-}
-if( (/(startInit)/gim).test(location.hash) ){
 
-	startInit();
+
+
+
+
+/*
+	Инструментальный раутер хеш
+*/
+
+window.hash = decodeURI(location.hash);
+window.search = function(){
+	var textRequest = hash.match(/(search=)|(\(.*\))/gim)[0].replace(/[('")]/gim, "");
+	$("#search_keywords").attr("value", textRequest).trigger("change");
+	window.hashToolsStatus = true;
+	location.hash = "";
 }
+
+window.hashFunc = function(functionName){
+	var reg = new RegExp(functionName+"|\\([\'\"].*[\'\"]\\)", "gim")
+	var diffusion = hash.match(reg);
+	return diffusion[1].match(/\w+/gim);
+}
+window.toolStart = function(){
+		var task = hashFunc("toolStart");
+		if( !task )
+			return;
+		window.task = task[1]; // [0] Беру только первый переметр из массива
+
+		var input = $("[data-action="+task+"]");
+		console.log(input);
+
+		if( input.length )
+			input.trigger("click");
+		
+		window.hashToolsStatus = true;
+}
+window.hashTools = function(){
+	if( window.hashToolsStatus )
+		return;
+	try{
+		if( (/(toolStart)/gim).test(location.hash) ){
+			toolStart();
+		}
+		if( (/(search)/gim).test(location.hash) ){
+			search();
+		}
+	}catch(e){
+		console.log("ошибка в функций %chashTools", "color:#00007f;",", подробнее пременной hashToolsError");
+		window.hashToolsError = e;
+	}
+}
+
+
+
+
+
 
 // Toggle class
 $("main").on("click", '[data-toggle="class"]', function(e){
@@ -1126,7 +1185,7 @@ $("main").on("change", '[name="renttools"]', function(e){
 })
 // Поиск
 $("main").on("change", '#search_keywords', function(e){
-	Rent.search(this.value);
+	Rent.search( this.value );
 })
 // В избранное
 $("main").on("click", '.rect-def [name="favorites"]', function(e){
@@ -1148,4 +1207,25 @@ $("main").on("click", '.rect-def [name="favorites"]', function(e){
     },
     complete: function(response) {}
 	});
+})
+
+
+// Доступные стройки
+$("main").on("change", '[name="pricebox"]', function(){
+	$(".pricebox").find('[data-rent-field-num="price"]').attr("value", "");
+
+	window.currentPriceboxInputId = this.id;
+	console.log(this.checked)
+	var that = $(this);
+	var min = that.attr("data-placebox-min")
+	var max = that.attr("data-placebox-max")
+	that.closest("div").find("[data-rent-min]").attr("value", min)
+	that.closest("div").find("[data-rent-max]").attr("value", max)
+
+	Rent.filterBar();
+
+})
+$("main").on("click", '.btn-hider', function(){
+	window.markBlock = $(".pricebox");
+	markBlock.toggleClass("hider");
 })

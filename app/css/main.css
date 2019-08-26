@@ -8531,6 +8531,8 @@ ul[class*="sub-menu"] {
       width: 100%; }
       .megamenu .ul-box-wrapper .ul-box h4 {
         margin-bottom: 30px !important; }
+      .megamenu .ul-box-wrapper .ul-box:not(:last-child) {
+        padding-right: 10px; }
     .megamenu .ul-box-wrapper li {
       margin-bottom: 20px; }
 
@@ -11120,6 +11122,14 @@ html .irs--flat .irs-handle {
     margin-right: 5px; }
   .apartment-detail .fig {
     margin-right: 15px; }
+    @media (min-width: 991px) {
+      .apartment-detail .fig .va-middle {
+        max-width: 150px;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block; } }
 
 .apartment-content h4 {
   font-weight: 800;
@@ -11420,9 +11430,7 @@ html .irs--flat .irs-handle {
 
 .rent .select2-dropdown {
   font-size: 0.9em;
-  background-color: white;
-  overflow-y: auto;
-  max-height: 320px; }
+  background-color: white; }
   .rent .select2-dropdown .select2-results__option {
     color: #1c1c1c;
     font-family: "Open Sans";
@@ -11892,16 +11900,57 @@ html .irs--flat .irs-handle {
 
 .pricebox {
   position: absolute;
-  z-index: 2;
+  overflow: hidden;
+  z-index: 100;
+  text-align: center;
   margin-top: 60px;
-  text-align: center; }
+  -webkit-transition: all 0.0s ease;
+  -o-transition: all 0.0s ease;
+  transition: all 0.0s ease;
+  pointer-events: none; }
+  .pricebox * {
+    pointer-events: auto; }
+  .pricebox.hider {
+    -webkit-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    top: 70px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: 46px;
+    width: 80px;
+    -webkit-transition: all 0s ease;
+    -o-transition: all 0s ease;
+    transition: all 0s ease;
+    left: 44%; }
+    .pricebox.hider .desc-hide {
+      display: none; }
+    .pricebox.hider .desc-open {
+      display: block; }
+  .pricebox .desc-open {
+    display: none; }
+  .pricebox [data-rent-field-num="price"] {
+    display: none; }
+  .pricebox .pricebox-wrapper {
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: white;
+    padding: 30px 60px; }
+  .pricebox select {
+    max-width: 240px; }
+  .pricebox .btn-hider-content {
+    position: absolute;
+    right: 15px;
+    top: 15px; }
   .pricebox .entry-content h3 {
     text-transform: uppercase;
     color: #cc2527;
     font-family: "Montserrat";
     font-weight: 800; }
-  .pricebox .boxes-3 {
-    max-width: 420px; }
+  @media (min-width: 991px) {
+    .pricebox .boxes-3 {
+      min-width: 500px; } }
   .pricebox .boxes-cell figcaption {
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -11921,9 +11970,9 @@ html .irs--flat .irs-handle {
     .pricebox .boxes-cell figcaption small {
       font-size: 0.8em; }
 
-.pricebox-wrapper {
-  background-color: white;
-  padding: 30px 60px; }
+[name="pricebox"]:checked ~ label figcaption {
+  background-color: #cc2527;
+  color: white; }
 
 .rent-tools-items {
   display: -webkit-box;

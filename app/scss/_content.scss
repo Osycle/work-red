@@ -2825,6 +2825,15 @@ html{
 	}
 	.fig{
 		margin-right: 15px; 
+		.va-middle{
+			@media (min-width: 991px){
+				max-width: 150px;
+    		text-overflow: ellipsis;
+    		overflow: hidden;
+    		white-space: nowrap;
+    		display: inline-block;
+			}
+		}
 	}
 }
 .apartment-content{
@@ -3194,8 +3203,8 @@ html{
 	.select2-dropdown{
 		font-size: 0.9em;
 		background-color: white;
-    overflow-y: auto;
-    max-height: 320px;
+    //overflow-y: auto;
+    //max-height: 320px;
 		@extend .shadow-def;
 		.select2-results__option{
 			color: $color-2;
@@ -3720,11 +3729,51 @@ html{
 
 .pricebox{
 	position: absolute;
-	z-index: 2;
-	margin-top: 60px;
+	overflow: hidden;
+	z-index: 100;
 	@extend .shadow-def;
-	text-align: center;
 	@extend .trans-center;
+	text-align: center;
+	margin-top: 60px;
+  transition: all 0.0s ease;
+	pointer-events: none;
+	*{
+		pointer-events: auto;
+	}
+	&.hider{
+    transform: translate(0px, 0px);
+    top: 70px;
+    box-shadow: none;
+    height: 46px;
+    width: 80px;
+    transition: all 0s ease;
+    left: 44%;
+    .desc-hide{
+    	display: none;
+    }
+    .desc-open{
+    	display: block;
+    }
+	}
+	.desc-open{
+		display: none;
+	}
+	[data-rent-field-num="price"]{
+		display: none;
+	}
+	.pricebox-wrapper{
+		transition: all 0.3s ease;
+		background-color: white;
+		padding: 30px 60px;
+	}
+	select{
+		max-width: 240px;
+	}
+	.btn-hider-content{
+		position: absolute;
+		right: 15px;
+		top: 15px;
+	}
 	.entry-content{
 		h3{
 			text-transform: uppercase;
@@ -3734,7 +3783,9 @@ html{
 		}
 	}
 	.boxes-3{
-		max-width: 420px;
+		@media (min-width: 991px){
+			min-width: 500px;
+		}
 	}
 	.boxes-cell{
 		figcaption{
@@ -3762,9 +3813,15 @@ html{
 		}
 	}
 }
-.pricebox-wrapper{
-	background-color: white;
-	padding: 30px 60px;
+[name="pricebox"]{
+	&:checked{
+		&~label{
+			figcaption{
+				background-color: $color-1;
+				color: white;
+			}
+		}
+	}
 }
 
 

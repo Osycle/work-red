@@ -245,6 +245,7 @@
 				<div class="wrapper">
 					<div class="rent-wrapper select2-wrapper">
 
+
 						<div class="rent-header">
 							<div class="container-fluid-page">
 								<div class="flex-adaptive">
@@ -260,18 +261,19 @@
 
 						<div class="rent-bar" id="rent_bar">
 							<div class="rent-bar-wrapper">
+
 								<span class="btn-change" role="button" href="#rent_bar" data-toggle="class">
 									<i class="fa fa-caret-up"></i>
 								</span>
 								<div class="cap-content">
-									<h3 class="hidden-xs hidden-sm"><a href="#startInit='whole'">Купить на:</a></h3>
+									<h3 class="hidden-xs hidden-sm">Купить на:</h3>
 								</div>
 								<div data-rent-coms class="clearfix">
 									<div class="input-content m-v-10 p-h-5 col-md-12">
 										<select class="js-select box-xs-10" data-rent-field-val="type">
 											<option value="all">Тип Жилья</option>
 											<option value="t1">Новостройки</option>
-											<option value="t2">Вторичное жильё</option>
+											<option value="t2" checked="checked">Вторичное жильё</option>
 											<option value="t3">Коммерческое</option>
 										</select>
 									</div>
@@ -655,10 +657,10 @@
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
 
+	<script src="areas.js"></script>
 	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
 	<script src="js/paintOnMap.js"></script>
 	<script src="js/mapscript.js"></script>
-	<script src="areas.js"></script>
 	<script type="text/javascript">
 		
 		ymaps.ready(function(){

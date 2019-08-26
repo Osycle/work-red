@@ -245,6 +245,12 @@
 			<div class="rent active" data-reconstruction="1">
 				<div class="pricebox">
 					<div class="pricebox-wrapper">
+						<div class="btn-hider-content">
+							<span class="btn-hider" role="button">
+								<span class="desc-hide">Скрыть</span>
+								<span class="desc-open">Открыть</span>
+							</span>
+						</div>
 						<div class="entry-content">
 							<h3>Доступные новостройки</h3>
 							<p><small>Ценовая категория:</small></p>
@@ -252,44 +258,57 @@
 						<div class="form-content" data-rent-coms>
 							<form class="boxes-3">
 								<div class="boxes-cell">
-									<input type="checkbox" name="pricebox" id="pricebox_1" class="hide">
-									<label for="pricebox_3" role="button">
+									<input type="radio" name="pricebox" id="pricebox_1" class="hide" data-placebox-min="1000" data-placebox-max="2000">
+									<label for="pricebox_1" role="button">
 										<div class="wrapper">
 											<figcaption>
 												<p><big>n1</big></p>
-												<p><small>30.000 - 60.000 $</small></p>
+												<p><small>1000 - 2000</small></p>
 											</figcaption>
 											<div class="input-content m-v-10 p-h-5 col-md-6">
-												<div><input type="" name="" class="form-control" placeholder="цена от (сум)" value="3000" data-rent-field-num="price" data-rent-min></div>
+												<div><input type="" name="" class="form-control" value="" data-rent-field-num="price" data-rent-min></div>
 											</div>
 											<div class="input-content m-v-10 p-h-5 col-md-6">
-												<div><input type="" name="" class="form-control" placeholder="цена до (сум)" value="6000" data-rent-field-num="price" data-rent-max></div>
+												<div><input type="" name="" class="form-control" value="" data-rent-field-num="price" data-rent-max></div>
 											</div>
 										</div>
 									</label>
 								</div>
 								<div class="boxes-cell">
-									<input type="checkbox" name="pricebox" id="pricebox_2" class="hide">
-									<label for="pricebox_3" role="button">
+									<input type="radio" name="pricebox" id="pricebox_2" class="hide" data-placebox-min="2000" data-placebox-max="3000">
+									<label for="pricebox_2" role="button">
 										<div class="wrapper">
 											<figcaption>
 												<p><big>n2</big></p>
-												<p><small>30.000 - 60.000 $</small></p>
+												<p><small>2000 - 3000</small></p>
 											</figcaption>
+											<div class="input-content m-v-10 p-h-5 col-md-6">
+												<div><input type="" name="" class="form-control" value="" data-rent-field-num="price" data-rent-min></div>
+											</div>
+											<div class="input-content m-v-10 p-h-5 col-md-6">
+												<div><input type="" name="" class="form-control" value="" data-rent-field-num="price" data-rent-max></div>
+											</div>
 										</div>
 									</label>
 								</div>
 								<div class="boxes-cell">
-									<input type="checkbox" name="pricebox" id="pricebox_3" class="hide">
+									<input type="radio" name="pricebox" id="pricebox_3" class="hide" data-placebox-min="3000" data-placebox-max="6000">
 									<label for="pricebox_3" role="button">
 										<div class="wrapper">
 											<figcaption>
 												<p><big>n3</big></p>
-												<p><small>30.000 - 60.000 $</small></p>
+												<p><small>3000 - 6000</small></p>
 											</figcaption>
+											<div class="input-content m-v-10 p-h-5 col-md-6">
+												<div><input type="" name="" class="form-control" value="" data-rent-field-num="price" data-rent-min></div>
+											</div>
+											<div class="input-content m-v-10 p-h-5 col-md-6">
+												<div><input type="" name="" class="form-control" value="" data-rent-field-num="price" data-rent-max></div>
+											</div>
 										</div>
 									</label>
 								</div>
+
 
 							</form>
 						</div>
@@ -744,10 +763,10 @@
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
 
+	<script src="areas.js"></script>
 	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f06d738e-1a2e-4ca2-91cc-d23a3bbb9e09"></script>
 	<script src="js/paintOnMap.js"></script>
 	<script src="js/mapscript.js"></script>
-	<script src="areas.js"></script>
 	<script type="text/javascript">
 		
 		ymaps.ready(function(){
