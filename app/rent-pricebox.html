@@ -241,14 +241,103 @@
 				<div class="intro-content"></div>
 			</div>
 
-			<div class="rent" data-reconstruction>
+
+			<div class="rent active" data-reconstruction="1">
+				<div class="pricebox">
+					<div class="pricebox-wrapper">
+						<div class="entry-content">
+							<h3>Доступные новостройки</h3>
+							<p><small>Ценовая категория:</small></p>
+						</div>
+						<div class="form-content" data-rent-coms>
+							<form class="boxes-3">
+								<div class="boxes-cell">
+									<input type="checkbox" name="pricebox" id="pricebox_1" class="hide">
+									<label for="pricebox_3" role="button">
+										<div class="wrapper">
+											<figcaption>
+												<p><big>n1</big></p>
+												<p><small>30.000 - 60.000 $</small></p>
+											</figcaption>
+											<div class="input-content m-v-10 p-h-5 col-md-6">
+												<div><input type="" name="" class="form-control" placeholder="цена от (сум)" value="3000" data-rent-field-num="price" data-rent-min></div>
+											</div>
+											<div class="input-content m-v-10 p-h-5 col-md-6">
+												<div><input type="" name="" class="form-control" placeholder="цена до (сум)" value="6000" data-rent-field-num="price" data-rent-max></div>
+											</div>
+										</div>
+									</label>
+								</div>
+								<div class="boxes-cell">
+									<input type="checkbox" name="pricebox" id="pricebox_2" class="hide">
+									<label for="pricebox_3" role="button">
+										<div class="wrapper">
+											<figcaption>
+												<p><big>n2</big></p>
+												<p><small>30.000 - 60.000 $</small></p>
+											</figcaption>
+										</div>
+									</label>
+								</div>
+								<div class="boxes-cell">
+									<input type="checkbox" name="pricebox" id="pricebox_3" class="hide">
+									<label for="pricebox_3" role="button">
+										<div class="wrapper">
+											<figcaption>
+												<p><big>n3</big></p>
+												<p><small>30.000 - 60.000 $</small></p>
+											</figcaption>
+										</div>
+									</label>
+								</div>
+
+							</form>
+						</div>
+						<div class="m-t-15">
+							<p><small>Найти по районам Ташкента</small></p>
+							<select class="js-select box-xs-10 rent-select-area">
+								<option data-i="0">Юнусабадский район</option>
+								<option data-i="1">Мирзо-Улугбекский район</option>
+								<option data-i="2">Яшнободский район</option>
+								<option data-i="3">Мирабадский район</option>
+								<option data-i="4">Бектемирский район</option>
+								<option data-i="5">Зангиатинский район</option>
+								<option data-i="6">Сергелийский район</option>
+								<option data-i="7">Яккасарайский район</option>
+								<option data-i="8">Чиланзарский район</option>
+								<option data-i="9">Учтепинский район</option>
+								<option data-i="10">Шайхантахурский район</option>
+								<option data-i="11">Олмазорский район</option>
+							</select>
+						</div>
+
+					</div>
+				</div>
 				<div class="wrapper">
 					<div class="rent-wrapper select2-wrapper">
 
 						<div class="rent-header">
 							<div class="container-fluid-page">
 								<div class="flex-adaptive">
-									<div class="m-v-10 p-h-15 col-md-6"></div>
+									<div class="m-v-10 p-h-15 col-md-2">
+										<h3 class="hidden-xs hidden-sm">Ваш район:</h3>
+									</div>
+									<div class="m-v-10 p-h-15 col-md-4">
+										<select class="js-select box-xs-10 rent-select-area">
+											<option data-i="0">Юнусабадский район</option>
+											<option data-i="1">Мирзо-Улугбекский район</option>
+											<option data-i="2">Яшнободский район</option>
+											<option data-i="3">Мирабадский район</option>
+											<option data-i="4">Бектемирский район</option>
+											<option data-i="5">Зангиатинский район</option>
+											<option data-i="6">Сергелийский район</option>
+											<option data-i="7">Яккасарайский район</option>
+											<option data-i="8">Чиланзарский район</option>
+											<option data-i="9">Учтепинский район</option>
+											<option data-i="10">Шайхантахурский район</option>
+											<option data-i="11">Олмазорский район</option>
+										</select>
+									</div>
 									<div class="rent-header-info m-v-10 p-h-15 col-md-6">
 										<h3>Найдено: <span class="rent-cnt" data-rent-select-cnt>0</span> <thin>квартир для продаж в вашем районе</thin><br>
 											<small role="button" class="btn-backbar">Искать по другим критериям</small>
@@ -264,7 +353,7 @@
 									<i class="fa fa-caret-up"></i>
 								</span>
 								<div class="cap-content">
-									<h3 class="hidden-xs hidden-sm"><a href="#startInit='whole'">Купить на:</a></h3>
+									<h3 class="hidden-xs hidden-sm">Купить на:</h3>
 								</div>
 								<div data-rent-coms class="clearfix">
 									<div class="input-content m-v-10 p-h-5 col-md-12">

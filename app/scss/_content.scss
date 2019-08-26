@@ -1857,6 +1857,7 @@ figcaption{
 		}
 	}
 	.item{
+		font-size: 0.8em;
 		a{
 			display: block;
 			transition: opacity 0.3s ease;
@@ -1885,8 +1886,8 @@ figcaption{
 				right: 15px;
 			}
 			&:not(:last-child){
-				padding-right: 20px;
-				margin-right: 25px;
+				padding-right: 10px;
+				margin-right: 15px;
 			}
 			&:not(:nth-last-child(2)){
 				border-right: 1px solid #2a2a2a;
@@ -3193,6 +3194,8 @@ html{
 	.select2-dropdown{
 		font-size: 0.9em;
 		background-color: white;
+    overflow-y: auto;
+    max-height: 320px;
 		@extend .shadow-def;
 		.select2-results__option{
 			color: $color-2;
@@ -3711,18 +3714,24 @@ html{
 .rent-tools{
 	text-align: center;
 }
+
+
+
+
 .pricebox{
 	position: absolute;
-	display: none;
 	z-index: 2;
+	margin-top: 60px;
+	@extend .shadow-def;
 	text-align: center;
-	h2{
-		color: $color-1;
-	}
 	@extend .trans-center;
-	.pricebox-wrapper{
-		background-color: $color-gray-2;
-		padding: 30px 60px;
+	.entry-content{
+		h3{
+			text-transform: uppercase;
+			color: $color-1;
+			font-family: $font-family-1;
+			font-weight: 800;
+		}
 	}
 	.boxes-3{
 		max-width: 420px;
@@ -3733,6 +3742,7 @@ html{
 			background-color: white;
 			padding: 15px;
 			font-size: 1em;
+			@extend .shadow-def;
 			text-transform: uppercase;
 			color: $color-gray-4;
 			&:hover{
@@ -3752,6 +3762,14 @@ html{
 		}
 	}
 }
+.pricebox-wrapper{
+	background-color: white;
+	padding: 30px 60px;
+}
+
+
+
+
 .rent-tools-items{
 	.wrapper{
 		box-shadow: 0 0 18px -15px black;

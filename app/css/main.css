@@ -5898,8 +5898,8 @@ tbody.collapse.in {
 
 @font-face {
   font-family: "icomoon";
-  src: url("../icomoon/fonts/icomoon.eot?epq99x");
-  src: url("../icomoon/fonts/icomoon.eot?epq99x#iefix") format("embedded-opentype"), url("../icomoon/fonts/icomoon.ttf?epq99x") format("truetype"), url("../icomoon/fonts/icomoon.woff?epq99x") format("woff"), url("../icomoon/fonts/icomoon.svg?epq99x#icomoon") format("svg");
+  src: url("../icomoon/fonts/icomoon.eot?v65wyr");
+  src: url("../icomoon/fonts/icomoon.eot?v65wyr#iefix") format("embedded-opentype"), url("../icomoon/fonts/icomoon.ttf?v65wyr") format("truetype"), url("../icomoon/fonts/icomoon.woff?v65wyr") format("woff"), url("../icomoon/fonts/icomoon.svg?v65wyr#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -5916,149 +5916,152 @@ tbody.collapse.in {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icm-favorite-heart-button:before {
+.icm-hot-coffee-rounded-cup-on-a-plate-from-side-view:before {
   content: ""; }
 
-.icm-flag-russian .path1:before {
-  content: "";
-  color: white; }
-
-.icm-flag-russian .path2:before {
-  content: "";
-  margin-left: -1em;
-  color: red; }
-
-.icm-flag-russian .path3:before {
-  content: "";
-  margin-left: -1em;
-  color: blue; }
-
-.icm-front-bus:before {
-  content: ""; }
-
-.icm-gallery:before {
-  content: ""; }
-
-.icm-growth:before {
-  content: ""; }
-
-.icm-hot-coffee-rounded-cup-on-a-plate-from-side-view:before {
-  content: ""; }
-
 .icm-hotel-with-three-floors:before {
-  content: ""; }
+  content: ""; }
 
 .icm-house:before {
-  content: ""; }
+  content: ""; }
 
 .icm-house-1:before {
-  content: ""; }
+  content: ""; }
 
 .icm-house-plan-scale:before {
-  content: ""; }
+  content: ""; }
+
+.icm-interior-design:before {
+  content: ""; }
 
 .icm-key:before {
-  content: ""; }
+  content: ""; }
 
 .icm-left-arrow:before {
-  content: ""; }
+  content: ""; }
 
 .icm-left-arrow-min:before {
-  content: ""; }
+  content: ""; }
 
 .icm-like:before {
-  content: ""; }
+  content: ""; }
 
 .icm-magnifying-glass:before {
-  content: ""; }
+  content: ""; }
 
 .icm-man-user:before {
-  content: ""; }
+  content: ""; }
 
 .icm-map:before {
-  content: ""; }
+  content: ""; }
 
 .icm-map-marker:before {
-  content: ""; }
+  content: ""; }
 
 .icm-map-of-roads:before {
-  content: ""; }
+  content: ""; }
 
 .icm-open-exit-door:before {
-  content: ""; }
+  content: ""; }
 
 .icm-parked-car:before {
-  content: ""; }
+  content: ""; }
 
 .icm-phone-call:before {
-  content: ""; }
+  content: ""; }
 
 .icm-phone-receiver:before {
-  content: ""; }
+  content: ""; }
 
 .icm-pin:before {
-  content: ""; }
+  content: ""; }
 
 .icm-placeholder-Fill:before {
-  content: "";
+  content: "";
   color: #cc2527; }
 
 .icm-placeholder:before {
-  content: ""; }
+  content: ""; }
 
 .icm-placeholder-on-map-paper-in-perspective:before {
-  content: ""; }
+  content: ""; }
 
 .icm-price-tag:before {
-  content: ""; }
+  content: ""; }
 
 .icm-price-tag-1:before {
-  content: ""; }
+  content: ""; }
 
 .icm-roof:before {
-  content: ""; }
+  content: ""; }
 
 .icm-search:before {
-  content: ""; }
+  content: ""; }
 
 .icm-set-square:before {
-  content: ""; }
+  content: ""; }
 
 .icm-share:before {
-  content: ""; }
+  content: ""; }
 
 .icm-sketch:before {
-  content: ""; }
+  content: ""; }
 
 .icm-user:before {
-  content: ""; }
+  content: ""; }
 
 .icm-armchair:before {
-  content: ""; }
+  content: ""; }
 
 .icm-arroba:before {
-  content: ""; }
+  content: ""; }
 
 .icm-arrow-pointing-to-right:before {
-  content: ""; }
+  content: ""; }
 
 .icm-bus-stop:before {
-  content: ""; }
+  content: ""; }
 
 .icm-college-graduation:before {
-  content: ""; }
+  content: ""; }
 
 .icm-compass:before {
-  content: ""; }
+  content: ""; }
 
 .icm-doorway:before {
-  content: ""; }
+  content: ""; }
 
 .icm-down-arrow:before {
-  content: ""; }
+  content: ""; }
 
 .icm-draw:before {
+  content: ""; }
+
+.icm-favorite-heart-button:before {
+  content: ""; }
+
+.icm-flag-russian .path1:before {
+  content: "";
+  color: white; }
+
+.icm-flag-russian .path2:before {
+  content: "";
+  margin-left: -1.5em;
+  color: red; }
+
+.icm-flag-russian .path3:before {
+  content: "";
+  margin-left: -1.5em;
+  color: blue; }
+
+.icm-front-bus:before {
+  content: ""; }
+
+.icm-gallery:before {
   content: ""; }
+
+.icm-growth:before {
+  content: ""; }
 
 @font-face {
   font-family: 'Montserrat';
@@ -7153,7 +7156,7 @@ table {
   background-repeat: no-repeat;
   background-position: center; }
 
-.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .rent-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items, .rent .select2-dropdown, .rent-header, #draw_textbox {
+.shadow-def, .team-main .desc-content:before, .guidebuy-items .wrapper-flex, .studhotel .studhotel-feed .rect-def, .advantages-ofchoose .items, .invest .rect-def, .specialists-items figure, .protections .wrapper, .realty-panel, .torent-packets-items .boxes-cell, .sellhouse-list .desc-content, .mortgage .wrapper, .mortagage-total h2, .cabinet-header, .profile-content, .profile-edit figure, .fav-items .rect-def, .rent-items .rect-def, .apartment-content .list-content, .ouroffices-items .boxes-cell, .beside-content .list-info-wrapper, .helplink .item-wrapper, .chart-items, .rent .select2-dropdown, .rent-header, #draw_textbox, .pricebox, .pricebox .boxes-cell figcaption {
   -webkit-box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px -4px rgba(0, 0, 0, 0.1); }
 
@@ -8264,7 +8267,7 @@ input[type="radio"]:checked ~ .radio-style-1, input[type="radio"]:checked ~ .rad
   .bargain-menu li .fa {
     padding-left: 8px;
     font-size: 12px; }
-  .bargain-menu li.active {
+  .bargain-menu li.active, .bargain-menu li:hover {
     color: #cc2527; }
 
 .menu {
@@ -10314,29 +10317,31 @@ figcaption {
         display: block;
         text-align: left;
         padding: 15px 20px; } }
-  .realty-nav .item a {
-    display: block;
-    -webkit-transition: opacity 0.3s ease;
-    -o-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease;
-    opacity: 0.5; }
-  .realty-nav .item.active a {
-    opacity: 1; }
-  .realty-nav .item:hover a {
-    opacity: 1; }
-  @media (max-width: 991px) {
+  .realty-nav .item {
+    font-size: 0.8em; }
     .realty-nav .item a {
-      padding-top: 10px;
-      padding-bottom: 10px; } }
-  @media (min-width: 992px) {
-    .realty-nav .item.share {
-      position: absolute;
-      right: 15px; }
-    .realty-nav .item:not(:last-child) {
-      padding-right: 20px;
-      margin-right: 25px; }
-    .realty-nav .item:not(:nth-last-child(2)) {
-      border-right: 1px solid #2a2a2a; } }
+      display: block;
+      -webkit-transition: opacity 0.3s ease;
+      -o-transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease;
+      opacity: 0.5; }
+    .realty-nav .item.active a {
+      opacity: 1; }
+    .realty-nav .item:hover a {
+      opacity: 1; }
+    @media (max-width: 991px) {
+      .realty-nav .item a {
+        padding-top: 10px;
+        padding-bottom: 10px; } }
+    @media (min-width: 992px) {
+      .realty-nav .item.share {
+        position: absolute;
+        right: 15px; }
+      .realty-nav .item:not(:last-child) {
+        padding-right: 10px;
+        margin-right: 15px; }
+      .realty-nav .item:not(:nth-last-child(2)) {
+        border-right: 1px solid #2a2a2a; } }
   .realty-nav .icm {
     font-size: 22px; }
 
@@ -11415,7 +11420,9 @@ html .irs--flat .irs-handle {
 
 .rent .select2-dropdown {
   font-size: 0.9em;
-  background-color: white; }
+  background-color: white;
+  overflow-y: auto;
+  max-height: 320px; }
   .rent .select2-dropdown .select2-results__option {
     color: #1c1c1c;
     font-family: "Open Sans";
@@ -11885,14 +11892,14 @@ html .irs--flat .irs-handle {
 
 .pricebox {
   position: absolute;
-  display: none;
   z-index: 2;
+  margin-top: 60px;
   text-align: center; }
-  .pricebox h2 {
-    color: #cc2527; }
-  .pricebox .pricebox-wrapper {
-    background-color: #f5f5f5;
-    padding: 30px 60px; }
+  .pricebox .entry-content h3 {
+    text-transform: uppercase;
+    color: #cc2527;
+    font-family: "Montserrat";
+    font-weight: 800; }
   .pricebox .boxes-3 {
     max-width: 420px; }
   .pricebox .boxes-cell figcaption {
@@ -11913,6 +11920,10 @@ html .irs--flat .irs-handle {
       font-size: 2em; }
     .pricebox .boxes-cell figcaption small {
       font-size: 0.8em; }
+
+.pricebox-wrapper {
+  background-color: white;
+  padding: 30px 60px; }
 
 .rent-tools-items {
   display: -webkit-box;

@@ -215,7 +215,7 @@ $header-min-menu: 70px;
 			padding-left: 8px;
 			font-size: 12px;
 		}
-		&.active{
+		&.active, &:hover{
 			color: $color-1;
 		}
 		a{

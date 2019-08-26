@@ -5,7 +5,7 @@ var
 		rentFieldVal = $("[data-rent-coms] [data-rent-field-val]"),
 		rentAreaItems = $(".rent-items .wrapper-container"),
 		rentBar = $(".rent-bar"),
-		rentSelectArea = $("#rent_select_area")
+		rentSelectAreas = $(".rent-select-area, #rent_select_area")
 		;
 
 
@@ -185,7 +185,7 @@ window.Areas = {
 					$("[name='typebeside']:checked")[0].checked = false;
 					Rent.besideEntitySelect.html("");
 				}
-				$(rentSelectArea).val(Areas.areasTitles[inc]).trigger("change.select2");
+				$(rentSelectAreas).val(Areas.areasTitles[inc]).trigger("change.select2");
 				//Rent.apartments
 				Rent.objectsContainingPolygon = Rent.apartments.searchInside(Areas.currentArea);
 				Rent.objectsContainingPolygon.each(function(el, i){
@@ -351,7 +351,9 @@ window.Rent = {
 				var min = rentFieldNum[i].filter("[data-rent-min]").val()*1 || 0;
 				var max = rentFieldNum[i].filter("[data-rent-max]").val()*1 || Infinity;
 
+
 				if ( !(min <= item[fieldName] && item[fieldName] <= max) ){
+					console.log(min, max);
 					novalid = true;break;
 				}
 
@@ -554,8 +556,8 @@ window.Rent = {
 	},
 
 	/*Найти вокруг метро*/
-	found: function(searchRequest){
-	 	if(!$('[data-action="found"]')[0].checked)
+	found: function(searchRequest, force){
+	 	if(!$('[data-action="found"]')[0].checked && !force)
 	  	return;
 		var foundGeoObjects = [], firstLoad = false;
 
@@ -1050,10 +1052,24 @@ $("main").on("change", "[data-rent-field-num], [data-rent-property], [data-rent-
 	Rent.filterBar();
 });
 
-$(rentSelectArea).on("change", function(){
+
+$(rentSelectAreas).on("change", function(){
 	var index = $(this.selectedOptions).attr("data-i");
 	Areas.items[index].events.fire("click");
-})
+
+	$(rentSelectAreas).map(function(i ,el){
+		$(el).val(Areas.areasTitles[index]).trigger("change.select2");
+	})
+
+});
+
+window.startInit = function(){
+	console.log("START");
+}
+if( (/(startInit)/gim).test(location.hash) ){
+
+	startInit();
+}
 
 // Toggle class
 $("main").on("click", '[data-toggle="class"]', function(e){
