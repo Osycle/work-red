@@ -19,6 +19,37 @@
 </head>
 
 <body>
+
+	<!-- Скрытые поля -->
+	<div class="hide">
+		<div class="form-def" id="form_request">
+			<div class="form-block m-auto color-black text-left">
+				<form class="clearfix">
+					<div class="row">
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Ваше имя:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Фамилия:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>Номер телефона:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="input-content m-v-10 p-h-15 col-md-12">
+							<label>E-mail:<input type="" name="" class="form-control"></label>
+						</div>
+						<div class="btn-content m-v-15 p-h-15 col-md-12 text-center">
+							<span class="btn-def">
+								<button type="submit" class="p-h-60">Отправить</button>
+							</span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div id="page">
 
 
@@ -42,24 +73,24 @@
 							</div>
 							<div class="bargain-menu">
 								<ul>
-									<li><label for="megamenu_1">Купить <i class="fa fa-caret-down"></i></label></li>
-									<li><label for="megamenu_2">Продать <i class="fa fa-caret-down"></i></label></li>
-									<li><label for="megamenu_3">Снять <i class="fa fa-caret-down"></i></label></li>
-									<li><label for="megamenu_4">Сдать <i class="fa fa-caret-down"></i></label></li>
+									<li><label for="megamenu_1">Купить</label></label><i class="fa fa-caret-down"></i></li>
+									<li><label for="megamenu_2">Продать</label><i class="fa fa-caret-down"></i></li>
+									<li><label for="megamenu_3">Снять</label><i class="fa fa-caret-down"></i></li>
+									<li><label for="megamenu_4">Сдать</label><i class="fa fa-caret-down"></i></li>
 								</ul>
 							</div>
-
-							<div class="header-info">
-								<div class="row">
-									<figure class="p-h-15">
-										<span class="va-middle m-r-10"><i class="icm icm-phone-call"></i></span>
-										<span class="va-middle info-content">+998 (00) <b>000-00-00</b></span>
-									</figure>
-									<figure class="p-h-15">
-										<span class="va-middle m-r-10"><i class="icm icm-arroba"></i></span>
-										<span class="va-middle info-content">example@redd.uz</span>
-									</figure>
-								</div>
+							<div class="menu p-h-15">
+								<nav>
+									<li class="linkyet-hover">
+										<div class="linkyet"><span>Ещё</span><i class="fa fa-caret-down"></i></div>
+											<ul>
+												<li><a href="torent.html">Арендодателям и продавцам</a></li>
+												<li><a href="">Средняя стоимость недвижимости</a></li>
+												<li><a href="team.html">О компании</a></li>
+												<li><a href="">Оценка имущества</a></li>
+											</ul>
+									</li>
+								</nav>
 							</div>
 
 							<div class="header-signin p-h-15">
@@ -239,262 +270,137 @@
 
 
 			<!-- intro -->
-			<div class="intro main">
+			<div class="intro realty">
 				<div class="intro-media">
-					<div class="img" style="background-image: url('img/slider/1.jpg');"></div>
+					<div class="img" style="background-image: url('img/slider/realty.jpg');"></div>
 				</div>
 				<div class="intro-content">
-					<span class="ghost-text">
-						<p class="letter">Агенство недвижимости в</p>
-						<p><b>городе ташкент</b></p>
-					</span>
-					<div class="container">
-
-						<div class="slogan">
-							<h2>Подберем вашу идеальную квартиру</h2>
-							<h1>и поможем продать старую</h1>
+					<div class="align-i-center p-v-15">
+						<div class="backrect">
+							<a href="">
+								<i class="icm icm-left-arrow-min"></i>
+								<h4>Название квартира</h4>
+								<p><i class="icm icm-price-tag-1"></i> <span class="price">75 000$</span></p>							
+							</a>
 						</div>
-
-						<div class="search-content">
-							<div class="typels">
-								<figure>
-									<a href="#typels-1" data-toggle="tab">
-										<span class="icm icm-compass"></span>
-										<figcaption>По ключевым словам </figcaption>
-									</a>
-								</figure>
-								<figure>
-									<a href="#typels-2" data-toggle="tab">
-										<span class="icm icm-map-of-roads"></span>
-										<figcaption>По карте</figcaption>
-									</a>
-								</figure>
-								<figure>
-									<a href="#typels-3" data-toggle="tab">
-										<span class="icm icm-train"></span>
-										<figcaption>Рядом метро</figcaption>
-									</a>
-								</figure>
-								<figure>
-									<a href="#typels-4" data-toggle="tab">
-										<span class="icm icm-placeholder-on-map-paper-in-perspective"></span>
-										<figcaption>По GPS</figcaption>
-									</a>
-								</figure>
-							</div>
-							<div class="typels-content m-v-30 tab-content">
-								<div class="tab-pane fade in active" id="typels-1">
-									<div class="search-content select2-wrapper-search">
-										<div class="select-input">
-											<select class="js-select-search search-hide">
-												<option>Купить</option>
-												<option>Сдать</option>
-												<option>Снять</option>
-											</select>
-										</div>
-										<div class="input-search">
-											<input type="" name="" placeholder="Поиск">
-											<div class="btn-loupe"><i class="icm icm-search"></i></div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="typels-2">
-									<div class="gotomap-links">
-										<ul class="list">
-											<li><span class="btn-def"><a href="#">Buy</a></span></li>
-											<li><span class="btn-def"><a href="#">Long let</a></span></li>
-											<li><span class="btn-def"><a href="#">Short let</a></span></li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="typels-3">
-									<div class="gotomap-links">
-										<ul class="list">
-											<li><span class="btn-def"><a href="#">Buy</a></span></li>
-											<li><span class="btn-def"><a href="#">Long let</a></span></li>
-											<li><span class="btn-def"><a href="#">Short let</a></span></li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="typels-4">
-									<div class="gotomap-links">
-										<ul class="list">
-											<li><span class="btn-def"><a href="#">Buy</a></span></li>
-											<li><span class="btn-def"><a href="#">Long let</a></span></li>
-											<li><span class="btn-def"><a href="#">Short let</a></span></li>
-										</ul>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-
-			<!-- short-news -->
-			<div class="short-news">
-				<div class="container p-v-md">
-					<div class="entry-header m-v-30">
-						<h2>Новинки рынка</h2>
-					</div>
-					<div class="short-news-items boxes-5 owl-carousel m-v-30">
-						<figure>
-							<a href="news-article.html">
-								<div class="img-content">
-									<span class="recmd">Рекомендуем</span>
-									<div class="img" style="background-image: url('img/other/short-news-1.jpg');"></div>
-								</div>
-								<div class="desc-content clearfix">
-									<h4>Название квартиры или примерный текст</h4>
-									<div class="detail-info">
-										<span class="va-middle"><i class="icm icm-open-exit-door"></i>Комнаты: <span class="color-1">4</span></span>
-										<span class="va-middle"><i class="icm icm-set-square"></i>Площадь: <span class="color-1">112 кв.м</span></span>
-									</div>
-									<div class="price-content">
-										<span class="price p-r-15">675,000,000</span><span class="color-gray">Сум</span>
-									</div>
-								</div>
-							</a>
-						</figure>
-						<figure>
-							<a href="news-article.html">
-								<div class="img-content">
-									<div class="img" style="background-image: url('img/other/short-news-2.jpg');"></div>
-								</div>
-								<div class="desc-content clearfix">
-									<h4>Название квартиры или примерный текст</h4>
-									<div class="detail-info m-v-30">
-										<span class="va-middle"><i class="icm icm-open-exit-door"></i>Комнаты: <span class="color-1">4</span></span>
-										<span class="va-middle"><i class="icm icm-set-square"></i>Площадь: <span class="color-1">112 кв.м</span></span>
-									</div>
-									<div class="price-content m-v-30">
-										<span class="price p-r-15">675,000,000</span><span class="color-gray">Сум</span>
-									</div>
-								</div>
-							</a>
-						</figure>
-						<figure>
-							<a href="news-article.html">
-								<div class="img-content">
-									<div class="img" style="background-image: url('img/other/short-news-3.jpg');"></div>
-								</div>
-								<div class="desc-content clearfix">
-									<h4>Название квартиры или примерный текст</h4>
-									<div class="detail-info m-v-30">
-										<span class="va-middle"><i class="icm icm-open-exit-door"></i>Комнаты: <span class="color-1">4</span></span>
-										<span class="va-middle"><i class="icm icm-set-square"></i>Площадь: <span class="color-1">112 кв.м</span></span>
-									</div>
-									<div class="price-content m-v-30">
-										<span class="price p-r-15">675,000,000</span><span class="color-gray">Сум</span>
-									</div>
-								</div>
-							</a>
-						</figure>
-						<figure>
-							<a href="news-article.html">
-								<div class="img-content">
-									<span class="recmd">Рекомендуем</span>
-									<div class="img" style="background-image: url('img/other/short-news-1.jpg');"></div>
-								</div>
-								<div class="desc-content clearfix">
-									<h4>Название квартиры или примерный текст</h4>
-									<div class="detail-info m-v-30">
-										<span class="va-middle"><i class="icm icm-open-exit-door"></i>Комнаты: <span class="color-1">4</span></span>
-										<span class="va-middle"><i class="icm icm-set-square"></i>Площадь: <span class="color-1">112 кв.м</span></span>
-									</div>
-									<div class="price-content m-v-30">
-										<span class="price p-r-15">675,000,000</span><span class="color-gray">Сум</span>
-									</div>
-								</div>
-							</a>
-						</figure>
-						<figure>
-							<a href="news-article.html">
-								<div class="img-content">
-									<div class="img" style="background-image: url('img/other/short-news-2.jpg');"></div>
-								</div>
-								<div class="desc-content clearfix">
-									<h4>Название квартиры или примерный текст</h4>
-									<div class="detail-info m-v-30">
-										<span class="va-middle"><i class="icm icm-open-exit-door"></i>Комнаты: <span class="color-1">4</span></span>
-										<span class="va-middle"><i class="icm icm-set-square"></i>Площадь: <span class="color-1">112 кв.м</span></span>
-									</div>
-									<div class="price-content m-v-30">
-										<span class="price p-r-15">675,000,000</span><span class="color-gray">Сум</span>
-									</div>
-								</div>
-							</a>
-						</figure>
-						<figure>
-							<a href="news-article.html">
-								<div class="img-content">
-									<div class="img" style="background-image: url('img/other/short-news-3.jpg');"></div>
-								</div>
-								<div class="desc-content clearfix">
-									<h4>Название квартиры или примерный текст</h4>
-									<div class="detail-info m-v-30">
-										<span class="va-middle"><i class="icm icm-open-exit-door"></i>Комнаты: <span class="color-1">4</span></span>
-										<span class="va-middle"><i class="icm icm-set-square"></i>Площадь: <span class="color-1">112 кв.м</span></span>
-									</div>
-									<div class="price-content m-v-30">
-										<span class="price p-r-15">675,000,000</span><span class="color-gray">Сум</span>
-									</div>
-								</div>
-							</a>
-						</figure>
-						<figure>
-							<a href="news-article.html">
-								<div class="img-content">
-									<span class="recmd">Рекомендуем</span>
-									<div class="img" style="background-image: url('img/other/short-news-1.jpg');"></div>
-								</div>
-								<div class="desc-content clearfix">
-									<h4>Название квартиры или примерный текст</h4>
-									<div class="detail-info m-v-30">
-										<span class="va-middle"><i class="icm icm-open-exit-door"></i>Комнаты: <span class="color-1">4</span></span>
-										<span class="va-middle"><i class="icm icm-set-square"></i>Площадь: <span class="color-1">112 кв.м</span></span>
-									</div>
-									<div class="price-content m-v-30">
-										<span class="price p-r-15">675,000,000</span><span class="color-gray">Сум</span>
-									</div>
-								</div>
-							</a>
-						</figure>
-
 					</div>
 				</div>
 			</div>
 
-			<!-- short-about -->
-			<div class="short-about">
-				<div class="container p-v-md">
-					<div class="col-md-12">
-						<img src="img/other/text-forcered.png" align="right">
-					</div>
-					<div class="row">
-						<div class="col-md-4 p-h-15 m-v-30">
-							<img src="img/other/text-r.png">
+			<div class="realty-nav">
+				<div class="container">
+					<div class="flex-adaptive">
+						<div class="item">
+							<a href=""><i class="icm icm-gallery p-r-10"></i> <span class="va-middle">все фотографии</span></a>
 						</div>
-						<div class="col-md-8 p-h-15 m-v-30">
-							<div class="entry-header m-v-30">
-								<h3>Что предлагает <span class="color-1">REDD</span> арендодателям</h3>
-							</div>
-							<div class="text-content">
-								<p>В этом блоке мы рекомендуем разместить информацию о Вашей организации, подчеркнуть ее значимость и надежность на рынке оказываемых услуг или предлагаемых товаров.</p>
-								<p>Примечание. Обращаем Ваше внимание, что текстовая информация на сайте должна быть индивидуальной, не скопированной с других интернет-ресурсов, о чем указано в рекомендациях Яндекса: «Мы стараемся не индексировать или не ранжировать высоко сайты, копирующие информацию с других ресурсов и не создающие оригинального контента или сервиса».</p>
-							</div>
-							<div class="link-content m-v-30">
-								<a href="about.html">Подробнее</a>
-							</div>
-						</div>	
-					</div>	
-				</div>	
+						<div class="item">
+							<a href=""><i class="icm icm-map p-r-10"></i> <span class="va-middle">на карте</span></a>
+						</div>
+						<div class="item">
+							<a href=""><i class="icm icm-college-graduation p-r-10"></i> <span class="va-middle">школы и вузы</span></a>
+						</div>
+						<div class="item active">
+							<a href=""><i class="icm icm-front-bus p-r-10"></i> <span class="va-middle">транспорт</span></a>
+						</div>
+						<div class="item share">
+							<a href=""><i class="icm icm-share p-r-10"></i> <span class="va-middle">Поделиться</span></a>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="p-v-30 hidden-xs hidden-sm"></div>
+
+
+			<div class="beside">
+				<div class="container">
+					<div class="realty-panel m-v-30">
+						<div class="flex-adaptive parag-gray">
+							<div class="align-center box-md-7">
+								<div class="btn-def">
+									<a href="javascript:;" data-src="#form_request" data-fancybox>Оставить заявку</a>
+								</div>
+								<div class="phone-content">
+									<p>
+										Или позвоните на: <strong class="m-h-15 color-1"><big>+998 (90) 000-00-00</big></strong>
+									</p>
+								</div>
+							</div>
+							<div class="btn-save align-center justify-c-end box-md-4">
+								<p>
+									<a href="">Сохранить в мой REDD <i class="icm icm-favorite-heart-button p-l-10"></i></a>
+								</p>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="beside-content">
+						<div class="row">
+							<div class="col-md-3 p-h-15">
+								<div class="list-info-wrapper tab-content">
+									<div class="list-info tab-pane fade in active" role="tabpanel" id="type-1">
+										<h4>Станции метро</h4>
+										<ul class="list">
+											<li>
+												<p class="color-1"><b>Минор</b></p>
+												<small>5 минут пешком ( 804 метров )</small>
+											</li>
+											<li>
+												<p class="color-1"><b>Сквер Амир Темур</b></p>
+												<small>10 минут пешком ( 1550 метров)</small>
+											</li>
+											<li>
+												<p class="color-1"><b>Площадь Мустакиллик</b></p>
+												<small>12 минут пешком ( 1850 метров)</small>
+											</li>
+										</ul>
+									</div>
+									<div class="list-info tab-pane fade" role="tabpanel" id="type-2">
+										<h4>Автобусы</h4>
+										<ul class="list">
+											<li>
+												<p class="color-1"><b>45</b></p>
+												<small>5 минут пешком ( 804 метров )</small>
+											</li>
+											<li>
+												<p class="color-1"><b>68</b></p>
+												<small>10 минут пешком ( 1550 метров)</small>
+											</li>
+											<li>
+												<p class="color-1"><b>174</b></p>
+												<small>12 минут пешком ( 1850 метров)</small>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+							<div class="col-md-9 p-h-15">
+								<div class="beside-nav">
+									<ul class="list-inline">
+										<li data-toggle="tab" href="#type-1"><a href="javascript:;" data-type="underground">Метро</a></li>
+										<li data-toggle="tab" href="#type-2"><a href="javascript:;" data-type="bus">Автобусы</a></li
+									</ul>
+								</div>
+								<div class="map-beside m-v-10" id="map-beside"></div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="link-content flex-adaptive align-i-center justify-c-between">
+						<p class="p-r-offset">Позвоните в <b class="color-1">REDD</b> по телефону <b class="color-1">+998 90 000-00-00</b>, чтобы просмотреть или <a href=""><u>договориться о встрече</u></a></p>
+						<span class="btn-def m-v-10">
+							<a href="">Оставить заявку</a>
+						</span>
+					</div>
+
+					<br><br><br>
+				</div>
+			</div>
+
+
 
 		</main><!-- ./MAIN -->
 		<!-- FOOTER -->
@@ -633,6 +539,162 @@
 	<!-- SCRIPTS -->
 	<script src="js/scripts.min.js"></script>
 	<script src="js/main.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVUinUZqQAIM1NfbavWbOKtsc3l-XE_ag"></script>
+  <script type="text/javascript">
+
+
+		  var mapOffices;
+		  var marker;
+		  var typeLink = ".beside-nav a";
+		  var mainLocation = ["41.313322", "69.267683"] // Оснавная локация
+	    function initialize() {
+	    	
+	      var mapOptions = {
+	        mapTypeId: google.maps.MapTypeId.ROADMAP,
+	        mapTypeControl: true,
+	        zoom: 12,
+	        zoomControl: true,
+	        zoomControlOptions: {
+	          style: google.maps.ZoomControlStyle.DEFAULT,
+	          position: google.maps.ControlPosition.DEFAULT
+	        },
+	        panControl: true,
+	        panControlOptions: {
+	          position: google.maps.ControlPosition.LEFT_TOP
+	        },
+	        streetViewControl: true,
+	        scaleControl: true,
+	        overviewMapControl: true,
+	        center: new google.maps.LatLng(mainLocation[0], mainLocation[1])
+	      };
+
+
+	      mapContainer = document.getElementById('map-beside') || null;
+	      if( !mapContainer ) 
+	      	return;
+
+
+	      mapOffices = new google.maps.Map(mapContainer, mapOptions);
+	     	mapOffices.setOptions({
+	        //styles: mapStyles,
+	        disableDefaultUI: true
+	      });
+
+        window.infowindow = new google.maps.InfoWindow();
+        
+
+        var mainMarkerContent = '<div class="mapblock">Название квартиры</div>' // Контент главного маркера
+
+		    var locations = [
+			    {
+			    	latLng: [ 41.297965, 69.266671 ],
+			    	type: 'bus',
+			    	content: '<div class="mapblock"><b class="color-1">46</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.291083, 69.267683 ],
+			    	type: 'bus',
+			    	content: '<div class="mapblock"><b class="color-1">46</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.292850, 69.226217 ],
+			    	type: 'bus',
+			    	content: '<div class="mapblock"><b class="color-1">46</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.364364, 69.286961 ],
+			    	type: 'bus',
+			    	content: '<div class="mapblock"><b class="color-1">46</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.314669, 69.284508 ],
+			    	type: 'underground',
+			    	content: '<div class="mapblock"><b class="color-1">Минор</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.319347, 69.275846 ],
+			    	type: 'underground',
+			    	content: '<div class="mapblock"><b class="color-1">Минор</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.273406, 69.229753 ],
+			    	type: 'underground',
+			    	content: '<div class="mapblock"><b class="color-1">Минор</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.285219, 69.271178 ],
+			    	type: 'underground',
+			    	content: '<div class="mapblock"><b class="color-1">Минор</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    },
+			    {
+			    	latLng: [ 41.286067, 69.317706 ],
+			    	type: 'underground',
+			    	content: '<div class="mapblock"><b class="color-1">Минор</b><br><small>5 минут пешком ( 804 метров )</small></div>'
+			    }
+
+		    ]
+        window.officesMarkers = [];
+       for (i = 0; i < locations.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i].latLng[0], locations[i].latLng[1]),
+		        map: mapOffices,
+		        item: i,
+		        type: locations[i].type,
+		        icon: "img/icons/marker-offices-2-min.png",
+		        title: 'marker'
+          });
+          officesMarkers.push(marker);
+          google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+              infowindow.setContent(locations[i].content);
+              infowindow.open(mapOffices, marker);
+            }
+          })(marker, i));
+        }
+
+        var mainMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(mainLocation[0], mainLocation[1]),
+	        map: mapOffices,
+	        icon: "img/icons/marker-green.png",
+	        title: 'marker'
+        });
+        google.maps.event.addListener(mainMarker, 'click', (function (marker, i) {
+          return function () {
+            infowindow.setContent(mainMarkerContent);
+            infowindow.open(mapOffices, mainMarker);
+          }
+        })(marker, i));
+
+	    }
+	    initialize();
+	    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+        //Клик по блоку
+				$(document).on("click", typeLink, function(){
+					var that = $(this);
+					var index = that.index();
+					var type = that.attr("data-type").toLowerCase();
+					for (var i = 0; i < officesMarkers.length; i++) {
+						if( officesMarkers[i].type.toLowerCase() != type){
+							officesMarkers[i].setVisible(false);
+							console.log(officesMarkers[i].type.toLowerCase(), type);
+						}
+						else{
+							officesMarkers[i].setVisible(true);
+						}
+					}
+				})
+
+	    function checkResize() {
+	      var center = mapOffices.getCenter();
+	      google.maps.event.trigger(mapOffices, 'resize');
+	      mapOffices.setCenter(center);
+	    }
+
+	    window.onresize = checkResize;
+	  
+  </script>
 </body>
 
 </html>

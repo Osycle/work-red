@@ -3254,6 +3254,7 @@ html{
 		height: 35px;
 		font-size: 12px;
 	}
+
 	.btn-change{
 		display: none;
 	}
@@ -3366,6 +3367,12 @@ html{
 		display: none;
 		z-index: 1;
 	}
+	@media (max-width: 991px){
+		width: 100% !important;
+		.wrapper-container{
+			height: auto !important;
+		}
+	}
 }
 .rent-balloon{
 	a{
@@ -3432,6 +3439,9 @@ html{
 	}
 }
 [data-reconstruction]:not(.active){
+	.pricebox{
+		display: none;
+	}
 	.rent-items, .rent-header, .map .btn-change{
 		display: none;
 	}
@@ -3447,6 +3457,7 @@ html{
 	}
 }
 [data-reconstruction].active{
+
 	.rent-wrapper{
 		display: flex;
 		flex-wrap: wrap;
@@ -3477,6 +3488,11 @@ html{
 [data-reconstruction="1"]{
 	.rent-map{
 		width: 75%;
+	}
+	select{
+		@media (min-width: 1100px){
+			width: 195px !important; 
+		}
 	}
 	.rent-items{
 		width: 25%;
@@ -3732,11 +3748,27 @@ html{
 	overflow: hidden;
 	z-index: 100;
 	@extend .shadow-def;
-	@extend .trans-center;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	text-align: center;
 	margin-top: 60px;
   transition: all 0.0s ease;
 	pointer-events: none;
+	@media (max-width: 991px){
+		top: 0;
+		left: 0;
+		transform: none;
+		position: relative;
+		z-index: 1;
+		display: block;
+		.btn-hider-content{
+			display: none;
+		}
+		.select-area-content, .input-content{
+			display: none;
+		}
+	}
 	*{
 		pointer-events: auto;
 	}
@@ -3758,7 +3790,7 @@ html{
 	.desc-open{
 		display: none;
 	}
-	[data-rent-field-num="price"]{
+	[data-rent-field-num="price"], .select-type{
 		display: none;
 	}
 	.pricebox-wrapper{
@@ -3784,7 +3816,7 @@ html{
 	}
 	.boxes-3{
 		@media (min-width: 991px){
-			min-width: 500px;
+			min-width: 620px;
 		}
 	}
 	.boxes-cell{
@@ -3809,7 +3841,9 @@ html{
 			small{
 				font-size: 0.8em;
 			}
-
+			@media (max-width: 991px){
+	
+			}
 		}
 	}
 }

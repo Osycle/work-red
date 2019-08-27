@@ -362,7 +362,6 @@ window.Rent = {
 
 
 				if ( !(min <= item[fieldName] && item[fieldName] <= max) ){
-					console.log(min, max);
 					novalid = true;break;
 				}
 
@@ -373,6 +372,7 @@ window.Rent = {
 				if ( !(rentFieldVal[i].val() ==  item[fieldName] || rentFieldVal[i].val() == "all") ) {
 					novalid = true;break;
 				}
+				console.log(item[fieldName]);
 			}
 
 
@@ -566,12 +566,12 @@ window.Rent = {
 	},
 
 	/*Найти вокруг метро*/
-	found: function(searchRequest, force){
-	 	if(!$('[data-action="found"]')[0].checked && !force)
+	found: function(searchRequest, actionName){
+	 	if(!$('[data-action="'+actionName+'"]')[0].checked && !force)
 	  	return;
 		var foundGeoObjects = [], firstLoad = false;
 
-		Utils.searchInit(50);
+		Utils.searchInit(200);
 		Utils.currentMap.setCenter(Utils.center, 12, {duration: 0});
 		Utils.searchControl.search(searchRequest);
 		
@@ -855,7 +855,7 @@ window.initBeside = function(itemOptions) {
 
 
 window.initRent = function(itemOptions, callback) {
-
+	checkeGeo()
 	var latlng = itemOptions.mainLatLng;
 	Utils.currentMap = new ymaps.Map("map-rent", {
 		center: latlng,
@@ -868,7 +868,7 @@ window.initRent = function(itemOptions, callback) {
 
 
 	Areas.drawPolygon(areasPolygon);
-	console.log(itemOptions);
+
 	$.ajax({
 		type: "GET",
     url: itemOptions.url,
@@ -933,7 +933,7 @@ window.initRent = function(itemOptions, callback) {
 	Utils.searchControl.events.add("load", function(e){
 		Utils.searchDots = Utils.searchControl.getResultsArray();
 		Rent.besideEntitySelect.html("");
-		console.log("load");
+		
 		for (var i = 0; i < Utils.searchDots.length; i++) {
 			// Объект с данными о точках
 			var data = {
@@ -1102,7 +1102,6 @@ window.toolStart = function(){
 		window.task = task[1]; // [0] Беру только первый переметр из массива
 
 		var input = $("[data-action="+task+"]");
-		console.log(input);
 
 		if( input.length )
 			input.trigger("click");
@@ -1178,7 +1177,12 @@ $("main").on("change", '[name="renttools"]', function(e){
 			Rent.whole();break;
 
 		case "found":
-			Rent.found("Метро");break;
+			Rent.found("метро", action);break;
+
+		case "schools":
+			Rent.found("школа", action);break;
+
+
 
 	}	
 
@@ -1229,3 +1233,16 @@ $("main").on("click", '.btn-hider', function(){
 	window.markBlock = $(".pricebox");
 	markBlock.toggleClass("hider");
 })
+
+
+window.checkeGeo = function(){
+  navigator.geolocation.getCurrentPosition(function(position) {
+
+    // Get the coordinates of the current possition.
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+
+    console.log(position.coords);
+
+  });
+}

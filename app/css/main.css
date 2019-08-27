@@ -5898,8 +5898,8 @@ tbody.collapse.in {
 
 @font-face {
   font-family: "icomoon";
-  src: url("../icomoon/fonts/icomoon.eot?v65wyr");
-  src: url("../icomoon/fonts/icomoon.eot?v65wyr#iefix") format("embedded-opentype"), url("../icomoon/fonts/icomoon.ttf?v65wyr") format("truetype"), url("../icomoon/fonts/icomoon.woff?v65wyr") format("woff"), url("../icomoon/fonts/icomoon.svg?v65wyr#icomoon") format("svg");
+  src: url("../icomoon/fonts/icomoon.eot?sfnk3i");
+  src: url("../icomoon/fonts/icomoon.eot?sfnk3i#iefix") format("embedded-opentype"), url("../icomoon/fonts/icomoon.ttf?sfnk3i") format("truetype"), url("../icomoon/fonts/icomoon.woff?sfnk3i") format("woff"), url("../icomoon/fonts/icomoon.svg?sfnk3i#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -5915,6 +5915,12 @@ tbody.collapse.in {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icm-train:before {
+  content: ""; }
+
+.icm-school:before {
+  content: ""; }
 
 .icm-hot-coffee-rounded-cup-on-a-plate-from-side-view:before {
   content: ""; }
@@ -5969,9 +5975,6 @@ tbody.collapse.in {
 
 .icm-phone-call:before {
   content: ""; }
-
-.icm-phone-receiver:before {
-  content: ""; }
 
 .icm-pin:before {
   content: ""; }
@@ -11583,6 +11586,11 @@ html .irs--flat .irs-handle {
   .rent-items .sales, .rent-items .recmd, .rent-items .sales {
     display: none;
     z-index: 1; }
+  @media (max-width: 991px) {
+    .rent-items {
+      width: 100% !important; }
+      .rent-items .wrapper-container {
+        height: auto !important; } }
 
 .rent-balloon a {
   color: #cc2527;
@@ -11645,6 +11653,9 @@ html .irs--flat .irs-handle {
     .rent-map .map-info {
       display: none; } }
 
+[data-reconstruction]:not(.active) .pricebox {
+  display: none; }
+
 [data-reconstruction]:not(.active) .rent-items, [data-reconstruction]:not(.active) .rent-header, [data-reconstruction]:not(.active) .map .btn-change {
   display: none; }
 
@@ -11685,6 +11696,10 @@ html .irs--flat .irs-handle {
 
 [data-reconstruction="1"] .rent-map {
   width: 75%; }
+
+@media (min-width: 1100px) {
+  [data-reconstruction="1"] select {
+    width: 195px !important; } }
 
 [data-reconstruction="1"] .rent-items {
   width: 25%; }
@@ -11902,12 +11917,31 @@ html .irs--flat .irs-handle {
   position: absolute;
   overflow: hidden;
   z-index: 100;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   margin-top: 60px;
   -webkit-transition: all 0.0s ease;
   -o-transition: all 0.0s ease;
   transition: all 0.0s ease;
   pointer-events: none; }
+  @media (max-width: 991px) {
+    .pricebox {
+      top: 0;
+      left: 0;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+      position: relative;
+      z-index: 1;
+      display: block; }
+      .pricebox .btn-hider-content {
+        display: none; }
+      .pricebox .select-area-content, .pricebox .input-content {
+        display: none; } }
   .pricebox * {
     pointer-events: auto; }
   .pricebox.hider {
@@ -11929,7 +11963,7 @@ html .irs--flat .irs-handle {
       display: block; }
   .pricebox .desc-open {
     display: none; }
-  .pricebox [data-rent-field-num="price"] {
+  .pricebox [data-rent-field-num="price"], .pricebox .select-type {
     display: none; }
   .pricebox .pricebox-wrapper {
     -webkit-transition: all 0.3s ease;
@@ -11950,7 +11984,7 @@ html .irs--flat .irs-handle {
     font-weight: 800; }
   @media (min-width: 991px) {
     .pricebox .boxes-3 {
-      min-width: 500px; } }
+      min-width: 620px; } }
   .pricebox .boxes-cell figcaption {
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -14600,13 +14634,13 @@ html .p-0 {
 .relative {
   position: relative; }
 
-.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-center, .checkbox-style-1:before, .pricebox {
+.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-center, .checkbox-style-1:before {
   top: 50%; }
 
-.trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before, .pricebox {
+.trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before {
   left: 50%; }
 
-.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before, .pricebox {
+.trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change, .trans-h-center, .h1-style-1.text-center h1:before, .h2-style-2.text-center h2:before, .bnr-carousel .container-arrows, .trans-center, .checkbox-style-1:before {
   position: absolute; }
 
 .trans-v-center, .guidebuy-items .wrapper-flex:after, .btn-change {
@@ -14619,7 +14653,7 @@ html .p-0 {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%); }
 
-.trans-center, .checkbox-style-1:before, .pricebox {
+.trans-center, .checkbox-style-1:before {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }

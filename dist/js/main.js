@@ -29,6 +29,13 @@
 				dropdownParent: ($('.select2-wrapper').length > 0) ? $('.select2-wrapper') : false
 			});
 
+		if ( $(".js-select-search").length )
+			$(".js-select-search").select2({
+				placeholder: "Выберите...",
+				allowClear: false,
+				minimumResultsForSearch: Infinity
+			});
+
 
 
 		
@@ -595,6 +602,18 @@ if( $("#mortgage_rate").length > 0 ){
 
 
 
+$("main").on("submit", "#search_form", function(e){
+	e.preventDefault();
+	var that = $(this);
+	var val = that.find("[name='query']").val()
+	var searchRequest = encodeURI(val);
+	var searchLink =  that.attr("data-search-link");
+	
+	var ret = searchLink+("#search('" + searchRequest + "')");
+	console.log(ret);
+	location.assign(ret);
+	//location.reload();
+})
 
 
 

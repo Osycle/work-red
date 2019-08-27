@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?v65wyr');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?v65wyr#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?v65wyr') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?v65wyr') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?v65wyr##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?sfnk3i');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?sfnk3i#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?sfnk3i') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?sfnk3i') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?sfnk3i##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,6 +26,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icm-train {
+  &:before {
+    content: $icm-train; 
+  }
+}
+.icm-school {
+  &:before {
+    content: $icm-school; 
+  }
+}
 .icm-hot-coffee-rounded-cup-on-a-plate-from-side-view {
   &:before {
     content: $icm-hot-coffee-rounded-cup-on-a-plate-from-side-view; 
@@ -114,11 +124,6 @@
 .icm-phone-call {
   &:before {
     content: $icm-phone-call; 
-  }
-}
-.icm-phone-receiver {
-  &:before {
-    content: $icm-phone-receiver; 
   }
 }
 .icm-pin {
