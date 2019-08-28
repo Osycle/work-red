@@ -321,7 +321,7 @@ window.Rent = {
 		rentAreaItems.find(".rect-def").map(function(i, el){
 			el = $(el);
 			var price = el.find(".price").text();
-			el.find(".price").text(intSpace(price) + " сум");
+			el.find(".price").text(intSpace(price, ",") + " сум");
 		})
 		
 
@@ -477,9 +477,14 @@ window.Rent = {
 	    // Подпишемся на событие нажатия кнопки мыши.
 	    Utils.currentMap.events.add('mousedown', function (e) {
 	      // Если кнопка мыши была нажата с зажатой клавишей "alt", то начинаем рисование контура.
+	      var buttonNum = e.get('domEvent').originalEvent.button;
+	      if(buttonNum == 2)
+	      	e.preventDefault();
+
+	      console.log(e.get('domEvent').originalEvent.button, e);
 	      if(!$('[data-action="draw"]')[0].checked)
 	      	return;
-				if (e.get('altKey')) {
+				if (buttonNum == 2) {
 					if (currentIndex == styles.length - 1) {
 						currentIndex = 0;
 					}else{
@@ -567,11 +572,15 @@ window.Rent = {
 
 	/*Найти вокруг метро*/
 	found: function(searchRequest, actionName){
+
+		Utils.searchControl.search(searchRequest);
+		return;
+
 	 	if(!$('[data-action="'+actionName+'"]')[0].checked && !force)
 	  	return;
 		var foundGeoObjects = [], firstLoad = false;
 
-		Utils.searchInit(200);
+		Utils.searchInit(50);
 		Utils.currentMap.setCenter(Utils.center, 12, {duration: 0});
 		Utils.searchControl.search(searchRequest);
 		
@@ -805,7 +814,7 @@ window.initBeside = function(itemOptions) {
 		controls: []
 	})
 
-	Utils.searchInit();
+	Utils.searchInit(50);
 	var circle = Utils.drawCircle(1000, latlng);
 
 	// Фильтрация точек относительно радиуса
@@ -855,7 +864,7 @@ window.initBeside = function(itemOptions) {
 
 
 window.initRent = function(itemOptions, callback) {
-	checkeGeo()
+	checkeGeo();
 	var latlng = itemOptions.mainLatLng;
 	Utils.currentMap = new ymaps.Map("map-rent", {
 		center: latlng,
@@ -883,9 +892,11 @@ window.initRent = function(itemOptions, callback) {
 
 				balloonTemplate = 
 					'<div class="rent-balloon">'+
-						'<a href="'+el.url+'" target="_blank">'+el.title+'</a>'+
+						'<p><a href="'+el.url+'" target="_blank">'+el.title+'</a></p>'+
+						'<img src="'+el.images+'">'+
 						'<p>Комнат: '+el.rooms+'</p>'+
-						'<p>Цена: '+el.price+' сум</p>'+
+						'<p>Площадь: '+el.square+' кв. м</p>'+
+						'<p>Цена: '+intSpace(el.price, ",")+' сум</p>'+
 					'</div>';
 
 				Rent.objects.push(new ymaps.Placemark(el.coordinates, {
@@ -925,13 +936,36 @@ window.initRent = function(itemOptions, callback) {
 	});
 
 
-	Utils.searchInit();
+	Utils.searchInit(50);
 
 	Rent.besideEntitySelect = $('#beside_entity_select');
 
-	// Событие при пойске
+	// Событие при пойске (load)
 	Utils.searchControl.events.add("load", function(e){
 		Utils.searchDots = Utils.searchControl.getResultsArray();
+		ymaps.geoQuery(Utils.searchDots).each(function(el, i){
+			el.events.add("click", function(e){
+				//e.preventDefault();
+				var that = e.get("target");
+
+				Rent.drop();
+				Rent.hide(Rent.objectsContainingPolygon);
+
+				Utils.currentCenter = that.geometry.getCoordinates();
+
+				// Рисуем круг
+				Utils.circle = Utils.drawCircle(1500, Utils.currentCenter);
+				Utils.currentMap.setCenter(that.geometry.getCoordinates(), 14, {duration: 0});
+
+				// Скрываем не нужно на карте
+				Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.circle);
+				Rent.filterBar();
+				console.log(that);
+			})
+		})
+		//Rent.besideBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
+		/*
+
 		Rent.besideEntitySelect.html("");
 		
 		for (var i = 0; i < Utils.searchDots.length; i++) {
@@ -960,7 +994,7 @@ window.initRent = function(itemOptions, callback) {
 		})
 		Rent.besideEntitySelect.append(sortOptions);
 		
-		
+		*/
 	});
 
 	// Выбор организации

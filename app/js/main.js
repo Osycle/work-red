@@ -681,10 +681,14 @@ function scrolledDiv(el) {
 	return elBottom <= docViewBottom && elTop >= docViewTop;
 }
 
-function intSpace( n ){
+function intSpace( n, char ){
+	var char = char || " "
 	n += "";
 	n = new Array(4 - n.length % 3).join("U") + n;
-	return (n.replace(/([0-9U]{3})/g, "$1 ").replace(/U/g, "")).trim();
+	var newInt = (n.replace(/([0-9U]{3})/g, "$1"+char).replace(/U/g, "")).trim();
+	if( newInt.substring(newInt.length-1) == char)
+		newInt = newInt.substring(0, newInt.length-1);
+	return newInt;
 }
 function roundFix( num, cnt, space ){
 	num += "";

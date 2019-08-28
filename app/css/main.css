@@ -11472,38 +11472,42 @@ html .irs--flat .irs-handle {
   .rent-bar input.form-control {
     height: 35px;
     font-size: 12px; }
+  .rent-bar .typebeside-result {
+    display: none; }
   .rent-bar .btn-change {
     display: none; }
-  .rent-bar .typebeside .typebeside-wrapper {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-size: 0.9em;
-    width: 100%; }
-    .rent-bar .typebeside .typebeside-wrapper > div {
-      width: 100%;
-      padding-right: 5px;
-      padding-left: 5px; }
-  .rent-bar .typebeside .radio-content {
-    white-space: nowrap; }
-    .rent-bar .typebeside .radio-content input, .rent-bar .typebeside .radio-content label {
-      vertical-align: middle; }
-    .rent-bar .typebeside .radio-content label {
-      background-color: #f5f5f5;
-      -webkit-border-radius: 15px;
-      border-radius: 15px;
-      text-align: center;
-      padding: 5px 10px; }
-      .rent-bar .typebeside .radio-content label:hover {
-        cursor: pointer; }
-    .rent-bar .typebeside .radio-content input:checked ~ label {
-      background-color: #cc2527;
-      color: white; }
+  .rent-bar .typebeside {
+    margin: 15px 0; }
+    .rent-bar .typebeside .typebeside-wrapper {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      font-size: 0.9em;
+      width: 100%; }
+      .rent-bar .typebeside .typebeside-wrapper > div {
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px; }
+    .rent-bar .typebeside .radio-content {
+      white-space: nowrap; }
+      .rent-bar .typebeside .radio-content input, .rent-bar .typebeside .radio-content label {
+        vertical-align: middle; }
+      .rent-bar .typebeside .radio-content label {
+        background-color: #f5f5f5;
+        -webkit-border-radius: 15px;
+        border-radius: 15px;
+        text-align: center;
+        padding: 5px 10px; }
+        .rent-bar .typebeside .radio-content label:hover {
+          cursor: pointer; }
+      .rent-bar .typebeside .radio-content input:checked ~ label {
+        background-color: #cc2527;
+        color: white; }
 
 .rent-wrapper {
   display: -webkit-box;
@@ -11591,6 +11595,11 @@ html .irs--flat .irs-handle {
       width: 100% !important; }
       .rent-items .wrapper-container {
         height: auto !important; } }
+
+.rent-balloon img {
+  width: 150px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
 
 .rent-balloon a {
   color: #cc2527;
@@ -11908,7 +11917,7 @@ html .irs--flat .irs-handle {
   z-index: 1;
   display: none; }
   #draw_textbox.active {
-    display: inline-block; }
+    color: green; }
 
 .rent-tools {
   text-align: center; }
