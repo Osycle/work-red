@@ -616,6 +616,20 @@ $("main").on("submit", "#search_form", function(e){
 })
 
 
+$("main").on("click", ".zone-type", function(){
+	console.log(this);
+	var that = $(this);
+	var int = that.attr("data-zone-type");
+	$(".zone-type").removeClass("active");
+	if( window.currentZoneInt  == int){
+		window.currentZoneInt = null;
+		return;
+	}
+	window.currentZoneInt = int;
+	var collections = that.parent().find(".zone-type-"+int);
+	collections.addClass("active");
+});
+
 
 
 	});
@@ -688,6 +702,9 @@ function intSpace( n, char ){
 	var newInt = (n.replace(/([0-9U]{3})/g, "$1"+char).replace(/U/g, "")).trim();
 	if( newInt.substring(newInt.length-1) == char)
 		newInt = newInt.substring(0, newInt.length-1);
+	if( newInt.substring(0, 1) == char)
+		newInt = newInt.substring(1);
+
 	return newInt;
 }
 function roundFix( num, cnt, space ){
