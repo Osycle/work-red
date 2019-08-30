@@ -3919,7 +3919,17 @@ html{
 	figure, .boxes-cell{
 		width: 50%;
 	}
+	@media (max-width: 991px) {
+		figure{
 
+			&:nth-child(3){
+				width: 100%;
+			}
+			&:nth-child(4){
+				display: none;
+			}
+		}
+	}
 }
 
 // assessment
@@ -3929,11 +3939,16 @@ html{
 .zone-bg-3{background-color: #2be64e !important;}
 .zone-bg-4{background-color: #fe9900 !important;}
 
-.zone-type-1{fill: #cc2527;}
-.zone-type-2{fill: #2980c2;}
-.zone-type-3{fill: #2be64e;}
-.zone-type-4{fill: #fe9900;}
+.zone-fill-1{fill: #cc2527;}
+.zone-fill-2{fill: #2980c2;}
+.zone-fill-3{fill: #2be64e;}
+.zone-fill-4{fill: #fe9900;}
 
+[data-zone-num]{
+	&:hover{
+		cursor: pointer;
+	}
+}
 .zones-table{
 	margin: 30px 0;
 	table{
@@ -3941,6 +3956,13 @@ html{
 			border-bottom: 1px solid white;
 			&:nth-child(odd){
 				background-color: $color-gray-2;
+			}
+			&.active{
+				background-color: black;
+				color: white;
+				td{
+					color: white;
+				}
 			}
 		}
 		td{
@@ -3964,6 +3986,9 @@ html{
 }
 .zones-map{
 	position: relative;
+	@media (max-width: 991px) {
+		display: none;
+	}
 	svg{
 		position: relative;
 		width: 100%;
@@ -4068,6 +4093,12 @@ html{
 }
 .assessment-sw{
 	padding: 20px 60px;
+	@media (min-width: 991px){
+		padding-bottom: 60px;
+	}
+	h2{
+		margin-top: 20px;
+	}
 	.input-content{
 		margin-top: 15px;
 		margin-bottom: 15px;

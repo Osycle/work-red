@@ -610,25 +610,49 @@ $("main").on("submit", "#search_form", function(e){
 	var searchLink =  that.attr("data-search-link");
 	
 	var ret = searchLink+("#search('" + searchRequest + "')");
-	console.log(ret);
 	location.assign(ret);
 	//location.reload();
 })
 
 
-$("main").on("click", ".zone-type", function(){
-	console.log(this);
+$("main").on("click", "[data-zone-num]", function(){
+	
 	var that = $(this);
-	var int = that.attr("data-zone-type");
-	$(".zone-type").removeClass("active");
-	if( window.currentZoneInt  == int){
-		window.currentZoneInt = null;
-		return;
-	}
+	var int = that.attr("data-zone-num");
+	$("[data-zone-num]").removeClass("active");
+	// if( window.currentZoneInt  == int){
+	// 	window.currentZoneInt = null;
+	// 	return;
+	// }
 	window.currentZoneInt = int;
-	var collections = that.parent().find(".zone-type-"+int);
+	var collections = $("[data-zone-num='"+int+"']");
+	var zonePrice = $(".zone-price-"+int).attr("data-zone-price")
+	$("[name='zoneprice']").attr("value", zonePrice);
 	collections.addClass("active");
+	$(".form-assessment-calc").trigger("submit");
 });
+
+
+
+$("main").on("change", "[data-zone-factor]", function(e){
+	$(".form-assessment-calc").trigger("submit");
+})
+$("main").on("submit", ".form-assessment-calc", function(e){
+	e.preventDefault();
+	var that = $(this);
+	window.endPrice = 0;
+	var zonePrice = $("[name='zoneprice']").val();
+	that.find("[data-zone-factor]").map(function(i, el){
+		endPrice += (zonePrice * $(el).val()) - zonePrice;
+		
+		console.log(endPrice);
+	})
+	endPrice = zonePrice*1 + endPrice*1
+	$("[data-price-output]").text( Math.round(endPrice) )
+	console.log( endPrice );
+})
+
+
 
 
 

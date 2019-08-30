@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?sfnk3i');
+  src:  url('fonts/icomoon.eot?sfnk3i#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?sfnk3i') format('truetype'),
+    url('fonts/icomoon.woff?sfnk3i') format('woff'),
+    url('fonts/icomoon.svg?sfnk3i#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icm-"], [class*=" icm-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icm-train:before {
+  content: "\e912";
+}
+.icm-school:before {
+  content: "\e92f";
+}
+.icm-hot-coffee-rounded-cup-on-a-plate-from-side-view:before {
+  content: "\e900";
+}
+.icm-hotel-with-three-floors:before {
+  content: "\e901";
+}
+.icm-house:before {
+  content: "\e902";
+}
+.icm-house-1:before {
+  content: "\e903";
+}
+.icm-house-plan-scale:before {
+  content: "\e904";
+}
+.icm-interior-design:before {
+  content: "\e905";
+}
+.icm-key:before {
+  content: "\e906";
+}
+.icm-left-arrow:before {
+  content: "\e907";
+}
+.icm-left-arrow-min:before {
+  content: "\e908";
+}
+.icm-like:before {
+  content: "\e909";
+}
+.icm-magnifying-glass:before {
+  content: "\e90a";
+}
+.icm-man-user:before {
+  content: "\e90b";
+}
+.icm-map:before {
+  content: "\e90c";
+}
+.icm-map-marker:before {
+  content: "\e90d";
+}
+.icm-map-of-roads:before {
+  content: "\e90e";
+}
+.icm-open-exit-door:before {
+  content: "\e90f";
+}
+.icm-parked-car:before {
+  content: "\e910";
+}
+.icm-phone-call:before {
+  content: "\e911";
+}
+.icm-pin:before {
+  content: "\e913";
+}
+.icm-placeholder-Fill:before {
+  content: "\e914";
+  color: #cc2527;
+}
+.icm-placeholder:before {
+  content: "\e915";
+}
+.icm-placeholder-on-map-paper-in-perspective:before {
+  content: "\e916";
+}
+.icm-price-tag:before {
+  content: "\e917";
+}
+.icm-price-tag-1:before {
+  content: "\e918";
+}
+.icm-roof:before {
+  content: "\e919";
+}
+.icm-search:before {
+  content: "\e91a";
+}
+.icm-set-square:before {
+  content: "\e91b";
+}
+.icm-share:before {
+  content: "\e91c";
+}
+.icm-sketch:before {
+  content: "\e91d";
+}
+.icm-user:before {
+  content: "\e91e";
+}
+.icm-armchair:before {
+  content: "\e91f";
+}
+.icm-arroba:before {
+  content: "\e920";
+}
+.icm-arrow-pointing-to-right:before {
+  content: "\e921";
+}
+.icm-bus-stop:before {
+  content: "\e922";
+}
+.icm-college-graduation:before {
+  content: "\e923";
+}
+.icm-compass:before {
+  content: "\e924";
+}
+.icm-doorway:before {
+  content: "\e925";
+}
+.icm-down-arrow:before {
+  content: "\e926";
+}
+.icm-draw:before {
+  content: "\e927";
+}
+.icm-favorite-heart-button:before {
+  content: "\e928";
+}
+.icm-flag-russian .path1:before {
+  content: "\e929";
+  color: rgb(255, 255, 255);
+}
+.icm-flag-russian .path2:before {
+  content: "\e92a";
+  margin-left: -1.5em;
+  color: rgb(255, 0, 0);
+}
+.icm-flag-russian .path3:before {
+  content: "\e92b";
+  margin-left: -1.5em;
+  color: rgb(0, 0, 255);
+}
+.icm-front-bus:before {
+  content: "\e92c";
+}
+.icm-gallery:before {
+  content: "\e92d";
+}
+.icm-growth:before {
+  content: "\e92e";
+}
