@@ -485,8 +485,8 @@ if( $("#mortgage_rate").length > 0 ){
 
 	var mortgageAmount = sumRange.ionRangeSlider({
 		//type: "double",
-		min: 100,
-		max: 1500000,
+		min: 10e6,
+		max: 2e9,
 		from: 0,
 		to: 0,
 		postfix: " сум",
