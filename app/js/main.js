@@ -654,11 +654,11 @@ $("main").on("submit", ".form-assessment-calc", function(e){
 window.currency = "";
 window.currencySelect = $(".currency-select");
 if( !localStorage.currency && currencySelect.length){
-	currency = currencySelect.val();
+	currency = currencySelect.eq(0).val();
 	localStorage.currency = currency;
 	console.log(currency);
 }else if(currencySelect.length){
-	currencySelect[0].value = localStorage.currency;
+	currencySelect.val(localStorage.currency);
 }
 
 switch(localStorage.currency){
@@ -672,7 +672,7 @@ switch(localStorage.currency){
 $(document).on("change", ".currency-select", function(){
 	var that = $(this);
 	//$(that.selectedOptions).val();
-	currency = currencySelect.val();
+	currency = that.val();
 	localStorage.currency = currency;
 	console.log(that.val());
 	location.reload();
