@@ -601,29 +601,28 @@ if( $("#mortgage_rate").length > 0 ){
 
 
 
-
 $("main").on("submit", "#search_form", function(e){
 	e.preventDefault();
 	var that = $(this);
 	var val = that.find("[name='query']").val()
 	var searchRequest = encodeURI(val);
-	var searchLink =  that.attr("data-search-link");
-	
-	var ret = searchLink+("#search('" + searchRequest + "')");
+
+	var searchLink =  that.find(".js-select-search option:checked").attr("data-search-link");
+
+	window.ret = searchLink+("#search('" + searchRequest + "')");
 	location.assign(ret);
 	//location.reload();
 })
 
 
+/*
+	Мгновенная оценка
+*/
+
 $("main").on("click", "[data-zone-num]", function(){
-	
 	var that = $(this);
 	var int = that.attr("data-zone-num");
 	$("[data-zone-num]").removeClass("active");
-	// if( window.currentZoneInt  == int){
-	// 	window.currentZoneInt = null;
-	// 	return;
-	// }
 	window.currentZoneInt = int;
 	var collections = $("[data-zone-num='"+int+"']");
 	var zonePrice = $(".zone-price-"+int).attr("data-zone-price")
@@ -631,8 +630,6 @@ $("main").on("click", "[data-zone-num]", function(){
 	collections.addClass("active");
 	$(".form-assessment-calc").trigger("submit");
 });
-
-
 
 $("main").on("change", "[data-zone-factor]", function(e){
 	$(".form-assessment-calc").trigger("submit");
@@ -644,15 +641,42 @@ $("main").on("submit", ".form-assessment-calc", function(e){
 	var zonePrice = $("[name='zoneprice']").val();
 	that.find("[data-zone-factor]").map(function(i, el){
 		endPrice += (zonePrice * $(el).val()) - zonePrice;
-		
-		console.log(endPrice);
 	})
 	endPrice = zonePrice*1 + endPrice*1
 	$("[data-price-output]").text( Math.round(endPrice) )
-	console.log( endPrice );
 })
 
 
+
+/*
+	Валюта
+*/
+window.currency = "";
+window.currencySelect = $(".currency-select");
+if( !localStorage.currency && currencySelect.length){
+	currency = currencySelect.val();
+	localStorage.currency = currency;
+	console.log(currency);
+}else if(currencySelect.length){
+	currencySelect[0].value = localStorage.currency;
+}
+
+switch(localStorage.currency){
+	case "US":
+		$("html").addClass("currency-price-us");
+		break;
+	case "USD":
+		$("html").addClass("currency-price-usd");
+		break;
+}
+$(document).on("change", ".currency-select", function(){
+	var that = $(this);
+	//$(that.selectedOptions).val();
+	currency = currencySelect.val();
+	localStorage.currency = currency;
+	console.log(that.val());
+	location.reload();
+})
 
 
 

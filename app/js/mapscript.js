@@ -268,7 +268,7 @@ window.Rent = {
 											'<span class="cnt">{{square}} кв. м</span>'+
 										'</span>'+
 									'</div>'+
-									'<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price va-middle">{{price}}</span></p>'+
+									'<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price price-us va-middle">{{price}}</span><span class="price price-usd va-middle">{{priceSum}}</span></p>'+
 									'<hr>'+
 									'<div class="summary">'+
 										'<p>{{description}}</p>'+
@@ -318,11 +318,14 @@ window.Rent = {
 			rentAreaItems.append(template); // Вставляем в контейнер квартир
 
 		});
-		rentAreaItems.find(".rect-def").map(function(i, el){
-			el = $(el);
-			var price = el.find(".price").text();
-			el.find(".price").text(intSpace(price, ",") + " сум");
-		})
+		setTimeout(function(){
+			rentAreaItems.find(".rect-def").map(function(i, el){
+				el = $(el);
+				var price = el.find(".price-us").text();
+				el.find(".price-us").text(intSpace(el.find(".price-us").text(), ",") + " $");
+				el.find(".price-usd").text(intSpace(el.find(".price-usd").text(), ",") + " сум");
+			})
+		}, 400);
 		
 
 		setTimeout(function(){
@@ -896,7 +899,10 @@ window.initRent = function(itemOptions, callback) {
 						'<img src="'+el.images+'">'+
 						'<p>Комнат: '+el.rooms+'</p>'+
 						'<p>Площадь: '+el.square+' кв. м</p>'+
-						'<p>Цена: '+intSpace(el.price, ",")+' сум</p>'+
+						'<p>Цена: '+
+							'<span class="price-usd">'+intSpace(el.priceSum, ",")+' сум</span>'+
+							'<span class="price-us">'+intSpace(el.price, ",")+' $</span>'+
+							'</p>'+
 					'</div>';
 
 				Rent.objects.push(new ymaps.Placemark(el.coordinates, {
@@ -920,7 +926,7 @@ window.initRent = function(itemOptions, callback) {
 				el.options.set({
 					type: "point",
 					iconLayout: 'default#image',
-					iconImageHref: sold == "null" ? markerStyle_1 : markerStyle_2,
+					iconImageHref: sold == "sold" ? markerStyle_2 : markerStyle_1,
 					iconImageSize: [21, 30],
 					visible: false
 				});

@@ -12254,6 +12254,23 @@ html .irs--flat .irs-handle {
   .assessment-dl .assessment-price {
     color: #cc2527; }
 
+.currency-select {
+  background: black;
+  border: 0;
+  color: white;
+  font-weight: 600; }
+  .currency-select:focus {
+    outline: 0; }
+
+.currency-price-us .price-us, .currency-price-us .price-usd, .currency-price-usd .price-us, .currency-price-usd .price-usd {
+  display: none; }
+
+.currency-price-us .price-us {
+  display: inline-block; }
+
+.currency-price-usd .price-usd {
+  display: inline-block; }
+
 /* 
 		_footer.scss
 */

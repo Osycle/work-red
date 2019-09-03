@@ -4139,3 +4139,29 @@ html{
 
 	}
 }
+.currency-select{
+	background: black;
+	border: 0;
+	color: white;
+	font-weight: 600;
+	&:focus{
+		outline: 0;
+	}
+}
+.currency-price-us, .currency-price-usd{
+	.price-us, .price-usd{
+		display: none;
+	}
+}
+
+.currency-price-us{
+	.price-us{
+		display: inline-block;
+	}
+}
+.currency-price-usd{
+	.price-usd{
+		display: inline-block;
+	}
+}
+
