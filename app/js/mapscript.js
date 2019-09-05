@@ -272,7 +272,7 @@ window.Rent = {
 									'<hr>'+
 									'<div class="summary">'+
 										'<p>{{description}}</p>'+
-										'<a href="{{url}}"><u>Подробнее</u></a>'+
+										'<a href="{{url}}" target="_blank"><u>Подробнее</u></a>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
@@ -1105,8 +1105,12 @@ $("main").on("change", "[data-rent-field-num], [data-rent-property], [data-rent-
 
 $(rentSelectAreas).on("change", function(){
 	var index = $(this.selectedOptions).attr("data-i");
-	Areas.items[index].events.fire("click");
+	if( index == "all" ){
+		$('[data-action="whole"]').trigger("click");
+		return;
+	}
 
+	Areas.items[index].events.fire("click");
 	$(rentSelectAreas).map(function(i ,el){
 		$(el).val(Areas.areasTitles[index]).trigger("change.select2");
 	})
@@ -1267,7 +1271,7 @@ $("main").on("change", '[name="pricebox"]', function(){
 	that.closest("div").find("[data-rent-max]").attr("value", max)
 
 	Rent.filterBar();
-
+	$(".btn-hider").trigger("click");
 })
 $("main").on("click", '.btn-hider', function(){
 	window.markBlock = $(".pricebox");

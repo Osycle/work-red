@@ -9875,6 +9875,8 @@ figcaption {
   .studhotel-advantages figure:hover {
     background-color: #cc2527;
     color: white; }
+  .studhotel-advantages figure figcaption {
+    min-height: 42px; }
   @media (min-width: 992px) {
     .studhotel-advantages figure:not(:nth-last-child(1)) {
       border-right: 1px solid #efefef; } }
@@ -10501,7 +10503,8 @@ figcaption {
   min-height: 185px; }
   .short-advantages-items figure figcaption {
     font-size: 1.14286em;
-    margin-top: 20px; }
+    margin-top: 20px;
+    min-height: 64px; }
   .short-advantages-items figure .wrapper {
     padding: 15px 30px;
     min-height: 200px;

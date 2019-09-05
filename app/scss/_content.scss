@@ -1288,6 +1288,9 @@ figcaption{
 			background-color: $color-1;
 			color: white;
 		}
+		figcaption{
+			min-height: 42px;
+		}
 		@media (min-width: 992px){
 			&:not(:nth-last-child(1)){
 				border-right: 1px solid #efefef;
@@ -2110,6 +2113,7 @@ figcaption{
 		figcaption{
 			font-size: em(16);
 			margin-top: 20px;
+			min-height: 64px;
 		}
 		.wrapper{
 			padding: 15px 30px;
