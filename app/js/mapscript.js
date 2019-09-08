@@ -1260,7 +1260,7 @@ $("main").on("click", '.rect-def [name="favorites"]', function(e){
 
 // Доступные стройки
 $("main").on("change", '[name="pricebox"]', function(){
-	$(".pricebox").find('[data-rent-field-num="price"]').attr("value", "");
+	$(".pricebox").find('[data-rent-field-num]').attr("value", "");
 
 	window.currentPriceboxInputId = this.id;
 	console.log(this.checked)

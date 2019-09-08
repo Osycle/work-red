@@ -11978,7 +11978,7 @@ html .irs--flat .irs-handle {
       display: block; }
   .pricebox .desc-open {
     display: none; }
-  .pricebox [data-rent-field-num="price"], .pricebox .select-type {
+  .pricebox [data-rent-field-num], .pricebox .select-type {
     display: none; }
   .pricebox .pricebox-wrapper {
     -webkit-transition: all 0.3s ease;
