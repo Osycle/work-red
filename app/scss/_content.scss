@@ -2652,7 +2652,8 @@ html{
 			@media (min-width: 992px) {
 				width: calc( 100% - 370px );
 				h5{
-					width: 75%;
+					width: 70%;
+					width: calc(100% - 200px);
 				}
 			}
 		}

@@ -744,7 +744,9 @@ function scrolledDiv(el) {
 }
 
 function intSpace( n, char ){
-	var char = char || " "
+	var char = char || " ";
+	if( isNaN(n*1) )
+		return false;
 	n += "";
 	n = new Array(4 - n.length % 3).join("U") + n;
 	var newInt = (n.replace(/([0-9U]{3})/g, "$1"+char).replace(/U/g, "")).trim();

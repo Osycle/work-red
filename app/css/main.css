@@ -10979,7 +10979,9 @@ html .irs--flat .irs-handle {
           width: -webkit-calc( 100% - 370px);
           width: calc( 100% - 370px); }
           .fav-items .rect-def .desc-content h5, .rent-items .rect-def .desc-content h5 {
-            width: 75%; } }
+            width: 70%;
+            width: -webkit-calc(100% - 200px);
+            width: calc(100% - 200px); } }
     .fav-items .rect-def .detail-info, .rent-items .rect-def .detail-info {
       color: #6b6b6b; }
       .fav-items .rect-def .detail-info .cnt, .rent-items .rect-def .detail-info .cnt {

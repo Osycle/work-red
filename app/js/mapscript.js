@@ -319,11 +319,18 @@ window.Rent = {
 
 		});
 		setTimeout(function(){
+			// TODO
 			rentAreaItems.find(".rect-def").map(function(i, el){
 				el = $(el);
 				var price = el.find(".price-us").text();
-				el.find(".price-us").text(intSpace(el.find(".price-us").text(), ",") + " $");
-				el.find(".price-usd").text(intSpace(el.find(".price-usd").text(), ",") + " сум");
+				var priceSum = el.find(".price-usd").text();
+				console.log(price, priceSum);
+				var stylePrice = intSpace(price, ",");
+				var stylePriceSum = intSpace(priceSum, ",");
+				if( stylePrice )
+					el.find(".price-us").text( + " $");
+				if( stylePriceSum )
+					el.find(".price-usd").text(intSpace(priceSum, ",") + " сум");
 			})
 		}, 400);
 		
@@ -375,7 +382,6 @@ window.Rent = {
 				if ( !(rentFieldVal[i].val() ==  item[fieldName] || rentFieldVal[i].val() == "all") ) {
 					novalid = true;break;
 				}
-				console.log(item[fieldName]);
 			}
 
 
