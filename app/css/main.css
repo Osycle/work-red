@@ -11733,6 +11733,8 @@ html .irs--flat .irs-handle {
       position: relative; }
     [data-reconstruction="1"] .rent-items .wrapper-flex .desc-content {
       width: 100%; }
+      [data-reconstruction="1"] .rent-items .wrapper-flex .desc-content h5 {
+        width: 100%; }
       [data-reconstruction="1"] .rent-items .wrapper-flex .desc-content .btn-content, [data-reconstruction="1"] .rent-items .wrapper-flex .desc-content .summary, [data-reconstruction="1"] .rent-items .wrapper-flex .desc-content hr {
         display: none; }
 
