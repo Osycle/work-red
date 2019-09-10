@@ -324,13 +324,13 @@ window.Rent = {
 				el = $(el);
 				var price = el.find(".price-us").text();
 				var priceSum = el.find(".price-usd").text();
-				console.log(price, priceSum);
 				var stylePrice = intSpace(price, ",");
 				var stylePriceSum = intSpace(priceSum, ",");
-				if( stylePrice )
-					el.find(".price-us").text( + " $");
+				if( stylePrice ){
+					el.find(".price-us").text(stylePrice + " $");
+				}
 				if( stylePriceSum )
-					el.find(".price-usd").text(intSpace(priceSum, ",") + " сум");
+					el.find(".price-usd").text(stylePriceSum + " сум");
 			})
 		}, 400);
 		
