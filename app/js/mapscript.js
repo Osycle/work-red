@@ -1,3 +1,13 @@
+import areasPolygon from './areas.js';
+// import areasMahallaPolygon from './areas-mahalla.js';
+
+
+
+
+
+
+
+
 
 var
 		rentProperty = $("[data-rent-checkboxes] [data-rent-property]"),
@@ -9,11 +19,14 @@ var
 		;
 
 
+// var regionsColors = ["#9c2c64", "#9c642c", "#9c9c2c", "#649c2c", "#2c9c2c", "#2c9c64", "#2c9c9c", "#2c649c", "#2c2c9c", "#642c9c", "#9c2c9c", "#9c2c64", "#9b2c2c"]
+var regionsColors = ['#2c649c', '#9c2c64', '#2c9c9c', '#9c9c2c', '#649c2c', '#2c9c2c', '#9c2c9c', '#2c2c9c', '#9c2c64', '#9b2c2c', '#2c9c64', '#642c9c', '#9c642c']
 
 window.markerStyle_1 = window.markerStyle_1 || 'img/icons/marker-green.png';
 window.markerStyle_2 = window.markerStyle_2 || 'img/icons/marker-red.png';
 window.markerStyle_3 = window.markerStyle_3 || 'img/icons/marker-offices-2.png';
 
+//#2b9b66  Основной цвет
 
 RegExp.escape= function(s) {
 	return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
@@ -22,21 +35,29 @@ RegExp.escape= function(s) {
 /*Areas*/
 window.Areas = {
 	items: [],
+	regionsGeoItems: [],
 	currentAreaInc: undefined,
-	areasTitles: [
-		"Юнусабадский район",
-		"Мирзо-Улугбекский район",
-		"Яшнободский район",
-		"Мирабадский район",
-		"Бектемирский район",
-		"Зангиатинский район",
-		"Сергелийский район",
-		"Яккасарайский район",
-		"Чиланзарский район",
-		"Учтепинский район",
-		"Шайхантахурский район",
-		"Олмазорский район"
-	],
+	areasTitles: [],
+	regionTitles: [],
+	clearRawAreas: function(areas){
+		var areasExport = []
+		for (let i = 0; i < areas.length; i++) {
+			var geoObjItem = areas[i].data.items[0];
+			var geometries = geoObjItem.displayGeometry.geometries
+			geoObjItem.coordinates = geoObjItem.coordinates.reverse()
+			
+			for (let i = 0; i < geometries.length; i++) {
+			var geoCoords = geometries[i].coordinates;
+				for (let i = 0; i < geoCoords.length; i++) {
+					geoCoords[i] = geoCoords[i].map(coords=>{
+						return coords.reverse()
+					})
+				}
+			}
+			areasExport.push(geoObjItem)
+		}
+		return areasExport
+	},
 	activeArea: function(inc){
 		var that = this;
 		Areas.currentAreaInc = inc;
@@ -45,20 +66,18 @@ window.Areas = {
 			if( that.areasTitles[inc] == el.options.get("title") ){
 
 				el.options.set({
-					fillColor: "#cc2527",
-					strokeColor: "#cc2527"
+						fillOpacity: "0.5"
 				});
 				el.options.get("placemark").properties.set({active: true})
-				el.options.get("placemark").options.set({
-					iconLayout: ymaps.templateLayoutFactory.createClass(
-						'<div class="area-placemark is-active">$[properties.iconContent]</div>'
-						)
-				});
+				// el.options.get("placemark").options.set({
+				// 	iconLayout: ymaps.templateLayoutFactory.createClass(
+				// 		'<div class="area-placemark is-active">$[properties.iconContent]</div>'
+				// 		)
+				// });
 
 			}else{
 				el.options.set({
-					fillColor: "#cc252700",
-					strokeColor: "#cc252700"
+					fillOpacity: "0.3",
 				});
 				el.options.get("placemark").properties.set({active: false})
 				el.options.get("placemark").options.set({
@@ -75,12 +94,12 @@ window.Areas = {
 		var title, description, address, coordinates, bounds;
 		
 		for (var i = 0; i < arr.length; i++) {
-
-			title = arr[i].data.items[0].title;
-			description = arr[i].data.items[0].description;
-			address = arr[i].data.items[0].address;
-			coordinates = arr[i].data.items[0].coordinates;
-			bounds = arr[i].data.items[0].bounds;
+			var geoObjItem = arr[i]
+			title = geoObjItem.title;
+			description = geoObjItem.description;
+			address = geoObjItem.address;
+			coordinates = geoObjItem.coordinates;
+			bounds = geoObjItem.bounds;
 
 			/*
 				Placemark района
@@ -89,7 +108,7 @@ window.Areas = {
 	    window.markerLayout = ymaps.templateLayoutFactory.createClass('<div class="area-placemark">$[properties.iconContent]</div>');
 
 	    window.areaPlacemark = new ymaps.Placemark(
-	        arr[i].data.exactResult.coordinates, {
+				geoObjItem.coordinates, {
 	            //hintContent: 'Метка с круглым HTML макетом'
 	            active: false,
 	            iconContent: title
@@ -109,8 +128,23 @@ window.Areas = {
 	    Utils.currentMap.geoObjects.add(areaPlacemark);
 
 
-
-			var polygon = arr[i].data.items[0].displayGeometry.geometries[0];
+			console.log(geoObjItem)
+			var polygons = geoObjItem.displayGeometry.geometries;
+			var polygon;
+			var colorPolygon;
+			Areas.regionsGeoItems.map(r=>{
+				if(geoObjItem.selfRegion == r.title)
+					colorPolygon = r.colorPolygon
+			})
+			
+			for (let i = 0; i < polygons.length; i++) {
+				var currentPolygon = polygons[i]
+				if(i>=1)
+					polygon.coordinates.push(currentPolygon.coordinates[0]);
+				else
+					polygon = currentPolygon
+			}
+			
 			var areasPolygon = new ymaps.Polygon(polygon, {}, {
 					inc: i,
 					title: title,
@@ -120,17 +154,19 @@ window.Areas = {
 					bounds: bounds,
 					//fillImageHref: 'images/lake.png',
 					fillMethod: 'stretch',
-					fillColor: "#cc252700",
-					fillOpacity: "0.4",
+					fillColor: colorPolygon,
+					fillOpacity: "0.3",
 					placemark: areaPlacemark,
 					type: "polygon",
-					strokeColor: "#cc252700",
-					strokeWidth: 2,
+					strokeColor: colorPolygon,
+					strokeOpacity: "0.3",
+					strokeWidth: 1,
 					stroke: true
 				}
 			);
 			Areas.items.push(areasPolygon);
 			Utils.currentMap.geoObjects.add(areasPolygon);
+
 
 
 			/*
@@ -140,24 +176,24 @@ window.Areas = {
 				var that = e.get("target");
 				if( Areas.areasTitles[Areas.currentAreaInc] != that.options.get("title") )
 					that.options.set({
-						fillColor: "#fff",
-						strokeColor: "#cc2527"
+						fillOpacity: "0.5",
+						strokeOpacity: "0.4",
 					});
 				if( !(that.options.get("placemark").properties.get("active")) )
 					that.options.get("placemark").options.set({
-						iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark [if !properties.active]is-hover[endif]">$[properties.iconContent]</div>')
+						//iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark [if !properties.active]is-hover[endif]">$[properties.iconContent]</div>')
 					});
 			});
 			areasPolygon.events.add("mouseleave", function(e){
 				var that = e.get("target");
 				if( Areas.areasTitles[Areas.currentAreaInc] != that.options.get("title") )
 					that.options.set({
-						fillColor: "#cc252700",
-						strokeColor: "#cc252700"
+						fillOpacity: "0.3",
+						strokeOpacity: "0.3",
 					});
 				if( !(that.options.get("placemark").properties.get("active")) )
 					that.options.get("placemark").options.set({
-						iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark">$[properties.iconContent]</div>')
+						//iconLayout: ymaps.templateLayoutFactory.createClass('<div class="area-placemark">$[properties.iconContent]</div>')
 					});
 			});
 
@@ -209,10 +245,7 @@ window.Areas = {
 
 		}
 	},
-
-
 };
-
 
 
 
@@ -802,16 +835,6 @@ window.Utils = {
 
 
 
-
-
-
-
-
-
-
-
-
-
 window.initBeside = function(itemOptions) {
 	var latlng = itemOptions.mainLatLng;
 	Utils.currentMap = new ymaps.Map('map-beside', {
@@ -864,14 +887,6 @@ window.initBeside = function(itemOptions) {
 
 
 
-
-
-
-
-
-
-
-
 window.initRent = function(itemOptions, callback) {
 	checkeGeo();
 	var latlng = itemOptions.mainLatLng;
@@ -881,24 +896,42 @@ window.initRent = function(itemOptions, callback) {
 		checkZoomRange: true,
 		restrictMapArea: true,
 		searchControlProvider: "yandex#search",
-		controls: ["zoomControl", "typeSelector", "fullscreenControl"]
+		controls: ["zoomControl", "typeSelector", "fullscreenControl", "searchControl"]
 	})
 
 
-	Areas.drawPolygon(areasPolygon);
+	
 
+	$.ajax({
+		dataType: "json",
+		// type: "GET",
+		async: false,
+		url: "/js/areas.json",
+		success: function({mahalla, regions}){
+			console.log(regions)
+			let cRegions = Areas.clearRawAreas(regions)
+			let cMahalla = Areas.clearRawAreas(mahalla)
+			cRegions.map((item, i)=>{
+				item.colorPolygon = regionsColors[i]
+				Areas.regionsGeoItems.push(item)
+			})
+			cMahalla.map((item)=>{
+				item.selfRegion = item.description.split(",")[0]
+				Areas.areasTitles.push(item.title)
+			})
+			Areas.drawPolygon(cMahalla);
+		}
+	})
+	// Areas.drawPolygon(areasPolygon);	
+
+	
 	$.ajax({
 		type: "GET",
     url: itemOptions.url,
 		success: function(response){
 			Rent.objects = [];
 			var balloonTemplate, latlng;
-
-
-
 			$(response).map(function(i, el){
-
-
 				balloonTemplate = 
 					'<div class="rent-balloon">'+
 						'<p><a href="'+el.url+'" target="_blank">'+el.title+'</a></p>'+
