@@ -199,10 +199,10 @@ window.Areas = {
 				}
 			});
 
-
+			
 
 			/*
-				Клик по района
+				Клик по району
 			*/
 			areasPolygon.events.add("click", function(e){
 
@@ -212,7 +212,6 @@ window.Areas = {
 				Areas.activeArea(inc);
 				Areas.currentArea = that;
 
-				Rent.hideAll(); 
 				Utils.drawClear();
 
 				if( Utils.searchDots ){
@@ -226,10 +225,9 @@ window.Areas = {
 				}
 				$(rentSelectAreas).val(Areas.areasTitles[inc]).trigger("change.select2");
 				//Rent.apartments
-				Rent.objectsContainingPolygon = ymaps.geoQuery(Rent.fullClustersObjs).searchInside(Areas.currentArea);
-				Rent.objectsContainingPolygon.setOptions({
-					visible: true
-				});
+
+				Rent.clusterizePolygon()
+
 				Utils.currentCenter = Areas.currentArea.options.get("coordinates");
 				// Utils.currentMap.setCenter(Utils.currentCenter, 12, {duration: 500});
 				Rent.filterBar();
@@ -275,6 +273,45 @@ window.Areas = {
 window.Rent = {
 	apartments: undefined, 
 	objectsContainingPolygon: {},
+	clustersMarkersQuery: function(){
+		return ymaps.geoQuery(Rent.clusterer.getGeoObjects().concat(Rent.clusterer.getClusters()))
+	},
+	markersQuery: function(){
+		return ymaps.geoQuery(Rent.clusterer.getGeoObjects())
+	},
+	clustererOptions: function(){
+		return {
+			preset: 'islands#invertedVioletClusterIcons',
+			groupByCoordinates: false,
+			clusterDisableClickZoom: false,
+			clusterIcons: [
+				{
+					href: '/img/big.png',
+					size: [40, 40],
+					offset: [-20, -20]
+				},
+			],
+			clusterIconContentLayout: ymaps.templateLayoutFactory.createClass(
+				'<div style="color: #FFFFFF; font-size: 12px;">{{ properties.geoObjects.length }}</div>'
+			),
+			clusterHideIconOnBalloonOpen: false,
+			geoObjectHideIconOnBalloonOpen: false,
+			gridSize: 80,
+			minClusterSize: 5,
+			numbers: [100],
+		}
+	},
+	clusterizePolygon: function(){
+		Rent.hideAll()
+		if(Rent.clusterer)
+			Rent.clusterer.removeAll()
+
+		Rent.objectsContainingPolygon = Rent.apartments.searchInside(Areas.currentArea);
+		Rent.clusterer = Rent.objectsContainingPolygon.clusterize()
+		// Rent.clusterer.options.set(Rent.clustererOptions());
+		Utils.currentMap.geoObjects.add(Rent.clusterer)
+		Rent.objectsContainingPolygon.setOptions({visible: true});
+	},
 	template: 
 						'<div class="rect-def">'+
 							'<div class="wrapper-flex">'+
@@ -460,13 +497,8 @@ window.Rent = {
 		Скрыть все квартиры
 	*/
 	hideAll: function(areaStatus){
-		if( this.clusters ){
-			this.clusters.setOptions({
-				visible: false
-			});
-			this.apartments.setOptions({
-				visible: false
-			});
+		if( this.apartments.length ){
+			this.apartments.setOptions({visible: false});
 			if(areaStatus)
 				Areas.activeArea(null);
 		}
@@ -479,9 +511,7 @@ window.Rent = {
 	*/
 	visibleAll: function(){
 		if( this.apartments ){
-			this.apartments.setOptions({
-				visible: true
-			});
+			this.apartments.setOptions({visible: true});
 		}
 		return this.apartments;
 	},
@@ -893,38 +923,8 @@ window.initRent = function(itemOptions, callback) {
 		searchControlProvider: "yandex#search",
 		controls: ["zoomControl", "typeSelector", "fullscreenControl", "searchControl"]
 	})
-	var clusterIconLayout = ymaps.templateLayoutFactory.createClass(
-		'<div style="color: #FFFFFF; font-size: 12px;">{{ properties.geoObjects.length }}</div>'
-	)
-	var clusterIcons = [
-		{
-			href: '/img/big.png',
-			size: [40, 40],
-			offset: [-20, -20]
-		},
-		// {
-		// 	href: '/img/big.png',
-		// 	size: [60, 60],
-		// 	offset: [-30, -30],
-		// 	shape: {
-		// 		type: 'Circle',
-		// 		coordinates: [0, 0],
-		// 		radius: 30
-		// 	}
-		// }
-	]
-	Rent.clusterer = new ymaps.Clusterer({
-		preset: 'islands#invertedVioletClusterIcons',
-		groupByCoordinates: false,
-		clusterDisableClickZoom: false,
-		clusterIcons: clusterIcons,
-		clusterIconContentLayout: clusterIconLayout,
-		clusterHideIconOnBalloonOpen: false,
-		geoObjectHideIconOnBalloonOpen: false,
-		gridSize: 80,
-		minClusterSize: 5,
-		numbers: [100],
-	})
+
+	// Rent.clusterer = new ymaps.Clusterer(Rent.clustererOptions())
 
 
 
@@ -958,17 +958,7 @@ window.initRent = function(itemOptions, callback) {
 			Rent.objects = [];
 			var balloonTemplate, latlng;
 			$(response.objects).map(function(i, el){
-				balloonTemplate = 
-					'<div class="rent-balloon">'+
-						'<p><a href="'+el.url+'" target="_blank">'+el.title+'</a></p>'+
-						'<img src="'+el.images+'">'+
-						'<p>Комнат: '+el.rooms+'</p>'+
-						'<p>Площадь: '+el.square+' кв. м</p>'+
-						'<p>Цена: '+
-							'<span class="price-usd">'+intSpace(el.priceSum, ",")+' сум</span>'+
-							'<span class="price-us">'+intSpace(el.price, ",")+' $</span>'+
-							'</p>'+
-					'</div>';
+				balloonTemplate = `<div class="rent-balloon">${el}</div>`;
 					el.coordinates = [el.latitude, el.longitude]
 				Rent.objects.push(new ymaps.Placemark(el.coordinates, {
 					balloonContent: balloonTemplate
@@ -982,16 +972,17 @@ window.initRent = function(itemOptions, callback) {
 			});
 
 
-			//Rent.hideAll();
+			// Rent.hideAll();
 			
 	
-			Rent.clusterer.add(Rent.objects)
-			Utils.currentMap.geoObjects.add(Rent.clusterer);
-			Rent.apartments = ymaps.geoQuery(Rent.clusterer.getGeoObjects()) //.addToMap(Utils.currentMap);
-			Rent.clusters = ymaps.geoQuery(Rent.clusterer.getClusters())
-			Rent.fullClustersObjs = ymaps.geoQuery(Rent.clusterer.getGeoObjects().concat(Rent.clusterer.getClusters()))
+			// Rent.clusterer.add(Rent.objects)
+			// Utils.currentMap.geoObjects.add(Rent.clusterer);
+			Rent.apartments = ymaps.geoQuery(Rent.objects) //.addToMap(Utils.currentMap);
+			// Rent.clusters = ymaps.geoQuery(Rent.clusterer.getClusters())
+			
 			Utils.currentMap.events.add('boundschange', function () {
-				Rent.fullClustersObjs = ymaps.geoQuery(Rent.clusterer.getGeoObjects().concat(Rent.clusterer.getClusters()))
+				// Rent.clusterizePolygon()
+				console.log("boundschange")
 			})
 			
 			console.log(Rent.clusters)
