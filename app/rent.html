@@ -579,7 +579,7 @@
 	<script type="text/javascript">
 
 	</script>
-	<script src="js/mapscript.js" type="module"></script>
+	<script src="js/mapscript.js"></script>
 	<script type="text/javascript">
 		
 		ymaps.ready(function(){
@@ -590,8 +590,8 @@
 				defaultArea: 2
 			}
 
-			initRent(itemOptions, function(){
-				$('#rent_select_area').val("Яшнободский район").trigger("change");
+			initMapObjects(itemOptions, function(){
+				// $('#rent_select_area').val("Яшнободский район").trigger("change");
 			});
 		});
 		

@@ -1,4 +1,4 @@
-import areasPolygon from './areas.js';
+// import areasPolygon from './areas.js';
 // import areasMahallaPolygon from './areas-mahalla.js';
 
 
@@ -126,7 +126,7 @@ window.Areas = {
 	            // Описываем фигуру активной области "Круг".
 	        }
 	    );
-	    Utils.currentMap.geoObjects.add(areaPlacemark);
+	    // Utils.currentMap.geoObjects.add(areaPlacemark);
 
 
 			// console.log(geoObjItem)
@@ -205,40 +205,38 @@ window.Areas = {
 				Клик по району
 			*/
 			areasPolygon.events.add("click", function(e){
-
 				var that = e.get("target"), 
 						inc = that.options.get("inc");
 
 				Areas.activeArea(inc);
 				Areas.currentArea = that;
 
-				Utils.drawClear();
+				// Utils.drawClear();
 
 				if( Utils.searchDots ){
 					Utils.searchControl.clear();
 					Utils.searchDots = undefined;
-					Rent.besideBalloon = undefined;
+					MapObjects.besideBalloon = undefined;
 				}
-				if( Rent.besideEntitySelect && $("[name='typebeside']:checked").length > 0){
-					$("[name='typebeside']:checked")[0].checked = false;
-					Rent.besideEntitySelect.html("");
-				}
-				$(rentSelectAreas).val(Areas.areasTitles[inc]).trigger("change.select2");
-				//Rent.apartments
+				// if( MapObjects.besideEntitySelect && $("[name='typebeside']:checked").length > 0){
+				// 	$("[name='typebeside']:checked")[0].checked = false;
+				// 	MapObjects.besideEntitySelect.html("");
+				// }
+				// $(rentSelectAreas).val(Areas.areasTitles[inc]).trigger("change.select2");
 
-				Rent.clusterizePolygon()
+				MapObjects.clusterizePolygon()
 
 				Utils.currentCenter = Areas.currentArea.options.get("coordinates");
-				// Utils.currentMap.setCenter(Utils.currentCenter, 12, {duration: 500});
-				Rent.filterBar();
+				Utils.currentMap.setCenter(Utils.currentCenter, 14, {duration: 1000});
+				// MapObjects.filterBar();
 
 
-				$('[name="renttools"]').map( function(i, el){
-					el.checked = false;
-				});
+				// $('[name="renttools"]').map( function(i, el){
+				// 	el.checked = false;
+				// });
 
 				// Запуск инструмента
-				hashTools();
+				// hashTools();
 
 			})
 
@@ -262,7 +260,7 @@ window.Areas = {
 
 
 
-/*Rent*/
+/*MapObjects*/
 /**
 *	@param [objectsContainingPolygon] {Object} Обекты текущей выборки
 *	@param [template] {String} Шаблон карточки
@@ -270,14 +268,14 @@ window.Areas = {
 *	@function [filterBar] {Object} Фильр квартир
 */
 
-window.Rent = {
+window.MapObjects = {
 	apartments: undefined, 
 	objectsContainingPolygon: {},
 	clustersMarkersQuery: function(){
-		return ymaps.geoQuery(Rent.clusterer.getGeoObjects().concat(Rent.clusterer.getClusters()))
+		return ymaps.geoQuery(MapObjects.clusterer.getGeoObjects().concat(MapObjects.clusterer.getClusters()))
 	},
 	markersQuery: function(){
-		return ymaps.geoQuery(Rent.clusterer.getGeoObjects())
+		return ymaps.geoQuery(MapObjects.clusterer.getGeoObjects())
 	},
 	clustererOptions: function(){
 		return {
@@ -302,15 +300,15 @@ window.Rent = {
 		}
 	},
 	clusterizePolygon: function(){
-		Rent.hideAll()
-		if(Rent.clusterer)
-			Rent.clusterer.removeAll()
+		MapObjects.hideAll()
+		if(MapObjects.clusterer)
+			MapObjects.clusterer.removeAll()
 
-		Rent.objectsContainingPolygon = Rent.apartments.searchInside(Areas.currentArea);
-		Rent.clusterer = Rent.objectsContainingPolygon.clusterize()
-		// Rent.clusterer.options.set(Rent.clustererOptions());
-		Utils.currentMap.geoObjects.add(Rent.clusterer)
-		Rent.objectsContainingPolygon.setOptions({visible: true});
+		MapObjects.objectsContainingPolygon = MapObjects.apartments.searchInside(Areas.currentArea);
+		MapObjects.clusterer = MapObjects.objectsContainingPolygon.clusterize()
+		MapObjects.clusterer.options.set(MapObjects.clustererOptions());
+		Utils.currentMap.geoObjects.add(MapObjects.clusterer)
+		MapObjects.objectsContainingPolygon.setOptions({visible: true});
 	},
 	template: 
 						'<div class="rect-def">'+
@@ -369,7 +367,7 @@ window.Rent = {
 		obj.each(function(obj, i){
 
 			item = obj.options.get("item");
-			template = Rent.template;
+			template = MapObjects.template;
 			if( item.tactic == "sold" )
 				template = template.replace(/{{sold}}/gim, "show") // добавляем класс
 			if( item.recommended )
@@ -416,12 +414,12 @@ window.Rent = {
 	*/
 	filterBar: function(obj){
 		return
-		var obj = Rent.objectsContainingPolygon, keywords, pointsSelected = [];
-		console.log("filterBar objectsContainingPolygon => ", Rent.objectsContainingPolygon);
+		var obj = MapObjects.objectsContainingPolygon, keywords, pointsSelected = [];
+		console.log("filterBar objectsContainingPolygon => ", MapObjects.objectsContainingPolygon);
 		obj.each(function (objItem, i) {
 			keywords = objItem.properties.get("keywords");
-			var keywordsList = Rent.listKeywords(keywords);
-			var noValid, tagsList = Rent.listTags();
+			var keywordsList = MapObjects.listKeywords(keywords);
+			var noValid, tagsList = MapObjects.listTags();
 			if ( tagsList ) {
 				for (let key in tagsList) {
 					if (keywordsList.indexOf(tagsList[key]) === -1) {
@@ -438,8 +436,8 @@ window.Rent = {
 		})
 
 		var newObjects = ymaps.geoQuery(obj);
-		Rent.count(pointsSelected.length);
-		Rent.fabric(newObjects)
+		MapObjects.count(pointsSelected.length);
+		MapObjects.fabric(newObjects)
 	},
 	/** список ключевых слов */
 	listKeywords: function (keywords) {
@@ -481,16 +479,16 @@ window.Rent = {
 		if( words.length < 3 )
 			return;
 		var searchArray = [], keywords, found;
-		Rent.drop();
-		Rent.apartments.each(function(el, i){
+		MapObjects.drop();
+		MapObjects.apartments.each(function(el, i){
 			keywords = el.properties.get("keywords");
 			found = keywords.match(new RegExp(RegExp.escape(words), "gim"))
 			if( found )
 				searchArray.push(el);
 			
 		});
-		Rent.objectsContainingPolygon = ymaps.geoQuery(searchArray);
-		Rent.filterBar();
+		MapObjects.objectsContainingPolygon = ymaps.geoQuery(searchArray);
+		MapObjects.filterBar();
 	},
 
 	/*
@@ -517,7 +515,7 @@ window.Rent = {
 	},
 
 	drop: function(){
-		Rent.hideAll(true); 
+		MapObjects.hideAll(true); 
 		Utils.drawClear();
 	},
 
@@ -571,8 +569,8 @@ window.Rent = {
           paintProcess = null;
 
           // Убираем не нужное на карте
-					Rent.hide(Rent.objectsContainingPolygon);
-					Rent.drop();
+					MapObjects.hide(MapObjects.objectsContainingPolygon);
+					MapObjects.drop();
 
           // В зависимости от состояния кнопки добавляем на карту многоугольник или линию с полученными координатами.
           drawGeoObject = new ymaps.Polygon([coordinates], {}, styles[currentIndex]);
@@ -581,9 +579,9 @@ window.Rent = {
           })
           Utils.currentMap.geoObjects.add(drawGeoObject);
           Utils.currentCenter = Utils.center
-					Rent.objectsContainingPolygon = Rent.apartments.searchInside(drawGeoObject);
+					MapObjects.objectsContainingPolygon = MapObjects.apartments.searchInside(drawGeoObject);
 					
-					Rent.filterBar();
+					MapObjects.filterBar();
 	       }
 	    });
 	  });
@@ -616,8 +614,8 @@ window.Rent = {
 
 				// Рисуем круг
 				Utils.circle = Utils.drawCircle(1500, Utils.currentCenter);
-				Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.circle);
-				Rent.filterBar();
+				MapObjects.objectsContainingPolygon = MapObjects.apartments.searchInside(Utils.circle);
+				MapObjects.filterBar();
 
 		  },
 		  function(err) {
@@ -631,8 +629,8 @@ window.Rent = {
 		if(!$('[data-action="whole"]')[0].checked){
 			return;
 		}
-		Rent.objectsContainingPolygon = Rent.visibleAll();
-		Rent.filterBar();
+		MapObjects.objectsContainingPolygon = MapObjects.visibleAll();
+		MapObjects.filterBar();
 		Utils.currentCenter = Utils.center;
 		Utils.currentMap.setCenter(Utils.center, 12, {duration: 500});
 	},
@@ -674,7 +672,7 @@ window.Rent = {
 			
 			window.circles = ymaps.geoQuery(Utils.currentMap.geoObjects).search('properties.classType = "foundCircle"')
 			circles.each(function(el, i){
-				var circleObjects = Rent.apartments.searchInside(el)
+				var circleObjects = MapObjects.apartments.searchInside(el)
 				circleObjects.each(function(el, i){
 					foundGeoObjects.push(el);
 					el.options.set({
@@ -683,8 +681,8 @@ window.Rent = {
 
 				})
 			})
-			Rent.objectsContainingPolygon = ymaps.geoQuery(foundGeoObjects);
-			Rent.filterBar();
+			MapObjects.objectsContainingPolygon = ymaps.geoQuery(foundGeoObjects);
+			MapObjects.filterBar();
 		});
 	}
 
@@ -912,7 +910,7 @@ window.initBeside = function(itemOptions) {
 
 
 
-window.initRent = function(itemOptions, callback) {
+window.initMapObjects = function(itemOptions, callback) {
 	checkeGeo();
 	var latlng = itemOptions.mainLatLng;
 	Utils.currentMap = new ymaps.Map("map-rent", {
@@ -924,7 +922,7 @@ window.initRent = function(itemOptions, callback) {
 		controls: ["zoomControl", "typeSelector", "fullscreenControl", "searchControl"]
 	})
 
-	// Rent.clusterer = new ymaps.Clusterer(Rent.clustererOptions())
+	// MapObjects.clusterer = new ymaps.Clusterer(MapObjects.clustererOptions())
 
 
 
@@ -955,12 +953,12 @@ window.initRent = function(itemOptions, callback) {
 		type: "GET",
     url: itemOptions.url,
 		success: function(response){
-			Rent.objects = [];
+			MapObjects.objects = [];
 			var balloonTemplate, latlng;
 			$(response.objects).map(function(i, el){
 				balloonTemplate = `<div class="rent-balloon">${el}</div>`;
 					el.coordinates = [el.latitude, el.longitude]
-				Rent.objects.push(new ymaps.Placemark(el.coordinates, {
+				MapObjects.objects.push(new ymaps.Placemark(el.coordinates, {
 					balloonContent: balloonTemplate
 				}, {
 					iconLayout: 'default#image',
@@ -972,20 +970,21 @@ window.initRent = function(itemOptions, callback) {
 			});
 
 
-			// Rent.hideAll();
+			// MapObjects.hideAll();
 			
-	
-			// Rent.clusterer.add(Rent.objects)
-			// Utils.currentMap.geoObjects.add(Rent.clusterer);
-			Rent.apartments = ymaps.geoQuery(Rent.objects) //.addToMap(Utils.currentMap);
-			// Rent.clusters = ymaps.geoQuery(Rent.clusterer.getClusters())
+			MapObjects.clusterer = new ymaps.Clusterer(MapObjects.clustererOptions())
+			MapObjects.apartments = ymaps.geoQuery(MapObjects.objects)//.addToMap(Utils.currentMap);
+			MapObjects.clusterer.add(MapObjects.objects)
+			Utils.currentMap.geoObjects.add(MapObjects.clusterer);
+			console.log(MapObjects.clusterer.getClusters(), 546)
+			// MapObjects.clusters = ymaps.geoQuery(MapObjects.clusterer.getClusters())
 			
 			Utils.currentMap.events.add('boundschange', function () {
-				// Rent.clusterizePolygon()
+				// MapObjects.clusterizePolygon()
 				console.log("boundschange")
 			})
 			
-			console.log(Rent.clusters)
+			console.log(MapObjects.clusters)
 
 			// Callback
 			if( typeof callback == "function" ) callback();
@@ -1000,7 +999,7 @@ window.initRent = function(itemOptions, callback) {
 
 	Utils.searchInit(50);
 
-	Rent.besideEntitySelect = $('#beside_entity_select');
+	MapObjects.besideEntitySelect = $('#beside_entity_select');
 
 	// Событие при пойске (load)
 	Utils.searchControl.events.add("load", function(e){
@@ -1010,8 +1009,8 @@ window.initRent = function(itemOptions, callback) {
 				//e.preventDefault();
 				var that = e.get("target");
 
-				Rent.drop();
-				Rent.hide(Rent.objectsContainingPolygon);
+				MapObjects.drop();
+				MapObjects.hide(MapObjects.objectsContainingPolygon);
 
 				Utils.currentCenter = that.geometry.getCoordinates();
 
@@ -1020,15 +1019,15 @@ window.initRent = function(itemOptions, callback) {
 				Utils.currentMap.setCenter(that.geometry.getCoordinates(), 14, {duration: 0});
 
 				// Скрываем не нужно на карте
-				Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.circle);
-				Rent.filterBar();
+				MapObjects.objectsContainingPolygon = MapObjects.apartments.searchInside(Utils.circle);
+				MapObjects.filterBar();
 				console.log(that);
 			})
 		})
-		//Rent.besideBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
+		//MapObjects.besideBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
 		/*
 
-		Rent.besideEntitySelect.html("");
+		MapObjects.besideEntitySelect.html("");
 		
 		for (var i = 0; i < Utils.searchDots.length; i++) {
 			// Объект с данными о точках
@@ -1041,11 +1040,11 @@ window.initRent = function(itemOptions, callback) {
 			}
 			var newOption = new Option(data.name, data.id, false, false);
 			$(newOption).attr("data-all", JSON.stringify(data));
-			Rent.besideEntitySelect.append(newOption).trigger('change.refresh');
+			MapObjects.besideEntitySelect.append(newOption).trigger('change.refresh');
 
 		}
 		// Сортируем строки по имени
-		var sortOptions = Rent.besideEntitySelect.find('option').sort(function(a, b){
+		var sortOptions = MapObjects.besideEntitySelect.find('option').sort(function(a, b){
 			var nameA = a.textContent.toLowerCase(), 
 					nameB = b.textContent.toLowerCase();
 			if (nameA < nameB) 
@@ -1054,42 +1053,42 @@ window.initRent = function(itemOptions, callback) {
 			  return 1;
 			return 0;
 		})
-		Rent.besideEntitySelect.append(sortOptions);
+		MapObjects.besideEntitySelect.append(sortOptions);
 		
 		*/
 	});
 
 	// Выбор организации
-	Rent.besideEntitySelect.on("change.once", function(){
+	MapObjects.besideEntitySelect.on("change.once", function(){
 
 		try{
 
 			var data = JSON.parse($(this.selectedOptions).attr("data-all"));
-			Rent.besideBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
+			MapObjects.besideBalloon = ymaps.geoQuery(Utils.searchDots).search("properties.id = '" + data.idCompany + "'").get(0);
 
 
 
-			Utils.currentCenter = Rent.besideBalloon.geometry.getCoordinates();
+			Utils.currentCenter = MapObjects.besideBalloon.geometry.getCoordinates();
 			Utils.currentMap.setCenter(Utils.currentCenter, 14, {duration: 300});
 
 			// Скрываем не нужно на карте
-			Rent.drop();
-			Rent.hide(Rent.objectsContainingPolygon);
+			MapObjects.drop();
+			MapObjects.hide(MapObjects.objectsContainingPolygon);
 
 
 			// Рисуем круг
 			Utils.circle = Utils.drawCircle(1500, data.coordinates);
 
 
-			Rent.objectsContainingPolygon = Rent.apartments.searchInside(Utils.circle);
-			Rent.filterBar();
+			MapObjects.objectsContainingPolygon = MapObjects.apartments.searchInside(Utils.circle);
+			MapObjects.filterBar();
 
 		}catch(e){
 			console.info(e);
 		}
 	})
 	$("main").on("click", "[data-search-enty]", function(){
-		Rent.drop();
+		MapObjects.drop();
 	})
 
 	Utils.ctrlZoom();
@@ -1139,7 +1138,7 @@ $("main").on("click", "#map-rent .btn-change", function(){
 
 // Показать по фильтру
 $("main").on("click", ".rent-bar .btn-view", function(){
-	//Rent.filterBar();
+	//MapObjects.filterBar();
 	$("[data-reconstruction]").attr("data-reconstruction", "2").addClass("active");
 	Utils.currentMap.container.fitToViewport();
 	Utils.currentMap.setCenter(Utils.currentCenter, Utils.currentMap.getZoom(), {duration: 1000});
@@ -1155,7 +1154,7 @@ $("main").on("click", ".btn-backbar", function(){
 
 // Фильтрация
 $("main").on("change", "[data-rent-field-num], [data-rent-property], [data-rent-field-val]", function(){
-	Rent.filterBar();
+	MapObjects.filterBar();
 });
 
 
@@ -1165,7 +1164,6 @@ $(rentSelectAreas).on("change", function(){
 		$('[data-action="whole"]').trigger("click");
 		return;
 	}
-
 	Areas.items[index].events.fire("click");
 	$(rentSelectAreas).map(function(i ,el){
 		$(el).val(Areas.areasTitles[index]).trigger("change.select2");
@@ -1257,7 +1255,7 @@ $("main").on("change", '[name="renttools"]', function(e){
 
 
 	var action = that.attr("data-action");
-	Rent.drop();
+	MapObjects.drop();
 	Utils.searchControl.clear();
 
 	if( action == "draw" && this.checked )
@@ -1268,19 +1266,19 @@ $("main").on("change", '[name="renttools"]', function(e){
 	switch(action){
 
 		case "draw":
-			Rent.draw();break;
+			MapObjects.draw();break;
 
 		case "gps":
-			Rent.gps();break;
+			MapObjects.gps();break;
 
 		case "whole":
-			Rent.whole();break;
+			MapObjects.whole();break;
 
 		case "found":
-			Rent.found("метро", action);break;
+			MapObjects.found("метро", action);break;
 
 		case "schools":
-			Rent.found("школа", action);break;
+			MapObjects.found("школа", action);break;
 
 
 
@@ -1289,7 +1287,7 @@ $("main").on("change", '[name="renttools"]', function(e){
 })
 // Поиск
 $("main").on("change", '#search_keywords', function(e){
-	Rent.search( this.value );
+	MapObjects.search( this.value );
 })
 // В избранное
 $("main").on("click", '.rect-def [name="favorites"]', function(e){
@@ -1326,7 +1324,7 @@ $("main").on("change", '[name="pricebox"]', function(){
 	that.closest("div").find("[data-rent-min]").attr("value", min)
 	that.closest("div").find("[data-rent-max]").attr("value", max)
 
-	Rent.filterBar();
+	MapObjects.filterBar();
 	$(".btn-hider").trigger("click");
 })
 $("main").on("click", '.btn-hider', function(){
