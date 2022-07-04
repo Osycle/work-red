@@ -66,7 +66,7 @@ window.Areas = {
 			if( that.areasTitles[inc] == el.options.get("title") ){
 
 				el.options.set({
-						fillOpacity: "0.5"
+						fillOpacity: "0.4"
 				});
 				el.options.get("placemark").properties.set({active: true})
 				// el.options.get("placemark").options.set({
@@ -77,7 +77,7 @@ window.Areas = {
 
 			}else{
 				el.options.set({
-					fillOpacity: "0.3",
+					fillOpacity: "0",
 				});
 				el.options.get("placemark").properties.set({active: false})
 				el.options.get("placemark").options.set({
@@ -155,11 +155,11 @@ window.Areas = {
 					bounds: bounds,
 					//fillImageHref: 'images/lake.png',
 					fillMethod: 'stretch',
-					fillColor: colorPolygon,
-					fillOpacity: "0.3",
+					fillColor: "#2b9b66", //colorPolygon
+					fillOpacity: "0",
 					placemark: areaPlacemark,
 					type: "polygon",
-					strokeColor: colorPolygon,
+					strokeColor: "#2b9b66", //colorPolygon
 					strokeOpacity: "0.3",
 					strokeWidth: 1,
 					stroke: true
@@ -180,8 +180,7 @@ window.Areas = {
 					return;
 				if (type == "mouseenter") {
 						that.options.set({
-							fillOpacity: "0.5",
-							strokeOpacity: "0.4",
+							fillOpacity: "0.4",
 						});
 					if( !(that.options.get("placemark").properties.get("active")) )
 						that.options.get("placemark").options.set({
@@ -189,8 +188,7 @@ window.Areas = {
 						});
 				}else{
 					that.options.set({
-						fillOpacity: "0.3",
-						strokeOpacity: "0.3",
+						fillOpacity: "0",
 					});
 					if( !(that.options.get("placemark").properties.get("active")) )
 						that.options.get("placemark").options.set({
@@ -227,7 +225,7 @@ window.Areas = {
 				MapObjects.clusterizePolygon()
 
 				Utils.currentCenter = Areas.currentArea.options.get("coordinates");
-				Utils.currentMap.setCenter(Utils.currentCenter, 14, {duration: 1000});
+				Utils.currentMap.setCenter(Utils.currentCenter, 14, {duration: 500});
 				// MapObjects.filterBar();
 
 
@@ -419,6 +417,7 @@ window.MapObjects = {
 		obj.each(function (objItem, i) {
 			keywords = objItem.properties.get("keywords");
 			var keywordsList = MapObjects.listKeywords(keywords);
+			console.log(objItem, keywordsList)
 			var noValid, tagsList = MapObjects.listTags();
 			if ( tagsList ) {
 				for (let key in tagsList) {
