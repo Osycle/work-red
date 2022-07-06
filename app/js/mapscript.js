@@ -4,16 +4,32 @@
 
 
 
+window.scrolledDiv = function(el) {
+	try {
+		var docViewTop = $(window).scrollTop(),
+			docViewBottom = docViewTop + $(window).height(),
+			elTop = $(el).offset().top,
+			elBottom = elTop + $(el).height() / 1.8;
+	} catch (err) {
+		console.error();
+	}
 
+	return elBottom <= docViewBottom && elTop >= docViewTop;
+}
 
-
+$(window).on("scroll", function (){
+	if(scrolledDiv(".footer"))
+		console.log(1)
+	else
+		console.log(2)
+})
 
 
 var
 		rentProperty = $("[data-rent-checkboxes] [data-rent-property]"),
 		rentFieldNum = $("[data-rent-coms] [data-rent-field-num]"),
 		rentFieldVal = $("[data-rent-coms] [data-rent-field-val]"),
-		rentAreaItems = $(".rent-items .wrapper-container"),
+		blockObjectItems = $(".rent-items .wrapper-container"),
 		rentBar = $(".rent-bar"),
 		rentSelectAreas = $(".rent-select-area, #rent_select_area")
 		;
@@ -269,6 +285,9 @@ window.Areas = {
 window.MapObjects = {
 	apartments: undefined, 
 	objectsContainingPolygon: {},
+	count: function (count) {
+		return
+	},
 	clustersMarkersQuery: function(){
 		return ymaps.geoQuery(MapObjects.clusterer.getGeoObjects().concat(MapObjects.clusterer.getClusters()))
 	},
@@ -309,115 +328,82 @@ window.MapObjects = {
 		MapObjects.objectsContainingPolygon.setOptions({visible: true});
 	},
 	template: 
-						'<div class="rect-def">'+
-							'<div class="wrapper-flex">'+
-								'<span class="{{sold}} sales">Продано</span>'+
-								'<span class="{{recommended}} recmd">Рекомендуем</span>'+
-								'<div class="img-content">'+
-									'<div class="img" style="background-image: url(\'{{images}}\');"></div>'+
-								'</div>'+
-								'<div class="desc-content text-item p-min">'+
-									'<h5><a href="{{url}}">{{title}}</a></h5>'+
-									'<div class="btn-content">'+
-										'<form action="" class="favorites">  '+
-          						'<button type="button" name="favorites" value="{{articleId}}">Сохранено в мой REDD <i class="icm fa-1-5x icm-favorite-heart-button p-l-10"></i></button>'+
-        						'</form>'+
-									'</div>'+
-									'<div class="detail-info m-v-15">'+
-										'<span class="fig">'+
-											'<i class="icm icm-doorway"></i>'+
-											'<span>Комнаты:</span> '+
-											'<span class="cnt">{{rooms}}</span>'+
-										'</span>'+
-										'<span class="fig">'+
-											'<i class="icm icm-house-plan-scale"></i>'+
-											'<span>Площадь: </span>'+
-											'<span class="cnt">{{square}} кв. м</span>'+
-										'</span>'+
-									'</div>'+
-									'<p><i class="icm icm-price-tag-1 p-r-15"></i><span class="price price-us va-middle">{{price}}</span><span class="price price-usd va-middle">{{priceSum}}</span></p>'+
-									'<hr>'+
-									'<div class="summary">'+
-										'<p>{{description}}</p>'+
-										'<a href="{{url}}" target="_blank"><u>Подробнее</u></a>'+
-									'</div>'+
-								'</div>'+
-							'</div>'+
-						'</div>'
+		`
+		<div class="content-search__item">
+			<div class="item-card" data-objectId="">
+				<div class="item-card__row">
+					<div class="item-card__image">
+						<img data-src="{{image}}" width="214" height="184" class="lazy" alt="{{title}}">
+					</div>
+					<div class="item-card__content">
+						<div class="item-card__head">
+							<div class="icon"><span class="i-{{icon}}-icon"></span></div>
+							<h4 class="item-card__title"><a href="{{url}}">{{title}}</a></h4>
+						</div>
+						<div class="item-card__reviews">
+							<div class="rating">
+								<div class="rating__body">
+									<div class="rating__active"></div>
+									<div class="rating__items">
+										<input type="radio" class="rating__item" value="1" name="rating">
+										<input type="radio" class="rating__item" value="2" name="rating">
+										<input type="radio" class="rating__item" value="3" name="rating">
+										<input type="radio" class="rating__item" value="4" name="rating">
+										<input type="radio" class="rating__item" value="5" name="rating">
+									</div>
+								</div>
+								<div class="rating__value">{{rating}}</div>
+							</div>
+							<div class="total-reviews">Отзывов<div class="total-reviews__link">{{totalComments}}</div>
+							</div>
+						</div>
+						<div class="item-card__contacts contacts-item">
+							<div class="contacts-item__wrap">
+								<div class="contacts-item__desc">
+									<p><span class="i-location-icon"></span>Адрес:</p>
+									<div class="contacts-item__any">{{address}}</div>
+								</div>
+							</div>
+							<div class="contacts-item__wrap">
+								<div class="contacts-item__desc">
+									<p><span class="i-time-icon"></span>Часы работы:</p>
+									<div class="contacts-item__any">{{workingHours}}</div>
+								</div>
+								<div class="contacts-item__desc">
+									<p>Сейчас:</p>
+									<div class="contacts-item__any">{{working}}</div>
+								</div>
+							</div>
+							<div class="contacts-item__wrap">
+								<div class="contacts-item__desc">
+									<p><span class="i-phone-icon"></span>Тел</p>
+									<div class="contacts-item__any">{{phone}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="item-card__footer">
+							<a href="{{url}}" class="item-card__btn btn btn-border">Перейти на страницу</a>
+							<form action="" method="post" id="route{{articleId}}">
+								<input type="hidden" name="prodlat" value="">
+								<input type="hidden" name="prodlng" value="">
+								<button class="item-card__btn btn btn-border" location-route="[{{coordinates}}]"><span class="i-place-go"></span> Проложить маршрут</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		`
 	,
-
 	
 
-
-	/*
-		Генерируем карточку квартиры
-	*/
-	fabric: function(obj){
-
-		var template, item;
-
-
-
-		var old = rentAreaItems.find(".rect-def").removeClass("animate-start");
-		setTimeout(function(){
-			old.remove();
-		}, 500)
-		obj.each(function(obj, i){
-
-			item = obj.options.get("item");
-			template = MapObjects.template;
-			if( item.tactic == "sold" )
-				template = template.replace(/{{sold}}/gim, "show") // добавляем класс
-			if( item.recommended )
-				template = template.replace(/{{recommended}}/gim, "show") // добавляем класс
-
-			/**
-				Имена переменных в шаблоне карточки квартиры
-				зависимы от ключей объектов
-			*/
-			for (var i in item){
-				template = template.replace(new RegExp("{{"+i+"}}", "gim"), item[i]);
-			} 
-			
-
-			template = template.replace(/{{\w*}}/gim, ""); // Обнуляем пустые переменные в шаблоне			
-
-			rentAreaItems.append(template); // Вставляем в контейнер квартир
-
-		});
-		setTimeout(function(){
-			// TODO
-			rentAreaItems.find(".rect-def").map(function(i, el){
-				el = $(el);
-				var price = el.find(".price-us").text();
-				var priceSum = el.find(".price-usd").text();
-				var stylePrice = intSpace(price, ",");
-				var stylePriceSum = intSpace(priceSum, ",");
-				if( stylePrice ){
-					el.find(".price-us").text(stylePrice + " $");
-				}
-				if( stylePriceSum )
-					el.find(".price-usd").text(stylePriceSum + " сум");
-			})
-		}, 400);
-		
-
-		setTimeout(function(){
-			rentAreaItems.find(".rect-def").addClass("animate-start");
-		}, 500)
-	},
-
-	/*
-		Фильтрация
-	*/
-	filterBar: function(obj){
-		return
+	/**	Фильтрация по тегам */
+	filterBar: function() {
 		var obj = MapObjects.objectsContainingPolygon, keywords, pointsSelected = [];
 		console.log("filterBar objectsContainingPolygon => ", MapObjects.objectsContainingPolygon);
 		obj.each(function (objItem, i) {
 			keywords = objItem.properties.get("keywords");
 			var keywordsList = MapObjects.listKeywords(keywords);
-			console.log(objItem, keywordsList)
 			var noValid, tagsList = MapObjects.listTags();
 			if ( tagsList ) {
 				for (let key in tagsList) {
@@ -427,16 +413,76 @@ window.MapObjects = {
 				}
 			}
 			if ( noValid ) {
-				objItem.options.set({visible: false});
+				//objItem.options.set({visible: false});
 			} else {
 				pointsSelected.push(objItem);
-				objItem.options.set({visible: true});
+				//objItem.options.set({visible: true});
 			}
 		})
 
-		var newObjects = ymaps.geoQuery(obj);
+		var newObjects = ymaps.geoQuery(pointsSelected);
+		
+
+		MapObjects.hideAll()
+		if(MapObjects.clusterer)
+			MapObjects.clusterer.removeAll()
+
+		MapObjects.clusterer = MapObjects.objectsContainingPolygon.clusterize()
+		MapObjects.clusterer.options.set(MapObjects.clustererOptions());
+		Utils.currentMap.geoObjects.add(MapObjects.clusterer)
+		MapObjects.objectsContainingPolygon.setOptions({visible: true});
+
+		// MapObjects.clusterizePolygon()
 		MapObjects.count(pointsSelected.length);
-		MapObjects.fabric(newObjects)
+		MapObjects.fabric(newObjects);
+	},
+	currentIndexObj: 0,
+	appendCard(obj){
+		var template = MapObjects.template;
+		item = obj.properties.getAll();
+		console.log(obj)
+		/** Имена переменных в шаблоне карточки зависимы от ключей объектов */
+		for (var i in item) template = template.replace(new RegExp("{{"+i+"}}", "gim"), item[i]);
+		template = template.replace(/{{\w*}}/gim, ""); // Обнуляем пустые переменные в шаблоне
+		blockObjectItems.prepend(template); // Вставляем в контейнер
+	},
+	/** Генерируем объект при поиске */
+	fabric: function(objects){
+		var template, old = blockObjectItems.find(".content-search__item").removeClass("animate-start");
+		setTimeout(function(){
+			old.remove();
+		}, 1)
+		MapObjects.count(objects.length);
+		console.log(objects.length)
+		//ymaps.geoQuery(objects).each(function(obj, i) {
+		for(var index = 0; index < objects.length; index++) {
+			MapObjects.appendCard(objects[index])
+		};
+		$('.lazy').Lazy({
+			// your configuration goes here
+			scrollDirection: 'vertical',
+			effect: 'fadeIn',
+			visibleOnly: true,
+			onError: function(element) {
+				console.log('error loading ' + element.data('src'));
+			}
+		});
+
+		setTimeout(function(){
+			// AOS.init({
+			// 	once: true,
+			// 	duration: 200,
+			// });
+
+
+
+			console.log("Lazy")
+			// blockObjectItems.find(".content-search__item").addClass("animate-start");
+			// rating();
+		}, 2)
+
+
+
 	},
 	/** список ключевых слов */
 	listKeywords: function (keywords) {
@@ -709,6 +755,7 @@ window.Utils = {
 	searchDots: undefined,
 	searchControl: undefined,
 	center: [41.311151, 69.279737],
+	currentCenter: [41.311151, 69.279737],
 	user: {},
 
 	searchInit: function(resultsQuantity){
@@ -947,54 +994,57 @@ window.initMapObjects = function(itemOptions, callback) {
 	})
 	// Areas.drawPolygon(areasPolygon);	
 
-	
 	$.ajax({
 		type: "GET",
-    url: itemOptions.url,
+		url: itemOptions.url,
+		data: { action: 'yMapsAll', region: "" },
 		success: function(response){
+			console.log(response.objects);
 			MapObjects.objects = [];
-			var balloonTemplate, latlng;
-			$(response.objects).map(function(i, el){
-				balloonTemplate = `<div class="rent-balloon">${el}</div>`;
-					el.coordinates = [el.latitude, el.longitude]
-				MapObjects.objects.push(new ymaps.Placemark(el.coordinates, {
+			$(response.objects).map(function(i, item){
+				balloonTemplate = '<div class="maps_object">' +
+					'<div class="maps_image"><img src="' + item.image + '" alt="' + item.title  + '"></div>' +
+					'<div class="maps_object_info">' +
+						'<h4 class="maps_title"><a href="' + item.url + '">' + item.title  + '</a></h4><hr />' +
+						'<ul class="maps_lists">' +
+							'<li><i class="maps_icon fa fa-phone"></i> <a href="tel:' + item.phone +'">' + item.phone + '</a></li>' +
+							'<li><i class="maps_icon fa fa-globe"></i> <a href="' + item.site + '" target="_blank">' + item.site + '</a></li>' +
+						'</ul><hr />' +
+						'<p class="maps_address">' + item.address + '</p>' +
+						'<div class="maps_btn_links">' +
+							'<a location-route="['+item.coordinates+']" href="" class="button btn_links">Как добраться</a> ' +
+							'<a href="' + item.url + '" class="button btn_links">Об организации</a>' +
+						'</div>' +
+					'</div>' +
+					'</div>';
+				MapObjects.objects.push(new ymaps.Placemark([item.latitude, item.longitude], {
+					...item,
 					balloonContent: balloonTemplate
 				}, {
 					iconLayout: 'default#image',
 					iconImageHref: markerStyle_1,
 					iconImageSize: [25, 40],
-					item: el
+					item: item
 				}));
-
 			});
 
-
-			// MapObjects.hideAll();
-			
+			//MapObjects.hideAll();
 			MapObjects.clusterer = new ymaps.Clusterer(MapObjects.clustererOptions())
 			MapObjects.apartments = ymaps.geoQuery(MapObjects.objects)//.addToMap(Utils.currentMap);
 			MapObjects.clusterer.add(MapObjects.objects)
 			Utils.currentMap.geoObjects.add(MapObjects.clusterer);
-			console.log(MapObjects.clusterer.getClusters(), 546)
-			// MapObjects.clusters = ymaps.geoQuery(MapObjects.clusterer.getClusters())
-			
-			Utils.currentMap.events.add('boundschange', function () {
-				// MapObjects.clusterizePolygon()
-				console.log("boundschange")
-			})
-			
-			console.log(MapObjects.clusters)
+			MapObjects.fabric(MapObjects.objects);
 
+			console.log("AJAX RESPONSE OBJECTS => ", MapObjects.points);
 			// Callback
 			if( typeof callback == "function" ) callback();
 
 		},
-    error: function(response){
-    	console.log("Ошибка в файле %cjson", "color:#90AF13;text-transform:uppercase;");
-    },
-    complete: function(response){}
+		error: function(response){
+			console.log("Ошибка в файле %cjson", "color:#90AF13;text-transform:uppercase;");
+		},
+		complete: function(response){}
 	});
-
 
 	Utils.searchInit(50);
 
